@@ -184,6 +184,35 @@
       <div class="column"></div>
     </div>
 
+    {{-- Photo Frame Section --}}
+    <div class="columns">
+      <div class="column image is-2by1 childrenimg">
+        
+      </div>
+      <div class="column colorred">
+        <h1 class="title is-1 has-text-white has-text-centered maketheir">Make Thier</h1>
+        <h2 class="title is-2 has-text-white has-text-centered futurebetter">Future Better!</h2>
+        <div class="level">
+          <p class="control level-item has-text-centered">
+            <a class="button is-primary is-inverted has-text-centered is-outlined signbuttonbelow" href="/">
+                <span>Join</span>
+              </a>
+            </p>
+            <p class="control level-item  has-text-centered">
+              <a class="button is-primary is-outlined loginbuttonbelow" href="/">
+                  <span>Sign in</span>
+                </a>
+              </p>
+        </div>
+      </div>
+    </div>
+
+    {{-- Article Section --}}
+    <div class="column">
+      <div class="container">
+        @include('layouts.article')
+      </div>
+    </div>
 
 
 

@@ -43,6 +43,7 @@
               <div class="field is-grouped">
                 <p class="control">
                   <a class="button is-primary is-inverted is-outlined signupbutton" target="_blank" href="/">
+                    <span>
                       Sign in
                     </span>
                   </a>

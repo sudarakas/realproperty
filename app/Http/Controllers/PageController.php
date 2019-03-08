@@ -19,6 +19,11 @@ class PageController extends Controller
         return view('layouts.master');
     }
 
+    public function land()
+    {
+        return view('layouts.land');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

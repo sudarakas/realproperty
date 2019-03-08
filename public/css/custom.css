@@ -64,7 +64,6 @@ body{
 
 .signbuttonbelow{
     padding: 15px 40px 15px 40px !important;
-    margin-left: 120px;;
 }
 
 .signbuttonbelow:hover{
@@ -197,6 +196,10 @@ body{
     margin-top: 10px;
 }
 
+.topic{
+    text-transform: uppercase;
+    margin-bottom: 50px !important;
+}
 
 
 

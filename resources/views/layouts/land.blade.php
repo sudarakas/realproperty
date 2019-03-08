@@ -27,12 +27,12 @@
                    <h1 class="subtitle is-4 has-text-white">Search properties</h1>
                    <div class="tabs">
                     <ul>
-                      <li class="is-active has-background-primary tabitem">
+                      <li class="deadtabitem">
                         <a>
                           <span class="has-text-white">Houses</span>
                         </a>
                       </li>
-                      <li  class="deadtabitem">
+                      <li  class="is-active has-background-primary tabitem">
                         <a>
                           <span class="has-text-white">Lands</span>
                         </a>

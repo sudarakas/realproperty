@@ -13,6 +13,8 @@
 
 Route::get('/','PageController@index');
 Route::get('/home','PageController@index');
+Route::get('/house','PageController@index');
+Route::get('/land','PageController@land');
 
 
 

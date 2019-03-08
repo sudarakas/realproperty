@@ -28,12 +28,12 @@
                    <div class="tabs">
                     <ul>
                       <li class="is-active has-background-primary tabitem">
-                        <a>
+                        <a href="/house">
                           <span class="has-text-white">Houses</span>
                         </a>
                       </li>
                       <li  class="deadtabitem">
-                        <a>
+                        <a href="/land">
                           <span class="has-text-white">Lands</span>
                         </a>
                       </li>
@@ -126,7 +126,19 @@
                 </form>
                </div>
                <div class="column is-2 adbox">
-                 
+                 <p class="has-text-white is-5">
+                    Got Lost?
+                 </p>
+                 <br>
+                 <p class="has-text-white">
+                    If you don't have an idea about this platfrom work, you can simply visit our blog to get an instant idea about how this work.
+                 </p>
+                 <br>
+                 <p class="control">
+                    <a class="button is-primary is-inverted is-outlined loginbutton" href="/">
+                      <span>Read</span>
+                    </a>
+                  </p>
                </div>
             </div>
             <div class="has-text-centered indexicon">
@@ -192,29 +204,26 @@
       <div class="column colorred">
         <h1 class="title is-1 has-text-white has-text-centered maketheir">Make Thier</h1>
         <h2 class="title is-2 has-text-white has-text-centered futurebetter">Future Better!</h2>
-        <div class="level">
-          <p class="control level-item has-text-centered">
-            <a class="button is-primary is-inverted has-text-centered is-outlined signbuttonbelow" href="/">
-                <span>Join</span>
-              </a>
-            </p>
-            <p class="control level-item  has-text-centered">
-              <a class="button is-primary is-outlined loginbuttonbelow" href="/">
-                  <span>Sign in</span>
-                </a>
-              </p>
-        </div>
+        <p class="control has-text-centered">
+          <a class="button is-primary is-inverted has-text-centered is-outlined signbuttonbelow" href="/">
+              <span>Join</span>
+            </a>
+          </p>
       </div>
     </div>
 
     {{-- Article Section --}}
     <div class="column">
+        <h3 class="title is-3 has-text-grey-darker has-text-centered">Recent Blog Articles</h3>
       <div class="container">
+        @include('layouts.article')
+        @include('layouts.article')
         @include('layouts.article')
       </div>
     </div>
 
-
+    {{-- Footer --}}
+    @include('layouts.footer')
 
 
       {{-- JavaScript Files --}}

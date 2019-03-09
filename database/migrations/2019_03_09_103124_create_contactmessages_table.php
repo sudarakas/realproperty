@@ -17,7 +17,8 @@ class CreateContactmessagesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->string('message');
+            $table->string('type');
+            $table->text('message');
             $table->timestamps();
         });
     }

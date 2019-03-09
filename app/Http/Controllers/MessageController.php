@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InqueryEmail;
 use App\Message;
 use Illuminate\Http\Request;
 
@@ -37,16 +38,20 @@ class MessageController extends Controller
     public function store()
     {
         $this->validate(request(),[
-            'name' => 'required',
-            'email' => 'required',
-            'message' => 'required'
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255|email',
+            'type' => 'required',
+            'message' => 'required|string|max:2500|min:10'
         ]);
         
         Message::create([
             'name' => request('name'),
             'email' => request('email'),
+            'type' => request('type'),
             'message' => request('message')
         ]);
+
+        \Mail::to('sudharakafb@gmail.com')->send(new InqueryEmail);
 
         return back();
     }

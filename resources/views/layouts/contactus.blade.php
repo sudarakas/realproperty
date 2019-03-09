@@ -85,23 +85,54 @@
                     <div class="field">
                       <label class="label has-text-white">Name</label>
                       <div class="control">
-                        <input class="input" type="text" name="name" placeholder="Enter your name" required>
+                        <input class="input is-info{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" placeholder="Enter your name">
+                        @if ($errors->has('name'))
+                          <span class="invalid-feedback " role="alert">
+                            <strong class="has-text-danger">{{ $errors->first('name') }}</strong>
+                          </span>
+                        @endif
                       </div>
                     </div>
                     <div class="field">
                       <label class="label has-text-white">Email Address</label>
                       <div class="control">
-                        <input class="input" type="email" name="email" placeholder="Enter your email" required>
+                        <input class="input is-info{{ $errors->has('email') ? ' is-invalid' : '' }}" type="email" name="email" placeholder="Enter your email">
+                        @if ($errors->has('email'))
+                        <span class="" role="alert">
+                            <strong class="has-text-danger">{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label has-text-white">Inquery Type</label>
+                      <div class="control">
+                        <div class="select is-info is-fullwidth{{ $errors->has('type') ? ' is-invalid' : '' }}">
+                          <select name="type">
+                            <option>General Inquery</option>
+                            <option>Technical Inquery</option>
+                            <option>Service Inquery</option>
+                          </select>
+                          @if ($errors->has('type'))
+                        <span class="" role="alert">
+                            <strong class="has-text-danger">{{ $errors->first('type') }}</strong>
+                        </span>
+                        @endif
+                        </div>
                       </div>
                     </div>
                     <div class="field">
                       <label class="label has-text-white">Message</label>
                       <div class="control">
-                        <textarea class="textarea" name="message" placeholder="Enter your message" required></textarea>
+                        <textarea class="textarea is-info{{ $errors->has('message') ? ' is-invalid' : '' }}" rows="12" name="message" placeholder="Enter your message"></textarea>
+                        @if ($errors->has('message'))
+                          <span class="" role="alert">
+                            <strong class="has-text-danger">{{ $errors->first('message') }}</strong>
+                          </span>
+                        @endif
                       </div>
                     </div>
                     <div class="control">
-                        
                       <button class="button is-link is-pulled-right msgbutton">
                         <span class="icon">
                           <i class="far fa-comment-alt"></i>
@@ -125,5 +156,15 @@
       {{-- JavaScript Files --}}
       <script src="/js/jquery-3.3.1.min.js"></script>
       <script src="/js/fontawesome.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            $notification = $delete.parentNode;
+            $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+            });
+          });
+        });
+      </script>
 </body>
 </html>

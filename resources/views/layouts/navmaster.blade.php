@@ -12,28 +12,28 @@
       
         <div id="navid" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item menutext thisactive" href="/">
+            <a class="navbar-item menutext thisactive" href="/house">
                 Houses
             </a>
-            <a class="navbar-item menutext" href="/">
+            <a class="navbar-item menutext" href="/land">
                 Lands
             </a>
-            <a class="navbar-item menutext" href="/">
+            <a class="navbar-item menutext" href="/apartment">
                 Apartments
             </a>
-            <a class="navbar-item menutext" href="/">
+            <a class="navbar-item menutext" href="/building">
                 Buildings
             </a>
-            <a class="navbar-item menutext" href="/">
+            <a class="navbar-item menutext" href="/warehouse">
               Warehouses
             </a>
-            <a class="navbar-item menutext" href="/">
+            <a class="navbar-item menutext" href="/blog">
               Blog
             </a>
-            <a class="navbar-item menutext" href="/">
+            <a class="navbar-item menutext" href="/about">
               About
             </a>
-            <a class="navbar-item menutext" href="/">
+            <a class="navbar-item menutext" href="/contactus">
               Contact Us
             </a>
           </div>

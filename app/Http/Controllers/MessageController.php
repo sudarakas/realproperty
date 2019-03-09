@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Page;
-use App\User;
+use App\Message;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class PageController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,37 +14,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('layouts.master');
-    }
-
-    public function land()
-    {
-        return view('layouts.land');
-    }
-
-    public function apartment()
-    {
-        return view('layouts.apartment');
-    }
-
-    public function building()
-    {
-        return view('layouts.building');
-    }
-
-    public function warehouse()
-    {
-        return view('layouts.warehouses');
-    }
-
-    public function about()
-    {
-        return view('layouts.aboutus');
-    }
-
-    public function contactus()
-    {
-        return view('layouts.contactus');
+        //
     }
 
     /**
@@ -56,7 +24,6 @@ class PageController extends Controller
      */
     public function create()
     {
-    
         //
     }
 
@@ -65,19 +32,32 @@ class PageController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
      */
     public function store()
     {
-        //
+        $this->validate(request(),[
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required'
+        ]);
+        
+        Message::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'message' => request('message')
+        ]);
+
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Page  $page
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(Message $message)
     {
         //
     }
@@ -85,10 +65,10 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Page  $page
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit(Message $message)
     {
         //
     }
@@ -97,10 +77,10 @@ class PageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Page  $page
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -108,10 +88,10 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Page  $page
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy(Message $message)
     {
         //
     }

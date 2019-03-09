@@ -164,6 +164,17 @@ body{
     background-color: hsl(0, 0%, 14%);
 }
 
+.coloredback{
+    background-color: hsl(0, 0%, 14%);
+    margin-top: 12px;
+    margin-bottom: -12px;
+}
+
+.insidemoved{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .childrenimg{
     background-image: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0)),url("/img/chilldrennew.jpg");
     background-position: center;
@@ -201,14 +212,57 @@ body{
     margin-bottom: 50px !important;
 }
 
+.centertext{
+    font-size: 100% !important;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 150px;
+    margin-bottom: 200px;
+}
 
+.centertextword{
+    font-size: 300% !important;
+}
 
+.aboutus{
+    margin: 50px;
+}
 
+.is-horizontal-center{
+    justify-content: center;
+}
+.face{
+    border-radius: 50%;
+    height: 256px;
+    width: 256px;
+    justify-content: center;
+    border: 3px solid hsl(171, 100%, 41%);
+    /* margin: 0 40% 0 40%; */
+}
 
+.contactusimg{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0)),url("/img/contactus.jpeg");
+    margin-top: 12px;
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    filter: blur(2px);
+    filter: brightness(0.3);
+    transition: filter 2s !important;
+    margin-bottom: -12px;
+}
 
+.contactusimg:hover{
+    filter: blur(0px);
+    filter: brightness(1);
+    transition: filter 2s !important;
+}
 
-
-
+.msgbutton{
+    padding: 0px 30px 0px 30px;
+}
 
 
 

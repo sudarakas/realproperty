@@ -18,7 +18,7 @@
     <div class="column is-full is-mobile backgroundimg">
         <div class="container">
             <div class="column is-mobile is-centered">
-                @include('layouts.navland');
+                @include('layouts.navapartment');
             </div>
         </div>
         <div class="container">
@@ -28,16 +28,16 @@
                    <div class="tabs">
                     <ul>
                       <li class="deadtabitem">
-                        <a>
+                        <a href="/house">
                           <span class="has-text-white">Houses</span>
                         </a>
                       </li>
-                      <li  class="is-active has-background-primary tabitem">
-                        <a>
+                      <li  class="deadtabitem">
+                        <a href="/land">
                           <span class="has-text-white">Lands</span>
                         </a>
                       </li>
-                      <li class="deadtabitem">
+                      <li class="is-active has-background-primary tabitem">
                         <a>
                           <span class="has-text-white">Apartments</span>
                         </a>

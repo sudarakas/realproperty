@@ -49,6 +49,10 @@ class PageController extends Controller
         return view('layouts.contactus');
     }
 
+    public function housesearch(){
+        return view('results.houseresult');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

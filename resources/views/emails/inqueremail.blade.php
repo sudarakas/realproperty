@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-<h1>here: {{$message->name}}</h1>
+<h1 class="has-text-primary">here: {{$message->name}}</h1>
 
 @component('mail::button', ['url' => ''])
 Button Text

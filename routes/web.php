@@ -22,6 +22,9 @@ Route::get('/blog','PageController@blog');
 Route::get('/about','PageController@about');
 Route::get('/contactus','PageController@contactus');
 
+Route::get('/house/serach','PageController@housesearch');
+
+
 
 
 Route::post('/search','PageController@store');

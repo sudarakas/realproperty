@@ -44,14 +44,14 @@ class MessageController extends Controller
             'message' => 'required|string|max:2500|min:10'
         ]);
         
-        Message::create([
+        $message = Message::create([
             'name' => request('name'),
             'email' => request('email'),
             'type' => request('type'),
             'message' => request('message')
         ]);
 
-        \Mail::to('sudharakafb@gmail.com')->send(new InqueryEmail);
+        \Mail::to('sudharakafb@gmail.com')->send(new InqueryEmail($message));
 
         return back();
     }

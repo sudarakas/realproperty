@@ -1,3 +1,7 @@
+:root{
+    --basicolor: hsl(171, 100%, 41%)
+}
+
 body{
     font-family: 'Exo 2', sans-serif !important;
     font-size: 15px;
@@ -292,10 +296,41 @@ body{
     border: 1px solid #ffffff;
     transition: background-color 2s;
 }
+.colorbar{
+    background-color: var(--basicolor);
+}
 
+.textboxlogin{
+    margin: 50px 0px 10px 0px !important;
+}
 
+.loginbox{
+    margin-top: 40px !important;
+    margin-bottom: 80px !important;
+}
 
+.loginform{
+    padding: 20px 50px 20px 50px !important;
+}
 
+.loginimg{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0)),url("/img/login.jpeg");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    height: 500px;
+    filter: blur(2px);
+    filter: brightness(0.3);
+    transition: filter 2s !important;
+}
+
+.loginimg:hover{
+    filter: blur(0px);
+    filter: brightness(1);
+    transition: filter 2s !important;
+}
+
+.
 
 
 
@@ -319,6 +354,16 @@ body{
  .navsearch{
     margin-left: 0% !important;
 }
+
+.loginimg{
+    height: 100%;
+}
+
+.columns.is-vcentered {
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+          align-items: center;
+  }
 .menutext:hover{
     color: #ffffff !important;
     background-color: rgba(0,0,0,0.0) !important;

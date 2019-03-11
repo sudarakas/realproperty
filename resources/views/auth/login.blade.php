@@ -1,73 +1,97 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    {{-- CSS Files --}}
+    <link rel="stylesheet" href="/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/custom.css"> {{-- Google Fonts --}}
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:300i,400,400i,500,500i,600|Kanit:300,300i,400,400i,500,500i,600" rel="stylesheet">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+</head>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+<body>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="column is-full colorbar">
+        {{-- top color bar goes here --}}
+    </div>
+    <br>
+    <div class="columns is-mobile is-centered">
+        <div class="column is-one-fifth">
+            <p class="bd-notification is-primary">
+                <figure class="image is-3by1 is-centered">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                </figure>
+            </p>
         </div>
     </div>
-</div>
-@endsection
+    <div class="is-mobile is-centered has-text-centered textboxlogin">
+        <p class="title has-text-centered is-3 is-spaced">Login into your account</p>
+        <p class="subtitle  has-text-centered is-6">Enter your email and password to login your realproperty accoount to enjoy the great realproperty services.
+        <br> you need any futher assistant, please do not hesitate to contact us.</p>
+    </div>
+    <div class="columns is-mobile is-centered loginbox is-vcentered">
+        <div class="column is-two-fifths loginform">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input {{ $errors->has('email') ? ' is-danger' : '' }} is-primary" id="email" type="email" value="{{ old('email') }}" name="email" placeholder="Email" autofocus>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span> @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                                    <strong class="has-text-danger">{{ $errors->first('email') }}</strong>
+                                </span> @endif
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input {{ $errors->has('password') ? ' is-danger' : '' }} is-primary" id="password" type="password" name="password" placeholder="Password" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                          </span> @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                                                        <strong class="has-text-danger">{{ $errors->first('password') }}</strong>
+                                                    </span> @endif
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember" id="remember" {{ old( 'remember') ? 'checked' : '' }}> Remember me
+                    </label>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-primary is full">
+                            Login
+                        </button>
+                        <br> 
+                    @if (Route::has('password.request'))
+                        <a class="has-text-link" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                    @endif
+                    </p>
+                </div>
+
+            </form>
+        </div>
+        <div class="column is-two-fifths image loginimg"><br></div>
+    </div>
+
+    
+    {{-- Footer --}} 
+    @include('layouts.footer') 
+    
+    
+    {{-- JavaScript Files --}}
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/fontawesome.js"></script>
+</body>
+
+</html>

@@ -3,15 +3,17 @@
         <a class="navbar-item is-centered is-horizontal-center" href="/">
             <img src="https://bulma.io/images/bulma-logo.png"  width="112" height="28">
         </a>
-        <a class="button is-primary is-centered">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light is-centered">
-                Log in
-              </a>
+        <div class="buttons is-centered">
+          <a class="button is-primary is-centered">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light is-centered">
+            Log in
+          </a>
+        </div>
     </div>
 </div>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar" role="navigation" class="is-centered" aria-label="main navigation">
     <div class="navbar-brand">
       <a role="button" class="navbar-burger burger button is-primary" aria-label="menu" aria-expanded="false" onclick="document.querySelector('.below').classList.toggle('is-active');" data-target="belownav">
         <span aria-hidden="true"></span>
@@ -20,7 +22,7 @@
       </a>
     </div>
   
-    <div id="belownav" class="navbar-menu below">
+    <div id="belownav" class="navbar-menu below is-centered navsearch">
       <div class="navbar-start">
             <a class="navbar-item menuitemnav" href="/house">
                 Houses

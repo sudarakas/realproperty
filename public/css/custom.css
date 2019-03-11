@@ -278,6 +278,32 @@ body{
     text-decoration: none !important;
 }
 
+.navsearch{
+    margin-left: 25% !important;
+}
+
+.grayme{
+    background-color: #F0F2F5;
+}
+
+.usermenu:hover{
+    background-color: #ffffff4f !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff;
+    transition: background-color 2s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Media Queries */
@@ -290,7 +316,9 @@ body{
      color: #ffffff !important;
      font-weight: 700;
  }
-
+ .navsearch{
+    margin-left: 0% !important;
+}
 .menutext:hover{
     color: #ffffff !important;
     background-color: rgba(0,0,0,0.0) !important;

@@ -21,6 +21,87 @@
 </head>
 <body>
     <div id="app">
+            <div class="container">
+                    <div class="is-centered">
+                        <a class="navbar-item is-centered is-horizontal-center" href="/">
+                            <img src="https://bulma.io/images/bulma-logo.png"  width="112" height="28">
+                        </a>
+                        <div class="buttons is-centered">
+                            @guest
+                                
+                                @if (Route::has('register'))
+                                    <a class="button is-primary is-centered" href="{{ route('register') }}">
+                                        <strong>Sign up</strong>
+                                    </a>
+                                @endif
+                                <a class="button is-light is-centered" href="{{ route('login') }}">
+                                        Log in
+                                    </a>
+                                @else
+                                <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
+        
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                        </div>
+                    </div>
+                </div>
+                  {{-- <nav class="navbar" role="navigation" class="is-centered" aria-label="main navigation">
+                    <div class="navbar-brand">
+                      <a role="button" class="navbar-burger burger button is-primary" aria-label="menu" aria-expanded="false" onclick="document.querySelector('.below').classList.toggle('is-active');" data-target="belownav">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                      </a>
+                    </div>
+                  
+                    <div id="belownav" class="navbar-menu below is-centered navsearch">
+                      <div class="navbar-start">
+                            <a class="navbar-item menuitemnav" href="/house">
+                                Houses
+                            </a>
+                            <a class="navbar-item menuitemnav" href="/land">
+                                Lands
+                            </a>
+                            <a class="navbar-item menuitemnav" href="/apartment">
+                                Apartments
+                            </a>
+                            <a class="navbar-item menuitemnav" href="/building">
+                                Buildings
+                            </a>
+                            <a class="navbar-item menuitemnav" href="/warehouse">
+                              Warehouses
+                            </a>
+                            <a class="navbar-item menuitemnav" href="/blog">
+                              Blog
+                            </a>
+                            <a class="navbar-item menuitemnav" href="/about">
+                              About
+                            </a>
+                            <a class="navbar-item menuitemnav" href="/contactus">
+                              Contact Us
+                            </a>
+                      </div>
+                      <div class="navbar-end">
+                      <div class="navbar-item">
+                      
+                      </div>
+                    </div>
+                    </div>
+                  </nav>                
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -70,7 +151,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
         <main class="py-4">
             @yield('content')

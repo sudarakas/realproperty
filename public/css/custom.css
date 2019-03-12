@@ -301,7 +301,15 @@ body{
 }
 
 .textboxlogin{
-    margin: 50px 0px 10px 0px !important;
+    margin: 20px 0px 10px 0px !important;
+     
+}
+
+.textareabox{
+    padding-top: 90px !important; 
+}
+.tinytextlogin{
+    margin: 10px 0px 10px 0px !important;
 }
 
 .loginbox{
@@ -310,7 +318,7 @@ body{
 }
 
 .loginform{
-    padding: 20px 50px 20px 50px !important;
+    padding: 20px 120px 20px 120px !important;
 }
 
 .loginimg{
@@ -330,8 +338,33 @@ body{
     transition: filter 2s !important;
 }
 
-.
+.inputline{
+    border-radius: 0px !important;
+    background-color: #cecece25;
+    border: 0px solid transparent !important;
+}
 
+.loginbutton{ 
+    margin: 20px 0px 10px 0px !important;
+}
+
+.fulllogin{
+    margin: 80px 100px 100px 100px !important;
+    
+}
+
+.leftsideeffect{
+    -webkit-box-shadow: -7px 0px 22px -5px rgba(51,204,153,0.57);
+    -moz-box-shadow: -7px 0px 22px -5px rgba(51,204,153,0.57);
+    box-shadow: -7px 0px 22px -5px rgba(51,204,153,0.57);
+}
+
+.rightsideeffect{
+    -webkit-box-shadow: 12px 0px 22px -5px rgba(51,204,153,0.57);
+    -moz-box-shadow: 12px 0px 22px -5px rgba(51,204,153,0.57);
+    box-shadow: 12px 0px 22px -5px rgba(51,204,153,0.57);
+
+}
 
 
 
@@ -350,6 +383,9 @@ body{
  .navbar-burger{
      color: #ffffff !important;
      font-weight: 700;
+ }
+ .fulllogin{
+     margin: 0px !important;
  }
  .navsearch{
     margin-left: 0% !important;

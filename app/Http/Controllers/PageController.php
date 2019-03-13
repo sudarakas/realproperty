@@ -53,6 +53,10 @@ class PageController extends Controller
         return view('results.houseresult');
     }
 
+    public function profile(){
+        return view('profile.home');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -68,6 +68,20 @@
                                 <input type="checkbox" name="remember" id="remember" {{ old( 'remember') ? 'checked' : '' }}> Remember me
                             </label>
                         </div> --}}
+                        <div class="field googlerecapture loginbutton">
+                                <p>
+                                        @if(env('GOOGLE_RECAPTCHA_KEY'))
+                                        <div class="g-recaptcha googlerecaptcha" id="googlerecaptcha"
+                                            data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+                                        </div>
+                                   @endif
+                                   @if ($errors->has('googlerecaptcha'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong class="has-text-danger">{{ $errors->first('googlerecaptcha') }}</strong>
+                                    </span> 
+                                    @endif
+                                </p>
+                            </div>
                         <div class="field ">
                             <p class="control has-text-centered is-centered loginbutton">
                                 <button class="button is-primary is full is-uppercase">
@@ -100,6 +114,7 @@
     {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 
 </html>

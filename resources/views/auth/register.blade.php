@@ -32,7 +32,7 @@
                     <p class="subtitle  has-text-centered is-size-7 tinytextlogin">Enter your email and password to login your realproperty accoount.</p>
                 </div>
                 <div class="loginform">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="field">
                                 <p class="control has-icons-left">
@@ -79,10 +79,10 @@
                                     </span> 
                                 </p>
                         </div>
-                        <div class="field">
+                        {{-- <div class="field">
                             <div class="file has-name">
                                 <label class="file-label">
-                                <input class="file-input" type="file" name="profilepic" class="is-medium">
+                                <input class="file-input image"  id="image" type="file" name="image" class="is-medium">
                                 <span class="file-cta">
                                     <span class="file-icon">
                                         <i class="fas fa-upload"></i>
@@ -91,14 +91,15 @@
                                         Profile Picture
                                     </span>
                                 </span>
-                                <span class="file-name">
-                                    Screen Shot 2017-07-29 at 15.54.25.png
-                                </span>
-                                </label>
+                                @if ($errors->has('image'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong class="has-text-danger">{{ $errors->first('image') }}</strong>
+                                </span> 
+                                @endif
                             </div>
-                        </div>
+                        </div> --}}
                         <br>
-                        <div class="field">
+                        <div class="field googlerecapture">
                                 <p>
                                         @if(env('GOOGLE_RECAPTCHA_KEY'))
                                         <div class="g-recaptcha googlerecaptcha" id="googlerecaptcha"

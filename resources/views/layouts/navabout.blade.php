@@ -49,7 +49,7 @@
               </a>
             </p>
             <p class="control">
-              <a class="button is-primary is-inverted is-outlined loginbutton" href="/">
+              <a class="button is-primary is-inverted is-outlined loginbuttonx" href="/">
                 <span>Join</span>
               </a>
             </p>

@@ -306,7 +306,7 @@ body{
 }
 
 .textareabox{
-    padding-top: 90px !important; 
+    padding-top: 100px !important; 
 }
 .tinytextlogin{
     margin: 10px 0px 10px 0px !important;
@@ -344,16 +344,17 @@ body{
     border: 0px solid transparent !important;
 }
 
-.loginbutton{ 
+.loginbuttonx{ 
     margin: 20px 0px 10px 0px !important;
 }
 
 .fulllogin{
-    margin: 80px 100px 100px 100px !important;
+    margin: 80px 100px 140px 100px !important;
     
 }
 
 .leftsideeffect{
+    background-color: #ffffff;
     -webkit-box-shadow: -7px 0px 22px -5px rgba(51,204,153,0.57);
     -moz-box-shadow: -7px 0px 22px -5px rgba(51,204,153,0.57);
     box-shadow: -7px 0px 22px -5px rgba(51,204,153,0.57);
@@ -366,7 +367,17 @@ body{
 
 }
 
+.signupbuttonloginpage{
+    color: #ffffff !important;
+    background-color: transparent !important;
+    margin-top: 25px;
+}
 
+.signupbuttonloginpage:hover{
+    color: #4b4b4b !important;
+    background-color: #ffffff !important;
+    transition: background-color 2s !important;
+}
 
 
 

@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class="grayme">
 
     <div class="column is-full colorbar">
         {{-- top color bar goes here --}}
@@ -22,9 +22,11 @@
     <br>
         <div class="columns fulllogin">
             <div class="column is-offset-1 is-half leftsideeffect">
-                <figure class="image is-96x96">
-                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                </figure>
+                <a href="/">
+                    <figure class="image is-96x96">
+                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                    </figure>
+                </a>
                 <div class="is-mobile textboxlogin">
                     <p class="title has-text-primary is-4 has-text-centered">Sign into your account</p>
                     <p class="subtitle  has-text-centered is-size-7 tinytextlogin">Enter your email and password to login your realproperty accoount.</p>
@@ -81,7 +83,12 @@
                     <div class="is-mobile textboxlogin textareabox">
                             <p class="title has-text-white is-4 has-text-centered">Hello, friend</p>
                             <p class="subtitle  has-text-white has-text-centered is-size-7 tinytextlogin">Enter your detail and start a jouney with us.</p>
+                            
                         </div>
+                    <div class="is-centered has-text-centered">
+                        <a class="button is-invertedis-uppercase is-outlined signupbuttonloginpage">&nbsp; &nbsp;  &nbsp; &nbsp; Sign Up &nbsp; &nbsp;  &nbsp; &nbsp;</a>
+                    </div>
+                        
             </div>
         </div>
 

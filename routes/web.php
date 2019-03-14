@@ -33,6 +33,8 @@ Route::get('/house/serach','PageController@housesearch');
 
 Route::post('/search','PageController@store');
 Route::post('/sendmessage','MessageController@store');
+Route::post('/profile/updateavatar','ProfileController@updateAvatar');
+
 
 
 Auth::routes();

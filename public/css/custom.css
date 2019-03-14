@@ -432,7 +432,60 @@ body{
     cursor: pointer;
   }
 
+.savebutton{
+    padding: 0px 20px 0px 20px !important;
+}
 
+.panelboard{
+    margin-bottom: -20px !important;
+}
+
+
+
+  figure.profileavatar figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 30px !important;
+    padding-left: 30px;
+  }
+  figure.profileavatar figcaption::before {
+    position: absolute;
+    border-left: 4px solid rgba(255, 255, 255, 0.8);
+    content: '';
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transition-delay: 0.6s;
+    transition-delay: 0.6s;
+  }
+  figure.profileavatar h5{
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s,-webkit-transform 0.35s,-moz-transform 0.35s,-o-transform 0.35s,transform 0.35s;
+  }
+  figure.profileavatar h5 {
+    -webkit-transform: translate3d(30%, 0%, 0);
+    transform: translate3d(30%, 0%, 0);
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+  }
+  
+
+  figure.profileavatar:hover img {
+    opacity: 0.3;
+    cursor: pointer;
+  }
+
+  figure.profileavatar:hover figcaption h5 {
+    opacity: 1;
+    -webkit-transform: translate3d(0%, 0%, 0);
+    transform: translate3d(0%, 0%, 0);
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+    cursor: pointer;
+  }
 
 
 /* Media Queries */

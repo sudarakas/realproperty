@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -54,7 +55,7 @@ class PageController extends Controller
     }
 
     public function profile(){
-        return view('profile.home');
+        return view('profile.home', array('user'=> Auth::user()));
     }
 
     /**

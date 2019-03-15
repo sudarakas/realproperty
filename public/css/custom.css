@@ -386,8 +386,15 @@ body{
 .sidebar{
     padding-left: 25px;
     padding-top: 20px;
+    margin-bottom: 20px !important;
+    overflow: hidden;
 }
 
+.displaybox{
+    padding-top: 20px !important;
+    margin-bottom: 20px !important;
+    overflow: hidden;
+}
 .profileavatar{
     margin-top: 20px;
     margin-left: 70px;
@@ -440,16 +447,23 @@ body{
     margin-bottom: -20px !important;
 }
 
+.dashboxes{
+    margin-top: -40px !important;
+}
+.profilenavbar{
+    margin-left: -30px !important;
+    margin-top: -11px !important;
+}
 
 
-  figure.profileavatar figcaption {
+figure.profileavatar figcaption {
     position: absolute;
     bottom: 0;
     left: 0;
     padding-bottom: 30px !important;
     padding-left: 30px;
-  }
-  figure.profileavatar figcaption::before {
+}
+figure.profileavatar figcaption::before {
     position: absolute;
     border-left: 4px solid rgba(255, 255, 255, 0.8);
     content: '';
@@ -486,9 +500,62 @@ body{
     transition-delay: 0.4s;
     cursor: pointer;
   }
+.numbertext{
+    font-size: 500%;
+    margin-top: -40px !important;
+    padding-top: 10px !important;
+}
+
+.centerinputbox{
+    margin: 20px 120px 0px 120px !important;
+}
+
+.cardmargin{
+    margin: 20px 40px 0px 40px !important;
+    padding-top: 60px !important;
+    padding-bottom: 40px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Media Queries */
+
+@media screen and (max-width: 768px){
+.sidebar{
+    padding-left: 25px;
+    padding-top: 20px;
+    margin-bottom: -0px !important;
+    overflow: hidden;
+}
+
+.displaybox{
+    margin-bottom: 20px !important;
+    overflow: hidden;
+}
+}
 @media screen and (max-width: 1087px){
 .navbar-menu {
     background-color: transparent !important; 

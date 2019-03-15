@@ -22,7 +22,8 @@ Route::get('/blog','PageController@blog');
 Route::get('/about','PageController@about');
 Route::get('/contactus','PageController@contactus');
 
-Route::get('/profile','PageController@profile');
+Route::get('/profile','PageController@profile')->middleware('auth');
+Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
 
 
 
@@ -33,7 +34,7 @@ Route::get('/house/serach','PageController@housesearch');
 
 Route::post('/search','PageController@store');
 Route::post('/sendmessage','MessageController@store');
-Route::post('/profile/updateavatar','ProfileController@updateAvatar');
+Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 
 
 

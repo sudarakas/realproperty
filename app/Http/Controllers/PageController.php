@@ -57,6 +57,9 @@ class PageController extends Controller
     public function profile(){
         return view('profile.home', array('user'=> Auth::user()));
     }
+    public function changePassword(){
+        return view('profile.home', array('user'=> Auth::user()));
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -37,7 +37,7 @@
                 </p>
                 <ul class="menu-list">
                   <li><a>Edit Account</a></li>
-                  <li><a>Change Password</a></li>
+                  <li><a href="/profile/changepassword">Change Password</a></li>
                   <li><a>Delete Account</a></li>
                 </ul>
                 <p class="menu-label has-text-white">
@@ -58,9 +58,14 @@
                 </ul>
               </aside>
         </div>
-        <div class="column has-background-dark">
-                
-        </div>
+          @if(Request::is('profile'))
+            @include('profile.dashboard')
+          
+          
+          @else
+            @include('profile.changepassword')
+          
+          @endif
         <div id="myModal" class="modal column is-half is-offset-one-quarter">
             <div class="modal-content">
                 <div class="is-pulled-right">

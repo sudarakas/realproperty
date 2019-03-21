@@ -1,4 +1,11 @@
 <div class="column displaybox">
+    @include('profile.navprofile')
+    <nav class="breadcrumb has-arrow-separator has-background-white" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li class="is-active"><a href="/profile">Change Password</a></li>
+        </ul>
+    </nav>
     <div class="card cardmargin">
             <div class="container">
                     <h1 class="title has-text-centered"> Change Your Password</h1>
@@ -31,7 +38,7 @@
                                           <div class="field">
                                             <p class="control has-text-centered">
                                               <button class="button is-success">
-                                                <span>Login</span>
+                                                <span class="buttonspace">Save</span>
                                               </button>
                                             </p>
                                           </div>        

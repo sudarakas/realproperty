@@ -384,6 +384,7 @@ body{
 }
 
 .sidebar{
+    background-color: #EFEDF8;
     padding-left: 25px;
     padding-top: 20px;
     margin-bottom: 20px !important;
@@ -391,6 +392,7 @@ body{
 }
 
 .displaybox{
+    background-color: rgba(240, 242, 245, 0.13) !important;
     padding-top: 20px !important;
     margin-bottom: 20px !important;
     overflow: hidden;
@@ -448,13 +450,23 @@ body{
 }
 
 .dashboxes{
-    margin-top: -40px !important;
+    margin-top: -30px !important;
+    padding-top: 20px;
+
+}
+.breadcrumbcss{
+    margin-left: -20px !important;
+    padding-left: 50px !important;
 }
 .profilenavbar{
+    background-color: rgba(240, 242, 245, 0.13) !important;
     margin-left: -30px !important;
     margin-top: -11px !important;
 }
 
+.profileback{
+    background-color: rgba(240, 242, 245, 0.13) !important;
+}
 
 figure.profileavatar figcaption {
     position: absolute;
@@ -516,13 +528,175 @@ figure.profileavatar figcaption::before {
     padding-bottom: 40px !important;
 }
 
+.menu a{
+    color: hsl(0, 0%, 13%) !important;
+}
+.menu a:hover{
+    text-decoration: none !important;
+}
 
+.buttonspace{
+    padding: 0px 20px 0px 20px !important;
+}
 
+.listitem{
+    padding: 5px 5px 5px 0px !important;
+    
+}
+.listitem li a{
+    color: rgb(156, 156, 156) !important;
+    padding-left: 30px !important;
+}
+.listitem li a:hover{
+    color: hsl(171, 100%, 41%) !important;
+    border-left: 2px solid hsl(171, 100%, 41%) !important;
+}
+.selecticon:hover{
+    color: var(--basicolor) !important;
+    transition: color 1.2s;
+}
 
+.tableshow{
+    margin-left: -12px !important;
+    margin-top: -12px !important;
+    padding-top: 20px !important;
+}
 
+/* image slideshow */
+.flickity-enabled {
+    position: relative;
+  }
+  
+  .flickity-enabled:focus { outline: none; }
+  
+  .flickity-viewport {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+  
+  .flickity-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* draggable */
+  
+  .flickity-enabled.is-draggable {
+    -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  
+  .flickity-enabled.is-draggable .flickity-viewport {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  
+  .flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+  
+  /* ---- previous/next buttons ---- */
+  
+  .flickity-prev-next-button {
+    position: absolute;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.404);
+    background: hsla(0, 0%, 100%, 0.75);
+    cursor: pointer;
+    /* vertically center */
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  
+  .flickity-prev-next-button:hover { background: white; }
+  
+  .flickity-prev-next-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px #09F;
+  }
+  
+  .flickity-prev-next-button:active {
+    opacity: 0.6;
+  }
+  
+  .flickity-prev-next-button.previous { left: 10px; }
+  .flickity-prev-next-button.next { right: 10px; }
+  
+  
+  .flickity-prev-next-button:disabled {
+    opacity: 0.3;
+    cursor: auto;
+  }
+  
+  .flickity-prev-next-button svg {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    width: 60%;
+    height: 60%;
+  }
+  
+  .flickity-prev-next-button .arrow {
+    fill: rgba(51, 51, 51, 0.678);
+  }
+  
+  
+  
+  * { box-sizing: border-box; }
+  
+  body { font-family: sans-serif; }
+  
+  .carousel {
+    background: #FAFAFA;
+  }
+  
+  .carousel-main {
+    margin-bottom: 8px;
+  }
+  
+  .carousel-cell {
+    width: 100%;
+    height: 504px;
+    margin-right: 8px;
+    background: #8C8;
+    border-radius: 5px;
+    /* counter-increment: carousel-cell; */
+  }
+  
 
-
-
+  
+  .carousel-nav .carousel-cell {
+    height: 90px;
+    width: 120px;
+  }
+  
+  
+  /* Atelierbram edit */
+  .carousel-main img {
+    display: block;
+    margin: 0 auto; 
+  }
+  
+  .container {
+    max-width: 672px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+  }
 
 
 

@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="columns panelboard">
-        <div class="column is-one-fifth has-background-link sidebar">
+        <div class="column is-one-fifth sidebar">
             <aside class="menu">
                 <figure class="image is-128x128 profileavatar" id="myBtn">
                     <img class="is-rounded is-centered has-text-centered avatarstyle" src="/uploads/avatars/{{$user->avatar}}">
@@ -25,43 +25,46 @@
                       <h5 class="has-text-centered has-text-white"><span><i class="fas fa-cloud-upload-alt"></i></span><br>Change</h5>
                     </figcaption>	
                 </figure>
-                <p class="has-text-white has-text-centered is-4 has-text-weight-semibold">Welcome, {{$user->name}}</p>
-                <p class="menu-label has-text-white">
+                <p class="has-text-dark has-text-centered is-4 is-size-7 has-text-weight-bold is-uppercase">Welcome, {{$user->name}}</p>
+                <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   General
                 </p>
-                <ul class="menu-list">
-                  <li><a>Dashboard</a></li>
+                <ul class="menu-list listitem is-size-6">
+                  <li><a href="/profile">Dashboard</a></li>
+                  <li><a href="/profile">My Bids</a></li>
                 </ul>
-                <p class="menu-label has-text-white">
+                <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   Administration
                 </p>
-                <ul class="menu-list">
-                  <li><a>Edit Account</a></li>
+                <ul class="menu-list listitem">
+                  <li><a href="/profile/editaccount">Edit Account</a></li>
                   <li><a href="/profile/changepassword">Change Password</a></li>
                   <li><a>Delete Account</a></li>
                 </ul>
-                <p class="menu-label has-text-white">
+                <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   My Properties
                 </p>
-                <ul class="menu-list">
+                <ul class="menu-list listitem">
                   <li><a>Houses</a></li>
                   <li><a>Lands</a></li>
                   <li><a>Buidlings</a></li>
                   <li><a>Aprtments</a></li>
                   <li><a>Warehouses</a></li>
                 </ul>
-                <p class="menu-label has-text-white">
+                <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   Others
                 </p>
-                <ul class="menu-list">
+                <ul class="menu-list listitem">
                   <li><a>Sign out</a></li>
                 </ul>
               </aside>
         </div>
           @if(Request::is('profile'))
             @include('profile.dashboard')
-          
-          
+          @elseif(Request::is('profile/changepassword'))
+            @include('profile.changepassword')
+          @elseif(Request::is('profile/editaccount'))
+            @include('profile.editprofile')
           @else
             @include('profile.changepassword')
           

@@ -57,8 +57,17 @@ class PageController extends Controller
     public function profile(){
         return view('profile.home', array('user'=> Auth::user()));
     }
+
     public function changePassword(){
         return view('profile.home', array('user'=> Auth::user()));
+    }
+
+    public function editAccount(){
+        return view('profile.home', array('user'=> Auth::user()));
+    }
+
+    public function viewpost(){
+        return view('results.view');
     }
 
     /**

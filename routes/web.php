@@ -24,10 +24,13 @@ Route::get('/contactus','PageController@contactus');
 
 Route::get('/profile','PageController@profile')->middleware('auth');
 Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
+Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
+
 
 
 
 Route::get('/house/serach','PageController@housesearch');
+Route::get('/house/serach/view','PageController@viewpost');
 
 
 

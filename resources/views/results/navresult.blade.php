@@ -2,14 +2,24 @@
     <div class="is-centered">
         <a class="navbar-item is-centered is-horizontal-center" href="/">
             <img src="https://bulma.io/images/bulma-logo.png"  width="112" height="28">
-        </a>
+        </a>       
         <div class="buttons is-centered">
-          <a class="button is-primary is-centered">
-            <strong>Sign up</strong>
-          </a>
+        @guest
           <a class="button is-light is-centered">
             Log in
           </a>
+        @if (Route::has('register'))
+          <a class="button is-primary is-centered">
+              <strong>Sign up</strong>
+          </a>
+        @endif
+        @else
+        <a class="button is-primary is-centered">
+            Profile
+          </a>
+          <a class="button is-light is-centered">
+              Sign out
+            </a>
         </div>
     </div>
 </div>
@@ -51,7 +61,7 @@
       </div>
       <div class="navbar-end">
       <div class="navbar-item">
-      
+      @endguest
       </div>
     </div>
     </div>

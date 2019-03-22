@@ -698,6 +698,29 @@ figure.profileavatar figcaption::before {
     text-align: center;
   }
 
+.viewsection{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.detailssection{
+    margin-top: 15px;
+}
+
+.hrline{
+    width: 150% !important;
+}
+
+.detailscolumn{
+    margin-right: 5% !important;
+}
+
+.customerpno{
+    display: none;
+    margin-bottom: 10px;
+}
+
+
 
 
 

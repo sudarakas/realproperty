@@ -719,12 +719,22 @@ figure.profileavatar figcaption::before {
     display: none;
     margin-bottom: 10px;
 }
+.owneramount{
+    margin-top: 10px;
+}
+.bidamount{
+    margin-top: -15px !important;
+}
 
+.reportad{
+    text-decoration: none;
+}
 
-
-
-
-
+.reportad:hover{
+    text-decoration: none;
+    color: #ff3860 !important;
+    font-weight: 800;
+}
 
 
 

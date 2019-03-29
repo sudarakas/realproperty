@@ -1,13 +1,13 @@
 <div class="column displaybox">
         @include('profile.navprofile')
-        <nav class="breadcrumb has-arrow-separator has-background-white" aria-label="breadcrumbs">
-            <ul>
-                <li><a href="/profile">Profile</a></li>
-                <li class="is-active"><a href="/profile">Change Password</a></li>
-            </ul>
-        </nav>
+        <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
+          <ul>
+              <li><a href="/profile">Profile</a></li>
+              <li class="is-active"><a href="/profile">Change Password</a></li>
+          </ul>
+      </nav>
         <div class="card cardmargin">
-                <div class="container">
+                <div class="containerx">
                         <h1 class="title has-text-centered"> Change Your Password</h1>
                         <div class="centerinputbox">
                                 <form action="" method="post">

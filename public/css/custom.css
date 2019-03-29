@@ -689,7 +689,7 @@ figure.profileavatar figcaption::before {
     margin: 0 auto; 
   }
   
-  .container {
+  .containerx {
     max-width: 672px;
     margin: 0 auto;
   }
@@ -736,8 +736,13 @@ figure.profileavatar figcaption::before {
     font-weight: 800;
 }
 
+.upmemargin{
+    margin-top: -25px !important;
+}
 
-
+.nounderlinebtn:hover{
+    text-decoration: none !important;
+}
 
 
 

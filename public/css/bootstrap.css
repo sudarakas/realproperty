@@ -545,7 +545,7 @@ pre code {
   overflow-y: scroll;
 }
 
-.container {
+.containerx {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -554,30 +554,30 @@ pre code {
 }
 
 @media (min-width: 576px) {
-  .container {
+  .containerx {
     max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
-  .container {
+  .containerx {
     max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
-  .container {
+  .containerx {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
-  .container {
+  .containerx {
     max-width: 1140px;
   }
 }
 
-.container-fluid {
+.containerx-fluid {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -4157,8 +4157,8 @@ input[type="buttonx"].btn-block {
   padding: 0.5rem 1rem;
 }
 
-.navxbar > .container,
-.navxbar > .container-fluid {
+.navxbar > .containerx,
+.navxbar > .containerx-fluid {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -4242,8 +4242,8 @@ input[type="buttonx"].btn-block {
 }
 
 @media (max-width: 575.98px) {
-  .navxbar-expand-sm > .container,
-  .navxbar-expand-sm > .container-fluid {
+  .navxbar-expand-sm > .containerx,
+  .navxbar-expand-sm > .containerx-fluid {
     padding-right: 0;
     padding-left: 0;
   }
@@ -4267,8 +4267,8 @@ input[type="buttonx"].btn-block {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
-  .navxbar-expand-sm > .container,
-  .navxbar-expand-sm > .container-fluid {
+  .navxbar-expand-sm > .containerx,
+  .navxbar-expand-sm > .containerx-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
@@ -4284,8 +4284,8 @@ input[type="buttonx"].btn-block {
 }
 
 @media (max-width: 767.98px) {
-  .navxbar-expand-md > .container,
-  .navxbar-expand-md > .container-fluid {
+  .navxbar-expand-md > .containerx,
+  .navxbar-expand-md > .containerx-fluid {
     padding-right: 0;
     padding-left: 0;
   }
@@ -4309,8 +4309,8 @@ input[type="buttonx"].btn-block {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
-  .navxbar-expand-md > .container,
-  .navxbar-expand-md > .container-fluid {
+  .navxbar-expand-md > .containerx,
+  .navxbar-expand-md > .containerx-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
@@ -4326,8 +4326,8 @@ input[type="buttonx"].btn-block {
 }
 
 @media (max-width: 991.98px) {
-  .navxbar-expand-lg > .container,
-  .navxbar-expand-lg > .container-fluid {
+  .navxbar-expand-lg > .containerx,
+  .navxbar-expand-lg > .containerx-fluid {
     padding-right: 0;
     padding-left: 0;
   }
@@ -4351,8 +4351,8 @@ input[type="buttonx"].btn-block {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
-  .navxbar-expand-lg > .container,
-  .navxbar-expand-lg > .container-fluid {
+  .navxbar-expand-lg > .containerx,
+  .navxbar-expand-lg > .containerx-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
@@ -4368,8 +4368,8 @@ input[type="buttonx"].btn-block {
 }
 
 @media (max-width: 1199.98px) {
-  .navxbar-expand-xl > .container,
-  .navxbar-expand-xl > .container-fluid {
+  .navxbar-expand-xl > .containerx,
+  .navxbar-expand-xl > .containerx-fluid {
     padding-right: 0;
     padding-left: 0;
   }
@@ -4393,8 +4393,8 @@ input[type="buttonx"].btn-block {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
-  .navxbar-expand-xl > .container,
-  .navxbar-expand-xl > .container-fluid {
+  .navxbar-expand-xl > .containerx,
+  .navxbar-expand-xl > .containerx-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
@@ -4416,8 +4416,8 @@ input[type="buttonx"].btn-block {
   justify-content: flex-start;
 }
 
-.navxbar-expand > .container,
-.navxbar-expand > .container-fluid {
+.navxbar-expand > .containerx,
+.navxbar-expand > .containerx-fluid {
   padding-right: 0;
   padding-left: 0;
 }
@@ -4436,8 +4436,8 @@ input[type="buttonx"].btn-block {
   padding-left: 0.5rem;
 }
 
-.navxbar-expand > .container,
-.navxbar-expand > .container-fluid {
+.navxbar-expand > .containerx,
+.navxbar-expand > .containerx-fluid {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
 }
@@ -10001,7 +10001,7 @@ a.text-dark:hover, a.text-dark:focus {
   body {
     min-width: 992px !important;
   }
-  .container {
+  .containerx {
     min-width: 992px !important;
   }
   .navxbar {

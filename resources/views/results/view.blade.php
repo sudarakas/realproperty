@@ -23,7 +23,7 @@
     <div class="viewsection">
 
         <div class="column profileback">
-            <div class="container">
+            <div class="containerx">
                 <div class="carousel carousel-main" data-flickity='{"pageDots": false }'>
                     <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
                     <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
@@ -51,10 +51,10 @@
                 </div>
             </div>
         </div>
-        <div class="container detailssection">
+        <div class="containerx detailssection">
             <div class="columns is-flex-mobile">
                 <div class="column is-two-thirds is-flex-mobile">
-                    <div class="container">
+                    <div class="containerx">
                         <a href="http://" class="button is-danger is-pulled-right"><span><i class="far fa-heart"></i></span></a>
                         <div class="is-pulled-left">
                             <div class="title">

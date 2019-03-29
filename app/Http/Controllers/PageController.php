@@ -66,6 +66,20 @@ class PageController extends Controller
         return view('profile.home', array('user'=> Auth::user()));
     }
 
+    public function favorites(){
+        return view('profile.home', array('user'=> Auth::user()));
+    }
+
+    public function myMessage(){
+        return view('profile.home', array('user'=> Auth::user()));
+    }
+
+
+
+
+
+
+
     public function viewpost(){
         return view('results.view');
     }

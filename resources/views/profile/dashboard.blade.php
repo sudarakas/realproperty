@@ -79,7 +79,7 @@
                   <td>House</td>
                   <td>8600000</td>
                   <td>Nimal</td>
-                  <td><a href="" class="button is-success">Contact</a></td>
+                  <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -89,7 +89,7 @@
                     <td>House</td>
                     <td>8600000</td>
                     <td>Nimal</td>
-                    <td><a href="" class="button is-success">Contact</a></td>
+                    <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
                   </tr>
                   <tr>
                       <td>1</td>
@@ -99,7 +99,7 @@
                       <td>House</td>
                       <td>8600000</td>
                       <td>Nimal</td>
-                      <td><a href="" class="button is-success">Contact</a></td>
+                      <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -109,7 +109,7 @@
                         <td>House</td>
                         <td>8600000</td>
                         <td>Nimal</td>
-                        <td><a href="" class="button is-success">Contact</a></td>
+                        <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
                       </tr>
             </tbody>
           </table>

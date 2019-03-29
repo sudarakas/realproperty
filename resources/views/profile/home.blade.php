@@ -65,6 +65,10 @@
             @include('profile.changepassword')
           @elseif(Request::is('profile/editaccount'))
             @include('profile.editprofile')
+          @elseif(Request::is('profile/favorite'))
+            @include('profile.favorite')
+          @elseif(Request::is('profile/message'))
+            @include('profile.message')
           @else
             @include('profile.changepassword')
           

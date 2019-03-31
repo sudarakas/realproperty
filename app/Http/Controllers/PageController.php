@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use App\User;
+use App\Message;
+
 use Auth;
+use DB;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -50,37 +54,48 @@ class PageController extends Controller
         return view('layouts.contactus');
     }
 
-    public function housesearch(){
+    public function housesearch()
+    {
         return view('results.houseresult');
     }
 
-    public function profile(){
-        return view('profile.home', array('user'=> Auth::user()));
+    public function profile()
+    {
+        return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function changePassword(){
-        return view('profile.home', array('user'=> Auth::user()));
+    public function changePassword()
+    {
+        return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function editAccount(){
-        return view('profile.home', array('user'=> Auth::user()));
+    public function editAccount()
+    {
+        return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function favorites(){
-        return view('profile.home', array('user'=> Auth::user()));
+    public function favorites()
+    {
+        return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function myMessage(){
-        return view('profile.home', array('user'=> Auth::user()));
+    public function myMessage()
+    {
+        return view('profile.home', array('user' => Auth::user()));
+    }
+
+    public function viewMessage()
+    {
+        $records = DB::table('messages')->orderBy('created_at', 'asc')->get();
+        return view('profile.home', array('user' => Auth::user()))->with('records', $records);
     }
 
 
 
 
 
-
-
-    public function viewpost(){
+    public function viewpost()
+    {
         return view('results.view');
     }
 
@@ -91,7 +106,7 @@ class PageController extends Controller
      */
     public function create()
     {
-    
+
         //
     }
 

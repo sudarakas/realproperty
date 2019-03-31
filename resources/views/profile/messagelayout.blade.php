@@ -8,15 +8,18 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+            <strong>Need to check the property</strong> <small>From @johnsmith</small> <small>31m ago</small>
             <br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
           </p>
         </div>
         <div class="is-pulled-right">
             <p class="control has-text-centered">
-                <a class="button is-link is-rounded" href="/">
-                  <span>Read More</span>
+                <a class="button is-danger is-rounded nounderlinebtn" href="/">
+                  <span>Delete</span>
+                </a>
+                <a class="button is-success is-rounded nounderlinebtn" href="/">
+                  <span>Read</span>
                 </a>
             </p>
         </div>

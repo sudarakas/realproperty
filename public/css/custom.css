@@ -744,7 +744,13 @@ figure.profileavatar figcaption::before {
     text-decoration: none !important;
 }
 
+.messageCus{
+    margin-right: 20% !important;
+}
 
+.messageOwn{
+    margin-left: 20% !important;
+}
 
 
 

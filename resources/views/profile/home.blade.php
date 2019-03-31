@@ -69,6 +69,9 @@
             @include('profile.favorite')
           @elseif(Request::is('profile/message'))
             @include('profile.message')
+          @elseif(Request::is('profile/message/view'))
+            @include('profile.viewmessage')
+            
           @else
             @include('profile.changepassword')
           

@@ -27,6 +27,7 @@ Route::get('/profile/changepassword','PageController@changePassword')->middlewar
 Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
 Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
 Route::get('/profile/message','PageController@myMessage')->middleware('auth');
+Route::get('/profile/message/view','PageController@viewMessage')->middleware('auth');
 
 
 

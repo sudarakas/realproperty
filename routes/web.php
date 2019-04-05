@@ -27,6 +27,8 @@ Route::get('/warehouse','PageController@warehouse');
 Route::get('/blog','PageController@blog');
 Route::get('/about','PageController@about');
 Route::get('/contactus','PageController@contactus');
+Route::get('/add','PageController@addProperty');
+
 
 Route::get('/profile','PageController@profile')->middleware('auth');
 Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');

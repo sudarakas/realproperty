@@ -1,7 +1,7 @@
 <div class="container">
     <div class="is-centered">
         <a class="navbar-item is-centered is-horizontal-center" href="/">
-            <img src="https://bulma.io/images/bulma-logo.png"  width="112" height="28">
+            <img src="/img/logoblack.png"  width="112" height="28">
         </a>       
         <div class="buttons is-centered">
         @guest
@@ -14,10 +14,10 @@
           </a>
         @endif
         @else
-        <a class="button is-primary is-centered">
+        <a class="button is-primary is-centered nounderlinebtn" href="/profile">
             Profile
           </a>
-          <a class="button is-light is-centered">
+          <a class="button is-light is-centered nounderlinebtn" href="/logout">
               Sign out
             </a>
         </div>

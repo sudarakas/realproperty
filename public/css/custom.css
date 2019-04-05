@@ -766,12 +766,29 @@ figure.profileavatar figcaption::before {
     width: 150px !important;
 }
 
+.gapme{
+    margin: 0px 10px 0px 10px !important;
+}
 
+.downmargin{
+    margin-bottom: 55px !important;
+    margin-top: 35px !important;
+}
 
+.selectboxx{
+    padding: 80px 20px 80px 20px !important;
+    text-decoration: none !important;
+    color: #000;
+}
 
-
-
-
+.selectboxx:hover{
+    -webkit-box-shadow: 0px 0px 14px 8px var(--basicolor);
+    -moz-box-shadow: 0px 0px 14px 8px var(--basicolor);
+    box-shadow: 0px 0px 14px 8px var(--basicolor);
+    transition: box-shadow 2s;
+    text-decoration: none !important;
+    color: #000;
+}
 
 
 

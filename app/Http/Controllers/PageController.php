@@ -19,12 +19,21 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only([
+            'profile', 'changePassword', 'editAccount', 'favorites',
+            'viewMessage', 'myMessage', 'myhouse', 'myapartment', 'myland', 'mybuilding', 'mywarehouse', 'deleteaccount', 'addProperty'
+        ]);
+    }
     public function index()
     {
         return view('layouts.master');
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         return redirect('/');
     }
@@ -93,25 +102,35 @@ class PageController extends Controller
         $records = DB::table('messages')->orderBy('created_at', 'asc')->get();
         return view('profile.home', array('user' => Auth::user()))->with('records', $records);
     }
-    public function deleteaccount(){
+    public function deleteaccount()
+    {
         return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function myhouse(){
+    public function myhouse()
+    {
         return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function myland(){
+    public function myland()
+    {
         return view('profile.home', array('user' => Auth::user()));
     }
-    public function myapartment(){
+    public function myapartment()
+    {
         return view('profile.home', array('user' => Auth::user()));
     }
-    public function mybuilding(){
+    public function mybuilding()
+    {
         return view('profile.home', array('user' => Auth::user()));
     }
-    public function mywarehouse(){
+    public function mywarehouse()
+    {
         return view('profile.home', array('user' => Auth::user()));
+    }
+    public function addProperty()
+    {
+        return view('layouts.addproperty', array('user' => Auth::user()));
     }
 
 

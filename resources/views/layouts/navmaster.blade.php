@@ -68,6 +68,10 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu3" role="menu">
               <div class="dropdown-content">
+                <a href="/profile" target="_blank" class="dropdown-item">My Profile</a>
+                <a href="/add" class="dropdown-item">Add Property</a>
+                <a href="/profile/changepassword" target="_blank" class="dropdown-item">Change Password</a>
+                <a href="/contactus" class="dropdown-item">Contact</a>
                 <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                           Logout
                         </a>

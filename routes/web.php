@@ -11,7 +11,13 @@
 |
 */
 
+
+
+
 Route::get('/','PageController@index');
+Route::get('/logout','PageController@logout');
+
+
 Route::get('/home','PageController@index');
 Route::get('/house','PageController@index');
 Route::get('/land','PageController@land');
@@ -28,6 +34,14 @@ Route::get('/profile/editaccount','PageController@editAccount')->middleware('aut
 Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
 Route::get('/profile/message','PageController@myMessage')->middleware('auth');
 Route::get('/profile/message/view','PageController@viewMessage')->middleware('auth');
+Route::get('/profile/deleteaccount','PageController@deleteaccount')->middleware('auth');
+Route::get('/profile/myhouse','PageController@myhouse')->middleware('auth');
+Route::get('/profile/myland','PageController@myland')->middleware('auth');
+Route::get('/profile/myapartment','PageController@myapartment')->middleware('auth');
+Route::get('/profile/mybuilding','PageController@mybuilding')->middleware('auth');
+Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('auth');
+
+
 
 
 

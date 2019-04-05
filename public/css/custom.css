@@ -112,6 +112,10 @@ body{
     border-radius: 0px !important;
 }
 
+.searchboxtitletext{
+    text-align: left !important;
+}
+
 .tabitem{
     border-radius: 2px !important;
     padding: 5px 20px 5px 20px;
@@ -751,6 +755,32 @@ figure.profileavatar figcaption::before {
 .messageOwn{
     margin-left: 20% !important;
 }
+
+.logopng{
+    height: 256px;
+    width: 256px;
+}
+
+.is-blacklogo{
+    height: 30px !important;
+    width: 150px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

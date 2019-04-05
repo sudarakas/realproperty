@@ -24,6 +24,10 @@ class PageController extends Controller
         return view('layouts.master');
     }
 
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect('/');
+    }
     public function land()
     {
         return view('layouts.land');
@@ -89,9 +93,26 @@ class PageController extends Controller
         $records = DB::table('messages')->orderBy('created_at', 'asc')->get();
         return view('profile.home', array('user' => Auth::user()))->with('records', $records);
     }
+    public function deleteaccount(){
+        return view('profile.home', array('user' => Auth::user()));
+    }
 
+    public function myhouse(){
+        return view('profile.home', array('user' => Auth::user()));
+    }
 
-
+    public function myland(){
+        return view('profile.home', array('user' => Auth::user()));
+    }
+    public function myapartment(){
+        return view('profile.home', array('user' => Auth::user()));
+    }
+    public function mybuilding(){
+        return view('profile.home', array('user' => Auth::user()));
+    }
+    public function mywarehouse(){
+        return view('profile.home', array('user' => Auth::user()));
+    }
 
 
     public function viewpost()

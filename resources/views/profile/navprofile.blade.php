@@ -8,7 +8,7 @@
                         <i class="far fa-envelope"></i>
                       </span>
                     </a>
-                    <a class="button is-light is-pulled-right">
+                    <a class="button is-light is-pulled-right nounderlinebtn" href="{{ route('logout') }}">
                       Sign out
                     </a>
                 </div>

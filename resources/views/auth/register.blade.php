@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Join Now - RealProperty.lk</title>
 
     {{-- CSS Files --}}
     <link rel="stylesheet" href="/css/bulma.min.css">
@@ -23,8 +23,8 @@
         <div class="columns fulllogin">
             <div class="column is-offset-1 is-half leftsideeffect">
                 <a href="/">
-                    <figure class="image is-96x96">
-                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                    <figure class="image is-blacklogo">
+                        <img src="img/logoblack.png" width="112" height="28">
                     </figure>
                 </a>
                 <div class="is-mobile textboxlogin">

@@ -39,23 +39,23 @@
                 <ul class="menu-list listitem">
                   <li><a href="/profile/editaccount">Edit Account</a></li>
                   <li><a href="/profile/changepassword">Change Password</a></li>
-                  <li><a>Delete Account</a></li>
+                  <li><a href="/profile/deleteaccount">Delete Account</a></li>
                 </ul>
                 <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   My Properties
                 </p>
                 <ul class="menu-list listitem">
-                  <li><a>Houses</a></li>
-                  <li><a>Lands</a></li>
-                  <li><a>Buidlings</a></li>
-                  <li><a>Aprtments</a></li>
-                  <li><a>Warehouses</a></li>
+                  <li><a href="/profile/myhouse">Houses</a></li>
+                  <li><a href="/profile/myland">Lands</a></li>
+                  <li><a href="/profile/mybuilding">Buidlings</a></li>
+                  <li><a href="/profile/myapartment">Aprtments</a></li>
+                  <li><a href="/profile/mywarehouse">Warehouses</a></li>
                 </ul>
                 <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   Others
                 </p>
                 <ul class="menu-list listitem">
-                  <li><a>Sign out</a></li>
+                  <li><a href="{{ route('logout') }}">Sign out</a></li>
                 </ul>
               </aside>
         </div>
@@ -71,9 +71,21 @@
             @include('profile.message')
           @elseif(Request::is('profile/message/view'))
             @include('profile.viewmessage')
+          @elseif(Request::is('profile/deleteaccount'))
+            @include('profile.deleteaccount')
+          @elseif(Request::is('profile/myhouse'))
+            @include('profile.myhouse')
+          @elseif(Request::is('profile/myland'))
+            @include('profile.myland')
+          @elseif(Request::is('profile/myapartment'))
+            @include('profile.myapartment')
+          @elseif(Request::is('profile/mybuilding'))
+            @include('profile.mybuilding')
+          @elseif(Request::is('profile/mywarehouse'))
+            @include('profile.mywarehouse')
             
           @else
-            @include('profile.changepassword')
+            @include('profile.jahsdh')
           
           @endif
         <div id="myModal" class="modal column is-half is-offset-one-quarter">

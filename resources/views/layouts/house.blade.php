@@ -24,7 +24,7 @@
         <div class="container">
             <div class="columns is-mobile is-centered">
                <div class="column is-8 searchbox">
-                   <h1 class="subtitle is-4 has-text-white">Search properties</h1>
+                   <h1 class="subtitle is-4 has-text-white is-pulled-left">Search properties</h1>
                    <div class="tabs">
                     <ul>
                       <li class="is-active has-background-primary tabitem">

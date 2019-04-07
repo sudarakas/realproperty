@@ -468,6 +468,7 @@ body{
     margin-top: -11px !important;
 }
 
+
 .profileback{
     background-color: rgba(240, 242, 245, 0.13) !important;
 }
@@ -478,6 +479,13 @@ figure.profileavatar figcaption {
     left: 0;
     padding-bottom: 30px !important;
     padding-left: 30px;
+}
+figure.adminprofileavatar figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 10px !important;
+    padding-left: 20px;
 }
 figure.profileavatar figcaption::before {
     position: absolute;
@@ -501,6 +509,18 @@ figure.profileavatar figcaption::before {
     -webkit-transition-delay: 0.3s;
     transition-delay: 0.3s;
   }
+  figure.profileavatar p{
+    margin-top: 5px !important;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s,-webkit-transform 0.35s,-moz-transform 0.35s,-o-transform 0.35s,transform 0.35s;
+  }
+  figure.profileavatar p {
+    -webkit-transform: translate3d(30%, 0%, 0);
+    transform: translate3d(30%, 0%, 0);
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+  }
   
 
   figure.profileavatar:hover img {
@@ -509,6 +529,15 @@ figure.profileavatar figcaption::before {
   }
 
   figure.profileavatar:hover figcaption h5 {
+    opacity: 1;
+    -webkit-transform: translate3d(0%, 0%, 0);
+    transform: translate3d(0%, 0%, 0);
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+    cursor: pointer;
+  }
+
+  figure.profileavatar:hover figcaption p {
     opacity: 1;
     -webkit-transform: translate3d(0%, 0%, 0);
     transform: translate3d(0%, 0%, 0);
@@ -789,6 +818,46 @@ figure.profileavatar figcaption::before {
     text-decoration: none !important;
     color: #000;
 }
+
+
+/* Admin Panel Styles */
+.adminsidebar{
+    background-color: #09F;
+    color: #ffffff !important;
+    margin-left: 10px !important;
+}
+
+.adminlistitem{
+    padding: 5px 5px 5px 0px !important;
+    
+}
+.adminlistitem li a{
+    color: rgb(255, 255, 255) !important;
+    padding-left: 30px !important;
+}
+.adminlistitem li a:hover{
+    color: hsl(0, 0%, 100%) !important;
+    border-left: 2px solid hsl(0, 0%, 100%) !important;
+    background-color: #3273dc;
+}
+.adminprofileavatar{
+    margin-top: 20px;
+    color: #000;
+}
+
+.adminavatar{
+    margin-left: 35% !important;
+}
+
+.adminfoot{
+    margin-top: 20px;
+}
+.adminprofilenavbar{
+    background-color: #09F !important;
+    margin-left: -30px !important;
+    margin-top: -11px !important;
+}
+
 
 
 

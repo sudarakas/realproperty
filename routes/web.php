@@ -62,5 +62,9 @@ Route::post('/sendmessage','MessageController@store');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 
 
+Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth');
 
-Auth::routes();
+
+
+// Auth::routes();
+Auth::routes(['verify' => true]);

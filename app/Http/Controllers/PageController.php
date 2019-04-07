@@ -22,7 +22,7 @@ class PageController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only([
+        $this->middleware(['auth','verified'])->only([
             'profile', 'changePassword', 'editAccount', 'favorites',
             'viewMessage', 'myMessage', 'myhouse', 'myapartment', 'myland', 'mybuilding', 'mywarehouse', 'deleteaccount', 'addProperty'
         ]);

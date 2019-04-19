@@ -22,18 +22,217 @@
     <div class="title has-text-centered">Add Your House</div>
     <br>
     <div class="container">
-        <form method="POST" action="/post">
+        <form method="POST" action="/post" enctype="multipart/form-data">
             @csrf
-           
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Property Name</label>
+                            <input class="input is-primary" type="text" name="name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Property Type</label>
+                            <br>
+                            <div class="select is-primary is-full">
+                                <select name="type">
+                                    <option value="house">House</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Property Price <strong>(Rs.)</strong></label>
+                            <input class="input is-primary" type="text" name="amount">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">City</label>
+                            <br>
+                            <div class="select is-primary is-full">
+                                <select name="type">
+                                    <option>Ambalangoda</option>
+                                    <option>Ampara</option>
+                                    <option>Anuradhapura</option>
+                                    <option>Avissawella</option>
+                                    <option>Badulla</option>
+                                    <option>Balangoda</option>
+                                    <option>Bandarawela</option>
+                                    <option>Batticaloa</option>
+                                    <option>Beruwala</option>
+                                    <option>Chavakacheri</option>
+                                    <option>Chilaw</option>
+                                    <option>Colombo</option>
+                                    <option>Dambulla</option>
+                                    <option>Dehiwala-Mount Lavinia</option>
+                                    <option>Embilipitiya</option>
+                                    <option>Eravur</option>
+                                    <option>Galle</option>
+                                    <option>Gampaha</option>
+                                    <option>Gampola</option>
+                                    <option>Hambantota</option>
+                                    <option>Haputale</option>
+                                    <option>Harispattuwa</option>
+                                    <option>Hatton</option>
+                                    <option>Horana</option>
+                                    <option>Ja-Ela</option>
+                                    <option>Jaffna</option>
+                                    <option>Kadugannawa</option>
+                                    <option>Kalmunai</option>
+                                    <option>Kalutara</option>
+                                    <option>Kandy</option>
+                                    <option>Kattankudy</option>
+                                    <option>Katunayake</option>
+                                    <option>Kegalle</option>
+                                    <option>Kelaniya</option>
+                                    <option>Kolonnawa</option>
+                                    <option>Kuliyapitiya</option>
+                                    <option>Kurunegala</option>
+                                    <option>Mannar</option>
+                                    <option>Matale</option>
+                                    <option>Matara</option>
+                                    <option>Minuwangoda</option>
+                                    <option>Moneragala</option>
+                                    <option>Moratuwa</option>
+                                    <option>Nawalapitiya</option>
+                                    <option>Negombo</option>
+                                    <option>Nuwara Eliya</option>
+                                    <option>Panadura</option>
+                                    <option>Peliyagoda</option>
+                                    <option>Point Pedro</option>
+                                    <option>Puttalam</option>
+                                    <option>Ratnapura</option>
+                                    <option>Sri Jayawardenapura Kotte</option>
+                                    <option>Talawakele</option>
+                                    <option>Tangalle</option>
+                                    <option>Trincomalee</option>
+                                    <option>Valvettithurai</option>
+                                    <option>Vavuniya</option>
+                                    <option>Wattala</option>
+                                    <option>Wattegama</option>
+                                    <option>Weligama</option>
+                        </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Postal Code</label>
+                            <input class="input is-primary" type="text" name="postalcode">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Province</label>
+                            <br>
+                            <div class="select is-primary is-full">
+                                <select name="province">
+                                        <option value="Central">Central</option>
+                                        <option value="Eastern">Eastern</option>
+                                        <option value="NorthCentral">North Central</option>
+                                        <option value="NorthWestern">North Western</option>
+                                        <option value="Northern">Northern</option>
+                                        <option value="Sabaragamuwa">Sabaragamuwa</option>
+                                        <option value="Southern">Southern</option>
+                                        <option value="Uva">Uva</option>
+                                        <option value="Western">Western</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Property Description</label>
+                            <textarea name="description" class="textarea is-primary"></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Contact No</label>
+                            <input class="input is-primary" type="text" name="contactno">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Contact Email</label>
+                            <input class="input is-primary" type="text" name="contactemail" placeholder="{{Auth::user()->email}}">
+                        </div>
+                    </div>
+                    {{-- Image Upload Section --}}
+                    <div class="field">
+                        <div class="control">
+                            <label for="img">Images <strong class="is-small">(Tip: Upload more the one photograph)</strong></label>
+                            <div class="input-group control-group increment">
+                                <input type="file" name="filename[]" class="form-control">
+                                <div class="input-group-btn">
+                                    <button class="button is-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                </div>
+                            </div>
+
+                            <div class="clone hide">
+                                <div class="control-group input-group" style="margin-top:10px">
+                                    <input type="file" name="filename[]" class="form-control">
+                                    <div class="input-group-btn">
+                                        <button class="button is-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- next column start here --}}
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Property Name</label>
+                            <input class="input is-primary" type="text" name="name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-primary">
+                                <select name="type">
+                                    <option value="house">house</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </form>
     </div>
+    <br>
+    <br>
     </div>
     {{-- Footer --}}
     @include('layouts.footer') {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
-
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <script>
+        tinymce.init({ selector:'textarea' });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+    
+          $(".is-success").click(function(){ 
+              var html = $(".clone").html();
+              $(".increment").after(html);
+          });
+    
+          $("body").on("click",".is-danger",function(){ 
+              $(this).parents(".control-group").remove();
+          });
+    
+        });
+    </script>
 </body>
 
 </html>

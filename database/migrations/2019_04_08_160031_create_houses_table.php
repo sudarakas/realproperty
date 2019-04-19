@@ -15,6 +15,16 @@ class CreateHousesTable extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('noOfRooms');
+            $table->integer('noOfKitchen');
+            $table->integer('noOfFloors');
+            $table->integer('noOfWashrooms');
+            $table->integer('size');
+            $table->string('swimmingPool');
+            $table->string('garden');
+            $table->string('nearestSchool');
+            $table->string('nearestRailway');
+            $table->string('nearestBusStop');
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@
     <br>
     <div class="container downmargin">
         <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
-            <a href="http://" class="column gapme has-text-centered selectboxx">
+            <a href="/add/house" class="column gapme has-text-centered selectboxx">
                 <div>
                     <i class="fas fa-home fa-5x"></i>
                     <br>

@@ -24,7 +24,7 @@ class PageController extends Controller
     {
         $this->middleware(['auth','verified'])->only([
             'profile', 'changePassword', 'editAccount', 'favorites',
-            'viewMessage', 'myMessage', 'myhouse', 'myapartment', 'myland', 'mybuilding', 'mywarehouse', 'deleteaccount', 'addProperty'
+            'viewMessage', 'myMessage', 'myhouse', 'myapartment', 'myland', 'mybuilding', 'mywarehouse', 'deleteaccount', 'addProperty', 'addHouse'
         ]);
     }
     public function index()
@@ -131,6 +131,9 @@ class PageController extends Controller
     public function addProperty()
     {
         return view('layouts.addproperty', array('user' => Auth::user()));
+    }
+    public function addHouse(){
+        return view('layouts.property.addhouse', array('user' => Auth::user()));
     }
 
 

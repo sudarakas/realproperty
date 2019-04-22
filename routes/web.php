@@ -34,6 +34,7 @@ Route::get('/contactus','PageController@contactus');
 
 Route::get('/add','PageController@addProperty');
 Route::get('/add/house','PageController@addHouse');
+Route::get('/add/map','PageController@dismap');
 
 
 Route::get('/profile','PageController@profile')->middleware('auth');

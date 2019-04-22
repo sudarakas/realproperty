@@ -136,6 +136,10 @@ class PageController extends Controller
         return view('layouts.property.addhouse', array('user' => Auth::user()));
     }
 
+    public function dismap(){
+        return view('layouts.property.map', array('user' => Auth::user()));
+    }
+
 
     public function viewpost()
     {

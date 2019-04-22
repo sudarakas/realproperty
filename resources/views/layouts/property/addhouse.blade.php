@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="/css/bootstrap.css"> {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300i,400,400i,500,500i,600|Kanit:300,300i,400,400i,500,500i,600"
         rel="stylesheet">
-
+    <style>
+        #map {
+            height: 300px;
+        }
+    </style>
 </head>
 
 <body>
@@ -184,6 +188,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="field">
+                        <div class="control maphere">
+                            <label for="name">Set Location: Google Maps</label>
+                            <input class="input is-primary" type="text" id="searchmap">
+                            <div id="map" class="column"></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Latitude</label>
+                            <input class="input is-primary" type="text" name="lat" id="lat">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Longitude</label>
+                            <input class="input is-primary" type="text" name="lng" id="lng">
+                        </div>
+                    </div>
                 </div>
                 {{-- next column start here --}}
                 <div class="column">
@@ -211,14 +234,59 @@
     <br>
     </div>
     {{-- Footer --}}
-    @include('layouts.footer') {{-- JavaScript Files --}}
+    @include('layouts.footer') 
+    
+    {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>s
     <script>
         tinymce.init({ selector:'textarea' });
     </script>
+    <script>
+            var map;
+            function initAutocomplete() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 6.9814435, lng: 81.0741583},
+                zoom: 15
+                });
+
+                var marker = new google.maps.Marker({
+                position: {lat: 6.9814435, lng: 81.0741583},
+                map: map,
+                draggable: true,
+                });
+
+                var input = document.getElementById('searchmap');
+                var searchBox = new google.maps.places.SearchBox(input);
+                //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                google.maps.event.addListener(searchBox,'places_changed',function(){
+                    var places = searchBox.getPlaces();
+                    var bounds = new google.maps.LatLngBounds();
+                    var i, place;
+                    for (i = 0; place=places[i]; i++) {
+                        bounds.extend(place.geometry.location);
+                        marker.setPosition(place.geometry.location);
+                        
+                    }
+
+                    map.fitBounds(bounds);
+                    map.setZoom(15);
+                });
+
+                google.maps.event.addListener(marker,'position_changed',function(){
+                    var lat = marker.getPosition().lat();
+                    var lng = marker.getPosition().lng();
+
+                    $('#lat').val(lat);
+                    $('#lng').val(lng);
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKNG_uMsCgUvpLc_Adr2n9nwo6BWOImoM&libraries=places&callback=initAutocomplete" async
+            defer></script>
     <script type="text/javascript">
         $(document).ready(function() {
     
@@ -232,7 +300,7 @@
           });
     
         });
-    </script>
+    </script
 </body>
 
 </html>

@@ -212,17 +212,74 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <label for="name">Property Name</label>
-                            <input class="input is-primary" type="text" name="name">
+                            <label for="name">No of Rooms</label>
+                            <input class="input is-primary" type="number" name="rooms">
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
+                            <label for="name">No of Kitchens</label>
+                            <input class="input is-primary" type="number" name="kitchen">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">No of Floors</label>
+                            <input class="input is-primary" type="number" name="floor">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">No of Washrooms</label>
+                            <input class="input is-primary" type="number" name="washroom">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Size(Sqrt)</label>
+                            <input class="input is-primary" type="number" name="size">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Swimming Pool</label>
+                            <br>
                             <div class="select is-primary">
-                                <select name="type">
-                                    <option value="house">house</option>
+                                <select name="swimming">
+                                    <option value="yes">Available</option>
+                                    <option value="no" selected>Not Available</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Garden Area</label>
+                            <br>
+                            <div class="select is-primary">
+                                <select name="garden">
+                                        <option value="yes">Available</option>
+                                        <option value="no" selected>Not Available</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Nearest School</label>
+                            <input class="input is-primary" type="text" name="nschool">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Nearest Railway</label>
+                            <input class="input is-primary" type="text" name="nrailway">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Nearest BusStop</label>
+                            <input class="input is-primary" type="text" name="nbus">
                         </div>
                     </div>
                 </div>
@@ -234,9 +291,7 @@
     <br>
     </div>
     {{-- Footer --}}
-    @include('layouts.footer') 
-    
-    {{-- JavaScript Files --}}
+    @include('layouts.footer') {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
@@ -245,7 +300,7 @@
         tinymce.init({ selector:'textarea' });
     </script>
     <script>
-            var map;
+        var map;
             function initAutocomplete() {
                 map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 6.9814435, lng: 81.0741583},
@@ -284,9 +339,9 @@
                     $('#lng').val(lng);
                 });
             }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKNG_uMsCgUvpLc_Adr2n9nwo6BWOImoM&libraries=places&callback=initAutocomplete" async
-            defer></script>
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKNG_uMsCgUvpLc_Adr2n9nwo6BWOImoM&libraries=places&callback=initAutocomplete"
+        async defer></script>
     <script type="text/javascript">
         $(document).ready(function() {
     

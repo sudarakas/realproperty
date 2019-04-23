@@ -26,6 +26,12 @@
     <div class="title has-text-centered">Add Your House</div>
     <br>
     <div class="container">
+        <div class="columns is-mobile is-centered">
+            <div class="column is-8">
+    @include('layouts.errors')
+            </div>
+        </div>
+
         <form method="POST" action="" enctype="multipart/form-data">
             @csrf
             <div class="columns">
@@ -164,13 +170,13 @@
                     <div class="field">
                         <div class="control">
                             <label for="name">Contact Email</label>
-                            <input class="input is-primary" type="text" name="contactemail" placeholder="{{Auth::user()->email}}">
+                            <input class="input is-primary" type="text" name="contactemail" value="{{Auth::user()->email}}">
                         </div>
                     </div>
                     {{-- Image Upload Section --}}
                     <div class="field">
                         <div class="control">
-                            <label for="img">Images <strong class="is-small">(Tip: Upload more the one photograph)</strong></label>
+                            <label for="img">Images <strong class="is-small">(Tip: Upload more the one photograph [Max Image Size: 4MB])</strong></label>
                             <div class="input-group control-group increment">
                                 <input type="file" name="filename[]" class="form-control">
                                 <div class="input-group-btn">
@@ -283,9 +289,12 @@
                         </div>
                     </div>
                     <div class="field">
-                        <div class="control">
-                            <button type="submit" class="button is-success">
-                               Save
+                        <div class="control is-pulled-right">
+                            <button type="submit" class="button is-primary">
+                               Add House
+                            </button>
+                            <button type="reset" class="button is-warning">
+                                    Clear
                             </button>
                         </div>
                     </div>
@@ -362,7 +371,17 @@
           });
     
         });
-    </script
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                $notification = $delete.parentNode;
+                $delete.addEventListener('click', () => {
+                    $notification.parentNode.removeChild($notification);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

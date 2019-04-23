@@ -11,20 +11,32 @@ class PropertyController extends Controller
 {
     public function addProperty(Request $request){
 
-        // $request->validate([
-        //     'name' => 'required|max:30|min:3',
-        //     'type' => 'required',
-        //     'amount' => 'required',
-        //     'city' => 'required',
-        //     'postalCode' => 'integer',
-        //     'province' => 'required',
-        //     'description' => 'required',
-        //     'contactNo' => 'required',
-        //     'contatctEmail' => 'email|required',
-        //     'city' => 'required',
-        //     'city' => 'required',
+        $request->validate([
+            'name' => 'required|max:30|min:3',
+            'type' => 'required',
+            'amount' => 'required',
+            'city' => 'required',
+            'postalcode' => 'required|integer',
+            'province' => 'required',
+            'description' => 'required',
+            'contactno' => 'required',
+            'contactemail' => 'email|required',
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+            'lat' => 'required',
+            'lat' => 'required',
+            'rooms' => 'required|integer',
+            'kitchen' => 'required|integer',
+            'floor' => 'required|integer',
+            'washroom' => 'required|integer',
+            'size' => 'required|integer',
+            'swimming' => 'required',
+            'garden' => 'required',
+            'nschool' => 'required',
+            'nrailway' => 'required',
+            'nbus' => 'required'
             
-        // ]);
+        ]);
 
         if($request->hasfile('filename'))
          {

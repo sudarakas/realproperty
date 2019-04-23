@@ -15,7 +15,20 @@ class CreateLandsTable extends Migration
     {
         Schema::create('lands', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('property_id');
+            $table->string('electricity');
+            $table->string('tapwater');
+            $table->integer('size');
+            $table->string('nearestSchool');
+            $table->string('nearestRailway');
+            $table->string('nearestBusStop');
             $table->timestamps();
+
+            $table->foreign('property_id')
+            ->references('id')
+            ->on('properties')
+            ->onDelete('cascade');
+            
         });
     }
 

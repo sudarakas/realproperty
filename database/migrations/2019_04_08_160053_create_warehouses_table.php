@@ -15,7 +15,17 @@ class CreateWarehousesTable extends Migration
     {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('property_id');
+            $table->string('electricity');
+            $table->string('parkingArea');
+            $table->string('agreement');
+            $table->integer('size');
             $table->timestamps();
+
+            $table->foreign('property_id')
+            ->references('id')
+            ->on('properties')
+            ->onDelete('cascade');
         });
     }
 

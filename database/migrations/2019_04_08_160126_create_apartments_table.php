@@ -15,7 +15,21 @@ class CreateApartmentsTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('property_id');
+            $table->integer('noOfRooms');
+            $table->integer('noOfKitchen');
+            $table->integer('noOfWashrooms');
+            $table->integer('size');
+            $table->string('nearestSchool');
+            $table->string('nearestRailway');
+            $table->string('nearestBusStop');
             $table->timestamps();
+
+
+            $table->foreign('property_id')
+            ->references('id')
+            ->on('properties')
+            ->onDelete('cascade');
         });
     }
 

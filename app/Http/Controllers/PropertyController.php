@@ -45,7 +45,7 @@ class PropertyController extends Controller
             {
                 $name= time() . '.' . $image->getClientOriginalExtension();
                 //$image->move(public_path().'/uploads/property/house', $name);
-                Image::make($image)->resize(1280,876)->save(\public_path('/uploads/avatars/' . $name));  
+                Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/house/' . $name));  
                 $data[] = $name;  
             }
          }

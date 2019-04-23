@@ -15,7 +15,23 @@ class CreateBuildingsTable extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('property_id');
+            $table->string('agreement');
+            $table->string('noOfFloors');
+            $table->string('lift');
+            $table->string('carPark');
+            $table->integer('floorSize');
+            $table->string('nearestSchool');
+            $table->string('nearestRailway');
+            $table->string('nearestBusStop');
             $table->timestamps();
+
+
+
+            $table->foreign('property_id')
+            ->references('id')
+            ->on('properties')
+            ->onDelete('cascade');
         });
     }
 

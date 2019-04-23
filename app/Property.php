@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
-    //
+    protected $fillable = [
+        'name', 'latitude', 'longitude','type','amount','city','postalCode','province','description','images','availability','contactNo','contatctEmail'
+    ];
+
+    public function house(){
+
+        return $this->belongsTo(House::class);
+
+    }
+
+    public function user(){
+
+        return $this->belongsTo(User::class);
+        
+    }
 }

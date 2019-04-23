@@ -26,7 +26,7 @@
     <div class="title has-text-centered">Add Your House</div>
     <br>
     <div class="container">
-        <form method="POST" action="/post" enctype="multipart/form-data">
+        <form method="POST" action="" enctype="multipart/form-data">
             @csrf
             <div class="columns">
                 <div class="column">
@@ -58,7 +58,7 @@
                             <label for="name">City</label>
                             <br>
                             <div class="select is-primary is-full">
-                                <select name="type">
+                                <select name="city">
                                     <option>Ambalangoda</option>
                                     <option>Ampara</option>
                                     <option>Anuradhapura</option>
@@ -174,7 +174,7 @@
                             <div class="input-group control-group increment">
                                 <input type="file" name="filename[]" class="form-control">
                                 <div class="input-group-btn">
-                                    <button class="button is-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                    <button class="button is-success addmore" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                                 </div>
                             </div>
 
@@ -282,6 +282,13 @@
                             <input class="input is-primary" type="text" name="nbus">
                         </div>
                     </div>
+                    <div class="field">
+                        <div class="control">
+                            <button type="submit" class="button is-success">
+                               Save
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -345,7 +352,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
     
-          $(".is-success").click(function(){ 
+          $(".addmore").click(function(){ 
               var html = $(".clone").html();
               $(".increment").after(html);
           });

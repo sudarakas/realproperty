@@ -4,20 +4,71 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Property;
+use App\House;
+use Image;
 
 class PropertyController extends Controller
 {
     public function addProperty(Request $request){
+
+        // $request->validate([
+        //     'name' => 'required|max:30|min:3',
+        //     'type' => 'required',
+        //     'amount' => 'required',
+        //     'city' => 'required',
+        //     'postalCode' => 'integer',
+        //     'province' => 'required',
+        //     'description' => 'required',
+        //     'contactNo' => 'required',
+        //     'contatctEmail' => 'email|required',
+        //     'city' => 'required',
+        //     'city' => 'required',
+            
+        // ]);
+
+        if($request->hasfile('filename'))
+         {
+
+            foreach($request->file('filename') as $image)
+            {
+                $name= time() . '.' . $image->getClientOriginalExtension();
+                //$image->move(public_path().'/uploads/property/house', $name);
+                Image::make($image)->resize(1280,876)->save(\public_path('/uploads/avatars/' . $name));  
+                $data[] = $name;  
+            }
+         }
 
         $property = new Property;
         $property->user_id = auth()->id();
         $property->name = request('name');
         $property->type = request('type');
         $property->amount = request('amount');
-        $property->name = request('name');
-        $property->name = request('name');
-        $property->name = request('name');
-        $property->name = request('name');
+        $property->city = request('city');
+        $property->postalCode = request('postalcode');
+        $property->province = request('province');
+        $property->description = request('description');
+        $property->contactNo = request('contactno');
+        $property->contatctEmail = request('contactemail');
+        $property->images =json_encode($data);
+        $property->latitude = request('lat');
+        $property->longitude = request('lng');
         $property->save();
+
+        $house = new House;
+        $house->property()->associate($property);
+        $house->noOfRooms = request('rooms');
+        $house->noOfKitchen = request('kitchen');
+        $house->noOfFloors = request('floor');
+        $house->noOfWashrooms = request('washroom');
+        $house->size = request('size');
+        $house->swimmingPool = request('swimming');
+        $house->garden = request('garden');
+        $house->nearestSchool = request('nschool');
+        $house->nearestRailway = request('nrailway');
+        $house->nearestBusStop = request('nbus');
+        $house->save();
+
+        return back();
+
     }
 }

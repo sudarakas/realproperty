@@ -9,7 +9,7 @@ use Image;
 
 class PropertyController extends Controller
 {
-    public function addProperty(Request $request){
+    public function addHouse(Request $request){
 
         $request->validate([
             'name' => 'required|max:30|min:3',

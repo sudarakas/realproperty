@@ -140,6 +140,9 @@ class PageController extends Controller
         return view('layouts.property.map', array('user' => Auth::user()));
     }
 
+    public function addLand(){
+        return view('layouts.property.addland', array('user' => Auth::user()));
+    }
 
     public function viewpost()
     {

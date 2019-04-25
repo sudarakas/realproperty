@@ -33,8 +33,15 @@ Route::get('/contactus','PageController@contactus');
 
 
 Route::get('/add','PageController@addProperty');
+
 Route::get('/add/house','PageController@addHouse');
-Route::post('/add/house','PropertyController@addProperty');
+Route::post('/add/house','PropertyController@addHouse');
+
+Route::get('/add/land','PageController@addLand');
+Route::post('/add/land','PropertyController@addLand');
+
+
+
 Route::get('/add/map','PageController@dismap');
 
 

@@ -30,7 +30,7 @@
                     <div class="subtitle">House</div>
                 </div>
             </a>
-            <a href="http://" class="column gapme has-text-centered selectboxx">
+            <a href="/add/land" class="column gapme has-text-centered selectboxx">
                 <div>
                     <i class="fas fa-map-marker-alt fa-5x"></i>
                     <br>

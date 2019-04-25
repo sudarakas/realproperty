@@ -48,7 +48,7 @@
                             <br>
                             <div class="select is-primary is-full">
                                 <select name="type">
-                                    <option value="house">Land</option>
+                                    <option value="Land">Land</option>
                                 </select>
                             </div>
                         </div>

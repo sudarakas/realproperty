@@ -252,8 +252,8 @@
                             <br>
                             <div class="select is-primary">
                                 <select name="swimming">
-                                    <option value="yes">Available</option>
-                                    <option value="no" selected>Not Available</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Not Available" selected>Not Available</option>
                                 </select>
                             </div>
                         </div>
@@ -264,8 +264,8 @@
                             <br>
                             <div class="select is-primary">
                                 <select name="garden">
-                                        <option value="yes">Available</option>
-                                        <option value="no" selected>Not Available</option>
+                                        <option value="Available">Available</option>
+                                        <option value="Not Available" selected>Not Available</option>
                                     </select>
                             </div>
                         </div>

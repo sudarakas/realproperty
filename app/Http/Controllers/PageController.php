@@ -144,6 +144,11 @@ class PageController extends Controller
         return view('layouts.property.addland', array('user' => Auth::user()));
     }
 
+    public function addBuilding(){
+        return view('layouts.property.addbuilding', array('user' => Auth::user()));
+    }
+    
+
     public function viewpost()
     {
         return view('results.view');

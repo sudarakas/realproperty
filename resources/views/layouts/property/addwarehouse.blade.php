@@ -23,7 +23,7 @@
 <body>
     @include('results.navresult')
     <br>
-    <div class="title has-text-centered">Add Your House</div>
+    <div class="title has-text-centered">Add Your Warehouse</div>
     <br>
     <div class="container">
         <div class="columns is-mobile is-centered">
@@ -218,26 +218,39 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <label for="name">No of Rooms</label>
-                            <input class="input is-primary" type="number" name="rooms">
+                            <label for="name">Agreement Type</label>
+                            <br>
+                            <div class="select is-primary">
+                                <select name="agreement">
+                                    <option value="sale">Sale</option>
+                                    <option value="lease" selected>Lease</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label for="name">No of Kitchens</label>
-                            <input class="input is-primary" type="number" name="kitchen">
+                            <label for="electricity">Electricity</label>
+                            <br>
+                            <div class="select is-primary">
+                                <select name="electricity">
+                                    <option>Not Available</option>
+                                    <option>2 Phase</option>
+                                    <option>3 Phase</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label for="name">No of Floors</label>
-                            <input class="input is-primary" type="number" name="floor">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">No of Washrooms</label>
-                            <input class="input is-primary" type="number" name="washroom">
+                            <label for="name">Car Park</label>
+                            <br>
+                            <div class="select is-primary">
+                                <select name="carpark">
+                                        <option value="Available">Available</option>
+                                        <option value="Not Available" selected>Not Available</option>
+                                    </select>
+                            </div>
                         </div>
                     </div>
                     <div class="field">
@@ -247,51 +260,9 @@
                         </div>
                     </div>
                     <div class="field">
-                        <div class="control">
-                            <label for="name">Swimming Pool</label>
-                            <br>
-                            <div class="select is-primary">
-                                <select name="swimming">
-                                    <option value="yes">Available</option>
-                                    <option value="no" selected>Not Available</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">Garden Area</label>
-                            <br>
-                            <div class="select is-primary">
-                                <select name="garden">
-                                        <option value="yes">Available</option>
-                                        <option value="no" selected>Not Available</option>
-                                    </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">Nearest School</label>
-                            <input class="input is-primary" type="text" name="nschool">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">Nearest Railway</label>
-                            <input class="input is-primary" type="text" name="nrailway">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">Nearest BusStop</label>
-                            <input class="input is-primary" type="text" name="nbus">
-                        </div>
-                    </div>
-                    <div class="field">
                         <div class="control is-pulled-right">
                             <button type="submit" class="button is-primary">
-                               Add House
+                               Add Warehouse
                             </button>
                             <button type="reset" class="button is-warning">
                                     Clear

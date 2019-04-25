@@ -230,12 +230,6 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label for="name">No of Floors</label>
-                            <input class="input is-primary" type="number" name="floor">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
                             <label for="name">No of Washrooms</label>
                             <input class="input is-primary" type="number" name="washroom">
                         </div>
@@ -244,30 +238,6 @@
                         <div class="control">
                             <label for="name">Size(Square Feet)</label>
                             <input class="input is-primary" type="number" name="size">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">Swimming Pool</label>
-                            <br>
-                            <div class="select is-primary">
-                                <select name="swimming">
-                                    <option value="yes">Available</option>
-                                    <option value="no" selected>Not Available</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">Garden Area</label>
-                            <br>
-                            <div class="select is-primary">
-                                <select name="garden">
-                                        <option value="yes">Available</option>
-                                        <option value="no" selected>Not Available</option>
-                                    </select>
-                            </div>
                         </div>
                     </div>
                     <div class="field">
@@ -291,7 +261,7 @@
                     <div class="field">
                         <div class="control is-pulled-right">
                             <button type="submit" class="button is-primary">
-                               Add House
+                               Add Apartment
                             </button>
                             <button type="reset" class="button is-warning">
                                     Clear

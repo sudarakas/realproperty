@@ -43,6 +43,8 @@ Route::post('/add/land','PropertyController@addLand');
 Route::get('/add/building','PageController@addBuilding');
 Route::post('/add/building','PropertyController@addBuilding');
 
+Route::get('/add/apartment','PageController@addApartment');
+Route::post('/add/apartment','PropertyController@addApartment');
 
 
 Route::get('/add/map','PageController@dismap');

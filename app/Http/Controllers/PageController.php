@@ -151,8 +151,11 @@ class PageController extends Controller
     public function addApartment(){
         return view('layouts.property.addapartment', array('user' => Auth::user()));
     }
-    
 
+    public function addWarehouse(){
+        return view('layouts.property.addwarehouse', array('user' => Auth::user()));
+    }
+    
     public function viewpost()
     {
         return view('results.view');

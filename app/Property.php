@@ -22,6 +22,12 @@ class Property extends Model
 
     }
 
+    public function building(){
+
+        return $this->belongsTo(Building::class);
+
+    }
+
     public function user(){
 
         return $this->belongsTo(User::class);

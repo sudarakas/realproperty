@@ -230,6 +230,18 @@
                     </div>
                     <div class="field">
                         <div class="control">
+                            <label for="name">No of Floors</label>
+                            <input class="input is-primary" type="number" name="floor">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="name">Floor Size(Square Feet)</label>
+                            <input class="input is-primary" type="number" name="floorsize">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
                             <label for="name">Lift</label>
                             <br>
                             <div class="select is-primary">
@@ -250,18 +262,6 @@
                                         <option value="Not Available" selected>Not Available</option>
                                     </select>
                             </div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">No of Floors</label>
-                            <input class="input is-primary" type="number" name="floor">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label for="name">Floor Size(Square Feet)</label>
-                            <input class="input is-primary" type="number" name="floor">
                         </div>
                     </div>
                     <div class="field">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RealProperty</title>
+    <title>{{$house->property->name}} - RealProperty</title>
 
     {{-- CSS Files --}}
     <link rel="stylesheet" href="/css/bulma.min.css">
@@ -26,14 +26,14 @@
             <div class="containerx">
                 <div class="carousel carousel-main" data-flickity='{"pageDots": false }'>
                     @foreach (json_decode($house->property->images) as $image)
-                        <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
+                    <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
                     @endforeach
-                    
+
                 </div>
 
                 <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
                     @foreach (json_decode($house->property->images) as $image)
-                        <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
+                    <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
                     @endforeach
                 </div>
             </div>
@@ -45,10 +45,10 @@
                         <a href="http://" class="button is-danger is-pulled-right"><span><i class="far fa-heart"></i></span></a>
                         <div class="is-pulled-left">
                             <div class="title">
-                                   {{$house->property->name}}
+                                {{$house->property->name}}
                             </div>
                             <div class="subtitle">
-                                Wallan, Vic 3756
+                                {{$house->property->city}}, {{$house->property->postalCode}}
                             </div>
                             <hr class="hrline">
                             <div class="subtitle has-text-weight-semibold">
@@ -56,32 +56,42 @@
                             </div>
                             <div class="columns">
                                 <div class="column detailscolumn">
-                                    <p>Property Type: <span class="has-text-weight-semibold">House</span></p>
-                                    <p>Bedrooms: <span class="has-text-weight-semibold">4</span></p>
-                                    <p>Floor area: <span class="has-text-weight-semibold">10000</span></p>
-                                    <p>No. of floors: <span class="has-text-weight-semibold">2</span></p>
-                                    <p>Car parking spaces: <span class="has-text-weight-semibold">4</span></p>
+                                    <p>Property Type: <span class="has-text-weight-semibold">{{$house->property->type}}</span></p>
+                                    <p>Bedrooms: <span class="has-text-weight-semibold">{{$house->noOfRooms}}</span></p>
+                                    <p>Kitchen: <span class="has-text-weight-semibold">{{$house->noOfKitchen}}</span></p>
+                                    <p>No. of Washrooms: <span class="has-text-weight-semibold">{{$house->noOfWashrooms}}</span></p>
+                                    <p>No. of floors: <span class="has-text-weight-semibold">{{$house->noOfFloors}}</span></p>
+                                    <p>Garden: <span class="has-text-weight-semibold">{{$house->garden}}</span></p>
+                                    <p>Swimming Pool: <span class="has-text-weight-semibold">{{$house->swimmingPool}}</span></p>
                                 </div>
                                 <div class="column">
-                                    <p>Area of land: <span class="has-text-weight-semibold">10</span></p>
-                                    <p>Availability: <span class="has-text-weight-semibold">Availabale</span></p>
-                                    <p>Nearest bus stop: <span class="has-text-weight-semibold">Maradana</span></p>
-                                    <p>Nearest train station: <span class="has-text-weight-semibold">Maradana</span></p>
+                                    <p>Area of Property(Square Feet): <span class="has-text-weight-semibold">{{$house->size}}</span></p>
+                                    <p>Nearest School: <span class="has-text-weight-semibold">{{$house->nearestSchool}}</span></p>
+                                    <p>Nearest Busstop: <span class="has-text-weight-semibold">{{$house->nearestRailway}}</span></p>
+                                    <p>Nearest Railway Station: <span class="has-text-weight-semibold">{{$house->nearestBusStop}}</span></p>
+                                    <p>Availability: @if(strcmp($house->property->availability,"YES") == 0)
+                                        <span class="has-text-weight-semibold has-text-success">
+                                            {{$house->property->availability}}
+                                        </span> @else
+                                        <span class="has-text-weight-semibold has-text-danger">
+                                                {{$house->property->availability}}
+                                        </span> @endif
+                                    </p>
                                 </div>
 
                                 {{-- Mobile/Tablet Section --}}
                                 <div class="column is-hidden-desktop">
                                     <div class='is-flex is-horizontal-center'>
                                         <figure class="image is-128x128">
-                                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/1552585682.jpg">
+                                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/{{$house->property->user->avatar}}">
                                         </figure>
                                     </div>
-                                    <div class="subtitle has-text-centered">@NanoEstate</div>
+                                    <div class="subtitle has-text-centered"><span>@</span>{{$house->property->user->name}}</div>
                                     <div class="has-text-centered">
                                         <button class="button is-success" onclick="showPnox()">Show Contact Number</button>
-                                        <p class="has-text-dark customerpno" id="pnox">071 300 90 95</p>
+                                        <p class="has-text-dark customerpno" id="pnox"><a href="tel:{{$house->property->contactNo}}" class="nounnounderlinelink">{{$house->property->contactNo}}</a></p>
                                         <hr>
-                                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">5900000.00</span>                                            LKR</p>
+                                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                                            LKR</p>
                                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">4500000.00</span>                                            LKR</p>
                                         <button class="button is-link">Make an offer</button>
                                     </div>
@@ -95,16 +105,16 @@
                 <div class="column is-hidden-touch">
                     <div class='is-flex is-horizontal-center'>
                         <figure class="image is-128x128">
-                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/1552585682.jpg">
+                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/{{$house->property->user->avatar}}">
                         </figure>
                     </div>
-                    <div class="subtitle has-text-centered">@NanoEstate</div>
+                    <div class="subtitle has-text-centered"><span>@</span>{{$house->property->user->name}}</div>
                     <div class="has-text-centered">
                         <button class="button is-dark" onclick="location.href='#contactbox'">Email Owner</button>
                         <button class="button is-success" onclick="showPno()">Call Owner</button>
-                        <p class="has-text-dark customerpno" id="pno">071 300 90 95</p>
+                        <p class="has-text-dark customerpno" id="pno"><a href="tel:{{$house->property->contactNo}}" class="nounnounderlinelink">{{$house->property->contactNo}}</a></p>
                         <hr>
-                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">5900000.00</span> LKR</p>
+                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                            LKR</p>
                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">4500000.00</span> LKR</p>
                         <button class="button is-link">Make an offer</button>
                     </div>
@@ -139,40 +149,12 @@
             <hr>
             <div class="column is-flex-mobile">
                 <div class="subtitle has-text-weight-semibold">Property Description</div>
-                <p>
-                    House 1 - (8,500 sq ft including terraces) 90 perches - Rs170m / $3,500pm
-                    <br>
-                    <br> Obscured by mature shade trees in the large front garden, the private driveway discreetly opens
-                    to a paved courtyard that parks 6-8 vehicles. The unassuming front facade embodies understated elegance,
-                    a feature that resonates throughout the property. The entrance foyer houses an internal flight of steps
-                    and large open-to-sky ponds leading to the formal living area. A wide terraced verandah with alfresco
-                    dining and bbq offer extended spaces for living and entertainment. Raised well above the level of the
-                    paddy fields beyond, the gently sloped rear garden ends with a large infinity pool spanning the breadth
-                    of the property. Previously tenanted to a senior western diplomat. Available for sale or for rent, fully
-                    furnished. Lower floor: Entrance foyer, formal living, dining, guest room and toilet, powder room, pantry,
-                    staff quarters Upper floor: Informal living, master bedroom and toilet, twin rooms with common toilet,
-                    laundry room, library and entertainment room, study, gym External layout: large storage room, standby
-                    generator, open parking, terraced verandah, alfresco dining, infinity pool, extensive front and rear
-                    gardens
-                    <br>
-                    <br> House 2 (5,000 sqft including terraces) - 32 perches - Rs80m /$1,500pm
-                    <br> For a moderately sized property, this newly completed house boasts a spacious front courtyard which
-                    parks 3-4 vehicles. Thoughtfully designed to take advantage of natural light and ventilation, three levels
-                    of living spaces with high ceilings, open to wide terraces that offer wonderful views of the paddy fields
-                    beyond. Ideal as a spacious studio / home office or home for parents / adult children, this property
-                    can be accessed from a bylane or the main compound.
-                    <br>
-                    <br> Entrance floor: Formal living, dining, twin bedrooms with common toilet, pantry
-                    <br>
-                    <br> Lower floor: Informal living, wet kitchen, laundry, storage room, staff quarters
-                    <br> Upper floor: 2 bedrooms with attached toilets, library and study
-                    <br> External layout: open parking, wide terraces on all levels, plunge pool, front and rear gardens
-                    Potential for purchasing adjoining property to increase plot size exists.
-                    <br>
-                    <br> More information and photos available on request.
+                <p class="content">
+                    {!! $house->property->description !!}
                 </p>
             </div>
-            <hr>
+            {{--
+            <hr> --}} {{--
             <div class="column is-flex-mobile">
                 <div class="subtitle has-text-weight-semibold">Property Features</div>
 
@@ -183,7 +165,7 @@
                     <li>AC ROOM</li>
                 </ul>
 
-            </div>
+            </div> --}}
             <hr>
             <div class="column is-flex-mobile" id="contactbox">
                 <div class="subtitle has-text-weight-semibold">Contact Owner</div>
@@ -297,7 +279,7 @@
                 <a href="" class="is-pulled-right link reportad"><span><i class="far fa-flag"></i></span><span class="has-text-balck"> Report Advertisement</span></a>
                 <br>
             </div>
-            
+
         </div>
 
     </div>

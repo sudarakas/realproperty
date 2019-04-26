@@ -773,7 +773,11 @@ figure.profileavatar figcaption::before {
     margin-top: -25px !important;
 }
 
-.nounderlinebtn:hover{
+.nounnounderlinebtn:hover{
+    text-decoration: none !important;
+}
+
+.nounnounderlinelink{
     text-decoration: none !important;
 }
 

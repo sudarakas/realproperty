@@ -20,11 +20,10 @@
                     </div>
     
                     <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                        <a href="#">#css</a> <a href="#">#responsive</a>
+                        {{str_replace("&nbsp;",'',strip_tags($house->property->description))}}
                         <br>
-                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                        <button class="button is-link is-pulled-right">See More</button>
+                        <time datetime="2016-1-1">{{$house->created_at->isoFormat('LLLL')}}</time>
+                        <a href="/house/{{$house->id}}"><button class="button is-link is-pulled-right">See More</button></a>
                     </div>
                 </div>
             </div>

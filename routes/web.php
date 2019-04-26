@@ -72,7 +72,7 @@ Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('aut
 
 Route::get('/house/serach','PageController@housesearch');
 Route::get('/house/serach/view','PageController@viewpost');
-
+Route::get('/house/{house}','HouseController@viewHouse');
 
 
 

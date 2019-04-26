@@ -24,7 +24,7 @@ class PageController extends Controller
     {
         $this->middleware(['auth','verified'])->only([
             'profile', 'changePassword', 'editAccount', 'favorites',
-            'viewMessage', 'myMessage', 'myhouse', 'myapartment', 'myland', 'mybuilding', 'mywarehouse', 'deleteaccount', 'addProperty', 'addHouse'
+            'viewMessage', 'myMessage', 'myhouse', 'myapartment', 'myland', 'mybuilding', 'mywarehouse', 'deleteaccount', 'addProperty', 'addHouse','addBuilding','addLand','addApartment','addWarehouse'
         ]);
     }
     public function index()

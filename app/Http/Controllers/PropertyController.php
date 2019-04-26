@@ -223,7 +223,7 @@ class PropertyController extends Controller
         $building->nearestBusStop = request('nbus');
         $building->save();
 
-        return back();
+        return back()->with('message', 'Your property has been successfully added!');
 
     }
 
@@ -292,7 +292,7 @@ class PropertyController extends Controller
         $apartment->nearestBusStop = request('nbus');
         $apartment->save();
 
-        return back();
+        return back()->with('message', 'Your property has been successfully added!');
 
     }
 
@@ -355,7 +355,7 @@ class PropertyController extends Controller
         $warehouse->size = request('size');
         $warehouse->save();
 
-        return back();
+        return back()->with('message', 'Your property has been successfully added!');
 
     }
 }

@@ -28,7 +28,12 @@
     <div class="container">
         <div class="columns is-mobile is-centered">
             <div class="column is-8">
-    @include('layouts.errors')
+    @include('layouts.errors') @if(session()->has('message'))
+                <div class="notification is-success">
+                    <button class="delete"></button>
+                    <h1 class="is-size-5"><b> {{ session()->get('message') }}</b></h1>
+                </div>
+                @endif
             </div>
         </div>
 

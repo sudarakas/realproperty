@@ -222,8 +222,8 @@
                             <br>
                             <div class="select is-primary">
                                 <select name="agreement">
-                                    <option value="sale">Sale</option>
-                                    <option value="lease" selected>Lease</option>
+                                    <option value="Sale">Sale</option>
+                                    <option value="Lease" selected>Lease</option>
                                 </select>
                             </div>
                         </div>

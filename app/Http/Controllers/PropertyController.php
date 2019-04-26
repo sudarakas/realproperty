@@ -8,6 +8,7 @@ use App\House;
 use Image;
 use App\Land;
 use App\Building;
+use App\Apartment;
 
 class PropertyController extends Controller
 {
@@ -219,6 +220,75 @@ class PropertyController extends Controller
         $building->nearestRailway = request('nrailway');
         $building->nearestBusStop = request('nbus');
         $building->save();
+
+        return back();
+
+    }
+
+    public function addApartment(Request $request){
+
+        $request->validate([
+            'name' => 'required|max:30|min:3',
+            'type' => 'required',
+            'amount' => 'required',
+            'city' => 'required',
+            'postalcode' => 'required|integer',
+            'province' => 'required',
+            'description' => 'required',
+            'contactno' => 'required',
+            'contactemail' => 'email|required',
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+            'lat' => 'required',
+            'lat' => 'required',
+            'rooms' => 'required',
+            'kitchen' => 'required',
+            'size' => 'required|integer',
+            'washroom' => 'required',
+            'nschool' => 'required',
+            'nrailway' => 'required',
+            'nbus' => 'required'
+            
+        ]);
+
+        if($request->hasfile('filename'))
+         {
+
+            foreach($request->file('filename') as $image)
+            {
+                $name= time() . '.' . $image->getClientOriginalExtension();
+                //$image->move(public_path().'/uploads/property/house', $name);
+                Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/apartment/' . $name));  
+                $data[] = $name;  
+            }
+         }
+
+        $property = new Property;
+        $property->user_id = auth()->id();
+        $property->name = request('name');
+        $property->type = request('type');
+        $property->amount = request('amount');
+        $property->city = request('city');
+        $property->postalCode = request('postalcode');
+        $property->province = request('province');
+        $property->description = request('description');
+        $property->contactNo = request('contactno');
+        $property->contatctEmail = request('contactemail');
+        $property->images =json_encode($data);
+        $property->latitude = request('lat');
+        $property->longitude = request('lng');
+        $property->save();
+
+        $apartment = new Apartment();
+        $apartment->property()->associate($property);
+        $apartment->noOfRooms = request('rooms');
+        $apartment->noOfKitchen = request('kitchen');
+        $apartment->noOfWashrooms = request('washroom');
+        $apartment->size = request('size');
+        $apartment->nearestSchool = request('nschool');
+        $apartment->nearestRailway = request('nrailway');
+        $apartment->nearestBusStop = request('nbus');
+        $apartment->save();
 
         return back();
 

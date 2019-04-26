@@ -25,29 +25,16 @@
         <div class="column profileback">
             <div class="containerx">
                 <div class="carousel carousel-main" data-flickity='{"pageDots": false }'>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
+                    @foreach (json_decode($house->property->images) as $image)
+                        <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
+                    @endforeach
+                    
                 </div>
 
                 <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
-                    <div class="carousel-cell"><img src="/img/testhouse.jpeg" /></div>
+                    @foreach (json_decode($house->property->images) as $image)
+                        <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
+                    @endforeach
                 </div>
             </div>
         </div>

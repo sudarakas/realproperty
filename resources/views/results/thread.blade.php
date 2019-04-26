@@ -20,7 +20,7 @@
                     </div>
     
                     <div class="content">
-                        {{str_replace("&nbsp;",'',strip_tags($house->property->description))}}
+                        {{str_limit(str_replace("&nbsp;",'',strip_tags($house->property->description)),100)}}
                         <br>
                         <time datetime="2016-1-1">{{$house->created_at->isoFormat('LLLL')}}</time>
                         <a href="/house/{{$house->id}}"><button class="button is-link is-pulled-right">See More</button></a>

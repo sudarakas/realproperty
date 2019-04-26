@@ -15,6 +15,12 @@
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300i,400,400i,500,500i,600|Kanit:300,300i,400,400i,500,500i,600"
         rel="stylesheet">
 
+    <style>
+        #map {
+            height: 300px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -123,10 +129,12 @@
             <hr> {{-- Google Map Here --}} {{--
             <div class=" is-flex-mobile"> --}}
                 <div class="column maps is-flex-mobile">
+                        <div class="subtitle has-text-weight-semibold">
+                                Google Maps
+                            </div>
                     <div class="mapouter">
                         <div class="gmap_canvas">
-                            <iframe width="790" height="678" id="gmap_canvas" src="https://maps.google.com/maps?q=uva%20wellassa%20&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            <div id="map"></div>
                             <style>
                                 .mapouter {
                                     position: relative;
@@ -143,6 +151,8 @@
                                 }
                             </style>
                         </div>
+                        <br>
+                        <a class="button is-info nounnounderlinebtn" href="http://www.google.com/maps/place/{{$house->property->latitude}},{{$house->property->longitude}}" target="_blank">Set Direction</a>
                     </div>
                 </div>
                 {{-- </div> --}}
@@ -290,6 +300,25 @@
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/flickity.pkgd.min.js"></script>
+    <script>
+        var map;
+        var lat = {{$house->property->latitude}}
+        var lng = {{$house->property->longitude}}
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: lat, lng: lng},
+          zoom: 15
+        });
+
+        var marker = new google.maps.Marker({
+          position: {lat: lat, lng: lng},
+          map: map,
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKNG_uMsCgUvpLc_Adr2n9nwo6BWOImoM&libraries=places&callback=initMap"
+    async defer></script>
+
     <script>
         function showPno() {
             var x = document.getElementById("pno");

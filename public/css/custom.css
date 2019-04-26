@@ -761,6 +761,7 @@ figure.profileavatar figcaption::before {
 
 .reportad{
     text-decoration: none;
+    font-weight: 800;
 }
 
 .reportad:hover{

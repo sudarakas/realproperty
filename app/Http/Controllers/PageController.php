@@ -12,6 +12,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\House;
+use App\Land;
 
 class PageController extends Controller
 {
@@ -76,7 +77,12 @@ class PageController extends Controller
         $houses = House::all();
         return view('results.houseresult',compact('houses'));
     }
-
+    public function landsearch()
+    {
+        $lands = Land::all();
+        return view('results.landresult',compact('lands'));
+    }
+    
 
 
 

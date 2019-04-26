@@ -65,14 +65,11 @@ Route::get('/profile/myapartment','PageController@myapartment')->middleware('aut
 Route::get('/profile/mybuilding','PageController@mybuilding')->middleware('auth');
 Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('auth');
 
-
-
-
-
-
 Route::get('/house/serach','PageController@housesearch');
-Route::get('/house/serach/view','PageController@viewpost');
 Route::get('/house/{house}','HouseController@viewHouse');
+
+Route::get('/land/serach','PageController@landsearch');
+Route::get('/land/{land}','LandController@viewLand');
 
 
 

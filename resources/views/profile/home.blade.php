@@ -85,7 +85,7 @@
             @include('profile.mywarehouse')
             
           @else
-            @include('profile.jahsdh')
+            @include('profile.dashboard')
           
           @endif
         <div id="myModal" class="modal column is-half is-offset-one-quarter">

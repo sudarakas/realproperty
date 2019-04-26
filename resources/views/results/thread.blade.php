@@ -3,19 +3,19 @@
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                        <img src="/img/testhouse.jpeg" alt="Placeholder image">
+                        <img src="/uploads/property/house/{{json_decode($house->property->images)[0]}}" alt="Placeholder image">
                     </figure>
                 </div>
                 <div class="card-content">
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-48x48">
-                                <img src="/img/testowner.jpeg" class="is-rounded" alt="Placeholder image">
+                                <img src="/uploads/avatars/{{$house->property->user->avatar}}" class="is-rounded" alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="media-content">
-                            <p class="title is-4 has-text-dark">Rs. 1250000</p>
-                            <p class="subtitle is-6 has-text-link">@johnsmith</p>
+                            <p class="title is-4 has-text-dark">Rs. {{number_format($house->property->amount,2)}}</p>
+                            <p class="subtitle is-6 has-text-link"><span>@</span>{{$house->property->user->name}}</p>
                         </div>
                     </div>
     

@@ -11,6 +11,7 @@ use DB;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\House;
 
 class PageController extends Controller
 {
@@ -67,11 +68,19 @@ class PageController extends Controller
         return view('layouts.contactus');
     }
 
+
+
+    // Search Result Methods
     public function housesearch()
     {
-        return view('results.houseresult');
+        $houses = House::all();
+        return view('results.houseresult',compact('houses'));
     }
 
+
+
+
+    // Profile Page Methods
     public function profile()
     {
         return view('profile.home', array('user' => Auth::user()));
@@ -128,6 +137,11 @@ class PageController extends Controller
     {
         return view('profile.home', array('user' => Auth::user()));
     }
+
+
+
+
+    // Add Propperties Methods
     public function addProperty()
     {
         return view('layouts.addproperty', array('user' => Auth::user()));
@@ -156,10 +170,15 @@ class PageController extends Controller
         return view('layouts.property.addwarehouse', array('user' => Auth::user()));
     }
     
+
+
     public function viewpost()
     {
         return view('results.view');
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.

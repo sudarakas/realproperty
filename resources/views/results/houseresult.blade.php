@@ -10,8 +10,7 @@
     {{-- CSS Files --}}
     <link rel="stylesheet" href="/css/bulma.min.css">
     <link rel="stylesheet" href="/css/custom.css">
-    <link rel="stylesheet" href="/css/bootstrap.css"> 
-    {{-- Google Fonts --}}
+    <link rel="stylesheet" href="/css/bootstrap.css"> {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300i,400,400i,500,500i,600|Kanit:300,300i,400,400i,500,500i,600"
         rel="stylesheet">
 
@@ -112,16 +111,9 @@
 
     <div class="grayme">
         <div class="row printarea">
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-
+            @foreach ($houses as $house)
+                @include('results.thread') 
+            @endforeach
         </div>
     </div>
     {{-- Footer --}}

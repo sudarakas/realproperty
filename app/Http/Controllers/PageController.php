@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use App\House;
 use App\Land;
 use App\Building;
+use App\Apartment;
 
 class PageController extends Controller
 {
@@ -88,9 +89,13 @@ class PageController extends Controller
         $buildings = Building::all();
         return view('results.buildingresult',compact('buildings'));
     }
+    public function apartmentsearch()
+    {
+        $apartments = Apartment::all();
+        return view('results.apartmentresult',compact('apartments'));
+    }
+
     
-
-
 
     // Profile Page Methods
     public function profile()

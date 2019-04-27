@@ -7,7 +7,7 @@ use App\Land;
 
 class LandController extends Controller
 {
-    public function viewHouse(Land $land)
+    public function viewLand(Land $land)
     {
         return view('results.viewland',compact('land'));
     }

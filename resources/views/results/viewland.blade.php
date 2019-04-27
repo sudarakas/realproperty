@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{$house->property->name}} - RealProperty</title>
+    <title>{{$land->property->name}} - RealProperty</title>
 
     {{-- CSS Files --}}
     <link rel="stylesheet" href="/css/bulma.min.css">
@@ -31,15 +31,15 @@
         <div class="column profileback">
             <div class="containerx">
                 <div class="carousel carousel-main" data-flickity='{"pageDots": false }'>
-                    @foreach (json_decode($house->property->images) as $image)
-                    <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
+                    @foreach (json_decode($land->property->images) as $image)
+                    <div class="carousel-cell"><img src="/uploads/property/land/{{$image}}" /></div>
                     @endforeach
 
                 </div>
 
                 <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
-                    @foreach (json_decode($house->property->images) as $image)
-                    <div class="carousel-cell"><img src="/uploads/property/house/{{$image}}" /></div>
+                    @foreach (json_decode($land->property->images) as $image)
+                    <div class="carousel-cell"><img src="/uploads/property/land/{{$image}}" /></div>
                     @endforeach
                 </div>
             </div>
@@ -51,10 +51,10 @@
                         <a href="http://" class="button is-danger is-pulled-right"><span><i class="far fa-heart"></i></span></a>
                         <div class="is-pulled-left">
                             <div class="title">
-                                {{$house->property->name}}
+                                {{$land->property->name}}
                             </div>
                             <div class="subtitle">
-                                {{$house->property->city}}, {{$house->property->postalCode}}
+                                {{$land->property->city}}, {{$land->property->postalCode}}
                             </div>
                             <hr class="hrline">
                             <div class="subtitle has-text-weight-semibold">
@@ -62,25 +62,21 @@
                             </div>
                             <div class="columns">
                                 <div class="column detailscolumn">
-                                    <p>Property Type: <span class="has-text-weight-semibold">{{$house->property->type}}</span></p>
-                                    <p>Bedrooms: <span class="has-text-weight-semibold">{{$house->noOfRooms}}</span></p>
-                                    <p>Kitchen: <span class="has-text-weight-semibold">{{$house->noOfKitchen}}</span></p>
-                                    <p>No. of Washrooms: <span class="has-text-weight-semibold">{{$house->noOfWashrooms}}</span></p>
-                                    <p>No. of floors: <span class="has-text-weight-semibold">{{$house->noOfFloors}}</span></p>
-                                    <p>Garden: <span class="has-text-weight-semibold">{{$house->garden}}</span></p>
-                                    <p>Swimming Pool: <span class="has-text-weight-semibold">{{$house->swimmingPool}}</span></p>
+                                    <p>Property Type: <span class="has-text-weight-semibold">{{$land->property->type}}</span></p>
+                                    <p>Tap Water: <span class="has-text-weight-semibold">{{$land->tapwater}}</span></p>
+                                    <p>Electricity: <span class="has-text-weight-semibold">{{$land->electricity}}</span></p>
+                                    <p>Area of Property(Square Feet): <span class="has-text-weight-semibold">{{$land->size}}</span></p>
                                 </div>
                                 <div class="column">
-                                    <p>Area of Property(Square Feet): <span class="has-text-weight-semibold">{{$house->size}}</span></p>
-                                    <p>Nearest School: <span class="has-text-weight-semibold">{{$house->nearestSchool}}</span></p>
-                                    <p>Nearest Busstop: <span class="has-text-weight-semibold">{{$house->nearestRailway}}</span></p>
-                                    <p>Nearest Railway Station: <span class="has-text-weight-semibold">{{$house->nearestBusStop}}</span></p>
-                                    <p>Availability: @if(strcmp($house->property->availability,"YES") == 0)
+                                    <p>Nearest School: <span class="has-text-weight-semibold">{{$land->nearestSchool}}</span></p>
+                                    <p>Nearest Busstop: <span class="has-text-weight-semibold">{{$land->nearestRailway}}</span></p>
+                                    <p>Nearest Railway Station: <span class="has-text-weight-semibold">{{$land->nearestBusStop}}</span></p>
+                                    <p>Availability: @if(strcmp($land->property->availability,"YES") == 0)
                                         <span class="has-text-weight-semibold has-text-success">
-                                            {{$house->property->availability}}
+                                            {{$land->property->availability}}
                                         </span> @else
                                         <span class="has-text-weight-semibold has-text-danger">
-                                                {{$house->property->availability}}
+                                                {{$land->property->availability}}
                                         </span> @endif
                                     </p>
                                 </div>
@@ -89,15 +85,15 @@
                                 <div class="column is-hidden-desktop">
                                     <div class='is-flex is-horizontal-center'>
                                         <figure class="image is-128x128">
-                                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/{{$house->property->user->avatar}}">
+                                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/{{$land->property->user->avatar}}">
                                         </figure>
                                     </div>
-                                    <div class="subtitle has-text-centered"><span>@</span>{{$house->property->user->name}}</div>
+                                    <div class="subtitle has-text-centered"><span>@</span>{{$land->property->user->name}}</div>
                                     <div class="has-text-centered">
                                         <button class="button is-success" onclick="showPnox()">Show Contact Number</button>
-                                        <p class="has-text-dark customerpno" id="pnox"><a href="tel:{{$house->property->contactNo}}" class="nounnounderlinelink">{{$house->property->contactNo}}</a></p>
+                                        <p class="has-text-dark customerpno" id="pnox"><a href="tel:{{$land->property->contactNo}}" class="nounnounderlinelink">{{$land->property->contactNo}}</a></p>
                                         <hr>
-                                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                                            LKR</p>
+                                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($land->property->amount,2)}}</span>                                            LKR</p>
                                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">4500000.00</span>                                            LKR</p>
                                         <button class="button is-link">Make an offer</button>
                                     </div>
@@ -111,16 +107,16 @@
                 <div class="column is-hidden-touch">
                     <div class='is-flex is-horizontal-center'>
                         <figure class="image is-128x128">
-                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/{{$house->property->user->avatar}}">
+                            <img class="is-rounded is-horizontal-center" src="/uploads/avatars/{{$land->property->user->avatar}}">
                         </figure>
                     </div>
-                    <div class="subtitle has-text-centered"><span>@</span>{{$house->property->user->name}}</div>
+                    <div class="subtitle has-text-centered"><span>@</span>{{$land->property->user->name}}</div>
                     <div class="has-text-centered">
                         <button class="button is-dark" onclick="location.href='#contactbox'">Email Owner</button>
                         <button class="button is-success" onclick="showPno()">Call Owner</button>
-                        <p class="has-text-dark customerpno" id="pno"><a href="tel:{{$house->property->contactNo}}" class="nounnounderlinelink">{{$house->property->contactNo}}</a></p>
+                        <p class="has-text-dark customerpno" id="pno"><a href="tel:{{$land->property->contactNo}}" class="nounnounderlinelink">{{$land->property->contactNo}}</a></p>
                         <hr>
-                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                            LKR</p>
+                        <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($land->property->amount,2)}}</span>                            LKR</p>
                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">4500000.00</span> LKR</p>
                         <button class="button is-link">Make an offer</button>
                     </div>
@@ -156,14 +152,14 @@
                         
                     </div>
                 </div>
-                <a class="button is-info nounnounderlinebtn" href="http://www.google.com/maps/place/{{$house->property->latitude}},{{$house->property->longitude}}"
+                <a class="button is-info nounnounderlinebtn" href="http://www.google.com/maps/place/{{$land->property->latitude}},{{$land->property->longitude}}"
                     target="_blank">Set Direction</a>
                 {{-- </div> --}}
             <hr>
             <div class="subtitle has-text-weight-semibold">Property Description</div>
             <div class="column is-flex-mobile">
                 <p class="content">
-                    {!! $house->property->description !!}
+                    {!! $land->property->description !!}
                 </p>
             </div>
             {{--
@@ -306,8 +302,8 @@
     <script src="/js/flickity.pkgd.min.js"></script>
     <script>
         var map;
-        var lat = {{$house->property->latitude}}
-        var lng = {{$house->property->longitude}}
+        var lat = {{$land->property->latitude}}
+        var lng = {{$land->property->longitude}}
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: lat, lng: lng},

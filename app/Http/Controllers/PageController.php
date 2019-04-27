@@ -15,6 +15,7 @@ use App\House;
 use App\Land;
 use App\Building;
 use App\Apartment;
+use App\Warehouse;
 
 class PageController extends Controller
 {
@@ -94,7 +95,12 @@ class PageController extends Controller
         $apartments = Apartment::all();
         return view('results.apartmentresult',compact('apartments'));
     }
-
+    public function warehousesearch()
+    {
+        $warehouses = Warehouse::all();
+        return view('results.warehousetresult',compact('warehouses'));
+    }
+    
     
 
     // Profile Page Methods

@@ -77,6 +77,9 @@ Route::get('/building/{building}','BuildingController@viewBuilding');
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');
 
+Route::get('/warehouse/serach','PageController@warehousesearch');
+Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');
+
 
 
 Route::post('/search','PageController@store');

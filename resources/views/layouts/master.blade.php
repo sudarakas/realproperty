@@ -73,8 +73,8 @@
                     <div class="field has-addons">
                         <div class="control has-icons-left">
                             <div class="select selectbox is-small">
-                                <select>
-                                <option>Price(Min)</option>
+                                <select name="minprice">
+                                <option value="0">Price(Min)</option>
                                 <option>With options</option>
                                 </select>
                             </div>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="control has-icons-left">
                           <div class="select selectbox is-small">
-                              <select>
+                              <select name="maxprice">
                               <option>Price(Max)</option>
                               <option>With options</option>
                               </select>
@@ -95,9 +95,14 @@
                         </div>
                         <div class="control has-icons-left">
                           <div class="select selectbox is-small">
-                              <select>
-                              <option>Rooms</option>
-                              <option>With options</option>
+                              <select name="room">
+                              <option value="0">Rooms</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">More</option>
                               </select>
                           </div>
                           <span class="icon is-small is-left">
@@ -107,10 +112,6 @@
                         <label class="checkbox checktext has-text-white">
                             <input type="checkbox">
                             Swimming pool
-                        </label>
-                        <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
-                            Garage
                         </label>
                         <label class="checkbox checktext has-text-white">
                             <input type="checkbox">

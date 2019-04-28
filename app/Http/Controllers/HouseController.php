@@ -14,7 +14,23 @@ class HouseController extends Controller
     public function searchHouse(Request $request)
     {
         $keyword = $request->input('searchquery');
-        $houses = House::whereHas('property', function($query) use ($keyword) {$query->where('postalCode', 'like', $keyword);})->get();
+        $room = $request->input('room');
+        $minPrice = $request->input('minprice');
+        $maxPrice = $request->input('maxprice');
+        $houses = House::whereHas('property', function($query) use ($keyword,$room) 
+        {
+            $query->where('noOfRooms','>=', $room);
+                  
+        })->whereHas('property',function($query) use ($keyword){
+            $query->orwhere('postalCode', 'LIKE', $keyword)
+                  ->orWhere('province', 'LIKE', $keyword)
+                  ->orWhere('city', 'LIKE', $keyword);
+        })->whereHas('property',function($query) use ($keyword){
+            $query->orwhere('postalCode', 'LIKE', $keyword)
+                  ->orWhere('province', 'LIKE', $keyword)
+                  ->orWhere('city', 'LIKE', $keyword);
+        
+        })->get();
         return view('results.houseresult',compact('houses'));
     }
     

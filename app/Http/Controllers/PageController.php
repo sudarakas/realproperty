@@ -37,11 +37,6 @@ class PageController extends Controller
         return view('layouts.master');
     }
 
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        return redirect('/');
-    }
     public function land()
     {
         return view('layouts.land');
@@ -72,7 +67,12 @@ class PageController extends Controller
         return view('layouts.contactus');
     }
 
-
+    //Logout Route
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 
     // Search Result Methods
     public function housesearch()

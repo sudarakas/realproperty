@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RealProperty</title>
+    <title>RealProperty - Leader in Real Estate Business</title>
 
     {{-- CSS Files --}}
     <link rel="stylesheet" href="/css/bulma.min.css">
@@ -38,17 +38,17 @@
                         </a>
                       </li>
                       <li class="deadtabitem">
-                        <a>
+                        <a href="/apartment">
                           <span class="has-text-white">Apartments</span>
                         </a>
                       </li>
                       <li class="deadtabitem">
-                        <a>
+                        <a href="/building">
                           <span class="has-text-white">Buildings</span>
                         </a>
                       </li>
                       <li class="deadtabitem">
-                        <a>
+                        <a href="warehouse">
                           <span class="has-text-white">Warehouses</span>
                         </a>
                       </li>
@@ -56,7 +56,7 @@
                   </div>
                   
                   {{-- Search Box --}}
-                <form method="POST" action="/search">
+                <form method="POST" action="/house/search">
                   @csrf
                     <div class="field has-addons searchinput">
                         <p class="control has-icons-left is-expanded">

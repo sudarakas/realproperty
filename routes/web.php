@@ -51,7 +51,7 @@ Route::post('/add/warehouse','PropertyController@addWarehouse');
 
 Route::get('/add/map','PageController@dismap');
 
-
+//Profile Section
 Route::get('/profile','PageController@profile')->middleware('auth');
 Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
 Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
@@ -67,6 +67,7 @@ Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('aut
 
 Route::get('/house/serach','PageController@housesearch');
 Route::get('/house/{house}','HouseController@viewHouse');
+Route::post('/house/{house}','HouseController@searchHouse');
 
 Route::get('/land/serach','PageController@landsearch');
 Route::get('/land/{land}','LandController@viewLand');

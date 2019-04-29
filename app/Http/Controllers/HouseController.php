@@ -18,7 +18,6 @@ class HouseController extends Controller
         $minPrice = $request->input('minprice');
         $maxPrice = $request->input('maxprice');
         
-
         if($swimmingPool = $request->has('swimmingpool')){
 
             $swimmingPool = "Available";
@@ -29,7 +28,25 @@ class HouseController extends Controller
             $swimmingPool = "%%";
         }
 
+        if($noOfFloors = $request->has('balcony')){
 
+            $noOfFloors = 2;
+        }
+        else{
+
+            $noOfFloors = 0;
+        }
+
+        if($outdoor = $request->has('outdoor')){
+
+            $outdoor = "Available";
+
+        }
+        else{
+
+            $outdoor = "%%";
+
+        }
 
         $houses = House::whereHas('property', function($query) use ($keyword,$room) 
         {
@@ -46,6 +63,14 @@ class HouseController extends Controller
         })->where(function($query) use ($swimmingPool){
             
             $query->where('swimmingPool', 'LIKE', $swimmingPool);
+
+        })->where(function($query) use ($noOfFloors){
+            
+            $query->where('noOfFloors', '>=', $noOfFloors);
+
+        })->where(function($query) use ($outdoor){
+            
+            $query->where('garden', 'LIKE', $outdoor);
 
         })->get();
 

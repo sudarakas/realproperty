@@ -151,11 +151,11 @@
                             Swimming pool
                         </label>
                         <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
+                            <input type="checkbox" name="balcony">
                             Balcony
                         </label>
                         <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
+                            <input type="checkbox" name="outdoor"> 
                             Outdoor area
                         </label>
                     </div>

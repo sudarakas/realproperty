@@ -75,7 +75,22 @@
                             <div class="select selectbox is-small">
                                 <select name="minprice">
                                 <option value="0">Price(Min)</option>
-                                <option>With options</option>
+                                <option value="1000000">1 Million</option>
+                                <option value="2000000">2 Million</option>
+                                <option value="3000000">3 Million</option>
+                                <option value="4000000">4 Million</option>
+                                <option value="5000000">5 Million</option>
+                                <option value="6000000">6 Million</option>
+                                <option value="7000000">7 Million</option>
+                                <option value="8000000">8 Million</option>
+                                <option value="9000000">9 Million</option>
+                                <option value="10000000">10 Million</option>
+                                <option value="50000000">50 Million</option>
+                                <option value="100000000">100 Million</option>
+                                <option value="200000000">200 Million</option>
+                                <option value="1000000000">1 Billion</option>
+                                <option value="50000000000">50 Billion</option>
+                                <option value="100000000000">100 Billion</option>
                                 </select>
                             </div>
                             <span class="icon is-small is-left">
@@ -85,8 +100,23 @@
                         <div class="control has-icons-left">
                           <div class="select selectbox is-small">
                               <select name="maxprice">
-                              <option>Price(Max)</option>
-                              <option>With options</option>
+                                <option value="9999999999999999999999999999999">Price(Max)</option>
+                                <option value="1000000">1 Million</option>
+                                <option value="2000000">2 Million</option>
+                                <option value="3000000">3 Million</option>
+                                <option value="4000000">4 Million</option>
+                                <option value="5000000">5 Million</option>
+                                <option value="6000000">6 Million</option>
+                                <option value="7000000">7 Million</option>
+                                <option value="8000000">8 Million</option>
+                                <option value="9000000">9 Million</option>
+                                <option value="10000000">10 Million</option>
+                                <option value="50000000">50 Million</option>
+                                <option value="100000000">100 Million</option>
+                                <option value="200000000">200 Million</option>
+                                <option value="1000000000">1 Billion</option>
+                                <option value="50000000000">50 Billion</option>
+                                <option value="100000000000">100 Billion</option>
                               </select>
                           </div>
                           <span class="icon is-small is-left">
@@ -102,7 +132,14 @@
                               <option value="3">3</option>
                               <option value="4">4</option>
                               <option value="5">5</option>
-                              <option value="6">More</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="13">More</option>
                               </select>
                           </div>
                           <span class="icon is-small is-left">
@@ -110,7 +147,7 @@
                           </span>
                         </div>
                         <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
+                            <input type="checkbox" name="swimmingpool" value="yes">
                             Swimming pool
                         </label>
                         <label class="checkbox checktext has-text-white">

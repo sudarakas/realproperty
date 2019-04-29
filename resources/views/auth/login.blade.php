@@ -100,7 +100,7 @@
 
             </div>
             <div class="is-centered has-text-centered">
-                <a class="button is-invertedis-uppercase is-outlined signupbuttonloginpage">&nbsp; &nbsp;  &nbsp; &nbsp; Sign Up &nbsp; &nbsp;  &nbsp; &nbsp;</a>
+                <a class="button is-invertedis-uppercase is-outlined signupbuttonloginpage" href="register">&nbsp; &nbsp;  &nbsp; &nbsp; Sign Up &nbsp; &nbsp;  &nbsp; &nbsp;</a>
             </div>
 
         </div>

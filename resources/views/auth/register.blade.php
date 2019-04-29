@@ -131,7 +131,7 @@
                             
                         </div>
                     <div class="is-centered has-text-centered">
-                        <a class="button is-invertedis-uppercase is-outlined signupbuttonloginpage">&nbsp; &nbsp;  &nbsp; &nbsp; Sign In &nbsp; &nbsp;  &nbsp; &nbsp;</a>
+                        <a class="button is-invertedis-uppercase is-outlined signupbuttonloginpage" href="login">&nbsp; &nbsp;  &nbsp; &nbsp; Sign In &nbsp; &nbsp;  &nbsp; &nbsp;</a>
                     </div>
                         
             </div>

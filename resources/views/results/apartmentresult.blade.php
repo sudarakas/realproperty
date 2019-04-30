@@ -111,9 +111,13 @@
 
     <div class="grayme">
         <div class="row printarea">
+            @if($apartments->count() > 0) 
             @foreach ($apartments as $apartment)
                 @include('results.apartmentthread') 
             @endforeach
+            @else
+                @include('results.noresult')
+            @endif
         </div>
     </div>
     {{-- Footer --}}

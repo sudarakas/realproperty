@@ -21,7 +21,9 @@ Route::get('/admin','AdminController@index')->name('admin.dashboard');
 Route::get('/admin/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 Route::post('/admin/login','Auth\AdminLoginController@login')->name('admin.login.submit');
 
+Route::name('/home')->get('/')->uses('PageController@index');
 Route::get('/home','PageController@index');
+Route::get('home','PageController@index');
 Route::get('/house','PageController@index');
 Route::get('/land','PageController@land');
 Route::get('/apartment','PageController@apartment');
@@ -78,6 +80,7 @@ Route::get('/building/{building}','BuildingController@viewBuilding');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');
+Route::post('/apartment/{apartment}','ApartmentController@searchApartment');
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');

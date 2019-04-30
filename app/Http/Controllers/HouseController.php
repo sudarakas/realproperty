@@ -54,9 +54,11 @@ class HouseController extends Controller
             $query->where('noOfRooms','>=', $room);
                   
         })->whereHas('property',function($query) use ($keyword){
-            $query->orwhere('postalCode', 'LIKE', $keyword)
-                  ->orWhere('province', 'LIKE', $keyword)
-                  ->orWhere('city', 'LIKE', $keyword);
+            $query->where(function($query) use ($keyword){
+                $query->orwhere('postalCode', 'LIKE', $keyword)
+                      ->orWhere('province', 'LIKE', $keyword)
+                      ->orWhere('city', 'LIKE', $keyword);
+            });
         })->whereHas('property',function($query) use ($minPrice,$maxPrice){
             
             $query->whereBetween('amount',array($minPrice,$maxPrice));

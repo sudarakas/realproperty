@@ -1,4 +1,4 @@
-<div style="text-align:center">![](https://github.com/sudarakas/realproperty/blob/master/public/img/logoblack.png)</div>
+![](https://github.com/sudarakas/realproperty/blob/master/public/img/logoblack.png)
 # Real Property - Project 3 - 1
     <center>
 	-Rules

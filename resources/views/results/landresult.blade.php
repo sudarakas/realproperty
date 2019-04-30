@@ -111,9 +111,13 @@
 
     <div class="grayme">
         <div class="row printarea">
+            @if($lands->count() > 0) 
             @foreach ($lands as $land)
                 @include('results.landthread') 
             @endforeach
+            @else
+                @include('results.noresult')
+            @endif
         </div>
     </div>
     {{-- Footer --}}

@@ -14,40 +14,6 @@
     <link rel="stylesheet" href="font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300i,400,400i,500,500i,600|Kanit:300,300i,400,400i,500,500i,600"
         rel="stylesheet"> {{-- Styles for No Result Page --}}
-    <style>
-        .noresult {
-            color: #7f8897;
-            font-family: Lato, sans-serif;
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            line-height: 1.5em;
-            text-align: center;
-            margin-bottom: 10%;
-        }
-
-        .wrap {
-            margin: 15% auto 0;
-            width: 80px;
-            height: 100px;
-        }
-
-        h2 {
-            font-size: 16px;
-            font-weight: 400;
-            text-transform: uppercase;
-            margin-top: 3em;
-        }
-
-        div.items {
-            font-size: 10px;
-        }
-        div.items:hover {
-            color: hsl(171, 100%, 41%) !important;
-            transition: color 2s;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -150,16 +116,7 @@
                 @include('results.thread') 
             @endforeach 
             @else
-            <div class="column noresult content">
-                <div class="wrap">
-                    <div class="items">
-                        <i class="fa fa-file fa-7x"></i>
-                    </div>
-                </div>
-                <h2>No results</h2>
-                <p><em>We searched far and wide and couldn't <br/>find anyone matching your search.</em></p>
-            </div>
-
+                @include('results.noresult')
             @endif
         </div>
     </div>

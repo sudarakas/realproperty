@@ -22,4 +22,15 @@ class ProfileController extends Controller
         }
         return view('profile.home', array('user'=> Auth::user()));
     }
+
+    public function loadUserDashboard(){
+
+        return view('profile.home', array('user' => Auth::user()));
+    }
+
+    public function editAccount()
+    {
+        return view('profile.home', array('user' => Auth::user()));
+    }
+    
 }

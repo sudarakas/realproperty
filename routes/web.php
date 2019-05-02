@@ -53,19 +53,7 @@ Route::post('/add/warehouse','PropertyController@addWarehouse');
 
 Route::get('/add/map','PageController@dismap');
 
-//Profile Section
-Route::get('/profile','PageController@profile')->middleware('auth');
-Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
-Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
-Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
-Route::get('/profile/message','PageController@myMessage')->middleware('auth');
-Route::get('/profile/message/view','PageController@viewMessage')->middleware('auth');
-Route::get('/profile/deleteaccount','PageController@deleteaccount')->middleware('auth');
-Route::get('/profile/myhouse','PageController@myhouse')->middleware('auth');
-Route::get('/profile/myland','PageController@myland')->middleware('auth');
-Route::get('/profile/myapartment','PageController@myapartment')->middleware('auth');
-Route::get('/profile/mybuilding','PageController@mybuilding')->middleware('auth');
-Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('auth');
+
 
 Route::get('/house/serach','PageController@housesearch');
 Route::get('/house/{house}','HouseController@viewHouse');
@@ -90,9 +78,23 @@ Route::post('/warehouse/{warehouse}','WarehouseController@searchWarehouse');
 
 Route::post('/search','PageController@store');
 Route::post('/sendmessage','MessageController@store');
+
+//User Profile Section
+Route::get('/profile','ProfileController@loadUserDashboard')->middleware('auth');
+Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
+Route::get('/profile/editaccount','ProfileController@editAccount')->middleware('auth');
+Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
+Route::get('/profile/message','PageController@myMessage')->middleware('auth');
+Route::get('/profile/message/view','PageController@viewMessage')->middleware('auth');
+Route::get('/profile/deleteaccount','PageController@deleteaccount')->middleware('auth');
+Route::get('/profile/myhouse','PageController@myhouse')->middleware('auth');
+Route::get('/profile/myland','PageController@myland')->middleware('auth');
+Route::get('/profile/myapartment','PageController@myapartment')->middleware('auth');
+Route::get('/profile/mybuilding','PageController@mybuilding')->middleware('auth');
+Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('auth');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 
-
+//Admin Panel
 Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth');
 
 

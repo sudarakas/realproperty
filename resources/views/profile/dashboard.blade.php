@@ -6,6 +6,26 @@
                 <li class="is-active"><a href="/profile">Dashboard</a></li>
             </ul>
         </nav>
+        @if($user->NIC==null || $user->description==null || $user->address==null || $user->city==null || $user->gender==null || $user->NIC==null || $user->birthday==null || $user->phoneNo==null)
+        <div class="columns is-mobile is-centered content">
+            <div class="column is-half">
+                <div class="notification is-warning">
+                    <button class="delete"></button> {{ __('Please complete your profile,')
+                    }} <a href="/profile/editaccount">click here to complete</a></div>
+
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                        $notification = $delete.parentNode;
+                        $delete.addEventListener('click', () => {
+                            $notification.parentNode.removeChild($notification);
+                        });
+                    });
+                });
+            </script>
+        </div>
+      @endif
         <div class="columns dashboxes profileback">
             <div class="column has-text-centered selecticon">
               <span class="icon has-text-centered is-large">
@@ -53,21 +73,21 @@
                 <th>Property Name</th>
                 <th>Property Location</th>
                 <th>Property type</th>
-                <th>Current Bid</th>
-                <th>Bidded User</th>
-                <th>Contact Bidder</th>
+                <th>Current Offer</th>
+                <th>Offered User</th>
+                <th>Contact</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                  <th>No</th>
-                  <th>Property ID</th>
-                  <th>Property Name</th>
-                  <th>Property Location</th>
-                  <th>Property type</th>
-                  <th>Current Bid</th>
-                  <th>Bidded User</th>
-                  <th>Contact Bidder</th>
+                <th>No</th>
+                <th>Property ID</th>
+                <th>Property Name</th>
+                <th>Property Location</th>
+                <th>Property type</th>
+                <th>Current Offer</th>
+                <th>Offered User</th>
+                <th>Contact</th>
               </tr>
             </tfoot>
             <tbody>

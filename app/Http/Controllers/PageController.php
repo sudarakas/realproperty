@@ -104,10 +104,6 @@ class PageController extends Controller
     
 
     // Profile Page Methods
-    public function profile()
-    {
-        return view('profile.home', array('user' => Auth::user()));
-    }
 
     public function changePassword()
     {

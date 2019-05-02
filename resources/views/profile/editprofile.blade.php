@@ -15,31 +15,31 @@
             <p class="control has-icons-left">
               <input class="input" type="text" placeholder="Name">
               <span class="icon is-small is-left">
-                                                    <i class="fas fa-lock"></i>
-                                                  </span>
+                    <i class="fas fa-lock"></i>
+              </span>
             </p>
           </div>
           <div class="field">
             <p class="control has-icons-left">
               <input class="input" type="email" placeholder="Email">
               <span class="icon is-small is-left">
-                                                        <i class="fas fa-lock"></i>
-                                                      </span>
+                <i class="fas fa-lock"></i>
+              </span>
             </p>
           </div>
           <div class="field">
             <p class="control has-icons-left">
               <input class="input" type="text" placeholder="New Password Again">
               <span class="icon is-small is-left">
-                                                            <i class="fas fa-lock"></i>
-                                                          </span>
+                <i class="fas fa-lock"></i>
+               </span>
             </p>
           </div>
           <div class="field">
             <p class="control has-text-centered">
               <button class="button is-success">
-                                                    <span class="buttonspace">Save</span>
-                                                  </button>
+                <span class="buttonspace">Save</span>
+              </button>
             </p>
           </div>
         </form>

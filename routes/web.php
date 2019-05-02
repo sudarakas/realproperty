@@ -85,7 +85,7 @@ Route::post('/apartment/{apartment}','ApartmentController@searchApartment');
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');
-
+Route::post('/warehouse/{warehouse}','WarehouseController@searchWarehouse');
 
 
 Route::post('/search','PageController@store');

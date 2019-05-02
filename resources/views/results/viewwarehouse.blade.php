@@ -65,10 +65,12 @@
                                     <p>Property Type: <span class="has-text-weight-semibold">{{$warehouse->property->type}}</span></p>
                                     <p>Area of Property(Square Feet): <span class="has-text-weight-semibold">{{$warehouse->size}}</span></p>
                                     <p>Agreement Type: <span class="has-text-weight-semibold">{{$warehouse->agreement}}</span></p>
+                                    <p>Electricity: <span class="has-text-weight-semibold">{{$warehouse->electricity}}</span></p>
+                                    <p>Parking Area: <span class="has-text-weight-semibold">{{$warehouse->parkingArea}}</span></p>
                                 </div>
                                 <div class="column">
                                     <p>Electricity: <span class="has-text-weight-semibold">{{$warehouse->electricity}}</span></p>
-                                    <p>Parking Area:: <span class="has-text-weight-semibold">{{$warehouse->parkingArea}}</span></p>
+                                    <p>Parking Area: <span class="has-text-weight-semibold">{{$warehouse->parkingArea}}</span></p>
                                     <p>Availability: @if(strcmp($warehouse->property->availability,"YES") == 0)
                                         <span class="has-text-weight-semibold has-text-success">
                                             {{$warehouse->property->availability}}

@@ -248,7 +248,7 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label for="name">Car Park</label>
+                            <label for="name">Parking Area</label>
                             <br>
                             <div class="select is-primary">
                                 <select name="carpark">

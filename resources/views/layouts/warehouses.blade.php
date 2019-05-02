@@ -38,17 +38,17 @@
                         </a>
                       </li>
                       <li class="deadtabitem">
-                        <a>
+                        <a href="/apartment">
                           <span class="has-text-white">Apartments</span>
                         </a>
                       </li>
                       <li class="deadtabitem">
-                        <a>
+                        <a href="/building">
                           <span class="has-text-white">Buildings</span>
                         </a>
                       </li>
                       <li class="is-active has-background-primary tabitem">
-                        <a>
+                        <a href="/warehouse">
                           <span class="has-text-white">Warehouses</span>
                         </a>
                       </li>
@@ -56,7 +56,7 @@
                   </div>
                   
                   {{-- Search Box --}}
-                <form method="POST" action="/search">
+                <form method="POST" action="/warehouse/search">
                   @csrf
                     <div class="field has-addons searchinput">
                         <p class="control has-icons-left is-expanded">
@@ -73,10 +73,25 @@
                     <div class="field has-addons">
                         <div class="control has-icons-left">
                             <div class="select selectbox is-small">
-                                <select>
-                                <option>Price(Min)</option>
-                                <option>With options</option>
-                                </select>
+                                <select name="minprice">
+                                    <option value="0">Price(Min)</option>
+                                    <option value="1000000">1 Million</option>
+                                    <option value="2000000">2 Million</option>
+                                    <option value="3000000">3 Million</option>
+                                    <option value="4000000">4 Million</option>
+                                    <option value="5000000">5 Million</option>
+                                    <option value="6000000">6 Million</option>
+                                    <option value="7000000">7 Million</option>
+                                    <option value="8000000">8 Million</option>
+                                    <option value="9000000">9 Million</option>
+                                    <option value="10000000">10 Million</option>
+                                    <option value="50000000">50 Million</option>
+                                    <option value="100000000">100 Million</option>
+                                    <option value="200000000">200 Million</option>
+                                    <option value="1000000000">1 Billion</option>
+                                    <option value="50000000000">50 Billion</option>
+                                    <option value="100000000000">100 Billion</option>
+                                    </select>
                             </div>
                             <span class="icon is-small is-left">
                               <i class="fas fa-dollar-sign"></i>
@@ -84,41 +99,37 @@
                         </div>
                         <div class="control has-icons-left">
                           <div class="select selectbox is-small">
-                              <select>
-                              <option>Price(Max)</option>
-                              <option>With options</option>
-                              </select>
+                              <select name="maxprice">
+                                  <option value="9999999999999999999999999999999">Price(Max)</option>
+                                  <option value="1000000">1 Million</option>
+                                  <option value="2000000">2 Million</option>
+                                  <option value="3000000">3 Million</option>
+                                  <option value="4000000">4 Million</option>
+                                  <option value="5000000">5 Million</option>
+                                  <option value="6000000">6 Million</option>
+                                  <option value="7000000">7 Million</option>
+                                  <option value="8000000">8 Million</option>
+                                  <option value="9000000">9 Million</option>
+                                  <option value="10000000">10 Million</option>
+                                  <option value="50000000">50 Million</option>
+                                  <option value="100000000">100 Million</option>
+                                  <option value="200000000">200 Million</option>
+                                  <option value="1000000000">1 Billion</option>
+                                  <option value="50000000000">50 Billion</option>
+                                  <option value="100000000000">100 Billion</option>
+                                </select>
                           </div>
                           <span class="icon is-small is-left">
                             <i class="fas fa-dollar-sign"></i>
                           </span>
                         </div>
-                        <div class="control has-icons-left">
-                          <div class="select selectbox is-small">
-                              <select>
-                              <option>Rooms</option>
-                              <option>With options</option>
-                              </select>
-                          </div>
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-walking"></i>
-                          </span>
-                        </div>
                         <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
-                            Swimming pool
+                            <input type="checkbox" name="electricity">
+                            3 Phase Electricity
                         </label>
                         <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
-                            Garage
-                        </label>
-                        <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
-                            Balcony
-                        </label>
-                        <label class="checkbox checktext has-text-white">
-                            <input type="checkbox">
-                            Outdoor area
+                            <input type="checkbox" name="parkingarea">
+                            Parking Area
                         </label>
                     </div>
                     <br>
@@ -135,7 +146,7 @@
                  </p>
                  <br>
                  <p class="control">
-                    <a class="button is-primary is-inverted is-outlined loginbutton" href="/">
+                    <a class="button is-primary is-inverted is-outlined loginbutton" href="/blog">
                       <span>Read</span>
                     </a>
                   </p>
@@ -177,7 +188,7 @@
         </div>
           Subscribe our blog to get prefect house tips
           <div class="marginten">
-            <a href="/" class="has-text-info marginten">Visit Blog</a>
+            <a href="/blog" class="has-text-info marginten">Visit Blog</a>
           </div>
       </div>
       <div class="column has-text-centered">
@@ -190,7 +201,7 @@
         </div>
         Register now, sell your house,land or apartments easily and free
         <div class="marginten">
-            <a href="/" class="has-text-info marginten">Register Now</a>
+            <a href="register" class="has-text-info marginten">Register Now</a>
         </div>
       </div>
       <div class="column"></div>
@@ -205,7 +216,7 @@
         <h1 class="title is-1 has-text-white has-text-centered maketheir">Make Thier</h1>
         <h2 class="title is-2 has-text-white has-text-centered futurebetter">Future Better!</h2>
         <p class="control has-text-centered">
-          <a class="button is-primary is-inverted has-text-centered is-outlined signbuttonbelow" href="/">
+          <a class="button is-primary is-inverted has-text-centered is-outlined signbuttonbelow" href="register">
               <span>Join</span>
             </a>
           </p>

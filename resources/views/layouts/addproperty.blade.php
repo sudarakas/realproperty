@@ -37,7 +37,7 @@
                     <div class="subtitle">Land</div>
                 </div>
             </a>
-            <a href="http://" class="column gapme has-text-centered selectboxx">
+            <a href="add/building" class="column gapme has-text-centered selectboxx">
                 <div>
                     <i class="far fa-building fa-5x"></i>
                     <br>
@@ -47,14 +47,14 @@
         </div>
         <br>
         <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd is-centered">
-            <a href="http://" class="column gapme has-text-centered selectboxx is-one-third">
+            <a href="add/apartment" class="column gapme has-text-centered selectboxx is-one-third">
                 <div>
                     <i class="fas fa-bed fa-5x"></i>
                     <br>
                     <div class="subtitle">Apartment</div>
                 </div>
             </a>
-            <a href="http://" class="column gapme has-text-centered selectboxx is-one-third">
+            <a href="add/warehouse" class="column gapme has-text-centered selectboxx is-one-third">
                 <div>
                     <i class="fas fa-warehouse fa-5x"></i>
                     <br>

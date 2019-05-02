@@ -63,10 +63,11 @@
                             <div class="columns">
                                 <div class="column detailscolumn">
                                     <p>Property Type: <span class="has-text-weight-semibold">{{$building->property->type}}</span></p>
-                                    <p>Bedrooms: <span class="has-text-weight-semibold">{{$building->noOfRooms}}</span></p>
-                                    <p>Kitchen: <span class="has-text-weight-semibold">{{$building->noOfKitchen}}</span></p>
-                                    <p>No. of Washrooms: <span class="has-text-weight-semibold">{{$building->noOfWashrooms}}</span></p>
-                                    <p>Area of Property(Square Feet): <span class="has-text-weight-semibold">{{$building->size}}</span></p>
+                                    <p>Agreement Type : <span class="has-text-weight-semibold">{{$building->agreement}}</span></p>
+                                    <p>Lift: <span class="has-text-weight-semibold">{{$building->lift}}</span></p>
+                                    <p>Car Park: <span class="has-text-weight-semibold">{{$building->carPark}}</span></p>
+                                    <p>No. of Floors: <span class="has-text-weight-semibold">{{$building->noOfFloors}}</span></p>
+                                    <p>Floor Size(Square Feet): <span class="has-text-weight-semibold">{{$building->floorSize}}</span></p>
                                 </div>
                                 <div class="column">
                                     <p>Nearest School: <span class="has-text-weight-semibold">{{$building->nearestSchool}}</span></p>
@@ -150,12 +151,11 @@
                             </style>
                         </div>
                         <br>
-                        
+
                     </div>
                 </div>
                 <a class="button is-info nounnounderlinebtn" href="http://www.google.com/maps/place/{{$building->property->latitude}},{{$building->property->longitude}}"
-                    target="_blank">Set Direction</a>
-                {{-- </div> --}}
+                    target="_blank">Set Direction</a> {{-- </div> --}}
             <hr>
             <div class="subtitle has-text-weight-semibold">Property Description</div>
             <div class="column is-flex-mobile">

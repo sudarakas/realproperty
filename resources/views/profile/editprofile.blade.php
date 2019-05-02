@@ -6,11 +6,33 @@
       <li class="is-active"><a href="/profile">Edit Account</a></li>
     </ul>
   </nav>
+  <div class="columns is-mobile is-centered">
+      <div class="column is-half">
+          @include('layouts.errors') 
+          @if(session()->has('message'))
+          <div class="notification is-success">
+              <button class="delete"></button>
+              <h1 class="is-size-7"><b> {{ session()->get('message') }}</b></h1>
+          </div>
+          @endif
+      </div>
+      <script>
+          document.addEventListener('DOMContentLoaded', () => {
+              (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                  $notification = $delete.parentNode;
+                  $delete.addEventListener('click', () => {
+                      $notification.parentNode.removeChild($notification);
+                  });
+              });
+          });
+      </script>
+  </div>
   <div class="card cardmargin">
     <div class="containerx">
       <h1 class="title has-text-centered">Edit Your Account</h1>
       <div class="centerinputbox">
-        <form action="" method="post">
+        <form action="/profile/updateAccount" method="post">
+          @csrf
           <div class="field">
             <label class="label">Name</label>
             <p class="control has-icons-left">
@@ -100,14 +122,13 @@
       </div>
       <div class="field">
         <p class="control has-text-centered">
-          <button class="button is-success">
+          <button type="submit" class="button is-success">
                 <span class="buttonspace">Save</span>
-              </button>
+          </button>
         </p>
       </div>
       </form>
     </div>
   </div>
 </div>
-
 </div>

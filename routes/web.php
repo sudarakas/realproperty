@@ -82,7 +82,7 @@ Route::post('/sendmessage','MessageController@store');
 //User Profile Section
 Route::get('/profile','ProfileController@loadUserDashboard')->middleware('auth');
 Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
-Route::get('/profile/editaccount','ProfileController@editAccount')->middleware('auth');
+Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
 Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
 Route::get('/profile/message','PageController@myMessage')->middleware('auth');
 Route::get('/profile/message/view','PageController@viewMessage')->middleware('auth');
@@ -93,6 +93,8 @@ Route::get('/profile/myapartment','PageController@myapartment')->middleware('aut
 Route::get('/profile/mybuilding','PageController@mybuilding')->middleware('auth');
 Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('auth');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
+
+Route::post('/profile/updateAccount','ProfileController@updateAccount')->middleware('auth');
 
 //Admin Panel
 Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth');

@@ -3,47 +3,111 @@
   <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
     <ul>
       <li><a href="/profile">Profile</a></li>
-      <li class="is-active"><a href="/profile">Change Password</a></li>
+      <li class="is-active"><a href="/profile">Edit Account</a></li>
     </ul>
   </nav>
   <div class="card cardmargin">
     <div class="containerx">
-      <h1 class="title has-text-centered"> Change Your Password</h1>
+      <h1 class="title has-text-centered">Edit Your Account</h1>
       <div class="centerinputbox">
         <form action="" method="post">
           <div class="field">
+            <label class="label">Name</label>
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Name">
+              <input class="input" type="text" value="{{$user->name}}" placeholder="Your Name" name="name">
               <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
+                <i class="fas fa-user"></i>
               </span>
             </p>
           </div>
           <div class="field">
+              <label class="label">Email</label>
             <p class="control has-icons-left">
-              <input class="input" type="email" placeholder="Email">
+              <input class="input" type="email" value="{{$user->email}}" placeholder="Your Email" name="email">
               <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
+                <i class="fas fa-at"></i>
               </span>
             </p>
           </div>
           <div class="field">
+              <label class="label">Description (Max 100 Words)</label>
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="New Password Again">
+              <input class="input" type="text" value="{{$user->description}}" placeholder="Your Description (Max 100 Words)" name="descrption">
               <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-               </span>
+                    <i class="fas fa-address-card"></i>
+                </span>
             </p>
-          </div>
-          <div class="field">
-            <p class="control has-text-centered">
-              <button class="button is-success">
-                <span class="buttonspace">Save</span>
-              </button>
-            </p>
-          </div>
-        </form>
+      </div>
+      <div class="field">
+          <label class="label">NIC</label>
+        <p class="control has-icons-left">
+          <input class="input" type="text" value="{{$user->NIC}}" placeholder="NIC" name="nic">
+          <span class="icon is-small is-left">
+            <i class="fas fa-id-badge"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+          <label class="label">Address</label>
+        <p class="control has-icons-left">
+          <input class="input" type="text" value="{{$user->address}}" placeholder="Address" name="address">
+          <span class="icon is-small is-left">
+            <i class="fas fa-location-arrow"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+          <label class="label">City</label>
+        <p class="control has-icons-left">
+          <input class="input" type="text" value="{{$user->city}}" placeholder="City" name="city">
+          <span class="icon is-small is-left">
+            <i class="fas fa-thumbtack"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+          <label class="label">Birthday</label>
+        <p class="control has-icons-left">
+          <input class="input" type="date" value="{{$user->address}}"  name="birthday">
+          <span class="icon is-small is-left">
+            <i class="fas fa-calendar-alt"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+          <label class="label">Gender</label>
+        <div class="control has-icons-left">
+          <div class="select">
+          <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+          <span class="icon is-small is-left">
+            <i class="fas fa-venus-mars"></i>
+          </span>
       </div>
     </div>
+    </div>
+    <div class="field">
+          <label class="label">Phone No</label>
+        <p class="control has-icons-left">
+          <input class="input" type="text" value="{{$user->phoneNo}}" placeholder="Phone No" name="phoneno">
+          <span class="icon is-small is-left">
+            <i class="fas fa-phone-volume"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-text-centered">
+          <button class="button is-success">
+                <span class="buttonspace">Save</span>
+              </button>
+        </p>
+      </div>
+      </form>
+    </div>
   </div>
+</div>
+
 </div>

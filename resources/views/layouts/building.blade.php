@@ -44,12 +44,12 @@
                         </a>
               </li>
               <li class="is-active has-background-primary tabitem">
-                <a>
+                <a href="/building">
                           <span class="has-text-white">Buildings</span>
                         </a>
               </li>
               <li class="deadtabitem">
-                <a>
+                <a href="/warehouse">
                           <span class="has-text-white">Warehouses</span>
                         </a>
               </li>
@@ -170,7 +170,7 @@
           </p>
           <br>
           <p class="control">
-            <a class="button is-primary is-inverted is-outlined loginbutton" href="/">
+            <a class="button is-primary is-inverted is-outlined loginbutton" href="/blog">
                       <span>Read</span>
                     </a>
           </p>
@@ -212,7 +212,7 @@
       </div>
       Subscribe our blog to get prefect house tips
       <div class="marginten">
-        <a href="/" class="has-text-info marginten">Visit Blog</a>
+        <a href="/blog" class="has-text-info marginten">Visit Blog</a>
       </div>
     </div>
     <div class="column has-text-centered">
@@ -225,7 +225,7 @@
       </div>
       Register now, sell your house,land or apartments easily and free
       <div class="marginten">
-        <a href="/" class="has-text-info marginten">Register Now</a>
+        <a href="register" class="has-text-info marginten">Register Now</a>
       </div>
     </div>
     <div class="column"></div>
@@ -240,7 +240,7 @@
       <h1 class="title is-1 has-text-white has-text-centered maketheir">Make Thier</h1>
       <h2 class="title is-2 has-text-white has-text-centered futurebetter">Future Better!</h2>
       <p class="control has-text-centered">
-        <a class="button is-primary is-inverted has-text-centered is-outlined signbuttonbelow" href="/">
+        <a class="button is-primary is-inverted has-text-centered is-outlined signbuttonbelow" href="register">
               <span>Join</span>
             </a>
       </p>

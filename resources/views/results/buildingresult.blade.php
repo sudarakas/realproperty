@@ -111,21 +111,12 @@
 
     <div class="grayme">
         <div class="row printarea">
-            @if($houses->count() > 0) 
+            @if($buildings->count() > 0)
             @foreach ($buildings as $building)
                 @include('results.buildingthread') 
             @endforeach
             @else
-            <div class="column noresult content">
-                <div class="wrap">
-                    <div class="items">
-                        <i class="fa fa-file fa-7x"></i>
-                    </div>
-                </div>
-                <h2>No results</h2>
-                <p><em>We searched far and wide and couldn't <br/>find anyone matching your search.</em></p>
-            </div>
-
+                @include('results.buildingresult')
             @endif
         </div>
     </div>

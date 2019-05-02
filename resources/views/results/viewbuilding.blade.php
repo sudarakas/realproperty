@@ -63,16 +63,12 @@
                             <div class="columns">
                                 <div class="column detailscolumn">
                                     <p>Property Type: <span class="has-text-weight-semibold">{{$building->property->type}}</span></p>
-                                    <p>Tap Water: <span class="has-text-weight-semibold">{{$building->tapwater}}</span></p>
-                                    <p>Electricity: <span class="has-text-weight-semibold">{{$building->electricity}}</span></p>
-                                    <p>Agreement Type: <span class="has-text-weight-semibold">{{$building->agreement}}</span></p>
-                                    <p>Floor Size(Square Feet): <span class="has-text-weight-semibold">{{$building->floorSize}}</span></p>
-                                    <p>Lift: <span class="has-text-weight-semibold">{{$building->lift}}</span></p>
-                                    <p>Car Park: <span class="has-text-weight-semibold">{{$building->carPark}}</span></p>
+                                    <p>Bedrooms: <span class="has-text-weight-semibold">{{$building->noOfRooms}}</span></p>
+                                    <p>Kitchen: <span class="has-text-weight-semibold">{{$building->noOfKitchen}}</span></p>
+                                    <p>No. of Washrooms: <span class="has-text-weight-semibold">{{$building->noOfWashrooms}}</span></p>
+                                    <p>Area of Property(Square Feet): <span class="has-text-weight-semibold">{{$building->size}}</span></p>
                                 </div>
                                 <div class="column">
-                                    
-                                    <p>No of Floors: <span class="has-text-weight-semibold">{{$building->noOfFloors}}</span></p>
                                     <p>Nearest School: <span class="has-text-weight-semibold">{{$building->nearestSchool}}</span></p>
                                     <p>Nearest Busstop: <span class="has-text-weight-semibold">{{$building->nearestRailway}}</span></p>
                                     <p>Nearest Railway Station: <span class="has-text-weight-semibold">{{$building->nearestBusStop}}</span></p>

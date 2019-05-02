@@ -40,22 +40,50 @@
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <a class="button is-primary is-inverted is-outlined signupbutton" target="_blank" href="/">
-                <span>
-                  Sign in
-                </span>
-              </a>
-          </p>
-          <p class="control">
-            <a class="button is-primary is-inverted is-outlined loginbutton" href="/">
-                <span>Join</span>
-              </a>
-          </p>
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            @guest
+            <p class="control">
+              <a class="button is-primary is-inverted is-outlined signupbutton" href="{{ route('login') }}">
+                      <span>
+                        Sign in
+                      </span>
+                    </a>
+            </p>
+            @if (Route::has('register'))
+            <p class="control">
+              <a class="button is-primary is-inverted is-outlined loginbutton" href="{{ route('register') }}">
+                      <span>Join</span>
+                    </a>
+            </p>
+            @endif @else
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button is-primary is-inverted is-outlined usermenu" aria-haspopup="true" aria-controls="dropdown-menu3">
+                          <span>{{ Auth::user()->name }}</span>
+                          <span class="icon is-small">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                          </span>
+                        </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                <div class="dropdown-content">
+                  <a href="/profile" target="_blank" class="dropdown-item">My Profile</a>
+                  <a href="/add" class="dropdown-item">Add Property</a>
+                  <a href="/profile/changepassword" target="_blank" class="dropdown-item">Change Password</a>
+                  <a href="/contactus" class="dropdown-item">Contact</a>
+                  <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            Logout
+                          </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
+                </div>
+              </div>
+            </div>
+            @endguest
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>

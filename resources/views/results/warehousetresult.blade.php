@@ -111,9 +111,13 @@
 
     <div class="grayme">
         <div class="row printarea">
+            @if($warehouses->count() > 0) 
             @foreach ($warehouses as $warehouse)
                 @include('results.warehousethread') 
             @endforeach
+            @else
+                @include('results.noresult')
+            @endif
         </div>
     </div>
     {{-- Footer --}}

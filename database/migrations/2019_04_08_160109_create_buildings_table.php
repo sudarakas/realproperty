@@ -17,7 +17,7 @@ class CreateBuildingsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('property_id');
             $table->string('agreement');
-            $table->string('noOfFloors');
+            $table->integer('noOfFloors');
             $table->string('lift');
             $table->string('carPark');
             $table->integer('floorSize');

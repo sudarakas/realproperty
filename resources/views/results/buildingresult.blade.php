@@ -116,7 +116,7 @@
                 @include('results.buildingthread') 
             @endforeach
             @else
-                @include('results.buildingresult')
+                @include('results.noresult')
             @endif
         </div>
     </div>

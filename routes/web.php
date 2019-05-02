@@ -95,6 +95,7 @@ Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('aut
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 
 Route::post('/profile/updateAccount','ProfileController@updateAccount')->middleware('auth');
+Route::post('/profile/updatepassword','ProfileController@changePassword')->middleware('auth');
 
 //Admin Panel
 Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth');

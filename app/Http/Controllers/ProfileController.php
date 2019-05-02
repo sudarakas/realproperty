@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 use Image;
 use App\User;
@@ -57,6 +58,34 @@ class ProfileController extends Controller
         $user->save();
 
         return back()->with('message', 'Your account has been successfully updated!');
+    }
+
+    public function changePassword(Request $request){
+
+        $request->validate([
+
+            'password' => 'required|string|min:8|confirmed',
+            'current_password' => 'required',
+        ]);
+
+        if(!(Hash::check(request('current_password'),Auth::user()->password))){
+
+            return back()->with("errormsg","Your current password does not matches with the password you provided. Please try again.");
+            
+        }
+
+        if(strcmp(request('current_password'),request('password')) == 0){
+
+            return back()->with("warningmsg","New Password cannot be same as your current password. Please choose a different password.");
+            
+        }
+
+        $user = Auth::user();
+        $user->password = Hash::make(request('password'));
+        $user->save();
+
+        return back()->with("success","Password changed successfully !");
+
     }
     
 }

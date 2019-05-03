@@ -587,6 +587,7 @@ figure.profileavatar figcaption::before {
 .selecticon:hover{
     color: var(--basicolor) !important;
     transition: color 1.2s;
+    cursor: pointer;
 }
 
 .tableshow{
@@ -823,7 +824,14 @@ figure.profileavatar figcaption::before {
     text-decoration: none !important;
     color: #000;
 }
+.nolinecolor{
+    text-decoration: none !important;
+    color: #000 !important;
+}
 
+.nolinecolor:hover{
+    color: var(--basicolor);
+}
 
 /* Admin Panel Styles */
 .adminsidebar{

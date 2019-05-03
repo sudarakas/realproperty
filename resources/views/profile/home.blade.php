@@ -31,7 +31,7 @@
                 </p>
                 <ul class="menu-list listitem is-size-6">
                   <li><a href="/profile">Dashboard</a></li>
-                  <li><a href="/profile">My Bids</a></li>
+                  <li><a href="/profile">My Offers</a></li>
                 </ul>
                 <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   Administration

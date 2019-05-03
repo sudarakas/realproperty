@@ -27,37 +27,37 @@
         </div>
       @endif
         <div class="columns dashboxes profileback">
-            <div class="column has-text-centered selecticon">
+            <div class="column has-text-centered selecticon" onclick="location.href='/add'">
               <span class="icon has-text-centered is-large">
                 <i class="fas fa-home fa-4x"></i>
               </span>
               <h6 class="is-uppercase has-text-weight-bold">Sell Yours</h6>
             </div>
-            <div class="column has-text-centered selecticon">
+            <div class="column has-text-centered selecticon" onclick="location.href='/profile/myfavorite'">
               <span class="icon has-text-centered is-large">
                 <i class="fas fa-heart fa-4x"></i>
               </span>
               <h6 class="is-uppercase has-text-weight-bold">Favorites</h6>
             </div>
-            <div class="column has-text-centered selecticon">
+            <div class="column has-text-centered selecticon" onclick="location.href='/profile/inbox'">
               <span class="icon has-text-centered is-large">
                 <i class="fas fa-comments fa-4x"></i>
               </span>
               <h6 class="is-uppercase has-text-weight-bold">Inbox</h6>
             </div>
-            <div class="column has-text-centered selecticon">
+            <div class="column has-text-centered selecticon" onclick="location.href='/profile/editaccount'">
               <span class="icon has-text-centered is-large">
                 <i class="fas fa-edit fa-4x"></i>
               </span>
               <h6 class="is-uppercase has-text-weight-bold">Edit Profile</h6>
             </div>
-            <div class="column has-text-centered selecticon">
+            <div class="column has-text-centered selecticon" onclick="location.href='/profile/sold'">
               <span class="iicon has-text-centered is-large">
                 <i class="far fa-check-circle fa-4x"></i>
               </span>
               <h6 class="is-uppercase has-text-weight-bold">Mark Sold</h6>
             </div>
-            <div class="column has-text-centered selecticon">
+            <div class="column has-text-centered selecticon" onclick="location.href='/'">
               <span class="icon has-text-centered is-large">
                 <i class="fas fa-search fa-4x"></i>
               </span>

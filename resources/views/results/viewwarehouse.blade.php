@@ -96,7 +96,9 @@
                                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($warehouse->property->amount,2)}}</span>                                            LKR</p>
                                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">   
                                                 @if ($warehouse->offers->count() > 0)
-                                                    {{number_format($warehouse->offers->sortBy('offerAmount')->last()->offerAmount)}}
+                                                    {{number_format($warehouse->offers->sortBy('offerAmount')->last()->offerAmount,2)}}
+                                                @else
+                                                    0.00
                                                 @endif
                                                 0.00
                                             </span> LKR</p>
@@ -125,9 +127,10 @@
                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($warehouse->property->amount,2)}}</span>                            LKR</p>
                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">   
                                 @if ($warehouse->offers->count() > 0)
-                                    {{number_format($warehouse->offers->sortBy('offerAmount')->last()->offerAmount)}}
+                                    {{number_format($warehouse->offers->sortBy('offerAmount')->last()->offerAmount,2)}}
+                                @else
+                                    0.00
                                 @endif
-                                0.00
                             </span> LKR</p>
                             <div id="myBtn"><button class="button is-link">Make an offer</button></div>
                             <br>
@@ -307,7 +310,9 @@
     </div>
     </div>
     {{-- Footer --}}
-    @include('layouts.footer') {{-- JavaScript Files --}}
+    @include('layouts.footer')
+    @include('layouts.offerwarehouse')  
+    {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>

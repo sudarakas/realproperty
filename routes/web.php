@@ -78,6 +78,7 @@ Route::post('/apartment/{apartment}/offer','OfferController@apartmentOffer');
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');
 Route::post('/warehouse/{warehouse}','WarehouseController@searchWarehouse');
+Route::post('/warehouse/{warehouse}/offer','OfferController@warehouseOffer');
 
 
 Route::post('/search','PageController@store');

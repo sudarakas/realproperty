@@ -96,9 +96,8 @@
                                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($land->property->amount,2)}}</span>                                            LKR</p>
                                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">   
                                                 @if ($land->offers->count() > 0)
-                                                    {{number_format($land->offers->sortBy('offerAmount')->last()->offerAmount)}}
+                                                    {{number_format($land->offers->sortBy('offerAmount')->last()->offerAmount,2)}}
                                                 @endif
-                                                0.00
                                             </span> LKR</p>
                                         <div id="myBtnM"><button class="button is-link">Make an offer</button></div>
                                     </div>
@@ -122,12 +121,10 @@
                         <p class="has-text-dark customerpno" id="pno"><a href="tel:{{$land->property->contactNo}}" class="nounnounderlinelink">{{$land->property->contactNo}}</a></p>
                         <hr>
                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($land->property->amount,2)}}</span>                            LKR</p>
-                        <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">4500000.00</span> LKR</p>
                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">   
                                 @if ($land->offers->count() > 0)
-                                    {{number_format($land->offers->sortBy('offerAmount')->last()->offerAmount)}}
+                                    {{number_format($land->offers->sortBy('offerAmount')->last()->offerAmount,2)}}
                                 @endif
-                                0.00
                             </span> LKR</p>
                             <div id="myBtn"><button class="button is-link">Make an offer</button></div>
                             <br>
@@ -138,6 +135,12 @@
                                     <div class="notification is-success">
                                         <button class="deletex delete"></button>
                                         <h1 class="is-size-7"><b> {{ session()->get('success') }}</b></h1>
+                                    </div>
+                                    @endif
+                                    @if(session()->has('warning'))
+                                    <div class="notification is-warning">
+                                        <button class="deletex delete"></button>
+                                        <h1 class="is-size-7"><b> {{ session()->get('warning') }}</b></h1>
                                     </div>
                                     @endif
                                 </div>
@@ -318,7 +321,9 @@
     </div>
     </div>
     {{-- Footer --}}
-    @include('layouts.footer') {{-- JavaScript Files --}}
+    @include('layouts.footer')
+    @include('layouts.offerland')
+    {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>

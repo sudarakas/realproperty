@@ -5,13 +5,13 @@
                 </div>
                 <p class="title is-6 has-text-centered">Submit your offer</p>
                 <p class="subtitle is-7 has-text-danger has-text-centered">Important : Your offer should be higher than current offer</p>
-                <form action="/house/{{$house->id}}/offer" method="post">
+                <form action="/building/{{$building->id}}/offer" method="post">
                   @csrf
                   <div class="field">
                     <div class="control column is-8 is-offset-2">
                         <input class="input is-7" name="offeramount" type="text" placeholder="Enter Your Offer Amount">
-                        <input name="propertyid" type="text" value="{{$house->property_id}}" hidden>
-                        <input name="houseid" type="text" value="{{$house->id}}"hidden>
+                        <input name="propertyid" type="text" value="{{$building->property_id}}" hidden>
+                        <input name="buildingid" type="text" value="{{$building->id}}"hidden>
                     </div>
                 </div>
                 <div class="field is-centered has-text-centered">

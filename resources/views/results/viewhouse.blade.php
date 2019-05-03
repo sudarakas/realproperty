@@ -100,7 +100,9 @@
                                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                                            LKR</p>
                                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">   
                                                 @if ($house->offers->count() > 0)
-                                                    {{number_format($house->offers->sortBy('offerAmount')->last()->offerAmount)}}
+                                                    {{number_format($house->offers->sortBy('offerAmount')->last()->offerAmount,2)}}
+                                                @else
+                                                    0.00
                                                 @endif
                                             </span> LKR</p>
                                         <div id="myBtnM"><button class="button is-link">Make an offer</button></div>
@@ -128,7 +130,9 @@
                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                            LKR</p>
                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">   
                             @if ($house->offers->count() > 0)
-                                {{number_format($house->offers->sortBy('offerAmount')->last()->offerAmount)}}
+                                {{number_format($house->offers->sortBy('offerAmount')->last()->offerAmount,2)}}
+                            @else
+                                0.00
                             @endif
                         </span> LKR</p>
                         <div id="myBtn"><button class="button is-link">Make an offer</button></div>

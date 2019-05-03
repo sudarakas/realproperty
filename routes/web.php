@@ -68,6 +68,7 @@ Route::post('/land/{land}/offer','OfferController@landOffer');
 Route::get('/building/serach','PageController@buildingsearch');
 Route::get('/building/{building}','BuildingController@viewBuilding');
 Route::post('/building/{building}','BuildingController@searchBuilding');
+Route::post('/building/{building}/offer','OfferController@buildingOffer');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');

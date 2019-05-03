@@ -49,8 +49,8 @@ class OfferController extends Controller
 
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
-        
-        if (Land::find(request('houseid'))->offers->count() > 0) {
+
+        if (Land::find(request('landid'))->offers->count() > 0) {
 
             $currentMax = Land::find(request('landid'))->offers->sortBy('offerAmount')->last()->offerAmount;
 

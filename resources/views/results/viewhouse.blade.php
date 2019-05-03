@@ -102,9 +102,9 @@
                                                 @if ($house->offers->count() > 0)
                                                     {{number_format($house->offers->sortBy('offerAmount')->last()->offerAmount)}}
                                                 @endif
-                                                0.00
                                             </span> LKR</p>
                                         <div id="myBtnM"><button class="button is-link">Make an offer</button></div>
+                                        @include('results.offeralerts')
                                     </div>
 
                                 </div>
@@ -130,21 +130,10 @@
                             @if ($house->offers->count() > 0)
                                 {{number_format($house->offers->sortBy('offerAmount')->last()->offerAmount)}}
                             @endif
-                            0.00
                         </span> LKR</p>
                         <div id="myBtn"><button class="button is-link">Make an offer</button></div>
                         <br>
-                        <div class="columns is-mobile is-centered">
-                            <div class="column">
-                                @include('layouts.errors')
-                                @if(session()->has('success'))
-                                <div class="notification is-success">
-                                    <button class="deletex delete"></button>
-                                    <h1 class="is-size-7"><b> {{ session()->get('success') }}</b></h1>
-                                </div>
-                                @endif
-                            </div>
-                        </div>
+                        @include('results.offeralerts')
                     </div>
                 </div>
             </div>

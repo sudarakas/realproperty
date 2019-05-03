@@ -15,4 +15,10 @@ class House extends Model
         return $this->belongsTo(Property::class);
 
     }
+
+    public function offers(){
+
+        return $this->hasMany(Offer::class);
+
+    }
 }

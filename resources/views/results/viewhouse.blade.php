@@ -99,7 +99,7 @@
                                         <hr>
                                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                                            LKR</p>
                                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">4500000.00</span>                                            LKR</p>
-                                        <button class="button is-link">Make an offer</button>
+                                        <div id="myBtnM"><button class="button is-link">Make an offer</button></div>
                                     </div>
 
                                 </div>
@@ -122,7 +122,19 @@
                         <hr>
                         <p class="owneramount">Owner Estimated: <span class="has-text-success has-text-weight-bold">{{number_format($house->property->amount,2)}}</span>                            LKR</p>
                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">4500000.00</span> LKR</p>
-                        <button class="button is-link">Make an offer</button>
+                        <div id="myBtn"><button class="button is-link">Make an offer</button></div>
+                        <br>
+                        <div class="columns is-mobile is-centered">
+                            <div class="column">
+                                @include('layouts.errors')
+                                @if(session()->has('success'))
+                                <div class="notification is-success">
+                                    <button class="deletex delete"></button>
+                                    <h1 class="is-size-7"><b> {{ session()->get('success') }}</b></h1>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -299,7 +311,9 @@
     </div>
     </div>
     {{-- Footer --}}
-    @include('layouts.footer') {{-- JavaScript Files --}}
+    @include('layouts.footer')
+    @include('layouts.offer') 
+    {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>

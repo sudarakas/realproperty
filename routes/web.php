@@ -58,6 +58,7 @@ Route::get('/add/map','PageController@dismap');
 Route::get('/house/serach','PageController@housesearch');
 Route::get('/house/{house}','HouseController@viewHouse');
 Route::post('/house/{house}','HouseController@searchHouse');
+Route::post('/house/{house}/offer','OfferController@houseOffer');
 
 Route::get('/land/serach','PageController@landsearch');
 Route::get('/land/{land}','LandController@viewLand');

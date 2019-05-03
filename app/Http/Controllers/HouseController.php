@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\House;
+use App\Offer;
 
 class HouseController extends Controller
 {
@@ -79,5 +80,7 @@ class HouseController extends Controller
 
         return view('results.houseresult',compact('houses'));
     }
+
+    
     
 }

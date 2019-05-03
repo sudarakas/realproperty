@@ -16,7 +16,11 @@ class CreateOffersTable extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('property_id');
-            $table->unsignedBigInteger('house_id');
+            $table->unsignedBigInteger('house_id')->nullable();
+            $table->unsignedBigInteger('land_id')->nullable();
+            $table->unsignedBigInteger('building_id')->nullable();
+            $table->unsignedBigInteger('apartment_id')->nullable();
+            $table->unsignedBigInteger('warehouse_id')->nullable();
             $table->unsignedBigInteger('offeredUser');
             $table->double('offerAmount');
             $table->timestamps();
@@ -35,6 +39,26 @@ class CreateOffersTable extends Migration
             $table->foreign('house_id')
             ->references('id')
             ->on('houses')
+            ->onDelete('cascade');
+
+            $table->foreign('land_id')
+            ->references('id')
+            ->on('lands')
+            ->onDelete('cascade');
+
+            $table->foreign('building_id')
+            ->references('id')
+            ->on('buildings')
+            ->onDelete('cascade');
+
+            $table->foreign('apartment_id')
+            ->references('id')
+            ->on('apartments')
+            ->onDelete('cascade');
+
+            $table->foreign('warehouse_id')
+            ->references('id')
+            ->on('warehouses')
             ->onDelete('cascade');
         });
     }

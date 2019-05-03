@@ -100,7 +100,9 @@ Route::post('/profile/updatepassword','ProfileController@changePassword')->middl
 //Admin Panel
 Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth');
 
-
+//Blog
+Route::get('/blog','PageController@showBlog');
+Route::get('/blog/view','PageController@showBlogPost');
 
 // Auth::routes();
 Auth::routes(['verify' => true]);

@@ -198,6 +198,17 @@ class PageController extends Controller
 
 
 
+    //Blog
+    public function showBlog(){
+
+        return view('blog.blog');
+    }
+    public function showBlogPost(){
+
+        return view('blog.viewpost');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

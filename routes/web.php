@@ -73,6 +73,7 @@ Route::post('/building/{building}/offer','OfferController@buildingOffer');
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');
 Route::post('/apartment/{apartment}','ApartmentController@searchApartment');
+Route::post('/apartment/{apartment}/offer','OfferController@apartmentOffer');
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');

@@ -7,6 +7,7 @@ use App\Offer;
 use App\Land;
 use App\House;
 use App\Building;
+use App\Apartment;
 
 class OfferController extends Controller
 {
@@ -90,6 +91,34 @@ class OfferController extends Controller
         $offer = new Offer();
         $offer->property_id =  request('propertyid');
         $offer->building_id =  request('buildingid');
+        $offer->offeredUser = auth()->id();
+        $offer->offerAmount = request('offeramount');
+        $offer->save();
+
+        return back()->with("success", "Your offer submitted successfully !");
+    }
+
+    
+    public function apartmentOffer(Request $request)
+    {
+
+        $request->validate([
+
+            'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
+        ]);
+
+        if (Apartment::find(request('apartmentid'))->offers->count() > 0) {
+
+            $currentMax = Apartment::find(request('apartmentid'))->offers->sortBy('offerAmount')->last()->offerAmount;
+
+            if ($currentMax > request('offeramount')) {
+
+                return back()->with("warning", "Your offer should be higher than the current offer!");
+            }
+        }
+        $offer = new Offer();
+        $offer->property_id =  request('propertyid');
+        $offer->apartment_id =  request('apartmentid');
         $offer->offeredUser = auth()->id();
         $offer->offerAmount = request('offeramount');
         $offer->save();

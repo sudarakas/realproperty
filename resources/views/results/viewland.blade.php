@@ -97,6 +97,8 @@
                                         <p class="bidamount">Current Highest Offer: <span class="has-text-danger has-text-weight-bold">   
                                                 @if ($land->offers->count() > 0)
                                                     {{number_format($land->offers->sortBy('offerAmount')->last()->offerAmount,2)}}
+                                                @else
+                                                    0.00
                                                 @endif
                                             </span> LKR</p>
                                         <div id="myBtnM"><button class="button is-link">Make an offer</button></div>

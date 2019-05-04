@@ -11,7 +11,7 @@
 
 
 @component('mail::button', ['url' => 'mailto:{{$message->email}}'])
-Reply Inquery
+Reply Message
 @endcomponent
 
 Thanks,<br>

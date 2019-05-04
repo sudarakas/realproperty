@@ -25,7 +25,6 @@
 
 <body>
     @include('results.navresult')
-
     <div class="viewsection">
 
         <div class="column profileback">

@@ -35,6 +35,9 @@
         }
     },
     "autoload": {
+        "files": [
+            "app/Helpers/Helper.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },
@@ -48,6 +51,7 @@
             "Tests\\": "tests/"
         }
     },
+    
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
@@ -62,4 +66,9 @@
             "@php artisan key:generate --ansi"
         ]
     }
+    
+
+
+    
 }
+

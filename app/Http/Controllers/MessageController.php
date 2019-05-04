@@ -61,7 +61,6 @@ class MessageController extends Controller
             \Mail::to('service@realproperty.lk')->send(new InqueryEmail($message));
         }
         
-        //return $message;
         return back();
     }
 

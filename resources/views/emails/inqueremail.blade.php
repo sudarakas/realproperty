@@ -1,10 +1,16 @@
 @component('mail::message')
-# Introduction
+<h1>{{$message->type}}</h1>
 
-<h1 class="has-text-primary">here: {{$message->name}}</h1>
+<hr>
+<h4>Sender Name: {{$message->name}}</h4>
+<h4>Sender Email: {{$message->email}}</h4>
+<h4>Message: {{$message->message}}</h4>
+<hr>
 
-@component('mail::button', ['url' => ''])
-Button Text
+
+
+@component('mail::button', ['url' => 'mailto:{{$message->email}}'])
+Reply Inquery
 @endcomponent
 
 Thanks,<br>

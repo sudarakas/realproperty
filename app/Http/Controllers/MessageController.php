@@ -35,7 +35,7 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      * 
      */
-    public function store()
+    public function contactUsEmail()
     {
         $this->validate(request(),[
             'name' => 'required|string|max:255',
@@ -51,8 +51,17 @@ class MessageController extends Controller
             'message' => request('message')
         ]);
 
-        \Mail::to('sudharakafb@gmail.com')->send(new InqueryEmail($message));
-
+        if(strcmp("General Inquery", request('type')) == 0){
+            \Mail::to('general@realproperty.lk')->send(new InqueryEmail($message));
+        }
+        elseif(strcmp("Technical Inquery", request('type')) == 0){
+            \Mail::to('technical@realproperty.lk')->send(new InqueryEmail($message));
+        }
+        else{
+            \Mail::to('service@realproperty.lk')->send(new InqueryEmail($message));
+        }
+        
+        //return $message;
         return back();
     }
 

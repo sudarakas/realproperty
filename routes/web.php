@@ -82,7 +82,7 @@ Route::post('/warehouse/{warehouse}/offer','OfferController@warehouseOffer');
 
 
 Route::post('/search','PageController@store');
-Route::post('/sendmessage','MessageController@store');
+Route::post('/sendmessage','MessageController@contactUsEmail');
 
 //User Profile Section
 Route::get('/profile','ProfileController@loadUserDashboard')->middleware('auth');

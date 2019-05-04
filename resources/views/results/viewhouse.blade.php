@@ -106,7 +106,7 @@
                                                 @endif
                                             </span> LKR</p>
                                         <div id="myBtnM"><button class="button is-link">Make an offer</button></div>
-                                        @include('results.offeralerts')
+    @include('results.offeralerts')
                                     </div>
 
                                 </div>
@@ -137,7 +137,7 @@
                         </span> LKR</p>
                         <div id="myBtn"><button class="button is-link">Make an offer</button></div>
                         <br>
-                        @include('results.offeralerts')
+    @include('results.offeralerts')
                     </div>
                 </div>
             </div>
@@ -168,12 +168,11 @@
                             </style>
                         </div>
                         <br>
-                        
+
                     </div>
                 </div>
                 <a class="button is-info nounnounderlinebtn" href="http://www.google.com/maps/place/{{$house->property->latitude}},{{$house->property->longitude}}"
-                    target="_blank">Set Direction</a>
-                {{-- </div> --}}
+                    target="_blank">Set Direction</a> {{-- </div> --}}
             <hr>
             <div class="subtitle has-text-weight-semibold">Property Description</div>
             <div class="column is-flex-mobile">
@@ -181,23 +180,17 @@
                     {!! $house->property->description !!}
                 </p>
             </div>
-            {{--
-            <hr> --}} {{--
-            <div class="column is-flex-mobile">
-                <div class="subtitle has-text-weight-semibold">Property Features</div>
-
-                <ul>
-                    <li>LUXURY SPECS</li>
-                    <li>SWIMMING POOL</li>
-                    <li>HOT WATER</li>
-                    <li>AC ROOM</li>
-                </ul>
-
-            </div> --}}
+            {{-- Contact Owner Email Box Start Here --}}
             <hr>
             <div class="subtitle has-text-weight-semibold" id="contactbox">Contact Owner</div>
             <div class="column is-flex-mobile">
-                <form action="" method="post">
+                <form action="/house/{{$house->id}}/contactowner" method="post">
+                    @csrf
+                    <div class="field">
+                        <div class="control">
+                        <input class="input" type="text" name="ownermail" value="{{$house->property->user->email}}" hidden>
+                        </div>
+                    </div>
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Name</label>
@@ -205,7 +198,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="text" placeholder="Name">
+                                    <input class="input" type="text" placeholder="Name" name="name">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                       </span>
@@ -220,7 +213,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="email" placeholder="Email">
+                                    <input class="input" type="email" placeholder="Email" name="email">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-envelope"></i>
                                       </span>
@@ -242,7 +235,7 @@
                                         </a>
                                     </p>
                                     <p class="control is-expanded">
-                                        <input class="input" type="tel" placeholder="Your phone number">
+                                        <input class="input" type="tel" placeholder="Your phone number" name="pno">
                                     </p>
                                 </div>
                                 <p class="help has-text-link">Do not enter the first zero</p>
@@ -257,7 +250,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="e.g. Need to visit property">
+                                    <input class="input" type="text" placeholder="e.g. Need to visit property" name="subject">
                                 </div>
                             </div>
                         </div>
@@ -270,7 +263,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <textarea class="textarea" placeholder="Explain how I can help you"></textarea>
+                                    <textarea class="textarea" placeholder="Explain how I can help you" name="message"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -283,7 +276,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <button class="button is-primary">
+                                    <button class="button is-primary" type="submit">
                                         Send message
                                     </button>
                                 </div>
@@ -295,6 +288,7 @@
                 <br>
 
             </div>
+            {{-- Contact Owner Emaik --}}
             <div class="notification is-danger">
                 <button class="delete"></button>
                 <strong>Important information:</strong> This ad has been posted on Realproperty.lk by the above mentioned
@@ -315,8 +309,7 @@
     </div>
     {{-- Footer --}}
     @include('layouts.footer')
-    @include('layouts.offer') 
-    {{-- JavaScript Files --}}
+    @include('layouts.offer') {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>

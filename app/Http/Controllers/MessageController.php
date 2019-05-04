@@ -64,6 +64,19 @@ class MessageController extends Controller
         return back();
     }
 
+    public function houseContact(Request $request){
+
+        $request->validate(request(),[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255|email',
+            'pno' => 'required',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:2500|min:10'
+        ]);
+
+        
+    }
+
     /**
      * Display the specified resource.
      *

@@ -56,7 +56,7 @@
                   </div>
                   
                   {{-- Search Box --}}
-                <form method="POST" action="/search">
+                <form method="POST" action="/house/find/">
                   @csrf
                     <div class="field has-addons searchinput">
                         <p class="control has-icons-left is-expanded">

@@ -7,6 +7,7 @@ use App\House;
 use App\Favorite;
 use Illuminate\Support\Facades\Auth;
 use Alert;
+use App\Land;
 
 class FavoriteController extends Controller
 {
@@ -17,6 +18,19 @@ class FavoriteController extends Controller
         $favorite->property_id = $house->property->id;
         $favorite->user_id = auth()->id();
         $favorite->house_id = $house->id;
+        $favorite->save();
+
+        Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+        return back();
+
+    }
+
+    public function favoriteLand(Land $land){
+
+        $favorite = new Favorite;
+        $favorite->property_id = $land->property->id;
+        $favorite->user_id = auth()->id();
+        $favorite->land_id = $land->id;
         $favorite->save();
 
         Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);

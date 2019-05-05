@@ -6,13 +6,13 @@
       <button class="delete closeme" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
-      <form action="/house/{{$house->id}}/report" method="post">
+      <form action="/building/{{$building->id}}/report" method="post">
         @csrf
         <div class="field">
           <div class="control column is-8 is-offset-2">
             <label for="email">Email</label>
-            <input name="propertyid" type="text" value="{{$house->property_id}}" hidden>
-            <input name="houseid" type="text" value="{{$house->id}}" hidden>
+            <input name="propertyid" type="text" value="{{$building->property_id}}" hidden>
+            <input name="buildingid" type="text" value="{{$building->id}}" hidden>
             <input class="input is-7 is-info" name="email" type="email" placeholder="Your email address" required>
           </div>
           <div class="control column is-8 is-offset-2">

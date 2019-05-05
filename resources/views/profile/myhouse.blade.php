@@ -15,8 +15,8 @@
                         @include('profile.threadhouse') 
                     @endforeach 
                     @else
-                @include('profile.noresult')
-            @endif
+                        @include('profile.noresult')
+                    @endif
             </div>
             
         </div>

@@ -149,7 +149,14 @@ class PageController extends Controller
 
     public function myland()
     {
-        return view('profile.home', array('user' => Auth::user()));
+        $userId = auth()->id();
+        $lands = Land::whereHas('property', function($query) use ($userId){
+
+            $query->where('user_id','=',$userId);
+
+        })->get();
+
+        return view('profile.home', compact('lands'),array('user' => Auth::user()));
     }
     public function myapartment()
     {

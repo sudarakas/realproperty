@@ -10,12 +10,13 @@
     <div class="containerx">
         <div class="grayme">
             <div class="row">
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
+                    @if($lands->count() > 0) 
+                    @foreach ($lands as $land)
+                        @include('profile.threadland') 
+                    @endforeach 
+                    @else
+                        @include('profile.noresult')
+                    @endif
 
             </div>
         </div>

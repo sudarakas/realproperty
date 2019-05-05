@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="/css/flickity.css"> {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300i,400,400i,500,500i,600|Kanit:300,300i,400,400i,500,500i,600"
         rel="stylesheet">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @include('sweet::alert')
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> --}}
+    
     <style>
         #map {
             height: 300px;
@@ -317,6 +317,8 @@
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/flickity.pkgd.min.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
+    @include('sweet::alert')
     <script>
         var map;
         var lat = {{$house->property->latitude}}

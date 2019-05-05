@@ -9,6 +9,8 @@ use App\House;
 use App\Building;
 use App\Apartment;
 use App\Warehouse;
+use Alert;
+use Illuminate\Support\Facades\Validator;
 
 class OfferController extends Controller
 {
@@ -20,10 +22,15 @@ class OfferController extends Controller
     public function houseOffer(Request $request)
     {
 
-        $request->validate([
-
+        $validator = Validator::make($request->all(), [
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
+        
+       
+        if ($validator->fails()) {
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
 
         if (House::find(request('houseid'))->offers->count() > 0) {
 
@@ -31,6 +38,7 @@ class OfferController extends Controller
 
             if ($currentMax > request('offeramount')) {
 
+                Alert::warning('Your offer should be higher than the current offer!', 'Offer Rejected')->autoclose(3000);
                 return back()->with("warning", "Your offer should be higher than the current offer!");
             }
         }
@@ -42,16 +50,22 @@ class OfferController extends Controller
         $offer->offerAmount = request('offeramount');
         $offer->save();
 
-        return back()->with("success", "Your offer submitted successfully !");
+        Alert::success('Your offer has been submitted successfully!', 'Offer Submitted')->autoclose(3000);
+        return back()->with("success", "Your offer has been submitted successfully!");
     }
 
     public function landOffer(Request $request)
     {
 
-        $request->validate([
-
+        $validator = Validator::make($request->all(), [
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
+        
+       
+        if ($validator->fails()) {
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
 
         if (Land::find(request('landid'))->offers->count() > 0) {
 
@@ -59,6 +73,7 @@ class OfferController extends Controller
 
             if ($currentMax > request('offeramount')) {
 
+                Alert::warning('Your offer should be higher than the current offer!', 'Offer Rejected')->autoclose(3000);
                 return back()->with("warning", "Your offer should be higher than the current offer!");
             }
         }
@@ -69,16 +84,22 @@ class OfferController extends Controller
         $offer->offerAmount = request('offeramount');
         $offer->save();
 
+        Alert::success('Your offer has been submitted successfully!', 'Offer Submitted')->autoclose(3000);
         return back()->with("success", "Your offer submitted successfully !");
     }
 
     public function buildingOffer(Request $request)
     {
 
-        $request->validate([
-
+        $validator = Validator::make($request->all(), [
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
+        
+       
+        if ($validator->fails()) {
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
 
         if (Building::find(request('buildingid'))->offers->count() > 0) {
 
@@ -86,6 +107,7 @@ class OfferController extends Controller
 
             if ($currentMax > request('offeramount')) {
 
+                Alert::warning('Your offer should be higher than the current offer!', 'Offer Rejected')->autoclose(3000);
                 return back()->with("warning", "Your offer should be higher than the current offer!");
             }
         }
@@ -96,17 +118,23 @@ class OfferController extends Controller
         $offer->offerAmount = request('offeramount');
         $offer->save();
 
+        Alert::success('Your offer has been submitted successfully!', 'Offer Submitted')->autoclose(3000);
         return back()->with("success", "Your offer submitted successfully !");
     }
 
-    
+
     public function apartmentOffer(Request $request)
     {
 
-        $request->validate([
-
+        $validator = Validator::make($request->all(), [
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
+        
+       
+        if ($validator->fails()) {
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
 
         if (Apartment::find(request('apartmentid'))->offers->count() > 0) {
 
@@ -114,6 +142,7 @@ class OfferController extends Controller
 
             if ($currentMax > request('offeramount')) {
 
+                Alert::warning('Your offer should be higher than the current offer!', 'Offer Rejected')->autoclose(3000);
                 return back()->with("warning", "Your offer should be higher than the current offer!");
             }
         }
@@ -124,24 +153,31 @@ class OfferController extends Controller
         $offer->offerAmount = request('offeramount');
         $offer->save();
 
+        Alert::success('Your offer has been submitted successfully!', 'Offer Submitted')->autoclose(3000);
         return back()->with("success", "Your offer submitted successfully !");
     }
 
-    
+
     public function warehouseOffer(Request $request)
     {
-
-        $request->validate([
-
+        
+        $validator = Validator::make($request->all(), [
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
-
+        
+       
+        if ($validator->fails()) {
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
+        
         if (Warehouse::find(request('warehouseid'))->offers->count() > 0) {
 
             $currentMax = Warehouse::find(request('warehouseid'))->offers->sortBy('offerAmount')->last()->offerAmount;
 
             if ($currentMax > request('offeramount')) {
 
+                Alert::warning('Your offer should be higher than the current offer!', 'Offer Rejected')->autoclose(3000);
                 return back()->with("warning", "Your offer should be higher than the current offer!");
             }
         }
@@ -152,6 +188,12 @@ class OfferController extends Controller
         $offer->offerAmount = request('offeramount');
         $offer->save();
 
-        return back()->with("success", "Your offer submitted successfully !");
+        if ($validator->fails()) {
+            Alert::error('Your offer should be higher than the current offer!', 'Offer Rejected')->autoclose(3000);
+        } else {
+
+            Alert::success('Your offer has been submitted successfully!', 'Offer Submitted')->autoclose(3000);
+            return back()->with("success", "Your offer submitted successfully !");
+        }
     }
 }

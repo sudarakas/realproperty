@@ -314,6 +314,8 @@
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/flickity.pkgd.min.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
+    @include('sweet::alert')
     <script>
         var map;
         var lat = {{$building->property->latitude}}

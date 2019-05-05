@@ -34,8 +34,8 @@ class UserEmailController extends Controller
 
         \Mail::to($owner->email)->send(new ContactMail($request));
         
-        Alert::success('Success Message', 'Optional Title');
-        
+        Alert::success('Message Sent', 'Your message has been sent successfully!')->autoclose(3000);
+
         return back();
 
     }

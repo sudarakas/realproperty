@@ -14,7 +14,8 @@
         "intervention/image": "^2.4",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "nanigans/single-table-inheritance": "0.8.*"
+        "nanigans/single-table-inheritance": "0.8.*",
+        "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -71,4 +72,3 @@
 
     
 }
-

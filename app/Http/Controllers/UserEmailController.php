@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Mail\ContactMail;
 use App\Mail\InqueryEmail;
 use App\UserEmail;
+use Alert;
 
 class UserEmailController extends Controller
 {
@@ -32,5 +33,10 @@ class UserEmailController extends Controller
         $message->save();
 
         \Mail::to($owner->email)->send(new ContactMail($request));
+        
+        Alert::success('Success Message', 'Optional Title');
+        
+        return back();
+
     }
 }

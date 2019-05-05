@@ -6,7 +6,7 @@
       <button class="delete closeme" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
-      <form action="/house/{{$house->id}}/offer" method="post">
+      <form action="/house/{{$house->id}}/report" method="post">
         @csrf
         <div class="field">
           <div class="control column is-8 is-offset-2">

@@ -42,7 +42,7 @@ class UserEmailController extends Controller
 
         \Mail::to($owner->email)->send(new ContactMail($request));
         
-        Alert::success('Message Sent', 'Your message has been sent successfully!')->autoclose(3000);
+        Alert::success('Your message has been sent successfully!', 'Message Sent')->autoclose(3000);
 
         return back();
 
@@ -79,7 +79,7 @@ class UserEmailController extends Controller
 
         \Mail::to($owner->email)->send(new ContactMail($request));
         
-        Alert::success('Message Sent', 'Your message has been sent successfully!')->autoclose(3000);
+        Alert::success('Your message has been sent successfully!', 'Message Sent')->autoclose(3000);
 
         return back();
 
@@ -116,7 +116,7 @@ class UserEmailController extends Controller
 
         \Mail::to($owner->email)->send(new ContactMail($request));
         
-        Alert::success('Message Sent', 'Your message has been sent successfully!')->autoclose(3000);
+        Alert::success('Your message has been sent successfully!', 'Message Sent')->autoclose(3000);
 
         return back();
 
@@ -153,7 +153,7 @@ class UserEmailController extends Controller
 
         \Mail::to($owner->email)->send(new ContactMail($request));
         
-        Alert::success('Message Sent', 'Your message has been sent successfully!')->autoclose(3000);
+        Alert::success('Your message has been sent successfully!', 'Message Sent')->autoclose(3000);
 
         return back();
 
@@ -190,7 +190,7 @@ class UserEmailController extends Controller
 
         \Mail::to($owner->email)->send(new ContactMail($request));
         
-        Alert::success('Message Sent', 'Your message has been sent successfully!')->autoclose(3000);
+        Alert::success('Your message has been sent successfully!', 'Message Sent')->autoclose(3000);
 
         return back();
 

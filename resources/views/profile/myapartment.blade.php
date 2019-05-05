@@ -17,8 +17,9 @@
                     @else
                         @include('profile.noresult')
                     @endif
-                    {{ $apartments->links() }}
+                    
             </div>
+            {{ $apartments->links() }}
         </div>
     </div>
 </div>

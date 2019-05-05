@@ -167,12 +167,20 @@ class PageController extends Controller
             $query->where('user_id','=',$userId);
 
         })->paginate(15);
+
         return view('profile.home', compact('apartments'),array('user' => Auth::user()));
     }
 
     public function mybuilding()
     {
-        return view('profile.home', array('user' => Auth::user()));
+        $userId = auth()->id();
+        $buildings = Building::whereHas('property', function($query) use ($userId){
+
+            $query->where('user_id','=',$userId);
+
+        })->paginate(15);
+
+        return view('profile.home', compact('buildings'),array('user' => Auth::user()));
     }
     public function mywarehouse()
     {

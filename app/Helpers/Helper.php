@@ -1,16 +1,16 @@
 <?php
 
-if(!function_exists('weekdays')) {
-  function weekdays() {
-    return [
-      'Mon' => 'Monday',
-      'Tus' => 'Tuesday',
-      'Wed' => 'Wednesday',
-      'Thu' => 'Thursday',
-      'Fri' => 'Friday',
-      'Sat' => 'Saturday',
-      'Sun' => 'Sunday'
-    ];
+if(!function_exists('userNameById')) {
+  function weekdays($userId) {
+    
+    $user = App\User::find($userId);
+
+    if($user){
+      return $user->name;
+    }
+    else{
+      return NULL;
+    }
   }
 }
 

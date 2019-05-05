@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use Image;
 use App\User;
+use App\Offer;
 
 class ProfileController extends Controller
 {
@@ -26,7 +27,15 @@ class ProfileController extends Controller
 
     public function loadUserDashboard(){
 
-        return view('profile.home', array('user' => Auth::user()));
+        $id = Auth::user()->id;
+        $offers = $offers = Offer::whereHas('property', function($query) use ($id) 
+        {
+            $query->where('user_id','>=', $id);
+
+        })->limit(5)
+          ->get();
+
+        return view('profile.home', compact('offers'),array('user' => Auth::user()));
     }
 
     public function updateAccount(Request $request)

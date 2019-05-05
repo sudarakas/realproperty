@@ -69,69 +69,55 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>Property ID</th>
-                <th>Property Name</th>
-                <th>Property Location</th>
-                <th>Property type</th>
-                <th>Current Offer</th>
+                <th>Pro. ID</th>
+                <th>Pro. Name</th>
+                <th>Pro. Location</th>
+                <th>Pro. Type</th>
+                <th>Offer</th>
                 <th>Offered User</th>
                 <th>Contact</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                <th>No</th>
-                <th>Property ID</th>
-                <th>Property Name</th>
-                <th>Property Location</th>
-                <th>Property type</th>
-                <th>Current Offer</th>
-                <th>Offered User</th>
-                <th>Contact</th>
+                  <th>No</th>
+                  <th>Pro. ID</th>
+                  <th>Pro. Name</th>
+                  <th>Pro. Location</th>
+                  <th>Pro. Type</th>
+                  <th>Current Offer</th>
+                  <th>Offered User</th>
+                  <th>Contact</th>
               </tr>
             </tfoot>
             <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>455</td>
-                  <td>Complete House</td>
-                  <td>Badulla</td>
-                  <td>House</td>
-                  <td>8600000</td>
-                  <td>Nimal</td>
-                  <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>455</td>
-                    <td>Complete House</td>
-                    <td>Badulla</td>
-                    <td>House</td>
-                    <td>8600000</td>
-                    <td>Nimal</td>
-                    <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
-                  </tr>
+              @if(count($offers))
+                  @foreach ($offers as $key=>$offer)
                   <tr>
-                      <td>1</td>
-                      <td>455</td>
-                      <td>Complete House</td>
-                      <td>Badulla</td>
-                      <td>House</td>
-                      <td>8600000</td>
-                      <td>Nimal</td>
-                      <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>455</td>
-                        <td>Complete House</td>
-                        <td>Badulla</td>
-                        <td>House</td>
-                        <td>8600000</td>
-                        <td>Nimal</td>
-                        <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
-                      </tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{$offer->property_id}}</td>
+                    <td>{{$offer->property->name}}</td>
+                    <td>{{$offer->property->city}}</td>
+                    <td>{{$offer->property->type}}</td>
+                    <td>{{$offer->offerAmount}}</td>
+                    <td>{{$offer->property->user->name}}</td>
+                    <td><a href="" class="button is-success nounnounderlinebtn">Contact</a></td>
+                  </tr>
+                @endforeach
+              @else
+              <tr>
+                  <td class="has-text-danger">No Result</td>
+                  <td class="has-text-danger">No Result</td>
+                  <td class="has-text-danger">No Result</td>
+                  <td class="has-text-danger">No Result</td>
+                  <td class="has-text-danger">No Result</td>
+                  <td class="has-text-danger">No Result</td>
+                  <td class="has-text-danger">No Result</td>
+                  <td><a href="" class="button is-success disabled nounnounderlinebtn" disabled>Contact</a></td>
+                </tr>
+              @endif
             </tbody>
           </table>
+          <a href="" class="button is-link nounnounderlinebtn is-pulled-right">View All Offers</a>
         </div>
     </div>

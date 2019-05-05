@@ -77,6 +77,7 @@ Route::post('/building/{building}','BuildingController@searchBuilding');
 Route::post('/building/{building}/offer','OfferController@buildingOffer');
 Route::post('/building/{building}/contactowner','UserEmailController@buildingContact');
 Route::post('/building/{building}/report','ReportPropertyController@buildingReport');
+Route::get('/building/{building}/favorite','FavoriteController@favoriteBuilding');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');

@@ -48,7 +48,7 @@
             <div class="columns is-flex-mobile">
                 <div class="column is-two-thirds is-flex-mobile">
                     <div class="containerx">
-                        <a href="http://" class="button is-danger is-pulled-right"><span><i class="far fa-heart"></i></span></a>
+                        <a href="/building/{{$building->id}}/favorite" class="button is-danger is-pulled-right"><span><i class="far fa-heart"></i></span></a>
                         <div class="is-pulled-left">
                             <div class="title">
                                 {{$building->property->name}}

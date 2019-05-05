@@ -8,6 +8,7 @@ use App\Favorite;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Land;
+use App\Building;
 
 class FavoriteController extends Controller
 {
@@ -37,5 +38,20 @@ class FavoriteController extends Controller
         return back();
 
     }
+
+    public function favoriteBuilding(Building $building){
+
+        $favorite = new Favorite;
+        $favorite->property_id = $building->property->id;
+        $favorite->user_id = auth()->id();
+        $favorite->building_id = $building->id;
+        $favorite->save();
+
+        Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+        return back();
+
+    }
+
+    
 
 }

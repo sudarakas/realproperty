@@ -14,7 +14,7 @@ class ReportPropertyController extends Controller
  
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|max:255|email',
-            'reason' => 'required|string|max:200|min:10'
+            'reason' => 'required|string|max:200'
         ]);
         
        
@@ -27,6 +27,64 @@ class ReportPropertyController extends Controller
         $report = new ReportProperty;
         $report->property_id = request('propertyid');
         $report->house_id = request('houseid');
+        $report->reporterEmail = request('email');
+        $report->Reason = request('reason');
+        $report->save();
+
+        
+        Alert::success('Your report has been submitted successfully!', 'Report Sent')->autoclose(3000);
+
+        return back();
+
+    }
+
+    public function landReport(Request $request)
+    {
+ 
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|max:255|email',
+            'reason' => 'required|string|max:200'
+        ]);
+        
+       
+        if ($validator->fails()) {
+
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
+
+        $report = new ReportProperty;
+        $report->property_id = request('propertyid');
+        $report->land_id = request('landid');
+        $report->reporterEmail = request('email');
+        $report->Reason = request('reason');
+        $report->save();
+
+        
+        Alert::success('Your report has been submitted successfully!', 'Report Sent')->autoclose(3000);
+
+        return back();
+
+    }
+
+    public function buildingReport(Request $request)
+    {
+ 
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|max:255|email',
+            'reason' => 'required|string|max:200'
+        ]);
+        
+       
+        if ($validator->fails()) {
+
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
+
+        $report = new ReportProperty;
+        $report->property_id = request('propertyid');
+        $report->building_id = request('buildingid');
         $report->reporterEmail = request('email');
         $report->Reason = request('reason');
         $report->save();

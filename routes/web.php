@@ -67,24 +67,28 @@ Route::get('/land/{land}','LandController@viewLand');
 Route::post('/land/{land}','LandController@searchLand');
 Route::post('/land/{land}/offer','OfferController@landOffer');
 Route::post('/land/{land}/contactowner','UserEmailController@landContact');
+Route::post('/land/{land}/report','ReportPropertyController@landReport');
 
 Route::get('/building/serach','PageController@buildingsearch');
 Route::get('/building/{building}','BuildingController@viewBuilding');
 Route::post('/building/{building}','BuildingController@searchBuilding');
 Route::post('/building/{building}/offer','OfferController@buildingOffer');
 Route::post('/building/{building}/contactowner','UserEmailController@buildingContact');
+Route::post('/building/{building}/report','ReportPropertyController@buildingReport');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');
 Route::post('/apartment/{apartment}','ApartmentController@searchApartment');
 Route::post('/apartment/{apartment}/offer','OfferController@apartmentOffer');
 Route::post('/apartment/{apartment}/contactowner','UserEmailController@apartmentContact');
+Route::post('/apartment/{apartment}/report','ReportPropertyController@apartmentReport');
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');
 Route::post('/warehouse/{warehouse}','WarehouseController@searchWarehouse');
 Route::post('/warehouse/{warehouse}/offer','OfferController@warehouseOffer');
 Route::post('/warehouse/{warehouse}/contactowner','UserEmailController@warehouseContact');
+Route::post('/warehouse/{warehouse}/report','ReportPropertyController@warehouseReport');
 
 
 Route::post('/search','PageController@store');

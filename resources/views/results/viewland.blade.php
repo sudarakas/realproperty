@@ -303,7 +303,7 @@
                 scams. If making any payments we recommend that you have two permanent & verified methods of contact of the
                 payment receiver such as their landline number and home/business address.
             </div>
-            <a href="" class="is-pulled-right link reportad"><span><i class="far fa-flag"></i></span><span class="has-text-balck"> Report Advertisement</span></a>
+            <a class="is-pulled-right link reportad" id="report"><span><i class="far fa-flag"></i></span><span class="has-text-balck"> Report Advertisement</span></a>
             <br>
 
         </div>
@@ -313,6 +313,7 @@
     {{-- Footer --}}
     @include('layouts.footer')
     @include('layouts.offerland')
+    @include('layouts.reportland')
     {{-- JavaScript Files --}}
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>

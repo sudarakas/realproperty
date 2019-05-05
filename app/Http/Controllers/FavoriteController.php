@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Land;
 use App\Building;
+use App\Apartment;
 
 class FavoriteController extends Controller
 {
@@ -21,7 +22,20 @@ class FavoriteController extends Controller
         $favorite->house_id = $house->id;
         $favorite->save();
 
-        Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+        try{
+            $favorite->save();
+            Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+            return back();
+        }catch(\Illuminate\Database\QueryException $e){
+
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+                Alert::warning('Favorite has been already added!', 'Already Added')->autoclose(3000);
+                return back();
+            }
+        }
+     
+        Alert::error('Something went wrong!', 'Oops!')->autoclose(3000);
         return back();
 
     }
@@ -34,7 +48,20 @@ class FavoriteController extends Controller
         $favorite->land_id = $land->id;
         $favorite->save();
 
-        Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+        try{
+            $favorite->save();
+            Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+            return back();
+        }catch(\Illuminate\Database\QueryException $e){
+
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+                Alert::warning('Favorite has been already added!', 'Already Added')->autoclose(3000);
+                return back();
+            }
+        }
+     
+        Alert::error('Something went wrong!', 'Oops!')->autoclose(3000);
         return back();
 
     }
@@ -45,9 +72,46 @@ class FavoriteController extends Controller
         $favorite->property_id = $building->property->id;
         $favorite->user_id = auth()->id();
         $favorite->building_id = $building->id;
-        $favorite->save();
+        try{
+            $favorite->save();
+            Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+            return back();
+        }catch(\Illuminate\Database\QueryException $e){
 
-        Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+                Alert::warning('Favorite has been already added!', 'Already Added')->autoclose(3000);
+                return back();
+            }
+        }
+     
+        Alert::error('Something went wrong!', 'Oops!')->autoclose(3000);
+        return back();
+
+    }
+
+    public function favoriteApartment(Apartment $apartment){
+
+        // $alreadyFavorite = Favorite::where()
+        $favorite = new Favorite;
+        $favorite->property_id = $apartment->property->id;
+        $favorite->user_id = auth()->id();
+        $favorite->apartment_id = $apartment->id;
+        
+        try{
+            $favorite->save();
+            Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+            return back();
+        }catch(\Illuminate\Database\QueryException $e){
+
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+                Alert::warning('Favorite has been already added!', 'Already Added')->autoclose(3000);
+                return back();
+            }
+        }
+     
+        Alert::error('Something went wrong!', 'Oops!')->autoclose(3000);
         return back();
 
     }

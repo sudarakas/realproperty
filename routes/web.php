@@ -85,6 +85,7 @@ Route::post('/apartment/{apartment}','ApartmentController@searchApartment');
 Route::post('/apartment/{apartment}/offer','OfferController@apartmentOffer');
 Route::post('/apartment/{apartment}/contactowner','UserEmailController@apartmentContact');
 Route::post('/apartment/{apartment}/report','ReportPropertyController@apartmentReport');
+Route::get('/apartment/{apartment}/favorite','FavoriteController@favoriteApartment');
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');

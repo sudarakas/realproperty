@@ -9,8 +9,10 @@ use App\House;
 use App\Building;
 use App\Apartment;
 use App\Warehouse;
+use App\User;
 use Alert;
 use Illuminate\Support\Facades\Validator;
+use App\Property;
 
 class OfferController extends Controller
 {
@@ -26,6 +28,13 @@ class OfferController extends Controller
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
         
+        $property = Property::find(request('propertyid'));
+
+        if($property->user_id == auth()->id()){
+            
+            Alert::warning('You can not submit offer for your own properties!', 'Offer Rejected')->autoclose(3000);
+            return back()->with("warning", "You can not submit offer for your own properties!");
+        }
        
         if ($validator->fails()) {
             Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
@@ -61,7 +70,14 @@ class OfferController extends Controller
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
         
-       
+        $property = Property::find(request('propertyid'));
+
+        if($property->user_id == auth()->id()){
+            
+            Alert::warning('You can not submit offer for your own properties!', 'Offer Rejected')->autoclose(3000);
+            return back()->with("warning", "You can not submit offer for your own properties!");
+        }
+
         if ($validator->fails()) {
             Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
             return back()->withErrors($validator);
@@ -95,6 +111,13 @@ class OfferController extends Controller
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
         
+        $property = Property::find(request('propertyid'));
+
+        if($property->user_id == auth()->id()){
+            
+            Alert::warning('You can not submit offer for your own properties!', 'Offer Rejected')->autoclose(3000);
+            return back()->with("warning", "You can not submit offer for your own properties!");
+        }
        
         if ($validator->fails()) {
             Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
@@ -130,7 +153,14 @@ class OfferController extends Controller
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
         
-       
+       $property = Property::find(request('propertyid'));
+
+        if($property->user_id == auth()->id()){
+            
+            Alert::warning('You can not submit offer for your own properties!', 'Offer Rejected')->autoclose(3000);
+            return back()->with("warning", "You can not submit offer for your own properties!");
+        }
+
         if ($validator->fails()) {
             Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
             return back()->withErrors($validator);
@@ -165,6 +195,13 @@ class OfferController extends Controller
             'offeramount' => "required|regex:/^\d+(\.\d{1,2})?$/"
         ]);
         
+        $property = Property::find(request('propertyid'));
+
+        if($property->user_id == auth()->id()){
+            
+            Alert::warning('You can not submit offer for your own properties!', 'Offer Rejected')->autoclose(3000);
+            return back()->with("warning", "You can not submit offer for your own properties!");
+        }
        
         if ($validator->fails()) {
             Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);

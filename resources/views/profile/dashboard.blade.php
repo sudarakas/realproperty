@@ -66,6 +66,7 @@
         </div>
         <div class="column profileback tableshow">
           <div class="title is-5 has-text-success">Recent Offers</div>
+          <div style="overflow-x: auto;">
           <table class="table">
             <thead>
               <tr>
@@ -119,6 +120,7 @@
               @endif
             </tbody>
           </table>
+          </div>
           <a href="/profile/alloffers" class="button is-link nounnounderlinebtn is-pulled-right">View All Offers</a>
         </div>
     </div>

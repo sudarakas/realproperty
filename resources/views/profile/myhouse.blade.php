@@ -10,14 +10,16 @@
     <div class="containerx">
         <div class="grayme">
             <div class="row">
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-
+                    @if($houses->count() > 0) 
+                    @foreach ($houses as $house)
+                        @include('profile.threadhouse') 
+                    @endforeach 
+                    @else
+                @include('profile.noresult')
+            @endif
             </div>
+            
         </div>
+        
     </div>
 </div>

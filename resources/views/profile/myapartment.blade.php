@@ -10,13 +10,14 @@
     <div class="containerx">
         <div class="grayme">
             <div class="row">
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-
+                    @if($apartments->count() > 0) 
+                    @foreach ($apartments as $apartment)
+                        @include('profile.threadapartment') 
+                    @endforeach 
+                    @else
+                        @include('profile.noresult')
+                    @endif
+                    {{ $apartments->links() }}
             </div>
         </div>
     </div>

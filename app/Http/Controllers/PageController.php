@@ -142,7 +142,7 @@ class PageController extends Controller
 
             $query->where('user_id','=',$userId);
 
-        })->get();
+        })->paginate(15);
 
         return view('profile.home', compact('houses'),array('user' => Auth::user()));
     }
@@ -154,14 +154,22 @@ class PageController extends Controller
 
             $query->where('user_id','=',$userId);
 
-        })->get();
+        })->paginate(15);
 
         return view('profile.home', compact('lands'),array('user' => Auth::user()));
     }
+
     public function myapartment()
     {
-        return view('profile.home', array('user' => Auth::user()));
+        $userId = auth()->id();
+        $apartments = Apartment::whereHas('property', function($query) use ($userId){
+
+            $query->where('user_id','=',$userId);
+
+        })->paginate(15);
+        return view('profile.home', compact('apartments'),array('user' => Auth::user()));
     }
+
     public function mybuilding()
     {
         return view('profile.home', array('user' => Auth::user()));

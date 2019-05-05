@@ -18,7 +18,7 @@
                         @include('profile.noresult')
                     @endif
             </div>
-            
+            {{ $houses->links() }}
         </div>
         
     </div>

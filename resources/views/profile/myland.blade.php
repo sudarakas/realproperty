@@ -19,6 +19,7 @@
                     @endif
 
             </div>
+            {{ $lands->links() }}
         </div>
     </div>
 </div>

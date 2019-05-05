@@ -21,4 +21,10 @@ class Apartment extends Model
         return $this->hasMany(Offer::class);
 
     }
+
+    public function reportproperties(){
+
+        return $this->hasMany(ReportProperty::class);
+
+    }
 }

@@ -112,6 +112,7 @@ Route::get('/profile/myland','PageController@myland')->middleware('auth');
 Route::get('/profile/myapartment','PageController@myapartment')->middleware('auth');
 Route::get('/profile/mybuilding','PageController@mybuilding')->middleware('auth');
 Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('auth');
+Route::get('/profile/alloffers','ProfileController@allOffers')->middleware('auth');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 
 Route::post('/profile/updateAccount','ProfileController@updateAccount')->middleware('auth');

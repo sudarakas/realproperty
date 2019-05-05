@@ -64,7 +64,8 @@
               <h6 class="is-uppercase has-text-weight-bold">Search</h6>
             </div>
         </div>
-        <div class="column profileback tableshow">   
+        <div class="column profileback tableshow">
+          <div class="title is-5 has-text-success">Recent Offers</div>
           <table class="table">
             <thead>
               <tr>
@@ -118,6 +119,6 @@
               @endif
             </tbody>
           </table>
-          <a href="" class="button is-link nounnounderlinebtn is-pulled-right">View All Offers</a>
+          <a href="/profile/alloffers" class="button is-link nounnounderlinebtn is-pulled-right">View All Offers</a>
         </div>
     </div>

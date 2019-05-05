@@ -160,6 +160,7 @@ class PageController extends Controller
 
 
 
+
     // Add Propperties Methods
     public function addProperty()
     {

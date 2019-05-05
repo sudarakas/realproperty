@@ -84,6 +84,8 @@
             @include('profile.mybuilding')
           @elseif(Request::is('profile/mywarehouse'))
             @include('profile.mywarehouse')
+          @elseif(Request::is('profile/alloffers'))
+            @include('profile.offers')
             
           @else
             @include('profile.dashboard')

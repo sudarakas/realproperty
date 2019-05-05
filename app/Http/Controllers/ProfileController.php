@@ -30,9 +30,10 @@ class ProfileController extends Controller
         $id = Auth::user()->id;
         $offers = $offers = Offer::whereHas('property', function($query) use ($id) 
         {
-            $query->where('user_id','>=', $id);
+            $query->where('user_id','=', $id);
 
         })->limit(5)
+          ->orderBy('id', 'desc')
           ->get();
 
         return view('profile.home', compact('offers'),array('user' => Auth::user()));
@@ -95,6 +96,18 @@ class ProfileController extends Controller
 
         return back()->with("success","Password changed successfully !");
 
+    }
+
+    public function allOffers(){
+
+        $id = Auth::user()->id;
+        $offers = $offers = Offer::whereHas('property', function($query) use ($id) 
+        {
+            $query->where('user_id','=', $id);
+
+        })->paginate(15);
+
+        return view('profile.home', compact('offers'),array('user' => Auth::user()));
     }
     
 }

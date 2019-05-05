@@ -1,7 +1,7 @@
 <?php
 
 if(!function_exists('userNameById')) {
-  function weekdays($userId) {
+  function userNameById($userId) {
     
     $user = App\User::find($userId);
 

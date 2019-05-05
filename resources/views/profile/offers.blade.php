@@ -7,7 +7,7 @@
             </ul>
         </nav>
         <div class="column profileback tableshow">
-          <div class="title is-5 has-text-success">Recent Offers</div>
+          <div class="title is-5 has-text-success">All Offers</div>
           <table class="table">
             <thead>
               <tr>
@@ -43,7 +43,7 @@
                     <td>{{$offer->property->city}}</td>
                     <td>{{$offer->property->type}}</td>
                     <td>{{$offer->offerAmount}}</td>
-                    <td>{{$offer->property->user->name}}</td>
+                    <td>{{userNameById($offer->offeredUser)}}</td>
                     <td><a href="" class="button is-success nounnounderlinebtn">Contact</a></td>
                   </tr>
                 @endforeach

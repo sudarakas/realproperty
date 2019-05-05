@@ -872,7 +872,17 @@ figure.profileavatar figcaption::before {
     margin-top: -11px !important;
 }
 
-
+/* Offer Modal */
+.modaloffer {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    position: fixed;
+    z-index: 40;
+  }
+  
 
 
 

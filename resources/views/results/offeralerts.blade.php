@@ -1,6 +1,6 @@
 <div class="columns is-mobile is-centered">
     <div class="column">
-        @include('layouts.errors')
+        {{-- @include('layouts.errors') --}}
         @if(session()->has('success'))
         <div class="notification is-success">
             <button class="deletex delete"></button>

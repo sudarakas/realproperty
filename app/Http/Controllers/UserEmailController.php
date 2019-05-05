@@ -7,19 +7,27 @@ use App\Mail\ContactMail;
 use App\Mail\InqueryEmail;
 use App\UserEmail;
 use Alert;
+use Illuminate\Support\Facades\Validator;
 
 class UserEmailController extends Controller
 {
     public function houseContact(Request $request)
     {
-
-        $request->validate([
+ 
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|email',
             'pno' => 'required',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:2500|min:10'
         ]);
+        
+       
+        if ($validator->fails()) {
+
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
 
         $owner = \App\User::find(request('owner'));
 

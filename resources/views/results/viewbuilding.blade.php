@@ -197,11 +197,13 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="text" placeholder="Name" name="name">
+                                    <input class="input {{ $errors->has('name') ? ' is-danger' : '' }}" type="text" placeholder="Name" name="name">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
-                                      </span>
+                                    </span> 
+                                    {!! $errors->first('name', '<p class="help-block has-text-danger">:message</p>') !!}
                                 </p>
+                                
                             </div>
                         </div>
                     </div>
@@ -212,10 +214,11 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="email" placeholder="Email" name="email">
+                                    <input class="input {{ $errors->has('email') ? ' is-danger' : '' }}" type="email" placeholder="Email" name="email">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-envelope"></i>
                                       </span>
+                                      {!! $errors->first('email', '<p class="help-block has-text-danger">:message</p>') !!}
                                 </p>
                             </div>
                         </div>
@@ -234,9 +237,10 @@
                                         </a>
                                     </p>
                                     <p class="control is-expanded">
-                                        <input class="input" type="tel" placeholder="Your phone number" name="pno">
+                                        <input class="input {{ $errors->has('pno') ? ' is-danger' : '' }}" type="tel" placeholder="Your phone number" name="pno">
                                     </p>
                                 </div>
+                                {!! $errors->first('pno', '<p class="help-block has-text-danger">:message</p>') !!}
                                 <p class="help has-text-link">Do not enter the first zero</p>
                             </div>
                         </div>
@@ -249,7 +253,8 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="e.g. Need to visit property" name="subject">
+                                    <input class="input {{ $errors->has('subject') ? ' is-danger' : '' }}" type="text" placeholder="e.g. Need to visit property" name="subject">
+                                    {!! $errors->first('subject', '<p class="help-block has-text-danger">:message</p>') !!}
                                 </div>
                             </div>
                         </div>
@@ -262,7 +267,8 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <textarea class="textarea" placeholder="Explain how I can help you" name="message"></textarea>
+                                    <textarea class="textarea {{ $errors->has('message') ? ' is-danger' : '' }}" placeholder="Explain how I can help you" name="message"></textarea>
+                                    {!! $errors->first('message', '<p class="help-block has-text-danger">:message</p>') !!}
                                 </div>
                             </div>
                         </div>

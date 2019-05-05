@@ -135,7 +135,7 @@ class PageController extends Controller
         return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function myhouse()
+    public function myHouse()
     {
         $userId = auth()->id();
         $houses = House::whereHas('property', function($query) use ($userId){
@@ -147,7 +147,7 @@ class PageController extends Controller
         return view('profile.home', compact('houses'),array('user' => Auth::user()));
     }
 
-    public function myland()
+    public function myLand()
     {
         $userId = auth()->id();
         $lands = Land::whereHas('property', function($query) use ($userId){
@@ -159,7 +159,7 @@ class PageController extends Controller
         return view('profile.home', compact('lands'),array('user' => Auth::user()));
     }
 
-    public function myapartment()
+    public function myApartment()
     {
         $userId = auth()->id();
         $apartments = Apartment::whereHas('property', function($query) use ($userId){
@@ -171,7 +171,7 @@ class PageController extends Controller
         return view('profile.home', compact('apartments'),array('user' => Auth::user()));
     }
 
-    public function mybuilding()
+    public function myBuilding()
     {
         $userId = auth()->id();
         $buildings = Building::whereHas('property', function($query) use ($userId){
@@ -182,7 +182,7 @@ class PageController extends Controller
 
         return view('profile.home', compact('buildings'),array('user' => Auth::user()));
     }
-    public function mywarehouse()
+    public function myWarehouse()
     {
         $userId = auth()->id();
         $warehouses = Warehouse::whereHas('property', function($query) use ($userId){

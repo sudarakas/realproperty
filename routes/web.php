@@ -107,11 +107,11 @@ Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
 Route::get('/profile/message','PageController@myMessage')->middleware('auth');
 Route::get('/profile/message/view','PageController@viewMessage')->middleware('auth');
 Route::get('/profile/deleteaccount','PageController@deleteaccount')->middleware('auth');
-Route::get('/profile/myhouse','PageController@myhouse')->middleware('auth');
-Route::get('/profile/myland','PageController@myland')->middleware('auth');
-Route::get('/profile/myapartment','PageController@myapartment')->middleware('auth');
-Route::get('/profile/mybuilding','PageController@mybuilding')->middleware('auth');
-Route::get('/profile/mywarehouse','PageController@mywarehouse')->middleware('auth');
+Route::get('/profile/myhouse','PageController@myHouse')->middleware('auth');
+Route::get('/profile/myland','PageController@myLand')->middleware('auth');
+Route::get('/profile/myapartment','PageController@myApartment')->middleware('auth');
+Route::get('/profile/mybuilding','PageController@myBuilding')->middleware('auth');
+Route::get('/profile/mywarehouse','PageController@myWarehouse')->middleware('auth');
 Route::get('/profile/alloffers','ProfileController@allOffers')->middleware('auth');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 

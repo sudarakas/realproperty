@@ -93,6 +93,7 @@ Route::post('/warehouse/{warehouse}','WarehouseController@searchWarehouse');
 Route::post('/warehouse/{warehouse}/offer','OfferController@warehouseOffer');
 Route::post('/warehouse/{warehouse}/contactowner','UserEmailController@warehouseContact');
 Route::post('/warehouse/{warehouse}/report','ReportPropertyController@warehouseReport');
+Route::get('/warehouse/{warehouse}/favorite','FavoriteController@favoriteWarehouse');
 
 
 Route::post('/search','PageController@store');

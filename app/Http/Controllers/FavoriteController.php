@@ -10,6 +10,7 @@ use Alert;
 use App\Land;
 use App\Building;
 use App\Apartment;
+use App\Warehouse;
 
 class FavoriteController extends Controller
 {
@@ -116,6 +117,31 @@ class FavoriteController extends Controller
 
     }
 
+    public function favoriteWarehouse(Warehouse $warehouse){
+
+        // $alreadyFavorite = Favorite::where()
+        $favorite = new Favorite;
+        $favorite->property_id = $warehouse->property->id;
+        $favorite->user_id = auth()->id();
+        $favorite->warehouse_id = $warehouse->id;
+        
+        try{
+            $favorite->save();
+            Alert::success('Favorite has been added successfully!', 'Favorite Added')->autoclose(3000);
+            return back();
+        }catch(\Illuminate\Database\QueryException $e){
+
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+                Alert::warning('Favorite has been already added!', 'Already Added')->autoclose(3000);
+                return back();
+            }
+        }
+     
+        Alert::error('Something went wrong!', 'Oops!')->autoclose(3000);
+        return back();
+
+    }
     
 
 }

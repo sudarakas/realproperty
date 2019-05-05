@@ -10,14 +10,16 @@
     <div class="containerx">
         <div class="grayme">
             <div class="row">
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-    @include('profile.thread')
-
+                    @if($warehouses->count() > 0) 
+                    @foreach ($warehouses as $warehouse)
+                        @include('profile.threadwarehouse') 
+                    @endforeach 
+                    @else
+                        @include('profile.noresult')
+                    @endif
+                    
             </div>
+            {{ $warehouses->links() }}
         </div>
     </div>
 </div>

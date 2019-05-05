@@ -184,7 +184,14 @@ class PageController extends Controller
     }
     public function mywarehouse()
     {
-        return view('profile.home', array('user' => Auth::user()));
+        $userId = auth()->id();
+        $warehouses = Warehouse::whereHas('property', function($query) use ($userId){
+
+            $query->where('user_id','=',$userId);
+
+        })->paginate(15);
+
+        return view('profile.home', compact('warehouses'),array('user' => Auth::user()));
     }
 
 

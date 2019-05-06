@@ -63,9 +63,9 @@ Route::post('/house/{house}/offer','OfferController@houseOffer');
 Route::post('/house/{house}/contactowner','UserEmailController@houseContact');
 Route::post('/house/{house}/report','ReportPropertyController@houseReport');
 Route::get('/house/{house}/favorite','FavoriteController@favoriteHouse');
-Route::get('profile/house/{house}/edit','HouseController@showEditHouse')->middleware('auth');
-Route::post('profile/house/{house}/edit','HouseController@editHouse');
-Route::post('profile/house/{house}/delete','HouseController@deleteHouse');
+Route::get('/profile/house/{house}/edit','HouseController@showEditHouse')->middleware('auth');
+Route::post('/profile/house/{house}/edit','HouseController@editHouse');
+Route::post('/profile/house/{house}/delete','HouseController@deleteHouse');
 
 Route::get('/land/serach','PageController@landsearch');
 Route::get('/land/{land}','LandController@viewLand');
@@ -74,9 +74,9 @@ Route::post('/land/{land}/offer','OfferController@landOffer');
 Route::post('/land/{land}/contactowner','UserEmailController@landContact');
 Route::post('/land/{land}/report','ReportPropertyController@landReport');
 Route::get('/land/{land}/favorite','FavoriteController@favoriteLand');
-Route::get('profile/land/{land}/edit','LandController@showEditLand')->middleware('auth');
-Route::post('profile/land/{land}/edit','LandController@editLand');
-Route::post('profile/land/{land}/delete','LandController@deleteLand');
+Route::get('/profile/land/{land}/edit','LandController@showEditLand')->middleware('auth');
+Route::post('/profile/land/{land}/edit','LandController@editLand');
+Route::post('/profile/land/{land}/delete','LandController@deleteLand');
 
 Route::get('/building/serach','PageController@buildingsearch');
 Route::get('/building/{building}','BuildingController@viewBuilding');
@@ -85,6 +85,9 @@ Route::post('/building/{building}/offer','OfferController@buildingOffer');
 Route::post('/building/{building}/contactowner','UserEmailController@buildingContact');
 Route::post('/building/{building}/report','ReportPropertyController@buildingReport');
 Route::get('/building/{building}/favorite','FavoriteController@favoriteBuilding');
+Route::get('/profile/building/{building}/edit','BuildingController@showEditBuilding')->middleware('auth');
+Route::post('/profile/building/{building}/edit','BuildingController@editBuilding');
+Route::post('/profile/building/{building}/delete','BuildingController@deleteBuilding');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');

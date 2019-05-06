@@ -74,6 +74,9 @@ Route::post('/land/{land}/offer','OfferController@landOffer');
 Route::post('/land/{land}/contactowner','UserEmailController@landContact');
 Route::post('/land/{land}/report','ReportPropertyController@landReport');
 Route::get('/land/{land}/favorite','FavoriteController@favoriteLand');
+Route::get('profile/land/{land}/edit','LandController@showEditLand')->middleware('auth');
+Route::post('profile/land/{land}/edit','LandController@editLand');
+Route::post('profile/land/{land}/delete','LandController@deleteLand');
 
 Route::get('/building/serach','PageController@buildingsearch');
 Route::get('/building/{building}','BuildingController@viewBuilding');

@@ -163,7 +163,7 @@ class HouseController extends Controller
             $house->save();
 
             Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
-            return back()->with('message', 'Your property has been successfully added!');
+            return back()->with('message', 'Your property has been successfully updated!');
         } else {
             
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);

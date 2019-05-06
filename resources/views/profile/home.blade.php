@@ -89,6 +89,8 @@
             @include('profile.offers')
           @elseif(Request::is('profile/house/*/edit'))
             @include('profile.edithouse')
+          @elseif(Request::is('profile/land/*/edit'))
+            @include('profile.editland')
             
           @else
             @include('profile.dashboard')

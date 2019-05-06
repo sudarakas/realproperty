@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Land;
+use Illuminate\Support\Facades\Auth;
+use App\Property;
+use Alert;
 
 class LandController extends Controller
 {
     public function viewLand(Land $land)
     {
-        return view('results.viewland',compact('land'));
+        return view('results.viewland', compact('land'));
     }
 
     public function searchLand(Request $request)
@@ -17,47 +20,130 @@ class LandController extends Controller
         $keyword = $request->input('searchquery');
         $minPrice = $request->input('minprice');
         $maxPrice = $request->input('maxprice');
-        
-        if($electricity = $request->has('electricity')){
+
+        if ($electricity = $request->has('electricity')) {
 
             $electricity = "3 Phase";
-
-        }
-        else{
+        } else {
 
             $electricity = "%%";
         }
 
-        if($tapWater = $request->has('tapwater')){
+        if ($tapWater = $request->has('tapwater')) {
 
             $tapWater = "Available";
-        }
-        else{
+        } else {
 
             $tapWater = "%%";
         }
 
 
-        $lands = Land::whereHas('property',function($query) use ($keyword){
-            $query->where(function($query) use ($keyword){
+        $lands = Land::whereHas('property', function ($query) use ($keyword) {
+            $query->where(function ($query) use ($keyword) {
                 $query->orwhere('postalCode', 'LIKE', $keyword)
-                      ->orWhere('province', 'LIKE', $keyword)
-                      ->orWhere('city', 'LIKE', $keyword);
+                    ->orWhere('province', 'LIKE', $keyword)
+                    ->orWhere('city', 'LIKE', $keyword);
             });
-        })->whereHas('property',function($query) use ($minPrice,$maxPrice){
-            
-            $query->whereBetween('amount',array($minPrice,$maxPrice));
+        })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
-        })->where(function($query) use ($electricity){
-            
+            $query->whereBetween('amount', array($minPrice, $maxPrice));
+        })->where(function ($query) use ($electricity) {
+
             $query->where('electricity', 'LIKE', $electricity);
+        })->where(function ($query) use ($tapWater) {
 
-        })->where(function($query) use ($tapWater){
-            
             $query->where('tapwater', 'LIKE', $tapWater);
-
         })->get();
 
-        return view('results.landresult',compact('lands'));
+        return view('results.landresult', compact('lands'));
+    }
+
+    public function showEditLand(Land $land)
+    {
+        if ($land->property->user_id == auth()->id()) {
+
+            return view('profile.home', compact('land'), array('user' => Auth::user()));
+        } else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+        }
+    }
+
+    public function editLand(Request $request)
+    {
+
+        $property = Property::find(request('propertyid'));
+        $land = Land::find(request('landid'));
+
+        if ($property->user_id == auth()->id()) {
+
+            $request->validate([
+                'name' => 'required|max:30|min:3',
+                'type' => 'required',
+                'amount' => 'required',
+                'city' => 'required',
+                'postalcode' => 'required|integer',
+                'province' => 'required',
+                'description' => 'required|min:100',
+                'contactno' => 'required',
+                'contactemail' => 'email|required',
+                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+                'lat' => 'required',
+                'lat' => 'required',
+                'size' => 'required|integer',
+                'electricity' => 'required',
+                'tapwater' => 'required',
+                'nschool' => 'required',
+                'nrailway' => 'required',
+                'nbus' => 'required'
+
+            ]);
+
+            if ($request->hasfile('filename')) {
+
+                foreach ($request->file('filename') as $image) {
+                    $name = time() . '.' . $image->getClientOriginalExtension();
+                    Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/house/' . $name));
+                    $data[] = $name;
+                }
+            }
+
+
+            $property->name = request('name');
+            $property->type = request('type');
+            $property->amount = request('amount');
+            $property->city = request('city');
+            $property->postalCode = request('postalcode');
+            $property->province = request('province');
+            $property->description = request('description');
+            $property->contactNo = request('contactno');
+            $property->contatctEmail = request('contactemail');
+
+            if ($request->hasfile('filename')) {
+
+                $property->images = json_encode($data);
+            }
+
+            $property->latitude = request('lat');
+            $property->longitude = request('lng');
+            $property->save();
+
+
+            $land->size = request('size');
+            $land->electricity = request('electricity');
+            $land->tapwater = request('tapwater');
+            $land->nearestSchool = request('nschool');
+            $land->nearestRailway = request('nrailway');
+            $land->nearestBusStop = request('nbus');
+            $land->save();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
+            return back()->with('message', 'Your property has been successfully updated!');
+        } else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+        }
     }
 }

@@ -153,7 +153,7 @@ class LandController extends Controller
 
         if ($land->property->user_id == auth()->id()) {
 
-            DB::table('houses')->where('id', '=', $land->id)->delete();
+            DB::table('lands')->where('id', '=', $land->id)->delete();
             DB::table('properties')->where('id', '=', $land->property->id)->delete();
 
             Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);

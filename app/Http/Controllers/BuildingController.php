@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Building;
+use Illuminate\Support\Facades\Auth;
+use App\Property;
+use Alert;
+use Illuminate\Support\Facades\DB;
 
 class BuildingController extends Controller
 {
     public function viewBuilding(Building $building)
     {
 
-        return view('results.viewbuilding',compact('building'));
-        
+        return view('results.viewbuilding', compact('building'));
     }
 
     public function searchBuilding(Request $request)
@@ -20,53 +23,157 @@ class BuildingController extends Controller
         $noOfFloors = $request->input('nooffloors');
         $minPrice = $request->input('minprice');
         $maxPrice = $request->input('maxprice');
-        
-        if($lift = $request->has('lift')){
+
+        if ($lift = $request->has('lift')) {
 
             $lift = "Available";
-
-        }
-        else{
+        } else {
 
             $lift = "%%";
         }
 
-        if($carPark = $request->has('carpark')){
+        if ($carPark = $request->has('carpark')) {
 
             $carPark = "Available";
-        }
-        else{
+        } else {
 
             $carPark = "%%";
         }
 
 
-        $buildings = Building::whereHas('property', function($query) use ($noOfFloors) 
-        {
-            $query->where('noOfFloors','>=', $noOfFloors);
-                  
-        })->whereHas('property',function($query) use ($keyword){
-            $query->where(function($query) use ($keyword){
+        $buildings = Building::whereHas('property', function ($query) use ($noOfFloors) {
+            $query->where('noOfFloors', '>=', $noOfFloors);
+        })->whereHas('property', function ($query) use ($keyword) {
+            $query->where(function ($query) use ($keyword) {
                 $query->orwhere('postalCode', 'LIKE', $keyword)
-                      ->orWhere('province', 'LIKE', $keyword)
-                      ->orWhere('city', 'LIKE', $keyword);
+                    ->orWhere('province', 'LIKE', $keyword)
+                    ->orWhere('city', 'LIKE', $keyword);
             });
-        })->whereHas('property',function($query) use ($minPrice,$maxPrice){
-            
-            $query->whereBetween('amount',array($minPrice,$maxPrice));
+        })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
-        })->where(function($query) use ($lift){
-            
+            $query->whereBetween('amount', array($minPrice, $maxPrice));
+        })->where(function ($query) use ($lift) {
+
             $query->where('lift', 'LIKE', $lift);
+        })->where(function ($query) use ($carPark) {
 
-        })->where(function($query) use ($carPark){
-            
             $query->where('carPark', 'LIKE', $carPark);
-
         })->get();
 
         //return "OK";
-        return view('results.buildingresult',compact('buildings'));
+        return view('results.buildingresult', compact('buildings'));
     }
 
+
+    public function showEditBuilding(Building $building)
+    {
+        if ($building->property->user_id == auth()->id()) {
+
+            return view('profile.home', compact('building'), array('user' => Auth::user()));
+        } else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+        }
+    }
+
+    public function editBuilding(Request $request)
+    {
+
+        $property = Property::find(request('propertyid'));
+        $building = Building::find(request('buildingid'));
+
+        if ($property->user_id == auth()->id()) {
+
+            $request->validate([
+                'name' => 'required|max:30|min:3',
+                'type' => 'required',
+                'amount' => 'required',
+                'city' => 'required',
+                'postalcode' => 'required|integer',
+                'province' => 'required',
+                'description' => 'required|min:100',
+                'contactno' => 'required',
+                'contactemail' => 'email|required',
+                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+                'lat' => 'required',
+                'lat' => 'required',
+                'lift' => 'required',
+                'carpark' => 'required',
+                'floorsize' => 'required|integer',
+                'floor' => 'required|integer',
+                'agreement' => 'required',
+                'nschool' => 'required',
+                'nrailway' => 'required',
+                'nbus' => 'required'
+
+            ]);
+
+            if ($request->hasfile('filename')) {
+
+                foreach ($request->file('filename') as $image) {
+                    $name = time() . '.' . $image->getClientOriginalExtension();
+                    Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/house/' . $name));
+                    $data[] = $name;
+                }
+            }
+
+
+            $property->name = request('name');
+            $property->type = request('type');
+            $property->amount = request('amount');
+            $property->city = request('city');
+            $property->postalCode = request('postalcode');
+            $property->province = request('province');
+            $property->description = request('description');
+            $property->contactNo = request('contactno');
+            $property->contatctEmail = request('contactemail');
+
+            if ($request->hasfile('filename')) {
+
+                $property->images = json_encode($data);
+            }
+
+            $property->latitude = request('lat');
+            $property->longitude = request('lng');
+            $property->save();
+
+
+            $building->agreement = request('agreement');
+            $building->noOfFloors = request('floor');
+            $building->floorSize = request('floorsize');
+            $building->lift = request('lift');
+            $building->carpark = request('carpark');
+            $building->nearestSchool = request('nschool');
+            $building->nearestRailway = request('nrailway');
+            $building->nearestBusStop = request('nbus');
+            $building->save();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
+            return back()->with('message', 'Your property has been successfully updated!');
+        } else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+        }
+    }
+
+    public function deleteBuilding(Building $building)
+    {
+
+        if ($building->property->user_id == auth()->id()) {
+
+            DB::table('buildings')->where('id', '=', $building->id)->delete();
+            DB::table('properties')->where('id', '=', $building->property->id)->delete();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return back();
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+            
+        }
+    }
 }

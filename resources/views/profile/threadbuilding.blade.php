@@ -20,9 +20,12 @@
 
                 <div class="content">
                     <div class="buttons is-pulled-right">
-                        <button class="button is-success is-pulled-right" onclick="window.open('/building/{{$building->id}}','_blank');">See More</button>
-                        <button class="button is-warning is-pulled-right">Edit</button>
-                        <button class="button is-danger is-pulled-right">Delete</button>
+                            <button class="button is-success is-pulled-right" onclick="window.open('/building/{{$building->id}}','_blank');">See More</button>
+                            <button class="button is-warning is-pulled-right" onclick="window.open('/profile/building/{{$building->id}}/edit','_blank');">Edit</button>
+                            <form action="/profile/building/{{$building->id}}/delete" method="post">
+                                @csrf
+                                <button class="button is-danger is-pulled-right" type="submit" onclick="deleteMe();">Delete</button>
+                            </form>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Alert;
 use Intervention\Image\Facades\Image;
 use App\Property;
+use Illuminate\Support\Facades\DB;
 
 class WarehouseController extends Controller
 {
@@ -141,6 +142,25 @@ class WarehouseController extends Controller
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
+        }
+    }
+
+    public function deleteWarehouse(Warehouse $warehouse)
+    {
+
+        if ($warehouse->property->user_id == auth()->id()) {
+
+            DB::table('warehouses')->where('id', '=', $warehouse->id)->delete();
+            DB::table('properties')->where('id', '=', $warehouse->property->id)->delete();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return back();
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+            
         }
     }
 }

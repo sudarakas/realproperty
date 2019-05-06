@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\House;
 use App\Offer;
+use Illuminate\Support\Facades\Auth;
 
 class HouseController extends Controller
 {
@@ -79,6 +80,11 @@ class HouseController extends Controller
         })->get();
 
         return view('results.houseresult',compact('houses'));
+    }
+
+    public function editHouse(House $house)
+    {
+        return view('profile.home',compact('house'), array('user' => Auth::user()));
     }
 
     

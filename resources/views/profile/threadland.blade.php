@@ -22,7 +22,10 @@
                     <div class="buttons is-pulled-right">
                         <button class="button is-success is-pulled-right" onclick="window.open('/land/{{$land->id}}','_blank');">See More</button>
                         <button class="button is-warning is-pulled-right" onclick="window.open('/profile/land/{{$land->id}}/edit','_blank');">Edit</button>
-                        <button class="button is-danger is-pulled-right">Delete</button>
+                        <form action="/profile/land/{{$land->id}}/delete" method="post">
+                            @csrf
+                            <button class="button is-danger is-pulled-right" type="submit" onclick="deleteMe();">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

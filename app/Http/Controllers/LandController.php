@@ -7,6 +7,7 @@ use App\Land;
 use Illuminate\Support\Facades\Auth;
 use App\Property;
 use Alert;
+use Illuminate\Support\Facades\DB;
 
 class LandController extends Controller
 {
@@ -144,6 +145,25 @@ class LandController extends Controller
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
+        }
+    }
+
+    public function deleteLand(Land $land)
+    {
+
+        if ($land->property->user_id == auth()->id()) {
+
+            DB::table('houses')->where('id', '=', $land->id)->delete();
+            DB::table('properties')->where('id', '=', $land->property->id)->delete();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return back();
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+            
         }
     }
 }

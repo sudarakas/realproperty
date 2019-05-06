@@ -266,7 +266,7 @@
                                             <select name="carpark">
                                                     <option selected>{{$warehouse->parkingArea}}</option>
                                                     <option value="Available">Available</option>
-                                                    <option value="Not Available" selected>Not Available</option>
+                                                    <option value="Not Available">Not Available</option>
                                                 </select>
                                         </div>
                                     </div>

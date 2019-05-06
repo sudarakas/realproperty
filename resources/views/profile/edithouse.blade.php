@@ -203,7 +203,7 @@
                                     <div class="control-group input-group" style="margin-top:10px">
                                         <input type="file" name="filename[]" class="form-control">
                                         <div class="input-group-btn">
-                                            <button class="button is-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                            <button class="button is-danger removepic" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                                         </div>
                                     </div>
                                 </div>
@@ -307,10 +307,10 @@
                         </div>
                         <div class="field">
                             <div class="control is-pulled-right">
-                                <button type="submit" class="button is-success">
+                                <button type="submit" class="button">
                                Save Changes
                             </button>
-                                <button type="reset" class="button is-danger">
+                                <button type="reset" class="button">
                                     Clear
                             </button>
                             </div>
@@ -324,7 +324,8 @@
     <br>
     <br>
 </div>
-<script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>s
+<script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 <script>
     tinymce.init({ selector:'textarea' });
 </script>
@@ -379,7 +380,7 @@
               $(".increment").after(html);
           });
     
-          $("body").on("click",".is-danger",function(){ 
+          $("body").on("click",".removepic",function(){ 
               $(this).parents(".control-group").remove();
           });
     

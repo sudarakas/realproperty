@@ -8,6 +8,7 @@ use App\Offer;
 use Illuminate\Support\Facades\Auth;
 use App\Property;
 use Alert;
+use Intervention\Image\Facades\Image;
 
 class HouseController extends Controller
 {

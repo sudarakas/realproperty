@@ -63,7 +63,8 @@ Route::post('/house/{house}/offer','OfferController@houseOffer');
 Route::post('/house/{house}/contactowner','UserEmailController@houseContact');
 Route::post('/house/{house}/report','ReportPropertyController@houseReport');
 Route::get('/house/{house}/favorite','FavoriteController@favoriteHouse');
-Route::get('profile/house/{house}/edit','HouseController@editHouse');
+Route::get('profile/house/{house}/edit','HouseController@showEditHouse');
+Route::post('profile/house/{house}/edit','HouseController@editHouse');
 
 Route::get('/land/serach','PageController@landsearch');
 Route::get('/land/{land}','LandController@viewLand');

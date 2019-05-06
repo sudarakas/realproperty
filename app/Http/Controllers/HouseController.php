@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\House;
 use App\Offer;
 use Illuminate\Support\Facades\Auth;
+use App\Property;
+use Alert;
 
 class HouseController extends Controller
 {
@@ -82,9 +84,86 @@ class HouseController extends Controller
         return view('results.houseresult',compact('houses'));
     }
 
-    public function editHouse(House $house)
+    public function showEditHouse(House $house)
     {
         return view('profile.home',compact('house'), array('user' => Auth::user()));
+    }
+
+    public function editHouse(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:50|min:3',
+            'type' => 'required',
+            'amount' => 'required',
+            'city' => 'required',
+            'postalcode' => 'required|integer',
+            'province' => 'required',
+            'description' => 'required|min:100',
+            'contactno' => 'required',
+            'contactemail' => 'email|required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+            'lat' => 'required',
+            'lat' => 'required',
+            'rooms' => 'required|integer',
+            'kitchen' => 'required|integer',
+            'floor' => 'required|integer',
+            'washroom' => 'required|integer',
+            'size' => 'required|integer',
+            'swimming' => 'required',
+            'garden' => 'required',
+            'nschool' => 'required',
+            'nrailway' => 'required',
+            'nbus' => 'required'
+            
+        ]);
+
+        if($request->hasfile('filename'))
+         {
+
+            foreach($request->file('filename') as $image)
+            {
+                $name= time() . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/house/' . $name));  
+                $data[] = $name;  
+            }
+         }
+
+        $property = Property::find(request('propertyid'));
+        $property->user_id = auth()->id();
+        $property->name = request('name');
+        $property->type = request('type');
+        $property->amount = request('amount');
+        $property->city = request('city');
+        $property->postalCode = request('postalcode');
+        $property->province = request('province');
+        $property->description = request('description');
+        $property->contactNo = request('contactno');
+        $property->contatctEmail = request('contactemail');
+
+        if($request->hasfile('filename')){
+
+            $property->images =json_encode($data);
+        }
+
+        $property->latitude = request('lat');
+        $property->longitude = request('lng');
+        $property->save();
+
+        $house = House::find(request('houseid'));
+        $house->noOfRooms = request('rooms');
+        $house->noOfKitchen = request('kitchen');
+        $house->noOfFloors = request('floor');
+        $house->noOfWashrooms = request('washroom');
+        $house->size = request('size');
+        $house->swimmingPool = request('swimming');
+        $house->garden = request('garden');
+        $house->nearestSchool = request('nschool');
+        $house->nearestRailway = request('nrailway');
+        $house->nearestBusStop = request('nbus');
+        $house->save();
+
+        Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
+        return back()->with('message', 'Your property has been successfully added!');
     }
 
     

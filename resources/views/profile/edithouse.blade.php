@@ -42,6 +42,8 @@
                             <div class="control">
                                 <label for="name">Property Name</label>
                             <input class="input is-primary" type="text" name="name" value="{{$house->property->name}}">
+                            <input name="propertyid" value="{{$house->property->id}}" hidden>
+                            <input name="houseid" value="{{$house->id}}" hidden>
                             </div>
                         </div>
                         <div class="field">
@@ -135,7 +137,7 @@
                         <div class="field">
                             <div class="control">
                                 <label for="name">Postal Code</label>
-                                <input class="input is-primary" type="text" name="postalcode" {{$house->property->postalCode}}>
+                                <input class="input is-primary" type="text" name="postalcode" value="{{$house->property->postalCode}}">
                             </div>
                         </div>
                         <div class="field">
@@ -144,6 +146,8 @@
                                 <br>
                                 <div class="select is-primary is-full">
                                     <select name="province">
+                                            
+                                        <option value="{{$house->property->province}}" selected>{{$house->property->province}}</option>
                                         <option value="Central">Central</option>
                                         <option value="Eastern">Eastern</option>
                                         <option value="North Central">North Central</option>
@@ -161,25 +165,33 @@
                         <div class="field">
                             <div class="control">
                                 <label for="name">Property Description</label>
-                                <textarea name="description" class="textarea is-primary"></textarea>
+                                <textarea name="description" class="textarea is-primary"> {{$house->property->description}}</textarea>
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">Contact No</label>
-                                <input class="input is-primary" type="text" name="contactno">
+                                <input class="input is-primary" type="text" name="contactno" value="{{$house->property->contactNo}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">Contact Email</label>
-                                <input class="input is-primary" type="text" name="contactemail" value="{{Auth::user()->email}}">
+                                <input class="input is-primary" type="text" name="contactemail" value="{{$house->property->contatctEmail}}">
                             </div>
                         </div>
                         {{-- Image Upload Section --}}
                         <div class="field">
                             <div class="control">
                                 <label for="img">Images <strong class="is-small">(Tip: Upload more the one photograph [Max Image Size: 4MB])</strong></label>
+                                <div class="contetnt">
+                                    <div class="row columns">
+                                            @foreach (json_decode($house->property->images) as $image)
+                                            <div class="column"><img src="/uploads/property/house/{{$image}}" /></div>
+                                            @endforeach
+                                    </div>
+                                </div>
+                                <br>
                                 <div class="input-group control-group increment">
                                     <input type="file" name="filename[]" class="form-control">
                                     <div class="input-group-btn">
@@ -207,13 +219,13 @@
                         <div class="field">
                             <div class="control">
                                 <label for="name">Latitude</label>
-                                <input class="input is-primary" type="text" name="lat" id="lat">
+                                <input class="input is-primary" type="text" name="lat" id="lat" value="{{$house->property->latitude}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">Longitude</label>
-                                <input class="input is-primary" type="text" name="lng" id="lng">
+                                <input class="input is-primary" type="text" name="lng" id="lng" value="{{$house->property->longitude}}">
                             </div>
                         </div>
                     </div>
@@ -222,31 +234,31 @@
                         <div class="field">
                             <div class="control">
                                 <label for="name">No of Rooms</label>
-                                <input class="input is-primary" type="number" name="rooms">
+                                <input class="input is-primary" type="number" name="rooms" value="{{$house->noOfRooms}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">No of Kitchens</label>
-                                <input class="input is-primary" type="number" name="kitchen">
+                                <input class="input is-primary" type="number" name="kitchen" value="{{$house->noOfKitchen}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">No of Floors</label>
-                                <input class="input is-primary" type="number" name="floor">
+                                <input class="input is-primary" type="number" name="floor" value="{{$house->noOfFloors}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">No of Washrooms</label>
-                                <input class="input is-primary" type="number" name="washroom">
+                                <input class="input is-primary" type="number" name="washroom" value="{{$house->noOfWashrooms}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">Size(Square Feet)</label>
-                                <input class="input is-primary" type="number" name="size">
+                                <input class="input is-primary" type="number" name="size" value="{{$house->size}}">
                             </div>
                         </div>
                         <div class="field">
@@ -255,8 +267,9 @@
                                 <br>
                                 <div class="select is-primary">
                                     <select name="swimming">
+                                    <option selected>{{$house->swimmingPool}}</option>
                                     <option value="Available">Available</option>
-                                    <option value="Not Available" selected>Not Available</option>
+                                    <option value="Not Available">Not Available</option>
                                 </select>
                                 </div>
                             </div>
@@ -267,8 +280,9 @@
                                 <br>
                                 <div class="select is-primary">
                                     <select name="garden">
+                                        <option selected>{{$house->garden}}</option>
                                         <option value="Available">Available</option>
-                                        <option value="Not Available" selected>Not Available</option>
+                                        <option value="Not Available">Not Available</option>
                                     </select>
                                 </div>
                             </div>
@@ -276,27 +290,27 @@
                         <div class="field">
                             <div class="control">
                                 <label for="name">Nearest School</label>
-                                <input class="input is-primary" type="text" name="nschool">
+                                <input class="input is-primary" type="text" name="nschool" value="{{$house->nearestSchool}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">Nearest Railway</label>
-                                <input class="input is-primary" type="text" name="nrailway">
+                                <input class="input is-primary" type="text" name="nrailway" value="{{$house->nearestRailway}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <label for="name">Nearest BusStop</label>
-                                <input class="input is-primary" type="text" name="nbus">
+                                <input class="input is-primary" type="text" name="nbus" value="{{$house->nearestBusStop}}">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control is-pulled-right">
-                                <button type="submit" class="button is-primary">
-                               Add House
+                                <button type="submit" class="button is-success">
+                               Save Changes
                             </button>
-                                <button type="reset" class="button is-warning">
+                                <button type="reset" class="button is-danger">
                                     Clear
                             </button>
                             </div>
@@ -318,12 +332,12 @@
     var map;
             function initAutocomplete() {
                 map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 6.9814435, lng: 81.0741583},
+                center: {lat: {{$house->property->latitude}}, lng: {{$house->property->longitude}} },
                 zoom: 15
                 });
 
                 var marker = new google.maps.Marker({
-                position: {lat: 6.9814435, lng: 81.0741583},
+                position: {lat: {{$house->property->latitude}}, lng: {{$house->property->longitude}} },
                 map: map,
                 draggable: true,
                 });

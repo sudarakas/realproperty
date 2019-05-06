@@ -307,10 +307,10 @@
                         </div>
                         <div class="field">
                             <div class="control is-pulled-right">
-                                <button type="submit" class="button">
+                                <button type="submit" class="button is-success">
                                Save Changes
                             </button>
-                                <button type="reset" class="button">
+                                <button type="reset" class="button is-danger">
                                     Clear
                             </button>
                             </div>

@@ -87,11 +87,25 @@ class HouseController extends Controller
 
     public function showEditHouse(House $house)
     {
-        return view('profile.home',compact('house'), array('user' => Auth::user()));
+        if($house->property->user_id == auth()->id()){
+
+            return view('profile.home',compact('house'), array('user' => Auth::user()));
+        
+        }else{
+            
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+        }
     }
 
     public function editHouse(Request $request)
     {
+
+        $property = Property::find(request('propertyid'));
+        $house = House::find(request('houseid'));
+
+        if($property->user_id == auth()->id()){
+
         $request->validate([
             'name' => 'required|max:50|min:3',
             'type' => 'required',
@@ -129,8 +143,7 @@ class HouseController extends Controller
             }
          }
 
-        $property = Property::find(request('propertyid'));
-        $property->user_id = auth()->id();
+        
         $property->name = request('name');
         $property->type = request('type');
         $property->amount = request('amount');
@@ -150,7 +163,7 @@ class HouseController extends Controller
         $property->longitude = request('lng');
         $property->save();
 
-        $house = House::find(request('houseid'));
+        
         $house->noOfRooms = request('rooms');
         $house->noOfKitchen = request('kitchen');
         $house->noOfFloors = request('floor');
@@ -165,6 +178,12 @@ class HouseController extends Controller
 
         Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
         return back()->with('message', 'Your property has been successfully added!');
+
+    } else{
+        Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+        return redirect('/profile');
+    }
+
     }
 
     

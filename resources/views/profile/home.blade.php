@@ -95,7 +95,8 @@
             @include('profile.editbuilding')
           @elseif(Request::is('profile/apartment/*/edit'))
             @include('profile.editapartment')
-            
+          @elseif(Request::is('profile/warehouse/*/edit'))
+            @include('profile.editwarehouse')  
           @else
             @include('profile.dashboard')
           

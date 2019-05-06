@@ -107,6 +107,9 @@ Route::post('/warehouse/{warehouse}/offer','OfferController@warehouseOffer');
 Route::post('/warehouse/{warehouse}/contactowner','UserEmailController@warehouseContact');
 Route::post('/warehouse/{warehouse}/report','ReportPropertyController@warehouseReport');
 Route::get('/warehouse/{warehouse}/favorite','FavoriteController@favoriteWarehouse');
+Route::get('/profile/warehouse/{warehouse}/edit','WarehouseController@showEditWarehouse')->middleware('auth');
+Route::post('/profile/warehouse/{warehouse}/edit','WarehouseController@editWarehouse');
+Route::post('/profile/warehouse/{warehouse}/delete','WarehouseController@deleteWarehouse');
 
 
 Route::post('/search','PageController@store');

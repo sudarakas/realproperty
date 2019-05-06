@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Warehouse;
+use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class WarehouseController extends Controller
 {
@@ -59,5 +61,17 @@ class WarehouseController extends Controller
         })->get();
 
         return view('results.warehousetresult',compact('warehouses'));
+    }
+
+    public function showEditWarehouse(Warehouse $warehouse)
+    {
+        if ($warehouse->property->user_id == auth()->id()) {
+
+            return view('profile.home', compact('warehouse'), array('user' => Auth::user()));
+        } else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+        }
     }
 }

@@ -23,3 +23,35 @@
         </div>
     </div>
 </div>
+<script>
+        function deleteMe() {
+        event.preventDefault();
+        var form = event.target.form;
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: "hsl(141, 71%, 48%)",
+            cancelButtonColor: "hsl(348, 100%, 61%)",
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                
+                form.submit();
+    
+            } else if (
+                // Read more about handling dismissals
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire(
+                    'Cancelled',
+                    'Your property is safe :)',
+                    'info'
+                )
+            }
+        });
+    }
+    </script>

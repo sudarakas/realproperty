@@ -65,6 +65,7 @@ Route::post('/house/{house}/report','ReportPropertyController@houseReport');
 Route::get('/house/{house}/favorite','FavoriteController@favoriteHouse');
 Route::get('profile/house/{house}/edit','HouseController@showEditHouse')->middleware('auth');
 Route::post('profile/house/{house}/edit','HouseController@editHouse');
+Route::post('profile/house/{house}/delete','HouseController@deleteHouse');
 
 Route::get('/land/serach','PageController@landsearch');
 Route::get('/land/{land}','LandController@viewLand');

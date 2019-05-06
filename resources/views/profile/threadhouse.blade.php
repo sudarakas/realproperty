@@ -1,3 +1,4 @@
+
 <div class="col-sm-4 col-sm-3 center-responsive">
     <div class="column is-gaps is-12">
         <div class="card">
@@ -22,7 +23,10 @@
                     <div class="buttons is-pulled-right">
                         <button class="button is-success is-pulled-right" onclick="window.open('/house/{{$house->id}}','_blank');">See More</button>
                         <button class="button is-warning is-pulled-right" onclick="window.open('/profile/house/{{$house->id}}/edit','_blank');">Edit</button>
-                        <button class="button is-danger is-pulled-right">Delete</button>
+                        <form action="/profile/house/{{$house->id}}/delete" method="post">
+                            @csrf
+                            <button class="button is-danger is-pulled-right" type="submit" onclick="deleteMe();">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

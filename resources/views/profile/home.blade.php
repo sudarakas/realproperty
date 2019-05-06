@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/bulma.min.css">
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/sweetalert2.min.css">
     
     {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css?family=Exo+2:300i,400,400i,500,500i,600|Kanit:300,300i,400,400i,500,500i,600" rel="stylesheet">
@@ -132,6 +133,7 @@
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/sweetalert2.all.min.js"></script>
     <script src="/js/sweetalert.min.js"></script>
     @include('sweet::alert')
     <script>

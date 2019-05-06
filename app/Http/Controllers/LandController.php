@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Property;
 use Alert;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class LandController extends Controller
 {
@@ -105,7 +106,7 @@ class LandController extends Controller
 
                 foreach ($request->file('filename') as $image) {
                     $name = time() . '.' . $image->getClientOriginalExtension();
-                    Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/house/' . $name));
+                    Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/land/' . $name));
                     $data[] = $name;
                 }
             }

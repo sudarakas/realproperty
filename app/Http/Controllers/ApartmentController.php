@@ -8,6 +8,7 @@ use Alert;
 use Illuminate\Support\Facades\Auth;
 use App\Property;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
@@ -128,6 +129,25 @@ class ApartmentController extends Controller
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
+        }
+    }
+
+    public function deleteApartment(Apartment $apartment)
+    {
+
+        if ($apartment->property->user_id == auth()->id()) {
+
+            DB::table('apartments')->where('id', '=', $apartment->id)->delete();
+            DB::table('properties')->where('id', '=', $apartment->property->id)->delete();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return back();
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+            
         }
     }
 }

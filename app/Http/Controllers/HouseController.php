@@ -15,85 +15,72 @@ class HouseController extends Controller
 {
     public function viewHouse(House $house)
     {
-        return view('results.viewhouse',compact('house'));
+        return view('results.viewhouse', compact('house'));
     }
-    
+
     public function searchHouse(Request $request)
     {
         $keyword = $request->input('searchquery');
         $room = $request->input('room');
         $minPrice = $request->input('minprice');
         $maxPrice = $request->input('maxprice');
-        
-        if($swimmingPool = $request->has('swimmingpool')){
+
+        if ($swimmingPool = $request->has('swimmingpool')) {
 
             $swimmingPool = "Available";
-
-        }
-        else{
+        } else {
 
             $swimmingPool = "%%";
         }
 
-        if($noOfFloors = $request->has('balcony')){
+        if ($noOfFloors = $request->has('balcony')) {
 
             $noOfFloors = 2;
-        }
-        else{
+        } else {
 
             $noOfFloors = 0;
         }
 
-        if($outdoor = $request->has('outdoor')){
+        if ($outdoor = $request->has('outdoor')) {
 
             $outdoor = "Available";
-
-        }
-        else{
+        } else {
 
             $outdoor = "%%";
-
         }
 
-        $houses = House::whereHas('property', function($query) use ($room) 
-        {
-            $query->where('noOfRooms','>=', $room);
-                  
-        })->whereHas('property',function($query) use ($keyword){
-            $query->where(function($query) use ($keyword){
+        $houses = House::whereHas('property', function ($query) use ($room) {
+            $query->where('noOfRooms', '>=', $room);
+        })->whereHas('property', function ($query) use ($keyword) {
+            $query->where(function ($query) use ($keyword) {
                 $query->orwhere('postalCode', 'LIKE', $keyword)
-                      ->orWhere('province', 'LIKE', $keyword)
-                      ->orWhere('city', 'LIKE', $keyword);
+                    ->orWhere('province', 'LIKE', $keyword)
+                    ->orWhere('city', 'LIKE', $keyword);
             });
-        })->whereHas('property',function($query) use ($minPrice,$maxPrice){
-            
-            $query->whereBetween('amount',array($minPrice,$maxPrice));
+        })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
-        })->where(function($query) use ($swimmingPool){
-            
+            $query->whereBetween('amount', array($minPrice, $maxPrice));
+        })->where(function ($query) use ($swimmingPool) {
+
             $query->where('swimmingPool', 'LIKE', $swimmingPool);
+        })->where(function ($query) use ($noOfFloors) {
 
-        })->where(function($query) use ($noOfFloors){
-            
             $query->where('noOfFloors', '>=', $noOfFloors);
+        })->where(function ($query) use ($outdoor) {
 
-        })->where(function($query) use ($outdoor){
-            
             $query->where('garden', 'LIKE', $outdoor);
-
         })->get();
 
-        return view('results.houseresult',compact('houses'));
+        return view('results.houseresult', compact('houses'));
     }
 
     public function showEditHouse(House $house)
     {
-        if($house->property->user_id == auth()->id()){
+        if ($house->property->user_id == auth()->id()) {
 
-            return view('profile.home',compact('house'), array('user' => Auth::user()));
-        
-        }else{
-            
+            return view('profile.home', compact('house'), array('user' => Auth::user()));
+        } else {
+
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
         }
@@ -105,96 +92,102 @@ class HouseController extends Controller
         $property = Property::find(request('propertyid'));
         $house = House::find(request('houseid'));
 
-        if($property->user_id == auth()->id()){
+        if ($property->user_id == auth()->id()) {
 
-        $request->validate([
-            'name' => 'required|max:50|min:3',
-            'type' => 'required',
-            'amount' => 'required',
-            'city' => 'required',
-            'postalcode' => 'required|integer',
-            'province' => 'required',
-            'description' => 'required|min:100',
-            'contactno' => 'required',
-            'contactemail' => 'email|required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-            'lat' => 'required',
-            'lat' => 'required',
-            'rooms' => 'required|integer',
-            'kitchen' => 'required|integer',
-            'floor' => 'required|integer',
-            'washroom' => 'required|integer',
-            'size' => 'required|integer',
-            'swimming' => 'required',
-            'garden' => 'required',
-            'nschool' => 'required',
-            'nrailway' => 'required',
-            'nbus' => 'required'
-            
-        ]);
+            $request->validate([
+                'name' => 'required|max:50|min:3',
+                'type' => 'required',
+                'amount' => 'required',
+                'city' => 'required',
+                'postalcode' => 'required|integer',
+                'province' => 'required',
+                'description' => 'required|min:100',
+                'contactno' => 'required',
+                'contactemail' => 'email|required',
+                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+                'lat' => 'required',
+                'lat' => 'required',
+                'rooms' => 'required|integer',
+                'kitchen' => 'required|integer',
+                'floor' => 'required|integer',
+                'washroom' => 'required|integer',
+                'size' => 'required|integer',
+                'swimming' => 'required',
+                'garden' => 'required',
+                'nschool' => 'required',
+                'nrailway' => 'required',
+                'nbus' => 'required'
 
-        if($request->hasfile('filename'))
-         {
+            ]);
 
-            foreach($request->file('filename') as $image)
-            {
-                $name= time() . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/house/' . $name));  
-                $data[] = $name;  
+            if ($request->hasfile('filename')) {
+
+                    foreach ($request->file('filename') as $image) {
+                            $name = time() . '.' . $image->getClientOriginalExtension();
+                            Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/house/' . $name));
+                            $data[] = $name;
+                        }
+                }
+
+
+            $property->name = request('name');
+            $property->type = request('type');
+            $property->amount = request('amount');
+            $property->city = request('city');
+            $property->postalCode = request('postalcode');
+            $property->province = request('province');
+            $property->description = request('description');
+            $property->contactNo = request('contactno');
+            $property->contatctEmail = request('contactemail');
+
+            if ($request->hasfile('filename')) {
+
+                $property->images = json_encode($data);
             }
-         }
 
-        
-        $property->name = request('name');
-        $property->type = request('type');
-        $property->amount = request('amount');
-        $property->city = request('city');
-        $property->postalCode = request('postalcode');
-        $property->province = request('province');
-        $property->description = request('description');
-        $property->contactNo = request('contactno');
-        $property->contatctEmail = request('contactemail');
+            $property->latitude = request('lat');
+            $property->longitude = request('lng');
+            $property->save();
 
-        if($request->hasfile('filename')){
 
-            $property->images =json_encode($data);
+            $house->noOfRooms = request('rooms');
+            $house->noOfKitchen = request('kitchen');
+            $house->noOfFloors = request('floor');
+            $house->noOfWashrooms = request('washroom');
+            $house->size = request('size');
+            $house->swimmingPool = request('swimming');
+            $house->garden = request('garden');
+            $house->nearestSchool = request('nschool');
+            $house->nearestRailway = request('nrailway');
+            $house->nearestBusStop = request('nbus');
+            $house->save();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
+            return back()->with('message', 'Your property has been successfully added!');
+        } else {
+            
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+
         }
-
-        $property->latitude = request('lat');
-        $property->longitude = request('lng');
-        $property->save();
-
-        
-        $house->noOfRooms = request('rooms');
-        $house->noOfKitchen = request('kitchen');
-        $house->noOfFloors = request('floor');
-        $house->noOfWashrooms = request('washroom');
-        $house->size = request('size');
-        $house->swimmingPool = request('swimming');
-        $house->garden = request('garden');
-        $house->nearestSchool = request('nschool');
-        $house->nearestRailway = request('nrailway');
-        $house->nearestBusStop = request('nbus');
-        $house->save();
-
-        Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
-        return back()->with('message', 'Your property has been successfully added!');
-
-    } else{
-        Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
-        return redirect('/profile');
     }
 
+    public function deleteHouse(House $house)
+    {
+
+        if ($house->property->user_id == auth()->id()) {
+
+            DB::table('houses')->where('id', '=', $house->id)->delete();
+            DB::table('properties')->where('id', '=', $house->property->id)->delete();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return back();
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+            
+        }
     }
-
-    public function deleteHouse(House $house){
-
-        DB::table('houses')->where('id', '=', $house->id)->delete();
-        DB::table('properties')->where('id', '=', $house->property->id)->delete();
-
-        Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
-        return back();
-
-    }
-    
 }

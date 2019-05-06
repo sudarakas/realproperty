@@ -117,23 +117,6 @@
           </form>
     </div>
 
-    {{--
-    <div class="columns">
-        <div class="column is-3">
-
-        </div>
-        <div class="column is-6 is-centered">
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-        </div>
-        <div class="column is-3">
-
-        </div>
-    </div> --}}
-
     <div class="grayme">
         <div class="row printarea">
             @if($apartments->count() > 0) 

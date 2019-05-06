@@ -10,6 +10,7 @@ use Auth;
 use Image;
 use App\User;
 use App\Offer;
+use App\UserEmail;
 
 class ProfileController extends Controller
 {
@@ -101,13 +102,26 @@ class ProfileController extends Controller
     public function allOffers(){
 
         $id = Auth::user()->id;
-        $offers = $offers = Offer::whereHas('property', function($query) use ($id) 
+        $offers = Offer::whereHas('property', function($query) use ($id) 
         {
             $query->where('user_id','=', $id);
 
         })->paginate(15);
 
         return view('profile.home', compact('offers'),array('user' => Auth::user()));
+    }
+
+    public function myMessage()
+    {
+        $id = Auth::user()->id;
+        $messages = UserEmail::where(function($query) use ($id) 
+        {
+            $query->where('receiver_id','=', $id);
+
+        })->orderBy('id', 'desc')
+          ->paginate(10);
+
+        return view('profile.home', compact('messages'),array('user' => Auth::user()));
     }
     
 }

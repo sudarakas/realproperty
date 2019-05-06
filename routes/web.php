@@ -112,7 +112,7 @@ Route::post('/profile/warehouse/{warehouse}/edit','WarehouseController@editWareh
 Route::post('/profile/warehouse/{warehouse}/delete','WarehouseController@deleteWarehouse');
 
 
-Route::post('/search','PageController@store');
+
 Route::post('/sendmessage','MessageController@contactUsEmail');
 
 //User Profile Section
@@ -120,7 +120,7 @@ Route::get('/profile','ProfileController@loadUserDashboard')->middleware('auth')
 Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
 Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
 Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
-Route::get('/profile/message','PageController@myMessage')->middleware('auth');
+Route::get('/profile/message','ProfileController@myMessage')->middleware('auth');
 Route::get('/profile/message/view','PageController@viewMessage')->middleware('auth');
 Route::get('/profile/deleteaccount','PageController@deleteaccount')->middleware('auth');
 Route::get('/profile/myhouse','PageController@myHouse')->middleware('auth');

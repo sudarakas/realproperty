@@ -39,7 +39,7 @@
               </span>
               <h6 class="is-uppercase has-text-weight-bold">Favorites</h6>
             </div>
-            <div class="column has-text-centered selecticon" onclick="location.href='/profile/inbox'">
+            <div class="column has-text-centered selecticon" onclick="location.href='/profile/message'">
               <span class="icon has-text-centered is-large">
                 <i class="fas fa-comments fa-4x"></i>
               </span>

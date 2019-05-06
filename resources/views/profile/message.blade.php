@@ -3,15 +3,19 @@
     <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
         <ul>
             <li><a href="/profile">Profile</a></li>
-            <li class="is-active"><a href="/profile">Change Password</a></li>
+            <li class="is-active"><a href="/message">Messages</a></li>
         </ul>
     </nav>
     <div class="containerx">
         <div class="column">
-            @include('profile.messagelayout')
-            @include('profile.messagelayout')
-            @include('profile.messagelayout')
-            @include('profile.messagelayout')
-        </div>
+                @if($messages->count() > 0) 
+                @foreach ($messages as $message)
+                    @include('profile.messagelayout') 
+                @endforeach 
+                @else
+                    @include('profile.noresult')
+                @endif
+            </div>
+            {{ $messages->links() }}
     </div>
 </div>

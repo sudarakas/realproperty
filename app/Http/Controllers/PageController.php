@@ -120,11 +120,6 @@ class PageController extends Controller
         return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function myMessage()
-    {
-        return view('profile.home', array('user' => Auth::user()));
-    }
-
     public function viewMessage()
     {
         $records = DB::table('messages')->orderBy('created_at', 'asc')->get();

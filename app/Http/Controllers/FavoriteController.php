@@ -25,7 +25,7 @@ class FavoriteController extends Controller
         $favorite->property_id = $house->property->id;
         $favorite->user_id = auth()->id();
         $favorite->house_id = $house->id;
-        $favorite->save();
+        
 
         try{
             $favorite->save();
@@ -51,7 +51,7 @@ class FavoriteController extends Controller
         $favorite->property_id = $land->property->id;
         $favorite->user_id = auth()->id();
         $favorite->land_id = $land->id;
-        $favorite->save();
+        
 
         try{
             $favorite->save();

@@ -21,7 +21,7 @@
 
     <div class="container">
         {{-- Search Box --}}
-        <form method="POST" action="/search">
+        <form method="POST" action="/apartment/search">
             @csrf
             <div class="field has-addons searchagain">
                 <p class="control has-icons-left is-expanded">

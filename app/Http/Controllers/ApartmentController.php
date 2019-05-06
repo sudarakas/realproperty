@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apartment;
+use Alert;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
@@ -38,5 +40,17 @@ class ApartmentController extends Controller
         })->get();
 
         return view('results.apartmentresult',compact('apartments'));
+    }
+
+    public function showEditApartment(Apartment $apartment)
+    {
+        if ($apartment->property->user_id == auth()->id()) {
+
+            return view('profile.home', compact('apartment'), array('user' => Auth::user()));
+        } else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+        }
     }
 }

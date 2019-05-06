@@ -96,6 +96,9 @@ Route::post('/apartment/{apartment}/offer','OfferController@apartmentOffer');
 Route::post('/apartment/{apartment}/contactowner','UserEmailController@apartmentContact');
 Route::post('/apartment/{apartment}/report','ReportPropertyController@apartmentReport');
 Route::get('/apartment/{apartment}/favorite','FavoriteController@favoriteApartment');
+Route::get('/profile/apartment/{apartment}/edit','ApartmentController@showEditApartment')->middleware('auth');
+Route::post('/profile/apartment/{apartment}/edit','ApartmentController@editApartment');
+Route::post('/profile/apartment/{apartment}/delete','ApartmentController@deleteApartment');
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');

@@ -93,6 +93,8 @@
             @include('profile.editland')
           @elseif(Request::is('profile/building/*/edit'))
             @include('profile.editbuilding')
+          @elseif(Request::is('profile/apartment/*/edit'))
+            @include('profile.editapartment')
             
           @else
             @include('profile.dashboard')

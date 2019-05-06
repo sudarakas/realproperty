@@ -21,93 +21,86 @@
 
     <div class="container">
         {{-- Search Box --}}
-        <form method="POST" action="/search">
+        <form method="POST" action="/warehouse/search">
             @csrf
-            <div class="field has-addons searchagain">
-                <p class="control has-icons-left is-expanded">
-                    <input class="input is-primary is-medium inputsearchbox" type="text" placeholder="Search by City,Postal Code" id="search"
-                        name="searchquery">
+              <div class="field has-addons searchagain">
+                  <p class="control has-icons-left is-expanded">
+                    <input class="input is-medium inputsearchbox" type="text" placeholder="Search by City,Postal Code" id="search" name="searchquery">
                     <span class="icon is-small is-left">
-                          <i class="fas fa-search"></i>
-                        </span>
-                </p>
-                <div class="control">
-                    <button class="button inputsearchbox is-primary is-medium"><p class="subtitle is-6 has-text-white">Search</p></button>
-                </div>
-            </div>
-            <div class="is-hidden-touch">
-                <div class="field has-addons">
-                    <div class="control has-icons-left">
-                        <div class="select selectbox is-small">
-                            <select>
-                              <option>Price(Min)</option>
-                              <option>With options</option>
-                              </select>
-                        </div>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-dollar-sign"></i>
-                          </span>
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </p>
+                  <div class="control">
+                      <button class="button inputsearchbox is-primary is-medium"><span class="subtitle is-6 has-text-white">Search</span></button>
+                  </div>
+              </div>
+              <div class="is-hidden-touch">
+              <div class="field has-addons">
+                  <div class="control has-icons-left">
+                      <div class="select selectbox is-small">
+                          <select name="minprice">
+                          <option value="0">Price(Min)</option>
+                          <option value="1000000">1 Million</option>
+                          <option value="2000000">2 Million</option>
+                          <option value="3000000">3 Million</option>
+                          <option value="4000000">4 Million</option>
+                          <option value="5000000">5 Million</option>
+                          <option value="6000000">6 Million</option>
+                          <option value="7000000">7 Million</option>
+                          <option value="8000000">8 Million</option>
+                          <option value="9000000">9 Million</option>
+                          <option value="10000000">10 Million</option>
+                          <option value="50000000">50 Million</option>
+                          <option value="100000000">100 Million</option>
+                          <option value="200000000">200 Million</option>
+                          <option value="1000000000">1 Billion</option>
+                          <option value="50000000000">50 Billion</option>
+                          <option value="100000000000">100 Billion</option>
+                          </select>
+                      </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-dollar-sign"></i>
+                      </span>
+                  </div>
+                  <div class="control has-icons-left">
+                    <div class="select selectbox is-small">
+                        <select name="maxprice">
+                          <option value="9999999999999999999999999999999">Price(Max)</option>
+                          <option value="1000000">1 Million</option>
+                          <option value="2000000">2 Million</option>
+                          <option value="3000000">3 Million</option>
+                          <option value="4000000">4 Million</option>
+                          <option value="5000000">5 Million</option>
+                          <option value="6000000">6 Million</option>
+                          <option value="7000000">7 Million</option>
+                          <option value="8000000">8 Million</option>
+                          <option value="9000000">9 Million</option>
+                          <option value="10000000">10 Million</option>
+                          <option value="50000000">50 Million</option>
+                          <option value="100000000">100 Million</option>
+                          <option value="200000000">200 Million</option>
+                          <option value="1000000000">1 Billion</option>
+                          <option value="50000000000">50 Billion</option>
+                          <option value="100000000000">100 Billion</option>
+                        </select>
                     </div>
-                    <div class="control has-icons-left">
-                        <div class="select selectbox is-small">
-                            <select>
-                            <option>Price(Max)</option>
-                            <option>With options</option>
-                            </select>
-                        </div>
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-dollar-sign"></i>
-                        </span>
-                    </div>
-                    <div class="control has-icons-left">
-                        <div class="select selectbox is-small">
-                            <select>
-                            <option>Rooms</option>
-                            <option>With options</option>
-                            </select>
-                        </div>
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-walking"></i>
-                        </span>
-                    </div>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-dollar-sign"></i>
+                    </span>
+                  </div>
+                  <label class="checkbox checktext has-text-primary">
+                        <input type="checkbox" name="electricity">
+                        3 Phase Electricity
+                    </label>
                     <label class="checkbox checktext has-text-primary">
-                          <input type="checkbox">
-                          Swimming pool
-                      </label>
-                    <label class="checkbox checktext has-text-primary">
-                          <input type="checkbox">
-                          Garage
-                      </label>
-                    <label class="checkbox checktext has-text-primary">
-                          <input type="checkbox">
-                          Balcony
-                      </label>
-                    <label class="checkbox checktext has-text-primary">
-                          <input type="checkbox">
-                          Outdoor area
-                      </label>
-                </div>
-                <br>
-            </div>
-        </form>
+                        <input type="checkbox" name="parkingarea">
+                        Parking Area
+                    </label>
+              </div>
+              <br>
+              </div>
+          </form>
     </div>
-
-    {{--
-    <div class="columns">
-        <div class="column is-3">
-
-        </div>
-        <div class="column is-6 is-centered">
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-    @include('results.thread')
-        </div>
-        <div class="column is-3">
-
-        </div>
-    </div> --}}
 
     <div class="grayme">
         <div class="row printarea">

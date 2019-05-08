@@ -93,4 +93,43 @@ if(!function_exists('checkPropertyTypeByFavoriteId')) {
   }
 }
 
+if(!function_exists('getPropertyTypeIdByFavoriteId')) {
+  function getPropertyTypeIdByFavoriteId($id) {
+    
+    
+    $favorite = Favorite::find($id);
+
+    if(!empty($favorite->house_id)){
+
+      return $favorite->house_id;
+
+    }
+    elseif(!empty($favorite->land_id)){
+
+      return $favorite->land_id;
+
+    }
+    elseif(!empty($favorite->building_id)){
+
+      return $favorite->building_id;
+
+    }
+    elseif(!empty($favorite->apartment_id)){
+
+      return $favorite->building_id;
+
+    }
+    elseif(!empty($favorite->warehouse_id)){
+
+      return $favorite->warehouse_id;
+      
+    }
+    else{
+
+      return 0;
+
+    }
+  }
+}
+
 ?>

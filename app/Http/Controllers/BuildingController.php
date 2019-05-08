@@ -167,7 +167,7 @@ class BuildingController extends Controller
             DB::table('buildings')->where('id', '=', $building->id)->delete();
             DB::table('properties')->where('id', '=', $building->property->id)->delete();
 
-            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
         }
         else {

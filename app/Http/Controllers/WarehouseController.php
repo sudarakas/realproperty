@@ -153,7 +153,7 @@ class WarehouseController extends Controller
             DB::table('warehouses')->where('id', '=', $warehouse->id)->delete();
             DB::table('properties')->where('id', '=', $warehouse->property->id)->delete();
 
-            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
         }
         else {

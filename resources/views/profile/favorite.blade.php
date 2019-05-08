@@ -48,7 +48,7 @@
         ) {
             Swal.fire(
                 'Cancelled',
-                'Your property is safe :)',
+                'Your favorites is safe :)',
                 'info'
             )
         }

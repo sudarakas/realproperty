@@ -149,7 +149,7 @@ class ProfileController extends Controller
 
             DB::table('user_emails')->where('id', '=', $message->id)->delete();
 
-            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            Alert::success('Your message has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return redirect('/profile/message');
         }
         else {
@@ -185,4 +185,20 @@ class ProfileController extends Controller
         return view('profile.home', compact('favorites'),array('user' => Auth::user()));
     }
     
+    public function deleteFavorites(Favorite $favorite)
+    {
+        if ($favorite->user_id == auth()->id()) {
+
+            DB::table('favorites')->where('id', '=', $favorite->id)->delete();
+
+            Alert::success('Your favorite has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return redirect('/profile/myfavorite');
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile/myfavorite');
+            
+        }
+    }
 }

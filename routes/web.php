@@ -120,6 +120,7 @@ Route::get('/profile','ProfileController@loadUserDashboard')->middleware('auth')
 Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
 Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
 Route::get('/profile/myfavorite','ProfileController@viewFavorites')->middleware('auth');
+Route::post('/profile/myfavorite/{favorite}/delete','ProfileController@deleteFavorites')->middleware('auth');
 Route::get('/profile/message','ProfileController@myMessage')->middleware('auth');
 Route::get('/profile/message/all','ProfileController@viewAllMessage')->middleware('auth');
 Route::get('/profile/message/{message}/view','ProfileController@viewMessage')->middleware('auth');

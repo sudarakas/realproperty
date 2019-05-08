@@ -20,8 +20,8 @@
 
                 <div class="content">
                     <div class="buttons is-pulled-right">
-                            <button class="button is-success is-pulled-right" onclick="window.open('/{{checkPropertyTypeByFavoriteId($favorite->id)}}/{{$favorite->id}}','_blank');">See More</button>
-                            <form action="/profile/favorite/{{$favorite->id}}/delete" method="post">
+                            <button class="button is-success is-pulled-right" onclick="window.open('/{{checkPropertyTypeByFavoriteId($favorite->id)}}/{{getPropertyTypeIdByFavoriteId($favorite->id)}}','_blank');">See More</button>
+                            <form action="/profile/myfavorite/{{$favorite->id}}/delete" method="post">
                                 @csrf
                                 <button class="button is-danger is-pulled-right" type="submit" onclick="deleteMe();">Delete</button>
                             </form>

@@ -180,7 +180,7 @@ class HouseController extends Controller
             DB::table('houses')->where('id', '=', $house->id)->delete();
             DB::table('properties')->where('id', '=', $house->property->id)->delete();
 
-            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
         }
         else {

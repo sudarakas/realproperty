@@ -176,7 +176,7 @@ if(!function_exists('getPropertyTypeIdByOfferId')) {
   function getPropertyTypeIdByOfferId($id) {
     
     
-    $offer = Favorite::find($id);
+    $offer = Offer::find($id);
 
     if(!empty($offer->house_id)){
 

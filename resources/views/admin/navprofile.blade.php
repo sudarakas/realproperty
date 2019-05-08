@@ -8,7 +8,7 @@
                         <i class="fas fa-home"></i>
                       </span>
                     </a>
-                    <a class="button is-light is-pulled-right nounderlinebtn" href="{{ route('logout') }}">
+                    <a class="button is-light is-pulled-right nounderlinebtn" href="{{ route('admin.logout') }}">
                       Sign out
                     </a>
                 </div>

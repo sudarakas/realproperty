@@ -6,7 +6,7 @@
             <li class="is-active"><a href="/admin">Dashboard</a></li>
         </ul>
     </nav>
-    <div class="subtitle">Graph View</div>
+    <div class="subtitle has-text-black-bis">Graph View</div>
     <div class="columns">
         <div class="column">
             <div class="card">
@@ -34,147 +34,100 @@
         </div>
     </div>
     <hr>
-    <div class="subtitle">Latest Properties</div>
+    <div class="subtitle has-text-black-bis">Latest Properties</div>
     <div class="column tableshow">   
             <table class="table">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Property ID</th>
-                  <th>Property Name</th>
-                  <th>Property Location</th>
-                  <th>Property type</th>
-                  <th>Current Bid</th>
-                  <th>Bidded User</th>
-                  <th>Contact Bidder</th>
+                  <th>Pro. ID</th>
+                  <th>Pro. Name</th>
+                  <th>Pro. Location</th>
+                  <th>Pro. type</th>
+                  <th>Pro. Amount</th>
+                  <th>Added By</th>
+                  <th>View</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                    <th>No</th>
-                    <th>Property ID</th>
-                    <th>Property Name</th>
-                    <th>Property Location</th>
-                    <th>Property type</th>
-                    <th>Current Bid</th>
-                    <th>Bidded User</th>
-                    <th>Contact Bidder</th>
+                  <th>No</th>
+                  <th>Pro. ID</th>
+                  <th>Pro. Name</th>
+                  <th>Pro. Location</th>
+                  <th>Pro. type</th>
+                  <th>Pro. Amount</th>
+                  <th>Added By</th>
+                  <th>View</th>
                 </tr>
               </tfoot>
               <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>455</td>
-                    <td>Complete House</td>
-                    <td>Badulla</td>
-                    <td>House</td>
-                    <td>8600000</td>
-                    <td>Nimal</td>
-                    <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
+                @foreach ($properties as $key=>$property)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{$property->id}}</td>
+                    <td>{{$property->name}}</td>
+                    <td>{{$property->city}}</td>
+                    <td>{{$property->type}}</td>
+                    <td>{{number_format($property->amount,2)}}</td>
+                    <td>{{$property->user->name}}</td>
+                    <td><a href="" class="button is-success nounderlinebtn">View</a></td>
                   </tr>
-                  <tr>
-                      <td>1</td>
-                      <td>455</td>
-                      <td>Complete House</td>
-                      <td>Badulla</td>
-                      <td>House</td>
-                      <td>8600000</td>
-                      <td>Nimal</td>
-                      <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>455</td>
-                        <td>Complete House</td>
-                        <td>Badulla</td>
-                        <td>House</td>
-                        <td>8600000</td>
-                        <td>Nimal</td>
-                        <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td>455</td>
-                          <td>Complete House</td>
-                          <td>Badulla</td>
-                          <td>House</td>
-                          <td>8600000</td>
-                          <td>Nimal</td>
-                          <td><a href="" class="button is-success nounderlinebtn">Contact</a></td>
-                        </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
           <hr>
-          <div class="subtitle">Latest User Registations</div>
-    <div class="column tableshow">   
+          <div class="subtitle has-text-black-bis">Latest User Registations</div>
+          <div class="column tableshow">   
             <table class="table">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Property ID</th>
-                  <th>Property Name</th>
-                  <th>Property Location</th>
-                  <th>Property type</th>
-                  <th>Current Bid</th>
-                  <th>Bidded User</th>
-                  <th>Contact Bidder</th>
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <th>User Email</th>
+                  <th>Pro. Type</th>
+                  <th>Status</th>
+                  <th>View User</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                    <th>No</th>
-                    <th>Property ID</th>
-                    <th>Property Name</th>
-                    <th>Property Location</th>
-                    <th>Property type</th>
-                    <th>Current Bid</th>
-                    <th>Bidded User</th>
-                    <th>Contact Bidder</th>
+                  <th>No</th>
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <th>User Email</th>
+                  <th>Pro. Type</th>
+                  <th>Status</th>
+                  <th>View User</th>
                 </tr>
               </tfoot>
               <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>455</td>
-                    <td>Complete House</td>
-                    <td>Badulla</td>
-                    <td>House</td>
-                    <td>8600000</td>
-                    <td>Nimal</td>
-                    <td><a href="" class="button is-info nounderlinebtn">Contact</a></td>
+                @foreach ($users as $key=>$user)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>
+                        @if($user->NIC==null || $user->description==null || $user->address==null || $user->city==null || $user->gender==null || $user->NIC==null || $user->birthday==null || $user->phoneNo==null)
+                          Not Completed
+                        @else
+                          Completed
+                        @endif
+                    </td>
+                    <td>
+                      @if($user->email_verified_at==NULL)
+                        Not Verified
+                      @else
+                        Verified
+                      @endif
+                    </td>
+                    <td><a href="" class="button is-info nounderlinebtn">View User</a></td>
                   </tr>
-                  <tr>
-                      <td>1</td>
-                      <td>455</td>
-                      <td>Complete House</td>
-                      <td>Badulla</td>
-                      <td>House</td>
-                      <td>8600000</td>
-                      <td>Nimal</td>
-                      <td><a href="" class="button is-info nounderlinebtn">Contact</a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>455</td>
-                        <td>Complete House</td>
-                        <td>Badulla</td>
-                        <td>House</td>
-                        <td>8600000</td>
-                        <td>Nimal</td>
-                        <td><a href="" class="button is-info nounderlinebtn">Contact</a></td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td>455</td>
-                          <td>Complete House</td>
-                          <td>Badulla</td>
-                          <td>House</td>
-                          <td>8600000</td>
-                          <td>Nimal</td>
-                          <td><a href="" class="button is-info nounderlinebtn">Contact</a></td>
-                        </tr>
-              </tbody>
+                @endforeach
+            </tbody>
             </table>
           </div>
 </div>

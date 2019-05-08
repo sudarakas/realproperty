@@ -34,7 +34,7 @@
             <i class="fas fa-pastafarianism"></i> General
           </p>
           <ul class="menu-list adminlistitem">
-            <li><a href="/profile/mybuilding">Dashboard</a></li>
+            <li><a href="/admin">Dashboard</a></li>
           </ul>
         <p class="menu-label is-4 is-size-7 has-text-weight-bold has-text-dark is-uppercase">
           <i class="fas fa-home"></i> Properties Management
@@ -77,10 +77,11 @@
       </aside>
     </div>
     @if(Request::is('admin'))
-  @include('admin.dashboard') @elseif(Request::is('profile/mywarehouse'))
-  @include('profile.mywarehouse')
+      @include('admin.dashboard') 
+    @elseif(Request::is('profile/mywarehouse'))
+      @include('profile.mywarehouse')
     @else
-  @include('profile.mywarehouse') @endif
+      @include('profile.mywarehouse') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">
       <div class="modal-content">
         <div class="is-pulled-right">

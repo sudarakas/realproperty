@@ -11,6 +11,8 @@ use Image;
 use App\User;
 use App\Offer;
 use App\UserEmail;
+use Illuminate\Support\Facades\DB;
+use Alert;
 
 class ProfileController extends Controller
 {
@@ -119,6 +121,10 @@ class ProfileController extends Controller
         {
             $query->where('receiver_id','=', $id);
 
+        })->where(function ($query){
+
+            $query->where('status', 'LIKE', 'unread');
+    
         })->orderBy('id', 'desc')
           ->paginate(10);
 
@@ -135,5 +141,37 @@ class ProfileController extends Controller
         return view('profile.home',compact('message') ,array('user' => Auth::user()));
 
     }
+
+    public function deleteMessage(UserEmail $message)
+    {
+        if ($message->receiver_id == auth()->id()) {
+
+            DB::table('user_emails')->where('id', '=', $message->id)->delete();
+
+            Alert::success('Your property has been edited successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return redirect('/profile/message');
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile/message');
+            
+        }
+    }
+
+    public function viewAllMessage()
+    {
+        $id = Auth::user()->id;
+        $messages = UserEmail::where(function($query) use ($id) 
+        {
+            $query->where('receiver_id','=', $id);
+
+        })->orderBy('id', 'desc')
+          ->paginate(10);
+
+        return view('profile.home', compact('messages'),array('user' => Auth::user()));
+    }
+
+    
     
 }

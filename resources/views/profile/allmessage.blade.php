@@ -9,7 +9,7 @@
     <div class="containerx">
         <div class="column">
                 <div class="div" style="margin-bottom: 6%;">
-                    <a href="/profile/message/all" class="button is-link nounnounderlinebtn is-pulled-right">View All Messages</a>
+                    <a href="/profile/message" class="button is-link nounnounderlinebtn is-pulled-right">View Unread Messages</a>
                 </div>
                 @if($messages->count() > 0) 
                 @foreach ($messages as $message)

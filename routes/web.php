@@ -121,7 +121,9 @@ Route::get('/profile/changepassword','PageController@changePassword')->middlewar
 Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
 Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
 Route::get('/profile/message','ProfileController@myMessage')->middleware('auth');
+Route::get('/profile/message/all','ProfileController@viewAllMessage')->middleware('auth');
 Route::get('/profile/message/{message}/view','ProfileController@viewMessage')->middleware('auth');
+Route::get('/profile/message/{message}/delete','ProfileController@deleteMessage')->middleware('auth');
 Route::post('/profile/message/reply','UserEmailController@replyMessage')->middleware('auth');
 Route::get('/profile/deleteaccount','PageController@deleteaccount')->middleware('auth');
 Route::get('/profile/myhouse','PageController@myHouse')->middleware('auth');

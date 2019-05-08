@@ -3,7 +3,7 @@
         <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
             <ul>
                 <li><a href="/profile">Profile</a></li>
-                <li class="is-active"><a href="/profile">Dashboard</a></li>
+                <li class="is-active"><a href="/profile">All Offers</a></li>
             </ul>
         </nav>
         <div class="column profileback tableshow">

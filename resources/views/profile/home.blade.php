@@ -32,8 +32,8 @@
                 </p>
                 <ul class="menu-list listitem is-size-6">
                   <li><a href="/profile">Dashboard</a></li>
-                  <li><a href="/profile">My Favorities</a></li>
-                  <li><a href="/profile">My Offers</a></li>
+                  <li><a href="/profile/myfavorite">My Favorities</a></li>
+                  <li><a href="/profile/myoffers">My Offers</a></li>
                   <li><a href="/profile/message">My Inbox</a></li>
                 </ul>
                 <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
@@ -66,6 +66,8 @@
             @include('profile.dashboard')
           @elseif(Request::is('profile/changepassword'))
             @include('profile.changepassword')
+          @elseif(Request::is('profile/myoffers'))
+            @include('profile.myoffers')
           @elseif(Request::is('profile/editaccount'))
             @include('profile.editprofile')
           @elseif(Request::is('profile/myfavorite'))

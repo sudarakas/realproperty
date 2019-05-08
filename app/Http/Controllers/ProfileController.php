@@ -115,6 +115,18 @@ class ProfileController extends Controller
         return view('profile.home', compact('offers'),array('user' => Auth::user()));
     }
 
+    public function myOffers(){
+
+        $id = Auth::user()->id;
+        $offers = Offer::whereHas('property', function($query) use ($id) 
+        {
+            $query->where('offeredUser','=', $id);
+
+        })->paginate(15);
+
+        return view('profile.home', compact('offers'),array('user' => Auth::user()));
+    }
+
     public function myMessage()
     {
         $id = Auth::user()->id;

@@ -133,30 +133,6 @@ if(!function_exists('getPropertyTypeIdByFavoriteId')) {
   }
 }
 
-if(!function_exists('countMessageByUserId')) {
-  function countMessageByUserId() {
-    
-    $id = Auth::user()->id;
-    $messageCount = UserEmail::where(function($query) use ($id) 
-      {
-
-        $query->where('receiver_id','=', $id);
-
-      })->where(function ($query) use ($id) {
-
-        $query->where('status', 'LIKE', 'unread');
-
-      })->count();
-
-    if($messageCount){
-      return $messageCount;
-    }
-    else{
-      return 0;
-    }
-  }
-}
-
 if(!function_exists('checkPropertyTypeByOfferId')) {
   function checkPropertyTypeByOfferId($id) {
     
@@ -196,5 +172,43 @@ if(!function_exists('checkPropertyTypeByOfferId')) {
   }
 }
 
+if(!function_exists('getPropertyTypeIdByOfferId')) {
+  function getPropertyTypeIdByOfferId($id) {
+    
+    
+    $offer = Favorite::find($id);
+
+    if(!empty($offer->house_id)){
+
+      return $offer->house_id;
+
+    }
+    elseif(!empty($offer->land_id)){
+
+      return $offer->land_id;
+
+    }
+    elseif(!empty($offer->building_id)){
+
+      return $offer->building_id;
+
+    }
+    elseif(!empty($offer->apartment_id)){
+
+      return $offer->building_id;
+
+    }
+    elseif(!empty($offer->warehouse_id)){
+
+      return $offer->warehouse_id;
+      
+    }
+    else{
+
+      return 0;
+
+    }
+  }
+}
 
 ?>

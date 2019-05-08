@@ -57,4 +57,10 @@ class Property extends Model
         return $this->hasMany(ReportProperty::class);
 
     }
+
+    public function favorites(){
+
+        return $this->hasMany(Favorite::class);
+
+    }
 }

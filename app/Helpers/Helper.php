@@ -1,5 +1,6 @@
 <?php
 use App\UserEmail;
+use App\Favorite;
 
 if(!function_exists('userNameById')) {
   function userNameById($userId) {
@@ -52,3 +53,44 @@ if(!function_exists('countMessageByUserId')) {
     }
   }
 }
+
+if(!function_exists('checkPropertyTypeByFavoriteId')) {
+  function checkPropertyTypeByFavoriteId($id) {
+    
+    
+    $favorite = Favorite::find($id);
+
+    if(!empty($favorite->house_id)){
+
+      return "house";
+
+    }
+    elseif(!empty($favorite->land_id)){
+
+      return "land";
+
+    }
+    elseif(!empty($favorite->building_id)){
+
+      return "building";
+
+    }
+    elseif(!empty($favorite->apartment_id)){
+
+      return "apartment";
+
+    }
+    elseif(!empty($favorite->warehouse_id)){
+
+      return "warehouse";
+      
+    }
+    else{
+
+      return 0;
+
+    }
+  }
+}
+
+?>

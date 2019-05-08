@@ -14,7 +14,7 @@ class CreateFavoritesTable extends Migration
     public function up()
     {
         Schema::create('favorites', function (Blueprint $table) {
-
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('house_id')->nullable();
@@ -61,7 +61,6 @@ class CreateFavoritesTable extends Migration
             ->onDelete('cascade');
         });
 
-        DB::unprepared('ALTER TABLE `favorites` ADD PRIMARY KEY (  `user_id` ,  `property_id` )');
     }
 
     /**

@@ -173,7 +173,7 @@ class ProfileController extends Controller
         return view('profile.home', compact('messages'),array('user' => Auth::user()));
     }
 
-    public function favorites()
+    public function viewFavorites()
     {
         $userId = auth()->id();
         $favorites = Favorite::where(function($query) use ($userId){

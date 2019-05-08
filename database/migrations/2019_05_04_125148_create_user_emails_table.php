@@ -19,17 +19,13 @@ class CreateUserEmailsTable extends Migration
             $table->unsignedBigInteger('sender_id');
             $table->string('senderName');
             $table->string('senderMail');
-            $table->string('phoneNo');
+            $table->string('phoneNo')->nullable();
             $table->string('subject');
             $table->text('message');
             $table->string('property_url');
             $table->string('status')->default('unread');
             $table->timestamps();
 
-            $table->foreign('receiver_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
         });
     }
 

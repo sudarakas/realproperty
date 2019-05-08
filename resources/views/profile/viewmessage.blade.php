@@ -70,15 +70,17 @@
           </div>
           <hr>
           <div class="contetnt">
-            <form action="" method="post">
+            <form action="/profile/message/reply" method="post">
               @csrf
               <div class="field">
                 <div class="field-body">
                   <div class="field">
                     <div class="control">
                       <input type="hidden" value="{{$message->id}}" name="id">
+                      <input type="hidden" value="{{$message->sender_id}}" name="owner">
                       <input type="hidden" value="{{$message->senderMail}}" name="email">
                       <input type="hidden" value="{{$message->subject}}" name="subject">
+                      <input type="hidden" value="{{$message->property_url}}" name="path">
                       <textarea class="textarea {{ $errors->has('message') ? ' is-danger' : '' }}" placeholder="Enter your reply for this message"
                         name="message"></textarea> {!! $errors->first('message', '
                       <p class="help-block has-text-danger">:message</p>') !!}

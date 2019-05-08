@@ -221,15 +221,23 @@ class UserEmailController extends Controller
             Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
             return back()->withErrors($validator);
         }
-
+        
         $message = new UserEmail;
-        $message->receiver_id = '0';        //because dont need to reg for message (eg: guest users allow) 
+        $message->receiver_id = request('owner');
+        $message->sender_id = auth()->user()->id;
         $message->senderMail = auth()->user()->email;
         $message->senderName = auth()->user()->name;
         $message->phoneNo = auth()->user()->phoneNo;
         $message->subject = request('subject');
         $message->message = request('message');
+        $message->property_url = request('path');
         $message->save();
+
+        $request->name = auth()->user()->name;
+        $request->email = auth()->user()->email;
+        $request->pno = auth()->user()->phoneNo;
+        $request->property_url = request('path');
+
 
         \Mail::to(request('email'))->send(new ContactMail($request));
         

@@ -181,6 +181,7 @@
                     {!! $house->property->description !!}
                 </p>
             </div>
+            
             {{-- Contact Owner Email Box Start Here --}}
             <hr>
             <div class="subtitle has-text-weight-semibold" id="contactbox">Contact Owner</div>
@@ -189,8 +190,14 @@
                     @csrf
                     <div class="field">
                         <div class="control">
-                        <input class="input" type="hidden" name="owner" value="{{$house->property->user->id}}" hidden>
-                        <input class="input" type="hidden" name="owner" value="{{$house->property->id}}" hidden>
+                        <input class="input" type="hidden" name="owner" value="{{$house->property->user->id}}">
+                        <input class="input" type="hidden" name="path" value="{{Request::path()}}">
+                        
+                        @if(Auth::check())
+                            <input class="input" type="hidden" name="sender" value="{{auth()->user()->id}}">
+                        @else
+                            <input class="input" type="hidden" name="sender" value="0" hidden>
+                        @endif
                         </div>
                     </div>
                     <div class="field is-horizontal">

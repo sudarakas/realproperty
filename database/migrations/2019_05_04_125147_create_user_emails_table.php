@@ -16,6 +16,7 @@ class CreateUserEmailsTable extends Migration
         Schema::create('user_emails', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('receiver_id');
+            $table->unsignedBigInteger('sender_id');
             $table->string('senderName');
             $table->string('senderMail');
             $table->string('phoneNo');

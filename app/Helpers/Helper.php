@@ -14,4 +14,18 @@ if(!function_exists('userNameById')) {
   }
 }
 
+if(!function_exists('userAvatarById')) {
+  function userAvatarById($userId) {
+    
+    $user = App\User::find($userId);
+
+    if($user){
+      return $user->avatar;
+    }
+    else{
+      return NULL;
+    }
+  }
+}
+
 ?>

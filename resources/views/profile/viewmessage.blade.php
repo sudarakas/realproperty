@@ -42,17 +42,28 @@
         <div class="containerx">
           <div class="top">
             <div>
-              <figure class="image is-64x64">
-                <img class="is-rounded" src="/uploads/avatars/user.jpg">
+              <figure class="image is-64x64 ">
+                @if($message->sender_id == 0)
+                <img src="/uploads/avatars/user.jpg" alt="Image" class="is-rounded"> @else
+                <img src="/uploads/avatars/{{userAvatarById($message->sender_id)}}" alt="Image" class="is-rounded"> @endif
               </figure>
               <div class="address">
                 <div class="has-text-link has-text-weight-semibold">{{$message->subject}}</div>
-                <div class="is-7"><span class="subtitle is-7">From: {{$message->senderName}}</span></div>
+                <div class="is-7"><span class="subtitle is-7">From: {{$message->senderName}}
+                    @if($message->sender_id == 0)
+                      <span class="subtitle is-7 has-text-black-bis has-text-weight-bold"> (Guest User) </span> 
+                    @else
+                      <span class="subtitle is-7 has-text-black-bis has-text-weight-bold"> (Registered User) </span> 
+                    @endif
+                  </span>
+                </div>
                 <div class="subtitle is-7">Contact Details:<span class="subtitle is-7"> {{$message->senderMail}} | {{$message->phoneNo}}</span></div>
-                <div class="is-7 is-pulled-right"><span class="subtitle is-7 has-text-black-bis has-text-weight-bold">{{$message->created_at->diffForHumans()}}</span></div>
+                <div class="subtitle is-7 is-pulled-right">Regarding :<span class="subtitle is-7"> <a href="/{{$message->property_url}}" target="_blank">View Property</a></span>
+                <br> 
+                <span class="subtitle is-7 has-text-black-bis has-text-weight-bold has-text-right">{{$message->created_at->diffForHumans()}}</span></div>
               </div>
             </div>
-            <hr>
+            <hr style="margin-top: 7%;">
             <div class="content">
               {{$message->message}}
             </div>

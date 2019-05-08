@@ -186,10 +186,17 @@
                 <form action="/apartment/{{$apartment->id}}/contactowner" method="post">
                     @csrf
                     <div class="field">
-                        <div class="control">
-                        <input class="input" type="text" name="owner" value="{{$apartment->property->user->id}}" hidden>
+                            <div class="control">
+                            <input class="input" type="hidden" name="owner" value="{{$apartment->property->user->id}}">
+                            <input class="input" type="hidden" name="path" value="{{Request::path()}}">
+                            
+                            @if(Auth::check())
+                                <input class="input" type="hidden" name="sender" value="{{auth()->user()->id}}">
+                            @else
+                                <input class="input" type="hidden" name="sender" value="0" hidden>
+                            @endif
+                            </div>
                         </div>
-                    </div>
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Name</label>

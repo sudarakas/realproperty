@@ -33,11 +33,13 @@ class UserEmailController extends Controller
 
         $message = new UserEmail;
         $message->receiver_id = request('owner');
+        $message->sender_id = request('sender');
         $message->senderMail = request('email');
         $message->senderName = request('name');
         $message->phoneNo = request('pno');
         $message->subject = request('subject');
         $message->message = request('message');
+        $message->property_url = request('path');
         $message->save();
 
         \Mail::to($owner->email)->send(new ContactMail($request));
@@ -70,11 +72,13 @@ class UserEmailController extends Controller
 
         $message = new UserEmail;
         $message->receiver_id = request('owner');
+        $message->sender_id = request('sender');
         $message->senderMail = request('email');
         $message->senderName = request('name');
         $message->phoneNo = request('pno');
         $message->subject = request('subject');
         $message->message = request('message');
+        $message->property_url = request('path');
         $message->save();
 
         \Mail::to($owner->email)->send(new ContactMail($request));

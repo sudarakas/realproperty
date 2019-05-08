@@ -1,8 +1,12 @@
 <div class="box">
     <article class="media">
       <div class="media-left">
-        <figure class="image is-64x64">
-          <img src="/uploads/avatars/user.jpg" alt="Image">
+        <figure class="image is-64x64 ">
+          @if($message->sender_id == 0)
+            <img src="/uploads/avatars/user.jpg" alt="Image" class="is-rounded">
+          @else
+            <img src="/uploads/avatars/{{userAvatarById($message->sender_id)}}" alt="Image" class="is-rounded">
+          @endif
         </figure>
       </div>
       <div class="media-content">

@@ -189,7 +189,8 @@
                     @csrf
                     <div class="field">
                         <div class="control">
-                        <input class="input" type="text" name="owner" value="{{$house->property->user->id}}" hidden>
+                        <input class="input" type="hidden" name="owner" value="{{$house->property->user->id}}" hidden>
+                        <input class="input" type="hidden" name="owner" value="{{$house->property->id}}" hidden>
                         </div>
                     </div>
                     <div class="field is-horizontal">

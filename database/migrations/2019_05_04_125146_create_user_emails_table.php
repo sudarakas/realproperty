@@ -21,6 +21,7 @@ class CreateUserEmailsTable extends Migration
             $table->string('phoneNo');
             $table->string('subject');
             $table->text('message');
+            $table->string('property_url');
             $table->string('status')->default('unread');
             $table->timestamps();
 

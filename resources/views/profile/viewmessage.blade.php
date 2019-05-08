@@ -65,6 +65,7 @@
                 <div class="field-body">
                   <div class="field">
                     <div class="control">
+                      <input type="hidden" value="{{$message->id}}" name="id">
                       <input type="hidden" value="{{$message->senderMail}}" name="email">
                       <input type="hidden" value="{{$message->subject}}" name="subject">
                       <textarea class="textarea {{ $errors->has('message') ? ' is-danger' : '' }}" placeholder="Enter your reply for this message"

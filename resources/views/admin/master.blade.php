@@ -80,6 +80,8 @@
       @include('admin.dashboard')
     @elseif(Request::is('admin/user/*/view'))
       @include('admin.viewuser')
+    @elseif(Request::is('admin/viewme'))
+      @include('admin.viewme')
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

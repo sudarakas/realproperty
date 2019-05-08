@@ -254,7 +254,7 @@ if (!function_exists('getPropertyTypeIdById')) {
 
           if ($apartment->count() == 1) {
 
-            return $building[0]->id;
+            return $apartment[0]->id;
   
           }else{
 

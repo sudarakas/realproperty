@@ -39,7 +39,17 @@ class AdminController extends Controller
 
     public function viewUser(User $user){
 
-        return view('admin.master', compact('user'));
+        $id = $user->id;
+        $properties = Property::where(function($query) use ($id){
+
+            $query->where('user_id','=',$id);
+
+        })->get();
         
+
+        return view('admin.master', compact('user','properties'));
+
+
     }
+
 }

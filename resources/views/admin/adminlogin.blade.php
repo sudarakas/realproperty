@@ -38,7 +38,7 @@
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
                             <input class="input {{ $errors->has('email') ? ' is-danger' : '' }} is-primary inputline is-medium" id="email" type="email"
-                                value="{{ old('email') }}" name="email" placeholder="Email" autofocus>
+                                value="{{ old('email') }}" name="email" placeholder="Email" autofocus required>
                             <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                   </span> @if ($errors->has('email'))

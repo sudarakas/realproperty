@@ -67,7 +67,6 @@
             </div>
         </div>
     </nav>
-    <!-- END NAV -->
 
     <section class="hero is-info is-medium is-bold">
         <div class="hero-body"style='background-image: url("/img/home2.jpg");   filter: blur(8px);'>
@@ -79,10 +78,9 @@
 
 
     <div class="container">
-        <!-- START ARTICLE FEED -->
+
         <section class="articles">
             <div class="column is-8 is-offset-2">
-                <!-- START ARTICLE -->
                 <div class="card article">
                     <div class="card-content">
                         <div class="media">
@@ -108,7 +106,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- END ARTICLE -->
               </div>
               <div class="column is-8 is-offset-2">
                     <article class="media">

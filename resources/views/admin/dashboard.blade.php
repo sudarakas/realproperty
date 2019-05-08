@@ -124,7 +124,7 @@
                         Verified
                       @endif
                     </td>
-                  <td><a href="/user/{{$user->id}}/view" class="button is-info nounnounderlinebtn" target="_blank">View User</a></td>
+                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-info nounnounderlinebtn" target="_blank">View User</a></td>
                   </tr>
                 @endforeach
             </tbody>

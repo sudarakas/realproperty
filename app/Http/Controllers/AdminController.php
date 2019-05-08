@@ -36,4 +36,10 @@ class AdminController extends Controller
         }
         return back();
     }
+
+    public function viewUser(User $user){
+
+        return view('admin.master', compact('user'));
+        
+    }
 }

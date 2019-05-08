@@ -883,7 +883,9 @@ figure.profileavatar figcaption::before {
     z-index: 40;
   }
 
-
+.detailsuser{
+    margin-left: 5% !important;
+}
 
 
 

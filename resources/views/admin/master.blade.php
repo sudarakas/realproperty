@@ -77,11 +77,11 @@
       </aside>
     </div>
     @if(Request::is('admin'))
-      @include('admin.dashboard') 
-    @elseif(Request::is('profile/mywarehouse'))
-      @include('profile.mywarehouse')
+      @include('admin.dashboard')
+    @elseif(Request::is('admin/user/*/view'))
+      @include('admin.viewuser')
     @else
-      @include('profile.mywarehouse') @endif
+      @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">
       <div class="modal-content">
         <div class="is-pulled-right">

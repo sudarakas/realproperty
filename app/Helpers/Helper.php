@@ -1,4 +1,5 @@
 <?php
+use App\UserEmail;
 
 if(!function_exists('userNameById')) {
   function userNameById($userId) {
@@ -28,4 +29,26 @@ if(!function_exists('userAvatarById')) {
   }
 }
 
-?>
+if(!function_exists('countMessageByUserId')) {
+  function countMessageByUserId() {
+    
+    $id = Auth::user()->id;
+    $messageCount = UserEmail::where(function($query) use ($id) 
+      {
+
+        $query->where('receiver_id','=', $id);
+
+      })->where(function ($query) use ($id) {
+
+        $query->where('status', 'LIKE', 'unread');
+
+      })->count();
+
+    if($messageCount){
+      return $messageCount;
+    }
+    else{
+      return 0;
+    }
+  }
+}

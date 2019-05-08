@@ -23,6 +23,7 @@ class ProfileController extends Controller
             $user->avatar = $filename;
             $user->save();
         }
+
         return view('profile.home', array('user'=> Auth::user()));
     }
 
@@ -126,7 +127,11 @@ class ProfileController extends Controller
 
     public function viewMessage(UserEmail $message)
     {
-
+        $id = $message->id;
+        $updateMessage = UserEmail::find($id);
+        $updateMessage->status = 'read';
+        $updateMessage->save();
+        
         return view('profile.home',compact('message') ,array('user' => Auth::user()));
 
     }

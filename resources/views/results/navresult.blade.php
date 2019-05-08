@@ -5,11 +5,11 @@
         </a>       
         <div class="buttons is-centered">
         @guest
-          <a class="button is-light is-centered">
+          <a class="button is-light is-centered nounnounderlinebtn" href="/login">
             Log in
           </a>
         @if (Route::has('register'))
-          <a class="button is-primary is-centered">
+          <a class="button is-primary is-centered nounnounderlinebtn" href="/register">
               <strong>Sign up</strong>
           </a>
         @endif

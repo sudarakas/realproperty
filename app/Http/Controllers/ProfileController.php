@@ -265,4 +265,12 @@ class ProfileController extends Controller
         }
     }
 
+    public function contactOffers(Offer $offer)
+    {
+        
+        $user = User::find($offer->offeredUser);
+        return view('profile.home', compact('user','offer'),array('user' => Auth::user()));
+
+    }
+
 }

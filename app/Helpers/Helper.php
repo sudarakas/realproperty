@@ -1,6 +1,7 @@
 <?php
 use App\UserEmail;
 use App\Favorite;
+use App\Offer;
 
 if(!function_exists('userNameById')) {
   function userNameById($userId) {
@@ -131,5 +132,69 @@ if(!function_exists('getPropertyTypeIdByFavoriteId')) {
     }
   }
 }
+
+if(!function_exists('countMessageByUserId')) {
+  function countMessageByUserId() {
+    
+    $id = Auth::user()->id;
+    $messageCount = UserEmail::where(function($query) use ($id) 
+      {
+
+        $query->where('receiver_id','=', $id);
+
+      })->where(function ($query) use ($id) {
+
+        $query->where('status', 'LIKE', 'unread');
+
+      })->count();
+
+    if($messageCount){
+      return $messageCount;
+    }
+    else{
+      return 0;
+    }
+  }
+}
+
+if(!function_exists('checkPropertyTypeByOfferId')) {
+  function checkPropertyTypeByOfferId($id) {
+    
+    
+    $offer = Offer::find($id);
+
+    if(!empty($offer->house_id)){
+
+      return "house";
+
+    }
+    elseif(!empty($offer->land_id)){
+
+      return "land";
+
+    }
+    elseif(!empty($offer->building_id)){
+
+      return "building";
+
+    }
+    elseif(!empty($offer->apartment_id)){
+
+      return "apartment";
+
+    }
+    elseif(!empty($offer->warehouse_id)){
+
+      return "warehouse";
+      
+    }
+    else{
+
+      return 0;
+
+    }
+  }
+}
+
 
 ?>

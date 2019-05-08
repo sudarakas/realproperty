@@ -94,6 +94,8 @@
             @include('profile.mywarehouse')
           @elseif(Request::is('profile/alloffers'))
             @include('profile.offers')
+          @elseif(Request::is('profile/offers/*/contact'))
+            @include('profile.contactoffer')
           @elseif(Request::is('profile/house/*/edit'))
             @include('profile.edithouse')
           @elseif(Request::is('profile/land/*/edit'))

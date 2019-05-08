@@ -17,7 +17,7 @@
                         <th>Pro. Name</th>
                         <th>Pro. Location</th>
                         <th>Pro. Type</th>
-                        <th>Offer</th>
+                        <th>Amount</th>
                         <th>Mark Sold</th>
                     </tr>
                 </thead>
@@ -28,7 +28,7 @@
                         <th>Pro. Name</th>
                         <th>Pro. Location</th>
                         <th>Pro. Type</th>
-                        <th>Offer</th>
+                        <th>Amount</th>
                         <th>Mark Sold</th>
                     </tr>
                 </tfoot>
@@ -40,7 +40,7 @@
                         <td>{{$property->name}}</td>
                         <td>{{$property->city}}</td>
                         <td>{{$property->type}}</td>
-                        <td>{{$property->offerAmount}}</td>
+                        <td>{{number_format($property->amount,2)}}</td>
                         @if(strcmp($property->availability,"YES") == 0)
                             <td><a href="/profile/sold/{{$property->id}}/marksold" class="button is-danger nounnounderlinebtn">Mark Sold</a></td>
                         @else

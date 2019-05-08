@@ -101,9 +101,9 @@
                     <td>{{$offer->property->name}}</td>
                     <td>{{$offer->property->city}}</td>
                     <td>{{$offer->property->type}}</td>
-                    <td>{{$offer->offerAmount}}</td>
+                    <td>{{number_format($offer->offerAmount,2)}}</td>
                     <td>{{userNameById($offer->offeredUser)}}</td>
-                    <td><a href="" class="button is-success nounnounderlinebtn">Contact</a></td>
+                    <td><a href="/profile/offers/{{$offer->id}}/contact" class="button is-success nounnounderlinebtn">Contact</a></td>
                   </tr>
                 @endforeach
               @else

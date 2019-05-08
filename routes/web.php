@@ -145,7 +145,7 @@ Route::post('/profile/updateAccount','ProfileController@updateAccount')->middlew
 Route::post('/profile/updatepassword','ProfileController@changePassword')->middleware('auth');
 
 //Admin Panel
-Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth');
+Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth:admin');
 
 //Blog
 Route::get('/blog','PageController@showBlog');

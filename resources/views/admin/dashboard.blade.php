@@ -35,7 +35,7 @@
     </div>
     <hr>
     <div class="subtitle has-text-black-bis">Latest Properties</div>
-    <div class="column tableshow">   
+    <div class="column tableshow" style="overflow-x: auto">   
             <table class="table">
               <thead>
                 <tr>
@@ -71,7 +71,7 @@
                     <td>{{$property->type}}</td>
                     <td>{{number_format($property->amount,2)}}</td>
                     <td>{{$property->user->name}}</td>
-                    <td><a href="" class="button is-success nounderlinebtn">View</a></td>
+                    <td><a href="/{{checkPropertyTypeById($property->id)}}/{{getPropertyTypeIdById($property->id)}}" class="button is-success nounnounderlinebtn" target="_blank">View</a></td>
                   </tr>
                 @endforeach
               </tbody>
@@ -79,7 +79,7 @@
           </div>
           <hr>
           <div class="subtitle has-text-black-bis">Latest User Registations</div>
-          <div class="column tableshow">   
+          <div class="column tableshow style="overflow-x: auto"">   
             <table class="table">
               <thead>
                 <tr>
@@ -124,7 +124,7 @@
                         Verified
                       @endif
                     </td>
-                    <td><a href="" class="button is-info nounderlinebtn">View User</a></td>
+                    <td><a href="" class="button is-info nounnounderlinebtn">View User</a></td>
                   </tr>
                 @endforeach
             </tbody>

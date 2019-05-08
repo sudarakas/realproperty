@@ -34,6 +34,6 @@ class AdminController extends Controller
             $user->avatar = $filename;
             $user->save();
         }
-        return view('admin.master', array('user'=> Auth::user()));
+        return back();
     }
 }

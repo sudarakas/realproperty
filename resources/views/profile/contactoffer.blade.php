@@ -60,15 +60,14 @@
                 </div>
                 <hr style="margin-top: 7%;">
                 <div class="contetnt">
-                  <form action="/profile/message/reply" method="post">
+                  <form action="/profile/offers/contact/send" method="post">
                     @csrf
                     <div class="field">
                       <div class="field-body">
                         <div class="field">
                           <div class="control">
-                            <input type="hidden" value="{{auth()->user()->id}}" name="owner">
-                            <input type="hidden" value="{{auth()->user()->email}}" name="email">
-                            <input type="hidden" value="Regarding You Offer" name="subject">
+                            <input type="hidden" value="{{$offer->offeredUser}}" name="owner">
+                            <input type="hidden" value="Regarding Your Offer" name="subject">
                             <input type="hidden" value="/{{checkPropertyTypeByOfferId($offer->id)}}/{{getPropertyTypeIdByOfferId($offer->id)}}" name="path">
                             <textarea class="textarea {{ $errors->has('message') ? ' is-danger' : '' }}" placeholder="Enter your reply for this offer"
                               name="message"></textarea> {!! $errors->first('message', '

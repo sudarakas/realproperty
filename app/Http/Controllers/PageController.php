@@ -116,11 +116,6 @@ class PageController extends Controller
         return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function favorites()
-    {
-        return view('profile.home', array('user' => Auth::user()));
-    }
-
     public function deleteaccount()
     {
         return view('profile.home', array('user' => Auth::user()));
@@ -173,6 +168,7 @@ class PageController extends Controller
 
         return view('profile.home', compact('buildings'),array('user' => Auth::user()));
     }
+
     public function myWarehouse()
     {
         $userId = auth()->id();

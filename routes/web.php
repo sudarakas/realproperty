@@ -119,7 +119,7 @@ Route::post('/sendmessage','MessageController@contactUsEmail');
 Route::get('/profile','ProfileController@loadUserDashboard')->middleware('auth');
 Route::get('/profile/changepassword','PageController@changePassword')->middleware('auth');
 Route::get('/profile/editaccount','PageController@editAccount')->middleware('auth');
-Route::get('/profile/favorite','PageController@favorites')->middleware('auth');
+Route::get('/profile/favorite','ProfileController@favorites')->middleware('auth');
 Route::get('/profile/message','ProfileController@myMessage')->middleware('auth');
 Route::get('/profile/message/all','ProfileController@viewAllMessage')->middleware('auth');
 Route::get('/profile/message/{message}/view','ProfileController@viewMessage')->middleware('auth');

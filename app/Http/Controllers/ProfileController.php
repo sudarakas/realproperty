@@ -13,6 +13,7 @@ use App\Offer;
 use App\UserEmail;
 use Illuminate\Support\Facades\DB;
 use Alert;
+use App\Favorite;
 
 class ProfileController extends Controller
 {
@@ -172,6 +173,16 @@ class ProfileController extends Controller
         return view('profile.home', compact('messages'),array('user' => Auth::user()));
     }
 
-    
+    public function favorites()
+    {
+        $userId = auth()->id();
+        $favorites = Favorite::where(function($query) use ($userId){
+
+            $query->where('user_id','=',$userId);
+
+        })->paginate(15);
+
+        return view('profile.home', compact('favorites'),array('user' => Auth::user()));
+    }
     
 }

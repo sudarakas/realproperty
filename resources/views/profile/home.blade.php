@@ -76,6 +76,8 @@
             @include('profile.allmessage')
           @elseif(Request::is('profile/message'))
             @include('profile.message')
+          @elseif(Request::is('profile/sold'))
+            @include('profile.marksold')
           @elseif(Request::is('profile/message/*/view'))
             @include('profile.viewmessage')
           @elseif(Request::is('profile/deleteaccount'))

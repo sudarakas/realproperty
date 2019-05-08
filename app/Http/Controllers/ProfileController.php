@@ -14,6 +14,7 @@ use App\UserEmail;
 use Illuminate\Support\Facades\DB;
 use Alert;
 use App\Favorite;
+use App\Property;
 
 class ProfileController extends Controller
 {
@@ -213,4 +214,55 @@ class ProfileController extends Controller
             
         }
     }
+
+    public function showMarkSold()
+    {
+        $userId = auth()->id();
+        $properties = Property::where(function($query) use ($userId){
+
+            $query->where('user_id','=',$userId);
+
+        })->paginate(15);
+
+        return view('profile.home', compact('properties'),array('user' => Auth::user()));
+    }
+
+    public function markSold(Property $property)
+    {
+        if ($property->user_id == auth()->id()) {
+
+            $property = Property::find($property->id);
+            $property->availability = 'NO';
+            $property->save();
+
+            Alert::success('Your property has been marked as sold!', 'Mark Sold!')->autoclose(3000);
+            return redirect('/profile/sold');
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile/sold');
+            
+        }
+    }
+
+    public function markUnsold(Property $property)
+    {
+        if ($property->user_id == auth()->id()) {
+
+            $property = Property::find($property->id);
+            $property->availability = 'YES';
+            $property->save();
+
+            Alert::success('Your property has been marked as unsold!', 'Mark Unsold!')->autoclose(3000);
+            return redirect('/profile/sold');
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile/sold');
+            
+        }
+    }
+
 }

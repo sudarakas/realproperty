@@ -7,6 +7,7 @@
         </ul>
     </nav>
     <div class="containerx">
+        <div class="title is-5 has-text-link">Unread Messages</div>
         <div class="column">
                 <div class="div" style="margin-bottom: 6%;">
                     <a href="/profile/message/all" class="button is-link nounnounderlinebtn is-pulled-right">View All Messages</a>

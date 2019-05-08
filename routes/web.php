@@ -134,6 +134,9 @@ Route::get('/profile/mybuilding','PageController@myBuilding')->middleware('auth'
 Route::get('/profile/mywarehouse','PageController@myWarehouse')->middleware('auth');
 Route::get('/profile/alloffers','ProfileController@allOffers')->middleware('auth');
 Route::get('/profile/myoffers','ProfileController@myOffers')->middleware('auth');
+Route::get('/profile/sold','ProfileController@showMarkSold')->middleware('auth');
+Route::get('/profile/sold/{property}/marksold','ProfileController@markSold')->middleware('auth');
+Route::get('/profile/sold/{property}/markunsold','ProfileController@markUnsold')->middleware('auth');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 
 Route::post('/profile/updateAccount','ProfileController@updateAccount')->middleware('auth');

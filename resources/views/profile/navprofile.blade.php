@@ -5,7 +5,7 @@
                 <div class="buttons is-pulled-right">
                     <style>
                     </style>
-                    <a class="button is-transaprent is-pulled-right">
+                    <a class="button is-transaprent is-pulled-right" href="/profile/message">
                         <span>
                             
                             @if(countMessageByUserId() > 0)

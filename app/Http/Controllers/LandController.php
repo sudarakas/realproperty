@@ -46,12 +46,18 @@ class LandController extends Controller
                     ->orWhere('province', 'LIKE', $keyword)
                     ->orWhere('city', 'LIKE', $keyword);
             });
+        })->whereHas('property', function ($query){
+
+            $query->where('availability', 'LIKE', "YES");
+
         })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
             $query->whereBetween('amount', array($minPrice, $maxPrice));
+
         })->where(function ($query) use ($electricity) {
 
             $query->where('electricity', 'LIKE', $electricity);
+
         })->where(function ($query) use ($tapWater) {
 
             $query->where('tapwater', 'LIKE', $tapWater);

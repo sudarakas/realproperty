@@ -53,6 +53,10 @@ class BuildingController extends Controller
         })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
             $query->whereBetween('amount', array($minPrice, $maxPrice));
+        })->whereHas('property', function ($query){
+
+            $query->where('availability', 'LIKE', "YES");
+
         })->where(function ($query) use ($lift) {
 
             $query->where('lift', 'LIKE', $lift);

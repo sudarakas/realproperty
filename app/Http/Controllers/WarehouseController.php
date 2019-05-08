@@ -49,6 +49,10 @@ class WarehouseController extends Controller
         })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
             $query->whereBetween('amount', array($minPrice, $maxPrice));
+        })->whereHas('property', function ($query){
+
+            $query->where('availability', 'LIKE', "YES");
+
         })->where(function ($query) use ($electricity) {
 
             $query->where('electricity', 'LIKE', $electricity);

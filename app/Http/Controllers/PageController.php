@@ -16,6 +16,7 @@ use App\Land;
 use App\Building;
 use App\Apartment;
 use App\Warehouse;
+use App\UserEmail;
 
 class PageController extends Controller
 {
@@ -120,11 +121,6 @@ class PageController extends Controller
         return view('profile.home', array('user' => Auth::user()));
     }
 
-    public function viewMessage()
-    {
-        $records = DB::table('messages')->orderBy('created_at', 'asc')->get();
-        return view('profile.home', array('user' => Auth::user()))->with('records', $records);
-    }
     public function deleteaccount()
     {
         return view('profile.home', array('user' => Auth::user()));

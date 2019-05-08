@@ -16,11 +16,11 @@
         </div>
         <div class="is-pulled-right">
             <p class="control has-text-centered">
-            <a class="button is-danger is-rounded nounderlinebtn" href="/profile/message/{{$message->id}}/view">
-                  <span>Delete</span>
+            <a class="button is-danger is-rounded nounnounderlinebtn" href="/profile/message/{{$message->id}}/delete">
+                  Delete
                 </a>
-                <a class="button is-success is-rounded nounderlinebtn" href="/profile/message/{{$message->id}}/delete">
-                  <span>Read</span>
+                <a class="button is-success is-rounded nounnounderlinebtn" href="/profile/message/{{$message->id}}/view">                
+                  Read
                 </a>
             </p>
         </div>

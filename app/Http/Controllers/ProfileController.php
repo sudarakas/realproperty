@@ -123,5 +123,12 @@ class ProfileController extends Controller
 
         return view('profile.home', compact('messages'),array('user' => Auth::user()));
     }
+
+    public function viewMessage(UserEmail $message)
+    {
+
+        return view('profile.home',compact('message') ,array('user' => Auth::user()));
+
+    }
     
 }

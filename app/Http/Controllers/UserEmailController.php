@@ -195,4 +195,18 @@ class UserEmailController extends Controller
         return back();
 
     }
+
+    public function replyMessage(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'message' => 'required|string|max:2500|min:10'
+        ]);
+
+        if ($validator->fails()) {
+
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
+    }
 }

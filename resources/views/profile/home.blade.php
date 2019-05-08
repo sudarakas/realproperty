@@ -71,7 +71,7 @@
             @include('profile.favorite')
           @elseif(Request::is('profile/message'))
             @include('profile.message')
-          @elseif(Request::is('profile/message/view'))
+          @elseif(Request::is('profile/message/*/view'))
             @include('profile.viewmessage')
           @elseif(Request::is('profile/deleteaccount'))
             @include('profile.deleteaccount')

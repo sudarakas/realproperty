@@ -36,7 +36,7 @@ class AdminLoginController extends Controller
         $request->validate([
             $this->username() => 'required|email',
             'password' => 'required|string',
-            'g-recaptcha-response' => 'recaptcha',
+            // 'g-recaptcha-response' => 'recaptcha',
         ]);
     }
     

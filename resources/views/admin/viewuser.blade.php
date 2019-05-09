@@ -98,7 +98,6 @@
                             <td>{{number_format($property->amount,2)}}</td>
                             <td><a href="/{{checkPropertyTypeById($property->id)}}/{{getPropertyTypeIdById($property->id)}}" class="button is-success nounnounderlinebtn" target="_blank"><i class="fas fa-external-link-square-alt"></i></a></td> 
                             <td><a href="/admin/{{checkPropertyTypeById($property->id)}}/{{getPropertyTypeIdById($property->id)}}/edit" class="button is-warning nounnounderlinebtn" target="_blank"><i class="fa fa-edit"></i></a></td> 
-                            {{-- <td><a href="" class="button is-danger nounnounderlinebtn" target="_blank"><i class="far fa-trash-alt"></i></a></td>  --}}
                             <td>
                                 <form action="/admin/{{checkPropertyTypeById($property->id)}}/{{getPropertyTypeIdById($property->id)}}/delete" method="post">
                                     @csrf

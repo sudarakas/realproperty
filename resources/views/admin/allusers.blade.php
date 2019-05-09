@@ -3,7 +3,7 @@
     <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
         <ul>
             <li><a href="/admin">Admin</a></li>
-            <li class="is-active"><a href="/profile">All Lands</a></li>
+            <li class="is-active"><a href="/profile">All Users</a></li>
         </ul>
     </nav>
     <div class="columns is-mobile is-centered">
@@ -28,7 +28,7 @@
     </div>
     <div class="card cardmargin">
         <div class="containerx">
-            <div class="subtitle has-text-black-bis">Latest User Registations</div>
+            <div class="subtitle has-text-black-bis">All User Registations</div>
           <div class="column tableshow style="overflow-x: auto">   
             <table class="table">
               <thead>
@@ -39,7 +39,10 @@
                   <th>User Email</th>
                   <th>Pro. Type</th>
                   <th>Status</th>
-                  <th>View User</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tfoot>
@@ -50,7 +53,10 @@
                   <th>User Email</th>
                   <th>Pro. Type</th>
                   <th>Status</th>
-                  <th>View User</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </tfoot>
               <tbody>
@@ -74,7 +80,10 @@
                         <span class="has-text-success"> Verified </span>
                       @endif
                     </td>
-                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-info nounnounderlinebtn" target="_blank">View User</a></td>
+                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-success nounnounderlinebtn" target="_blank"><i class="fas fa-external-link-square-alt"></i></a></td>
+                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-link nounnounderlinebtn" target="_blank"><i class="fas fa-external-link-square-alt"></i></a></td> 
+                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-warning nounnounderlinebtn" target="_blank"><i class="fa fa-edit"></i></a></td> 
+                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-danger nounnounderlinebtn" target="_blank"><i class="far fa-trash-alt"></i></a></td> 
                   </tr>
                 @endforeach
             </tbody>

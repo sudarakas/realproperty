@@ -79,7 +79,7 @@
           </div>
           <hr>
           <div class="subtitle has-text-black-bis">Latest User Registations</div>
-          <div class="column tableshow style="overflow-x: auto"">   
+          <div class="column tableshow style="overflow-x: auto">   
             <table class="table">
               <thead>
                 <tr>

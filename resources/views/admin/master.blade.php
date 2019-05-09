@@ -59,7 +59,7 @@
         </p>
         <ul class="menu-list adminlistitem">
           <li><a href="/profile/mybuilding">New User</a></li>
-          <li><a href="/profile/mybuilding">View Users</a></li>
+          <li><a href="/admin/user/all">View Users</a></li>
         </ul>
         <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
           <i class="fas fa-user-shield"></i> Administrator Management
@@ -102,6 +102,9 @@
       @include('admin.allapartment')
     @elseif(Request::is('admin/property/warehouse'))
       @include('admin.allwarehouse')
+    @elseif(Request::is('admin/user/all'))
+      @include('admin.allusers')
+    
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

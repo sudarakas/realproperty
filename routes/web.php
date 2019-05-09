@@ -152,6 +152,8 @@ Route::get('/profile/sold','ProfileController@showMarkSold')->middleware('auth')
 Route::get('/profile/sold/{property}/marksold','ProfileController@markSold')->middleware('auth');
 Route::get('/profile/sold/{property}/markunsold','ProfileController@markUnsold')->middleware('auth');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
+Route::post('/profile/user/{user}/delete','ProfileController@deleteUserAccount')->middleware('auth');
+
 
 Route::post('/profile/updateAccount','ProfileController@updateAccount')->middleware('auth');
 Route::post('/profile/updatepassword','ProfileController@changePassword')->middleware('auth');
@@ -165,6 +167,7 @@ Route::get('/admin/property/land','AdminController@viewAllLand')->middleware('au
 Route::get('/admin/property/building','AdminController@viewAllBuilding')->middleware('auth:admin');
 Route::get('/admin/property/apartment','AdminController@viewAllApartment')->middleware('auth:admin');
 Route::get('/admin/property/warehouse','AdminController@viewAllWarehouse')->middleware('auth:admin');
+Route::get('/admin/user/all','AdminController@viewAllUsers')->middleware('auth:admin');
 
 
 

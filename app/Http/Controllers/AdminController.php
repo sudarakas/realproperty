@@ -153,5 +153,11 @@ class AdminController extends Controller
 
         return view('admin.master', compact('properties'));
     }
+
+    public function viewAllUsers(){
+
+        $users = User::paginate(20);
+        return view('admin.master', compact('users'));
+    }
     
 }

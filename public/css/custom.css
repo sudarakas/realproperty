@@ -852,7 +852,8 @@ figure.profileavatar figcaption::before {
 .adminlistitem li a:hover{
     color: hsl(0, 0%, 100%) !important;
     border-left: 2px solid hsl(0, 0%, 100%) !important;
-    background-color: #3273dc;
+    background-color: #3273dc79;
+    
 }
 .adminprofileavatar{
     margin-top: 20px;

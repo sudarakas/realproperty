@@ -273,6 +273,57 @@ class ProfileController extends Controller
 
     }
 
-    
+    public function deleteUserAccount(User $user){
+
+        if ($user->id == auth()->id()) {
+
+            //delete all properties
+            $properties = $user->properties;
+
+            foreach($properties as $property){
+
+                $propertyType = checkPropertyTypeById($property->id);
+
+                if(strcmp($propertyType,'house')){
+
+                    DB::table('houses')->where('property_id', '=', $property->id)->delete();
+
+                }elseif(strcmp($propertyType,'land')){
+                    
+                    DB::table('lands')->where('property_id', '=', $property->id)->delete();
+
+                }elseif(strcmp($propertyType,'building')){
+                    
+                    DB::table('buildings')->where('property_id', '=', $property->id)->delete();
+                    
+                }elseif(strcmp($propertyType,'apartment')){
+                    
+                    DB::table('apartments')->where('property_id', '=', $property->id)->delete();
+                    
+                }elseif(strcmp($propertyType,'warehouse')){
+                    
+                    DB::table('warehouses')->where('property_id', '=', $property->id)->delete();
+                    
+                }else{
+                    Alert::error('Your request has been denied by the system', 'System Error')->autoclose(3000);
+                    return redirect('/profile');
+                }    
+
+                //delete main property
+                DB::table('properties')->where('id', '=', $property->id)->delete();
+            }
+            
+            DB::table('users')->where('id', '=', $user->id)->delete();
+
+            Alert::success('Your account has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
+            return back();
+        }
+        else {
+
+            Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
+            return redirect('/profile');
+            
+        }
+    }
 
 }

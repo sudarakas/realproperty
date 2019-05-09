@@ -65,6 +65,8 @@ Route::post('/house/{house}/contactowner','UserEmailController@houseContact');
 Route::post('/house/{house}/report','ReportPropertyController@houseReport');
 Route::get('/house/{house}/favorite','FavoriteController@favoriteHouse');
 Route::get('/profile/house/{house}/edit','HouseController@showEditHouse')->middleware('auth');
+Route::get('/admin/house/{house}/edit','AdminController@showAdminEditHouse')->middleware('auth:admin');
+Route::post('/admin/house/{house}/edit','HouseController@editHouse');
 Route::post('/profile/house/{house}/edit','HouseController@editHouse');
 Route::post('/profile/house/{house}/delete','HouseController@deleteHouse');
 

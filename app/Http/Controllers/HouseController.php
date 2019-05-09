@@ -96,7 +96,7 @@ class HouseController extends Controller
         $property = Property::find(request('propertyid'));
         $house = House::find(request('houseid'));
 
-        if ($property->user_id == auth()->id()) {
+        if ($property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             $request->validate([
                 'name' => 'required|max:50|min:3',

@@ -7,6 +7,7 @@ use Auth;
 use Image;
 use App\Property;
 use App\User;
+use App\House;
 
 class AdminController extends Controller
 {
@@ -49,6 +50,13 @@ class AdminController extends Controller
 
         return view('admin.master', compact('user','properties'));
 
+
+    }
+
+    public function showAdminEditHouse(House $house)
+    {
+        
+        return view('admin.master', compact('house'));
 
     }
 

@@ -104,7 +104,7 @@ Route::post('/apartment/{apartment}/contactowner','UserEmailController@apartment
 Route::post('/apartment/{apartment}/report','ReportPropertyController@apartmentReport');
 Route::get('/apartment/{apartment}/favorite','FavoriteController@favoriteApartment');
 Route::get('/profile/apartment/{apartment}/edit','ApartmentController@showEditApartment')->middleware('auth');
-Route::get('/admin/apartment/{apartment}/edit','AdminController@showAdminEditHouse')->middleware('auth:admin');
+Route::get('/admin/apartment/{apartment}/edit','AdminController@showAdminEditApartment')->middleware('auth:admin');
 Route::post('/admin/apartment/{apartment}/edit','ApartmentController@editApartment');
 Route::post('/profile/apartment/{apartment}/edit','ApartmentController@editApartment');
 Route::post('/profile/apartment/{apartment}/delete','ApartmentController@deleteApartment');

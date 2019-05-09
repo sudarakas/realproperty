@@ -88,7 +88,7 @@ class BuildingController extends Controller
         $property = Property::find(request('propertyid'));
         $building = Building::find(request('buildingid'));
 
-        if ($property->user_id == auth()->id()) {
+        if ($property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             $request->validate([
                 'name' => 'required|max:30|min:3',
@@ -166,7 +166,7 @@ class BuildingController extends Controller
     public function deleteBuilding(Building $building)
     {
 
-        if ($building->property->user_id == auth()->id()) {
+        if ($building->property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             DB::table('buildings')->where('id', '=', $building->id)->delete();
             DB::table('properties')->where('id', '=', $building->property->id)->delete();

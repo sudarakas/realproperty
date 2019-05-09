@@ -63,7 +63,7 @@ class ApartmentController extends Controller
         $property = Property::find(request('propertyid'));
         $apartment = Apartment::find(request('apartmentid'));
 
-        if ($property->user_id == auth()->id()) {
+        if ($property->user_id == auth()->id() || Auth::guard('admin')->check() ) {
 
             $request->validate([
                 'name' => 'required|max:30|min:3',
@@ -139,7 +139,7 @@ class ApartmentController extends Controller
     public function deleteApartment(Apartment $apartment)
     {
 
-        if ($apartment->property->user_id == auth()->id()) {
+        if ($apartment->property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             DB::table('apartments')->where('id', '=', $apartment->id)->delete();
             DB::table('properties')->where('id', '=', $apartment->property->id)->delete();

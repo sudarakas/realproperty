@@ -179,7 +179,7 @@ class HouseController extends Controller
     public function deleteHouse(House $house)
     {
 
-        if ($house->property->user_id == auth()->id()) {
+        if ($house->property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             DB::table('houses')->where('id', '=', $house->id)->delete();
             DB::table('properties')->where('id', '=', $house->property->id)->delete();

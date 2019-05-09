@@ -84,7 +84,7 @@ class LandController extends Controller
         $property = Property::find(request('propertyid'));
         $land = Land::find(request('landid'));
 
-        if ($property->user_id == auth()->id()) {
+        if ($property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             $request->validate([
                 'name' => 'required|max:30|min:3',
@@ -158,7 +158,7 @@ class LandController extends Controller
     public function deleteLand(Land $land)
     {
 
-        if ($land->property->user_id == auth()->id()) {
+        if ($land->property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             DB::table('lands')->where('id', '=', $land->id)->delete();
             DB::table('properties')->where('id', '=', $land->property->id)->delete();

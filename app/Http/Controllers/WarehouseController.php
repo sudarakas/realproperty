@@ -82,7 +82,7 @@ class WarehouseController extends Controller
         $property = Property::find(request('propertyid'));
         $warehouse = Warehouse::find(request('warehouseid'));
 
-        if ($property->user_id == auth()->id()) {
+        if ($property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             $request->validate([
                 'name' => 'required|max:30|min:3',
@@ -152,7 +152,7 @@ class WarehouseController extends Controller
     public function deleteWarehouse(Warehouse $warehouse)
     {
 
-        if ($warehouse->property->user_id == auth()->id()) {
+        if ($warehouse->property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             DB::table('warehouses')->where('id', '=', $warehouse->id)->delete();
             DB::table('properties')->where('id', '=', $warehouse->property->id)->delete();

@@ -21,12 +21,12 @@
         <div class="column is-one-fifth sidebar">
             <aside class="menu">
                 <figure class="image is-128x128 profileavatar" id="myBtn">
-                    <img class="is-rounded is-centered has-text-centered avatarstyle" src="/uploads/avatars/{{$user->avatar}}">
+                    <img class="is-rounded is-centered has-text-centered avatarstyle" src="/uploads/avatars/{{auth()->user()->avatar}}">
                     <figcaption>
                       <h5 class="has-text-centered has-text-white"><span><i class="fas fa-cloud-upload-alt"></i></span><br>Change</h5>
                     </figcaption>	
                 </figure>
-                <p class="has-text-dark has-text-centered is-4 is-size-7 has-text-weight-bold is-uppercase">Welcome, {{$user->name}}</p>
+                <p class="has-text-dark has-text-centered is-4 is-size-7 has-text-weight-bold is-uppercase">Welcome, {{auth()->user()->name}}</p>
                 <p class="menu-label has-text-link is-4 is-size-7 has-text-weight-bold is-uppercase">
                   General
                 </p>
@@ -96,6 +96,8 @@
             @include('profile.offers')
           @elseif(Request::is('profile/offers/*/contact'))
             @include('profile.contactoffer')
+          @elseif(Request::is('profile/offers/*/contact/owner'))
+            @include('profile.contactofferowner')
           @elseif(Request::is('profile/house/*/edit'))
             @include('profile.edithouse')
           @elseif(Request::is('profile/land/*/edit'))

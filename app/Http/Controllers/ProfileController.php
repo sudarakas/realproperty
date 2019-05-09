@@ -273,6 +273,14 @@ class ProfileController extends Controller
 
     }
 
+    public function contactOffersOwner(Offer $offer)
+    {
+        
+        $user = User::find($offer->property->user->id);
+        return view('profile.home', compact('user','offer'),array('user' => Auth::user()));
+
+    }
+
     public function deleteUserAccount(User $user){
 
         if ($user->id == auth()->id()) {

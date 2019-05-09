@@ -3,11 +3,11 @@
         <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
             <ul>
                 <li><a href="/profile">Profile</a></li>
-                <li class="is-active"><a href="/profile">All Offers</a></li>
+                <li class="is-active"><a href="/profile">My Offers</a></li>
             </ul>
         </nav>
         <div class="column profileback tableshow">
-          <div class="title is-5 has-text-success">All Offers</div>
+          <div class="title is-5 has-text-success">My Offers</div>
           <div style="overflow-x: auto;">
               <table class="table">
                   <thead>
@@ -44,8 +44,8 @@
                           <td>{{$offer->property->city}}</td>
                           <td>{{$offer->property->type}}</td>
                           <td>{{number_format($offer->offerAmount,2)}}</td>
-                          <td>{{userNameById($offer->offeredUser)}}</td>
-                          <td><a href="" class="button is-success nounnounderlinebtn">Contact</a></td>
+                          <td>{{$offer->property->user->name}}</td>
+                          <td><a href="/profile/offers/{{$offer->id}}/contact/owner" class="button is-success nounnounderlinebtn">Contact</a></td>
                         </tr>
                       @endforeach
                     @else

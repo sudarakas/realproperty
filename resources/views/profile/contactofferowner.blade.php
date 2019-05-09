@@ -3,7 +3,7 @@
         <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
           <ul>
             <li><a href="/profile">Profile</a></li>
-            <li class="is-active"><a href="/profile">Contact Offer</a></li>
+            <li class="is-active"><a href="/profile">Contact Offer Owner</a></li>
           </ul>
         </nav>
         <div class="column profileback upmemargin">
@@ -60,13 +60,13 @@
                 </div>
                 <hr style="margin-top: 7%;">
                 <div class="contetnt">
-                  <form action="/profile/offers/contact/send" method="post">
+                  <form action="/profile/offers/contact/owner/send" method="post">
                     @csrf
                     <div class="field">
                       <div class="field-body">
                         <div class="field">
                           <div class="control">
-                            <input type="hidden" value="{{$offer->offeredUser}}" name="owner">
+                            <input type="hidden" value="{{$offer->property->user->id}}" name="owner">
                             <input type="hidden" value="Regarding {{$offer->property->name}} Offer" name="subject">
                             <input type="hidden" value="/{{checkPropertyTypeByOfferId($offer->id)}}/{{getPropertyTypeIdByOfferId($offer->id)}}" name="path">
                             <textarea class="textarea {{ $errors->has('message') ? ' is-danger' : '' }}" placeholder="Enter your reply for this offer"

@@ -79,7 +79,7 @@ Route::post('/land/{land}/report','ReportPropertyController@landReport');
 Route::get('/land/{land}/favorite','FavoriteController@favoriteLand');
 Route::get('/profile/land/{land}/edit','LandController@showEditLand')->middleware('auth');
 Route::get('/admin/land/{land}/edit','AdminController@showAdminEditLand')->middleware('auth:admin');
-Route::post('/admin/land/{land}/edit','LandController@editHouse');
+Route::post('/admin/land/{land}/edit','LandController@editLand');
 Route::post('/profile/land/{land}/edit','LandController@editLand');
 Route::post('/profile/land/{land}/delete','LandController@deleteLand');
 
@@ -95,6 +95,7 @@ Route::get('/admin/building/{building}/edit','AdminController@showAdminEditBuild
 Route::post('/admin/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/delete','BuildingController@deleteBuilding');
+Route::post('/admin/building/{building}/delete','BuildingController@deleteBuilding');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');
@@ -158,7 +159,8 @@ Route::post('/profile/updatepassword','ProfileController@changePassword')->middl
 //Admin Panel
 Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('auth:admin');
 Route::get('/admin/user/{user}/view','AdminController@viewUser')->middleware('auth:admin');
-Route::get('/admin/viewme','AdminController@viewme')->middleware('auth:admin');
+Route::get('/admin/property/all','AdminController@viewAllProperty')->middleware('auth:admin');
+Route::get('/admin/property/house','AdminController@viewAllHouse')->middleware('auth:admin');
 //Blog
 Route::get('/blog','PageController@showBlog');
 Route::get('/blog/view','PageController@showBlogPost');

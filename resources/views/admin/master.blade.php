@@ -40,8 +40,8 @@
           <i class="fas fa-home"></i> Properties Management
         </p>
         <ul class="menu-list adminlistitem">
-          <li><a href="/profile/mybuilding">All</a></li>
-          <li><a href="/admin">Houses</a></li>
+          <li><a href="/admin/property/all">All</a></li>
+          <li><a href="/admin/property/house">Houses</a></li>
           <li><a href="/profile/myland">Lands</a></li>
           <li><a href="/profile/mybuilding">Buildings</a></li>
           <li><a href="/profile/mybuilding">Apartments</a></li>
@@ -90,6 +90,10 @@
       @include('profile.editapartment')
     @elseif(Request::is('admin/warehouse/*/edit'))
       @include('profile.editwarehouse')
+    @elseif(Request::is('admin/property/all'))
+      @include('admin.allproperty')
+    @elseif(Request::is('admin/property/house'))
+      @include('admin.allhouse')
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

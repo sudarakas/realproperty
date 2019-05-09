@@ -81,7 +81,7 @@
                       @endif
                     </td>
                   <td><a href="/admin/user/{{$user->id}}/view" class="button is-success nounnounderlinebtn" target="_blank"><i class="fas fa-external-link-square-alt"></i></a></td>
-                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-link nounnounderlinebtn" target="_blank"><i class="far fa-comment-alt"></i></a></td> 
+                  <td><a href="/admin/user/{{$user->id}}/contact" class="button is-link nounnounderlinebtn" target="_blank"><i class="far fa-comment-alt"></i></a></td> 
                   <td><a href="/admin/user/{{$user->id}}/view" class="button is-warning nounnounderlinebtn" target="_blank"><i class="fa fa-edit"></i></a></td> 
                   <td><a href="/admin/user/{{$user->id}}/view" class="button is-danger nounnounderlinebtn" target="_blank"><i class="far fa-trash-alt"></i></a></td> 
                   </tr>

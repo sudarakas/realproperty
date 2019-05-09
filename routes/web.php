@@ -170,7 +170,8 @@ Route::get('/admin/property/building','AdminController@viewAllBuilding')->middle
 Route::get('/admin/property/apartment','AdminController@viewAllApartment')->middleware('auth:admin');
 Route::get('/admin/property/warehouse','AdminController@viewAllWarehouse')->middleware('auth:admin');
 Route::get('/admin/user/all','AdminController@viewAllUsers')->middleware('auth:admin');
-
+Route::get('/admin/user/{user}/contact','AdminController@adminContactUser')->middleware('auth:admin');
+Route::post('/admin/user/contact','AdminController@adminContactUserSend')->middleware('auth:admin');
 
 
 

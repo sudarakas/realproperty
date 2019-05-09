@@ -44,7 +44,10 @@
             <div>
               <figure class="image is-64x64 ">
                 @if($message->sender_id == 0)
-                <img src="/uploads/avatars/user.jpg" alt="Image" class="is-rounded"> @else
+                  <img src="/uploads/avatars/user.jpg" alt="Image" class="is-rounded"> 
+                @elseif(strcmp($message->senderName,"Administrator") == 0)
+                  <img src="/img/admin.png" alt="Image" class="is-rounded"> 
+                @else
                 <img src="/uploads/avatars/{{userAvatarById($message->sender_id)}}" alt="Image" class="is-rounded"> @endif
               </figure>
               <div class="address">

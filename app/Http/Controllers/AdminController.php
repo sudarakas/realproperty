@@ -12,6 +12,10 @@ use App\Land;
 use App\Building;
 use App\Apartment;
 use App\Warehouse;
+use Illuminate\Support\Facades\Validator;
+use App\UserEmail;
+use Alert;
+use App\Mail\ContactMail;
 
 class AdminController extends Controller
 {
@@ -158,6 +162,48 @@ class AdminController extends Controller
 
         $users = User::paginate(20);
         return view('admin.master', compact('users'));
+    }
+
+    public function adminContactUser(User $user)
+    {
+        
+        return view('admin.master', compact('user'));
+
+    }
+
+    public function adminContactUserSend(Request $request){
+        
+        $validator = Validator::make($request->all(), [
+            'message' => 'required|string|max:2500|min:10'
+        ]);
+
+        if ($validator->fails()) {
+
+            Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
+            return back()->withErrors($validator);
+        }
+        
+        $message = new UserEmail;
+        $message->receiver_id = request('receiverid');
+        $message->sender_id = auth()->user()->id;
+        $message->senderMail = auth()->user()->email;
+        $message->senderName = 'Administrator';
+        $message->phoneNo = auth()->user()->phoneNo;
+        $message->subject = request('subject');
+        $message->message = request('message');
+        $message->property_url = '/';
+        $message->save();
+
+        $request->name = 'Administrator';
+        $request->email = auth()->user()->email;
+        $request->pno = auth()->user()->phoneNo;
+        $request->property_url = '/';
+
+        \Mail::to(request('receiver'))->send(new ContactMail($request));
+        
+        Alert::success('Message has been sent successfully!', 'Message Sent')->autoclose(3000);
+
+        return back();
     }
     
 }

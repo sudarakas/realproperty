@@ -3,7 +3,7 @@
     <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
         <ul>
             <li><a href="/admin">Admin</a></li>
-            <li class="is-active"><a href="/profile">All Buildings</a></li>
+            <li class="is-active"><a href="/profile">All &nbsp; Apartments</a></li>
         </ul>
     </nav>
     <div class="columns is-mobile is-centered">
@@ -28,7 +28,7 @@
     </div>
     <div class="card cardmargin">
         <div class="containerx">
-            <div class="subtitle has-text-black-bis containerx">All Buildings</div>
+            <div class="subtitle has-text-black-bis containerx">All &nbsp; Apartments</div>
             <div class="column tableshow containerx" style="overflow-x: auto">
                 <p class="subtitle has-text-link is-7 is-pulled-right has-text-weight-bold is-uppercase">Count : {{$properties->count()}}</p>
                 <table class="table">

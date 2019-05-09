@@ -131,5 +131,16 @@ class AdminController extends Controller
 
         return view('admin.master', compact('properties'));
     }
+
+    public function viewAllApartment(){
+
+        $properties = Property::where(function($query){
+
+            $query->where('type','=','apartment');
+
+        })->paginate(25);
+
+        return view('admin.master', compact('properties'));
+    }
     
 }

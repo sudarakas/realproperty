@@ -91,7 +91,7 @@ Route::post('/building/{building}/contactowner','UserEmailController@buildingCon
 Route::post('/building/{building}/report','ReportPropertyController@buildingReport');
 Route::get('/building/{building}/favorite','FavoriteController@favoriteBuilding');
 Route::get('/profile/building/{building}/edit','BuildingController@showEditBuilding')->middleware('auth');
-Route::get('/admin/building/{building}/edit','AdminController@showAdminEditHouse')->middleware('auth:admin');
+Route::get('/admin/building/{building}/edit','AdminController@showAdminEditBuilding')->middleware('auth:admin');
 Route::post('/admin/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/delete','BuildingController@deleteBuilding');
@@ -117,7 +117,7 @@ Route::post('/warehouse/{warehouse}/contactowner','UserEmailController@warehouse
 Route::post('/warehouse/{warehouse}/report','ReportPropertyController@warehouseReport');
 Route::get('/warehouse/{warehouse}/favorite','FavoriteController@favoriteWarehouse');
 Route::get('/profile/warehouse/{warehouse}/edit','WarehouseController@showEditWarehouse')->middleware('auth');
-Route::get('/admin/warehouse/{warehouse}/edit','AdminController@showAdminEditHouse')->middleware('auth:admin');
+Route::get('/admin/warehouse/{warehouse}/edit','AdminController@showAdminEditWarehouse')->middleware('auth:admin');
 Route::post('/admin/warehouse/{warehouse}/edit','WarehouseController@editWarehouse');
 Route::post('/profile/warehouse/{warehouse}/edit','WarehouseController@editWarehouse');
 Route::post('/profile/warehouse/{warehouse}/delete','WarehouseController@deleteWarehouse');

@@ -82,6 +82,14 @@
       @include('admin.viewuser')
     @elseif(Request::is('admin/house/*/edit'))
       @include('profile.edithouse')
+    @elseif(Request::is('admin/land/*/edit'))
+      @include('profile.editland')
+    @elseif(Request::is('admin/building/*/edit'))
+      @include('profile.editbuilding')
+    @elseif(Request::is('admin/apartment/*/edit'))
+      @include('profile.editapartment')
+    @elseif(Request::is('admin/warehouse/*/edit'))
+      @include('profile.editwarehouse')
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

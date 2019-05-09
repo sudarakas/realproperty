@@ -8,6 +8,10 @@ use Image;
 use App\Property;
 use App\User;
 use App\House;
+use App\Land;
+use App\Building;
+use App\Apartment;
+use App\Warehouse;
 
 class AdminController extends Controller
 {
@@ -57,6 +61,34 @@ class AdminController extends Controller
     {
         
         return view('admin.master', compact('house'));
+
+    }
+
+    public function showAdminEditLand(Land $land)
+    {
+        
+        return view('admin.master', compact('land'));
+
+    }
+
+    public function showAdminEditBuilding(Building $building)
+    {
+        
+        return view('admin.master', compact('building'));
+
+    }
+
+    public function showAdminEditApartment(Apartment $apartment)
+    {
+        
+        return view('admin.master', compact('apartment'));
+
+    }
+
+    public function showAdminEditWarehouse(Warehouse $warehouse)
+    {
+        
+        return view('admin.master', compact('warehouse'));
 
     }
 

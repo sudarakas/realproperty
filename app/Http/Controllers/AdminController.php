@@ -120,5 +120,16 @@ class AdminController extends Controller
 
         return view('admin.master', compact('properties'));
     }
+
+    public function viewAllBuilding(){
+
+        $properties = Property::where(function($query){
+
+            $query->where('type','=','building');
+
+        })->paginate(25);
+
+        return view('admin.master', compact('properties'));
+    }
     
 }

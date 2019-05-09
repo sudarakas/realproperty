@@ -43,7 +43,7 @@
           <li><a href="/admin/property/all">All</a></li>
           <li><a href="/admin/property/house">Houses</a></li>
           <li><a href="/admin/property/land">Lands</a></li>
-          <li><a href="/profile/mybuilding">Buildings</a></li>
+          <li><a href="/admin/property/building">Buildings</a></li>
           <li><a href="/profile/mybuilding">Apartments</a></li>
           <li><a href="/profile/mybuilding">Warehouse</a></li>
         </ul>
@@ -96,6 +96,8 @@
       @include('admin.allhouse')
     @elseif(Request::is('admin/property/land'))
       @include('admin.allland')
+    @elseif(Request::is('admin/property/building'))
+      @include('admin.allbuilding')
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

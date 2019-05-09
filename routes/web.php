@@ -161,6 +161,14 @@ Route::post('/admin/updateavatar','AdminController@updateAvatar')->middleware('a
 Route::get('/admin/user/{user}/view','AdminController@viewUser')->middleware('auth:admin');
 Route::get('/admin/property/all','AdminController@viewAllProperty')->middleware('auth:admin');
 Route::get('/admin/property/house','AdminController@viewAllHouse')->middleware('auth:admin');
+Route::get('/admin/property/land','AdminController@viewAllLand')->middleware('auth:admin');
+Route::get('/admin/property/building','AdminController@viewAllBuilding')->middleware('auth:admin');
+Route::get('/admin/property/apartment','AdminController@viewAllApartment')->middleware('auth:admin');
+Route::get('/admin/property/warehouse','AdminController@viewAllWarehouse')->middleware('auth:admin');
+
+
+
+
 //Blog
 Route::get('/blog','PageController@showBlog');
 Route::get('/blog/view','PageController@showBlogPost');

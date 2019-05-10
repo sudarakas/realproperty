@@ -69,7 +69,7 @@ Route::get('/admin/house/{house}/edit','AdminController@showAdminEditHouse')->mi
 Route::post('/admin/house/{house}/edit','HouseController@editHouse');
 Route::post('/profile/house/{house}/edit','HouseController@editHouse');
 Route::post('/profile/house/{house}/delete','HouseController@deleteHouse');
-Route::post('/admin/house/{house}/delete','LandController@deleteLand')->middleware('auth:admin');
+Route::post('/admin/house/{house}/delete','HouseController@deleteLand')->middleware('auth:admin');
 
 Route::get('/land/serach','PageController@landsearch');
 Route::get('/land/{land}','LandController@viewLand');

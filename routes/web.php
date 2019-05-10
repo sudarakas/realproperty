@@ -97,7 +97,6 @@ Route::get('/admin/building/{building}/edit','AdminController@showAdminEditBuild
 Route::post('/admin/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/delete','BuildingController@deleteBuilding');
-Route::post('/admin/building/{building}/delete','BuildingController@deleteBuilding');
 Route::post('/admin/building/{building}/delete','BuildingController@deleteLand')->middleware('auth:admin');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
@@ -111,7 +110,8 @@ Route::get('/profile/apartment/{apartment}/edit','ApartmentController@showEditAp
 Route::get('/admin/apartment/{apartment}/edit','AdminController@showAdminEditApartment')->middleware('auth:admin');
 Route::post('/admin/apartment/{apartment}/edit','ApartmentController@editApartment');
 Route::post('/profile/apartment/{apartment}/edit','ApartmentController@editApartment');
-Route::post('/profile/apartment/{apartment}/delete','ApartmentController@deleteApartment');
+Route::post('/admin/apartment/{apartment}/delete','ApartmentController@deleteLand')->middleware('auth:admin');
+
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');

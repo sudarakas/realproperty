@@ -125,6 +125,7 @@ Route::get('/admin/warehouse/{warehouse}/edit','AdminController@showAdminEditWar
 Route::post('/admin/warehouse/{warehouse}/edit','WarehouseController@editWarehouse');
 Route::post('/profile/warehouse/{warehouse}/edit','WarehouseController@editWarehouse');
 Route::post('/profile/warehouse/{warehouse}/delete','WarehouseController@deleteWarehouse');
+Route::post('/admin/warehouse/{warehouse}/delete','WarehouseController@deleteLand')->middleware('auth:admin');
 
 
 

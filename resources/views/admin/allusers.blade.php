@@ -75,7 +75,7 @@
                     </td>
                     <td>
                       @if($user->email_verified_at==NULL)
-                        <span class="has-text-danger"> Verified </span>
+                        <span class="has-text-danger"> Not Verified </span>
                       @else
                         <span class="has-text-success"> Verified </span>
                       @endif

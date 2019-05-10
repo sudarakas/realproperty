@@ -17,6 +17,7 @@ use App\UserEmail;
 use Alert;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -292,5 +293,23 @@ class AdminController extends Controller
     public function showAdminAddUser(){
 
         return view('admin.master');
+    }
+
+    public function adminAddUser(Request $request){
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string', 'email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+        
+        $user = new User();
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = Hash::make(request('password'));
+        $user->save();
+
+        Alert::success('User account has been added successfully!', 'Successfully Added!')->autoclose(3000);
+        return back();
     }
 }

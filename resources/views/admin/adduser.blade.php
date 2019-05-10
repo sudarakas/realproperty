@@ -34,7 +34,7 @@
               <div class="field">
                 <label class="label">Name</label>
                 <p class="control has-icons-left">
-                  <input class="input" type="text" placeholder="Your Name" name="name">
+                  <input class="input" type="text" placeholder="Account Name" name="name">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -43,16 +43,7 @@
               <div class="field">
                   <label class="label">Email</label>
                 <p class="control has-icons-left">
-                  <input class="input" type="email" placeholder="Your Email" name="email">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-at"></i>
-                  </span>
-                </p>
-              </div>
-              <div class="field">
-                  <label class="label">Email</label>
-                <p class="control has-icons-left">
-                  <input class="input" type="email" placeholder="Your Email" name="email">
+                  <input class="input" type="email" placeholder="Account Email" name="email">
                   <span class="icon is-small is-left">
                     <i class="fas fa-at"></i>
                   </span>
@@ -61,16 +52,16 @@
               <div class="field">
                   <label class="label">Password</label>
                 <p class="control has-icons-left">
-                  <input class="input" type="email" placeholder="Your Email" name="email">
+                  <input class="input" type="password" placeholder="Account Password" name="password">
                   <span class="icon is-small is-left">
-                    <i class="fas fa-at"></i>
+                    <i class="fas fa-lock"></i>
                   </span>
                 </p>
               </div>
           <div class="field">
             <p class="control has-text-centered">
               <button type="submit" class="button is-success">
-                    <span class="buttonspace">Save</span>
+                    <span class="buttonspace">Add User</span>
               </button>
             </p>
           </div>

@@ -82,6 +82,8 @@
       @include('admin.viewuser')
     @elseif(Request::is('admin/user/*/contact'))
       @include('admin.contactuser')
+    @elseif(Request::is('admin/user/*/edit'))
+      @include('admin.edituser')
     @elseif(Request::is('admin/house/*/edit'))
       @include('profile.edithouse')
     @elseif(Request::is('admin/land/*/edit'))

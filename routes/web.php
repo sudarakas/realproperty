@@ -172,7 +172,8 @@ Route::get('/admin/property/warehouse','AdminController@viewAllWarehouse')->midd
 Route::get('/admin/user/all','AdminController@viewAllUsers')->middleware('auth:admin');
 Route::get('/admin/user/{user}/contact','AdminController@adminContactUser')->middleware('auth:admin');
 Route::post('/admin/user/contact','AdminController@adminContactUserSend')->middleware('auth:admin');
-
+Route::get('/admin/user/{user}/edit','AdminController@showAdminEditUser')->middleware('auth:admin');
+Route::post('/admin/user/edit','AdminController@adminEditUser')->middleware('auth:admin');
 
 
 //Blog

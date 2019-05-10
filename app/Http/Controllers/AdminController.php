@@ -206,4 +206,40 @@ class AdminController extends Controller
         return back();
     }
     
+    public function showAdminEditUser(User $user){
+
+        return view('admin.master', compact('user'));
+    }
+
+    public function adminEditUser(Request $request)
+    {
+        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string', 'email|max:255|unique:users',
+            'descrption'=> 'required|string|max:100',
+            'nic' => 'required|string|regex:/^[0-9]{9}[Vv]$/',
+            'address' => 'required|string',
+            'city' => 'required|string',
+            'gender' => 'required',
+            'phoneno' => 'required|numeric',
+        ]);
+
+        $user = User::find(request('id'));
+        $user->name = request('name');
+        $user->email = request('email');
+        if(strcmp($user->email,request('email')) != 0 ){
+            $user->email_verified_at = NULL;
+        }
+        $user->description = request('descrption');
+        $user->NIC = request('nic');
+        $user->address = request('address');
+        $user->city = request('city');
+        $user->gender = request('gender');
+        $user->phoneNo = request('phoneno');
+        $user->save();
+
+        Alert::success('User has been edited successfully!', 'Saved Successfully')->autoclose(3000);
+        return back()->with('message', 'User account has been successfully updated!');
+    }
 }

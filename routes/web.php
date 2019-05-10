@@ -82,6 +82,7 @@ Route::get('/admin/land/{land}/edit','AdminController@showAdminEditLand')->middl
 Route::post('/admin/land/{land}/edit','LandController@editLand');
 Route::post('/profile/land/{land}/edit','LandController@editLand');
 Route::post('/profile/land/{land}/delete','LandController@deleteLand');
+Route::post('/admin/land/{land}/delete','LandController@deleteLand')->middleware('auth:admin');
 
 Route::get('/building/serach','PageController@buildingsearch');
 Route::get('/building/{building}','BuildingController@viewBuilding');
@@ -122,6 +123,7 @@ Route::get('/admin/warehouse/{warehouse}/edit','AdminController@showAdminEditWar
 Route::post('/admin/warehouse/{warehouse}/edit','WarehouseController@editWarehouse');
 Route::post('/profile/warehouse/{warehouse}/edit','WarehouseController@editWarehouse');
 Route::post('/profile/warehouse/{warehouse}/delete','WarehouseController@deleteWarehouse');
+
 
 
 
@@ -174,7 +176,7 @@ Route::get('/admin/user/{user}/contact','AdminController@adminContactUser')->mid
 Route::post('/admin/user/contact','AdminController@adminContactUserSend')->middleware('auth:admin');
 Route::get('/admin/user/{user}/edit','AdminController@showAdminEditUser')->middleware('auth:admin');
 Route::post('/admin/user/edit','AdminController@adminEditUser')->middleware('auth:admin');
-
+Route::post('/admin/user/{user}/delete','AdminController@adminDeleteUser')->middleware('auth:admin');
 
 //Blog
 Route::get('/blog','PageController@showBlog');

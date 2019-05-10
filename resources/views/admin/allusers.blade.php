@@ -83,7 +83,12 @@
                   <td><a href="/admin/user/{{$user->id}}/view" class="button is-success nounnounderlinebtn" target="_blank"><i class="fas fa-external-link-square-alt"></i></a></td>
                   <td><a href="/admin/user/{{$user->id}}/contact" class="button is-link nounnounderlinebtn" target="_blank"><i class="far fa-comment-alt"></i></a></td> 
                   <td><a href="/admin/user/{{$user->id}}/edit" class="button is-warning nounnounderlinebtn" target="_blank"><i class="fa fa-edit"></i></a></td> 
-                  <td><a href="/admin/user/{{$user->id}}/delete" class="button is-danger nounnounderlinebtn" target="_blank"><i class="far fa-trash-alt"></i></a></td> 
+                  <td>
+                    <form action="/admin/user/{{$user->id}}/delete" method="post">
+                      @csrf
+                      <button class="button is-danger nounnounderlinebtn" type="submit" onclick="deleteMe();"><i class="far fa-trash-alt"></i></button>
+                  </form>
+                  </td> 
                   </tr>
                 @endforeach
             </tbody>
@@ -120,7 +125,7 @@
         ) {
             Swal.fire(
                 'Cancelled',
-                'Property is safe :)',
+                'User account is safe :)',
                 'info'
             )
         }

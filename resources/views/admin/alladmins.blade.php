@@ -29,6 +29,7 @@
         <div class="card cardmargin">
             <div class="containerx">
                 <div class="subtitle has-text-black-bis">All Administrators</div>
+                <a href="/admin/admin/add" class="button is-dark nounnounderlinebtn is-pulled-right">Add New Admin</a>
               <div class="column tableshow style="overflow-x: auto">   
                 <table class="table">
                   <thead>

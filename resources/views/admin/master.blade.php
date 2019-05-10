@@ -112,6 +112,8 @@
       @include('admin.allusers')
     @elseif(Request::is('admin/admin/all'))
       @include('admin.alladmins')
+    @elseif(Request::is('admin/admin/add'))
+      @include('admin.addadmin')
     
     @else
       @include('admin.dashboard') @endif
@@ -120,7 +122,7 @@
         <div class="is-pulled-right">
           <span class="close has-text-danger"><i class="far fa-times-circle"></i></span>
         </div>
-        <p>Select proile picture</p>
+        <p>Select profile picture</p>
         <form action="/admin/updateavatar" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="file has-name is-centered">

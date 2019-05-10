@@ -176,6 +176,8 @@ Route::post('/admin/user/{user}/delete','AdminController@adminDeleteUser')->midd
 Route::get('/admin/user/add','AdminController@showAdminAddUser')->middleware('auth:admin');
 Route::post('/admin/user/add','AdminController@adminAddUser')->middleware('auth:admin');
 Route::get('/admin/admin/all','AdminController@viewAllAdmin')->middleware('auth:admin');
+Route::get('/admin/admin/add','AdminController@showAdminAddAdmin')->middleware('auth:admin');
+Route::post('/admin/admin/add','AdminController@adminAddAdmin')->middleware('auth:admin');
 
 //Blog
 Route::get('/blog','PageController@showBlog');

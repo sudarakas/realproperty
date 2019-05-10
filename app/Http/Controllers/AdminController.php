@@ -320,4 +320,27 @@ class AdminController extends Controller
 
         return view('admin.master', compact('admins'));
     }
+
+    public function showAdminAddAdmin(){
+
+        return view('admin.master');
+    }
+
+    public function adminAddAdmin(Request $request){
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string', 'email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+        
+        $user = new Admin();
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = Hash::make(request('password'));
+        $user->save();
+
+        Alert::success('Admin account has been added successfully!', 'Successfully Added!')->autoclose(3000);
+        return back();
+    }
 }

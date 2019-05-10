@@ -70,7 +70,7 @@
                         @if($user->NIC==null || $user->description==null || $user->address==null || $user->city==null || $user->gender==null || $user->NIC==null || $user->birthday==null || $user->phoneNo==null)
                           <span class="has-text-danger">Not Completed</span>
                         @else
-                        <span class="has-text-success">Not Completed</span>
+                        <span class="has-text-success">Completed</span>
                         @endif
                     </td>
                     <td>

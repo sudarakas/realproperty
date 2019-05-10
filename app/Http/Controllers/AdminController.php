@@ -227,11 +227,11 @@ class AdminController extends Controller
         ]);
 
         $user = User::find(request('id'));
-        $user->name = request('name');
-        $user->email = request('email');
         if(strcmp($user->email,request('email')) != 0 ){
             $user->email_verified_at = NULL;
         }
+        $user->name = request('name');
+        $user->email = request('email');
         $user->description = request('descrption');
         $user->NIC = request('nic');
         $user->address = request('address');
@@ -245,8 +245,6 @@ class AdminController extends Controller
     }
 
     public function adminDeleteUser(User $user){
-
-        
 
             //delete all properties
             $properties = $user->properties;
@@ -289,5 +287,10 @@ class AdminController extends Controller
             Alert::success('User account has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
         
+    }
+
+    public function showAdminAddUser(){
+
+        return view('admin.master');
     }
 }

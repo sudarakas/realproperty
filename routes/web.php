@@ -36,23 +36,18 @@ Route::get('/contactus','PageController@contactus');
 
 
 Route::get('/add','PageController@addProperty');
-
 Route::get('/add/house','PageController@addHouse');
 Route::post('/add/house','PropertyController@addHouse');
-
-
 Route::get('/add/land','PageController@addLand');
 Route::post('/add/land','PropertyController@addLand');
-
 Route::get('/add/building','PageController@addBuilding');
 Route::post('/add/building','PropertyController@addBuilding');
-
 Route::get('/add/apartment','PageController@addApartment');
 Route::post('/add/apartment','PropertyController@addApartment');
-
 Route::get('/add/warehouse','PageController@addWarehouse');
 Route::post('/add/warehouse','PropertyController@addWarehouse');
 
+//testing api access
 Route::get('/add/map','PageController@dismap');
 
 
@@ -129,7 +124,7 @@ Route::post('/admin/warehouse/{warehouse}/delete','WarehouseController@deleteLan
 
 
 
-
+//General Route
 Route::post('/sendmessage','MessageController@contactUsEmail');
 
 //User Profile Section
@@ -160,8 +155,6 @@ Route::get('/profile/sold/{property}/marksold','ProfileController@markSold')->mi
 Route::get('/profile/sold/{property}/markunsold','ProfileController@markUnsold')->middleware('auth');
 Route::post('/profile/updateavatar','ProfileController@updateAvatar')->middleware('auth');
 Route::post('/profile/user/{user}/delete','ProfileController@deleteUserAccount')->middleware('auth');
-
-
 Route::post('/profile/updateAccount','ProfileController@updateAccount')->middleware('auth');
 Route::post('/profile/updatepassword','ProfileController@changePassword')->middleware('auth');
 
@@ -180,6 +173,7 @@ Route::post('/admin/user/contact','AdminController@adminContactUserSend')->middl
 Route::get('/admin/user/{user}/edit','AdminController@showAdminEditUser')->middleware('auth:admin');
 Route::post('/admin/user/edit','AdminController@adminEditUser')->middleware('auth:admin');
 Route::post('/admin/user/{user}/delete','AdminController@adminDeleteUser')->middleware('auth:admin');
+Route::get('/admin/user/add','AdminController@showAdminAddUser')->middleware('auth:admin');
 
 //Blog
 Route::get('/blog','PageController@showBlog');

@@ -58,7 +58,7 @@
           <i class="fas fa-users"></i> User Management
         </p>
         <ul class="menu-list adminlistitem">
-          <li><a href="/profile/mybuilding">New User</a></li>
+          <li><a href="/admin/user/add">New User</a></li>
           <li><a href="/admin/user/all">View Users</a></li>
         </ul>
         <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
@@ -84,6 +84,8 @@
       @include('admin.contactuser')
     @elseif(Request::is('admin/user/*/edit'))
       @include('admin.edituser')
+    @elseif(Request::is('admin/user/add'))
+      @include('admin.adduser')
     @elseif(Request::is('admin/house/*/edit'))
       @include('profile.edithouse')
     @elseif(Request::is('admin/land/*/edit'))

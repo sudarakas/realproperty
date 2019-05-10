@@ -62,11 +62,11 @@ class ProfileController extends Controller
         ]);
 
         $user = User::find($id);
-        $user->name = request('name');
-        $user->email = request('email');
         if(strcmp($user->email,request('email')) != 0 ){
             $user->email_verified_at = NULL;
         }
+        $user->name = request('name');
+        $user->email = request('email');
         $user->description = request('descrption');
         $user->NIC = request('nic');
         $user->address = request('address');

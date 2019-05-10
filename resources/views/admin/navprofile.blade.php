@@ -3,7 +3,7 @@
         <div class="navbar-end is-pulled-right">
             <div class="navbar-item is-pulled-right">
                 <div class="buttons is-pulled-right">
-                    <a class="button is-transaprent is-pulled-right">
+                    <a class="button is-transaprent is-pulled-right" href="/admin">
                         <span>
                         <i class="fas fa-home"></i>
                       </span>

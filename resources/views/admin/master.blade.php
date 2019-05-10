@@ -114,6 +114,8 @@
       @include('admin.alladmins')
     @elseif(Request::is('admin/admin/add'))
       @include('admin.addadmin')
+    @elseif(Request::is('admin/admin/*/edit'))
+      @include('admin.editadmin')
     
     @else
       @include('admin.dashboard') @endif

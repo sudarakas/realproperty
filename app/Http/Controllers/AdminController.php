@@ -343,4 +343,46 @@ class AdminController extends Controller
         Alert::success('Admin account has been added successfully!', 'Successfully Added!')->autoclose(3000);
         return back();
     }
+
+    public function showAdminEditAdmin(Admin $admin){
+
+        return view('admin.master', compact('admin'));
+    }
+
+    public function AdminEditAdmin(Request $request){
+
+        if(request('password')){
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string', 'email|max:255|unique:users',
+                'password' => 'string|min:8',
+            ]);
+        }else{
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string', 'email|max:255|unique:users',
+            ]);
+        }
+        
+        $admin = Admin::find(request('id'));
+        $admin->name = request('name');
+        $admin->email = request('email');
+        if(request('password')){
+            $admin->password = Hash::make(request('password'));
+        }else{
+            $admin->password = $admin->password;
+        }    
+        $admin->update();
+
+        Alert::success('Admin account has been edit successfully!', 'Successfully Saved!')->autoclose(3000);
+        return back();
+    }
+
+    public function adminDeleterAdmin(Admin $admin){
+
+        DB::table('admins')->where('id', '=', $admin->id)->delete();
+        Alert::success('Admin account has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
+        return back();
+    }
+    
 }

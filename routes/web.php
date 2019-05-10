@@ -110,8 +110,8 @@ Route::get('/profile/apartment/{apartment}/edit','ApartmentController@showEditAp
 Route::get('/admin/apartment/{apartment}/edit','AdminController@showAdminEditApartment')->middleware('auth:admin');
 Route::post('/admin/apartment/{apartment}/edit','ApartmentController@editApartment');
 Route::post('/profile/apartment/{apartment}/edit','ApartmentController@editApartment');
+Route::post('/profile/apartment/{apartment}/delete','ApartmentController@deleteApartment');
 Route::post('/admin/apartment/{apartment}/delete','ApartmentController@deleteLand')->middleware('auth:admin');
-
 
 Route::get('/warehouse/serach','PageController@warehousesearch');
 Route::get('/warehouse/{warehouse}','WarehouseController@viewWarehouse');

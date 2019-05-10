@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{Auth::user()->name}}'s Profile</title>
+  <title>Administrator Panel - RealProperty</title>
 
   {{-- CSS Files --}}
   <link rel="stylesheet" href="/css/bulma.min.css">
@@ -65,8 +65,8 @@
           <i class="fas fa-user-shield"></i> Administrator Management
         </p>
         <ul class="menu-list adminlistitem">
-          <li><a href="/profile/mybuilding">New Admin</a></li>
-          <li><a href="/profile/mybuilding">View Admins</a></li>
+          <li><a href="/admin/admin/add">New Admin</a></li>
+          <li><a href="/admin/admin/all">View Admins</a></li>
         </ul>
         <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
           <i class="fas fa-cogs"></i> Other
@@ -110,6 +110,8 @@
       @include('admin.allwarehouse')
     @elseif(Request::is('admin/user/all'))
       @include('admin.allusers')
+    @elseif(Request::is('admin/admin/all'))
+      @include('admin.alladmins')
     
     @else
       @include('admin.dashboard') @endif

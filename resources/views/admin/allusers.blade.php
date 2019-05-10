@@ -29,6 +29,7 @@
     <div class="card cardmargin">
         <div class="containerx">
             <div class="subtitle has-text-black-bis">All User Registations</div>
+            <a href="/admin/user/add" class="button is-dark nounnounderlinebtn is-pulled-right">Add New User</a>
           <div class="column tableshow style="overflow-x: auto">   
             <table class="table">
               <thead>

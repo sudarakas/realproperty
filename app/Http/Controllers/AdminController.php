@@ -18,6 +18,7 @@ use Alert;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Admin;
 
 class AdminController extends Controller
 {
@@ -311,5 +312,12 @@ class AdminController extends Controller
 
         Alert::success('User account has been added successfully!', 'Successfully Added!')->autoclose(3000);
         return back();
+    }
+
+    public function viewAllAdmin(){
+
+        $admins = Admin::paginate(15);
+
+        return view('admin.master', compact('admins'));
     }
 }

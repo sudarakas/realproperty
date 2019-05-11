@@ -74,7 +74,17 @@ class AdminController extends Controller
         $graphReportData = json_encode($arrayReport);
 
 
-        return view('admin.master', compact('properties','users','data','graphUserData','graphUserProvince','graphReportData'));
+         //Type Graph
+         $graphAvailability = Property::select('availability', DB::raw('count(availability) number'))->groupBy('availability')->get();
+         $arrayAvailability[] = ['Availability', 'Number'];
+         foreach ($graphAvailability as $key => $value) {
+             
+             $arrayAvailability[++$key] = [$value->availability,$value->number];
+         }
+         $graphAvailabilityData = json_encode($arrayAvailability);
+
+
+        return view('admin.master', compact('properties','users','data','graphUserData','graphUserProvince','graphReportData','graphAvailabilityData'));
     }
 
 

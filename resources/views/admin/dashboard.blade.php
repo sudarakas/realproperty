@@ -59,6 +59,19 @@
 
     }
     </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable({!! $graphAvailabilityData !!},false);
+      var options = {'title':'Property Availability', 'width':300,'height':200};
+      var chart = new google.visualization.PieChart(document.getElementById('chart_availability'));
+      chart.draw(data, options);
+
+    }
+    </script>
 <div class="column displaybox profileback">
   @include('admin.navprofile')
   <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
@@ -67,7 +80,7 @@
       <li class="is-active"><a href="/admin">Dashboard</a></li>
     </ul>
   </nav>
-  <div class="subtitle has-text-black-bis">Graph View</div>
+  <div class="subtitle has-text-black-bis">Summary View</div>
   <div class="columns">
     <div class="column">
         <div id="chart_div">
@@ -81,7 +94,7 @@
         <div class="columns">
           <div class="column" id="chart_report">
           </div>
-          <div class="column" id="chart_month"></div>
+          <div class="column" id="chart_availability"></div>
         </div>
     </div>
   </div>

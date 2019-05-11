@@ -18,9 +18,10 @@ use Alert;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Charts\SampleChart;
 use App\Admin;
 use function GuzzleHttp\json_encode;
-use Charts;
+
 
 class AdminController extends Controller
 {
@@ -44,15 +45,9 @@ class AdminController extends Controller
         $data = json_encode($array);
 
         $graphUserData = User::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))->get();
-        $userRegistrations = Charts::database($users, 'bar', 'highcharts')
-                                ->title("Monthly new Register Users")
-                                ->elementLabel("Total Users")
-                                ->dimensions(1000, 500)
-                                ->responsive(false)
-                                ->groupByMonth(date('Y'), true);
+    
 
-
-        return view('admin.master', compact('properties','users','data'));
+        return view('admin.master', compact('properties','users','data','graphUserData'));
     }
 
 

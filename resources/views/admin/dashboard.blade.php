@@ -1,14 +1,39 @@
 <script type="text/javascript" src="/js/googlecharts.js"></script>
     <script type="text/javascript">
-
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
 
       var data = google.visualization.arrayToDataTable({!! $data !!},false);
-      var options = {'title':'Percentage of Property Types', 'width':600,'height':400};
+      var options = {'title':'Percentage of Property Types', 'width':550,'height':400};
       var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+
+    }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable({!! $graphUserData !!},false);
+      var options = {'title':'User Registration By Month', 'width':300,'height':200};
+      var chart = new google.visualization.PieChart(document.getElementById('chart_month'));
+      chart.draw(data, options);
+
+    }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable({!! $graphUserProvince !!},false);
+      var options = {'title':'Percentage of Property Provinces', 'width':300,'height':200};
+      var chart = new google.visualization.PieChart(document.getElementById('chart_province'));
       chart.draw(data, options);
 
     }
@@ -28,11 +53,15 @@
         </div>
     </div>
     <div class="column">
-      <div class="card">
-        <div class="card-content">
-            {!! $graphUserData !!}
+        <div class="columns">
+          <div class="column" id="chart_province"></div>
+          <div class="column" id="chart_month"></div>
         </div>
-      </div>
+        <div class="columns">
+          <div class="column" id="chart_month">
+          </div>
+          <div class="column" id="chart_month"></div>
+        </div>
     </div>
   </div>
   <hr>

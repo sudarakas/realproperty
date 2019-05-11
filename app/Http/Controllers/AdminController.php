@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Admin;
 use function GuzzleHttp\json_encode;
-
+use App\ReportProperty;
 
 class AdminController extends Controller
 {
@@ -33,19 +33,48 @@ class AdminController extends Controller
         
         $properties = Property::limit(5)->orderBy('id', 'desc')->get();
         $users = User::limit(5)->orderBy('id', 'desc')->get();
-        $graphData = Property::select('type', DB::raw('count(type) number'))->groupBy('type')->get();
 
+
+        //Type Graph
+        $graphData = Property::select('type', DB::raw('count(type) number'))->groupBy('type')->get();
         $array[] = ['Type', 'Number'];
         foreach ($graphData as $key => $value) {
             
             $array[++$key] = [$value->type,$value->number];
         }
-
         $data = json_encode($array);
 
-        $graphUserData = User::select('created_at', DB::raw('count(created_at) number'))->groupBy('created_at')->get();
         
-        return view('admin.master', compact('properties','users','data','graphUserData'));
+        //User Registration
+        $graphUser = User::select(DB::raw('monthname(created_at) as Month,count(date_format(created_at,"%m")) as Count'))->groupBy('Month')->get();
+        $arrayUser[] = ['Month', 'Count'];
+        foreach ($graphUser as $key => $value) {
+            
+            $arrayUser[++$key] = [$value->Month,$value->Count];
+        }
+        $graphUserData = json_encode($arrayUser);
+
+        //Provice Chart
+        $graphDataProvice = Property::select('province', DB::raw('count(province) number'))->groupBy('province')->get();
+        $arrayProvice[] = ['Provice', 'Number'];
+        foreach ($graphDataProvice as $key => $value) {
+            
+            $arrayProvice[++$key] = [$value->province,$value->number];
+        }
+
+        $graphUserProvince = json_encode($arrayProvice);
+
+        //Property Reports
+        $graphReport = ReportProperty::select(DB::raw('monthname(created_at) as Month,count(date_format(created_at,"%m")) as Count'))->groupBy('Month')->get();
+        $arrayReport[] = ['Month', 'Count'];
+        foreach ($graphReport as $key => $value) {
+            
+            $arrayReport[++$key] = [$value->Month,$value->Count];
+        }
+        $graphReportData = json_encode($arrayReport);
+
+
+        return view('admin.master', compact('properties','users','data','graphUserData','graphUserProvince','graphReportData'));
     }
 
 

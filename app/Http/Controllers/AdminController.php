@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Admin;
 use function GuzzleHttp\json_encode;
-
+use Charts;
 
 class AdminController extends Controller
 {
@@ -40,8 +40,19 @@ class AdminController extends Controller
             
             $array[++$key] = [$value->type,$value->number];
         }
+
         $data = json_encode($array);
-        return view('admin.master', compact('properties','users'))->with('data',$data);
+
+        $graphUserData = User::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))->get();
+        $userRegistrations = Charts::database($users, 'bar', 'highcharts')
+                                ->title("Monthly new Register Users")
+                                ->elementLabel("Total Users")
+                                ->dimensions(1000, 500)
+                                ->responsive(false)
+                                ->groupByMonth(date('Y'), true);
+
+
+        return view('admin.master', compact('properties','users','data'));
     }
 
 

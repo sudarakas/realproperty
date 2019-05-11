@@ -38,6 +38,27 @@
 
     }
     </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable({!! $graphReportData !!},false);
+      var options = {title: 'No of Reports by Month',
+                    chartArea: {width: '50%'},
+                    hAxis: {
+                      title: 'Total Reports',
+                      minValue: 0
+                    },
+                    vAxis: {
+                      title: 'Month'
+                    },'width':300,'height':200};
+      var chart = new google.visualization.BarChart(document.getElementById('chart_report'));
+      chart.draw(data, options);
+
+    }
+    </script>
 <div class="column displaybox profileback">
   @include('admin.navprofile')
   <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
@@ -58,7 +79,7 @@
           <div class="column" id="chart_month"></div>
         </div>
         <div class="columns">
-          <div class="column" id="chart_month">
+          <div class="column" id="chart_report">
           </div>
           <div class="column" id="chart_month"></div>
         </div>

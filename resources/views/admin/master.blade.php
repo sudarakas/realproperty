@@ -48,6 +48,12 @@
           <li><a href="/admin/property/warehouse">Warehouse</a></li>
         </ul>
         <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
+          <i class="fas fa-lock"></i> Report Management
+        </p>
+        <ul class="menu-list adminlistitem">
+          <li><a href="/admin/report"> View Reports</a></li>
+        </ul>
+        <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
           <i class="fab fa-blogger-b"></i> Blog Management
         </p>
         <ul class="menu-list adminlistitem">
@@ -116,7 +122,8 @@
       @include('admin.addadmin')
     @elseif(Request::is('admin/admin/*/edit'))
       @include('admin.editadmin')
-    
+    @elseif(Request::is('admin/report'))
+      @include('admin.reports')
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

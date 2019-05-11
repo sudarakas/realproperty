@@ -181,6 +181,9 @@ Route::post('/admin/admin/add','AdminController@adminAddAdmin')->middleware('aut
 Route::get('/admin/admin/{admin}/edit','AdminController@showAdminEditAdmin')->middleware('auth:admin');
 Route::post('/admin/admin/edit','AdminController@adminEditAdmin')->middleware('auth:admin');
 Route::post('/admin/admin/{admin}/delete','AdminController@adminDeleterAdmin')->middleware('auth:admin');
+Route::get('/admin/report','AdminController@viewReports')->middleware('auth:admin');
+Route::post('/admin/report/{property}/lock','AdminController@lockProperty')->middleware('auth:admin');
+Route::post('/admin/report/{property}/unlock','AdminController@unlockProperty')->middleware('auth:admin');
 
 //Blog
 Route::get('/blog','PageController@showBlog');

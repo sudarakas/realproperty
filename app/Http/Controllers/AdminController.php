@@ -436,5 +436,38 @@ class AdminController extends Controller
         Alert::success('Admin account has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
         return back();
     }
+
+    public function viewReports(){
+
+        $reports = ReportProperty::paginate(20);
+
+        return view('admin.master', compact('reports'));
+
+    }
+
+    
+    public function lockProperty(Property $property)
+    {
+        
+            $property = Property::find($property->id);
+            $property->availability = 'LOCKED';
+            $property->save();
+
+            Alert::success('Pproperty has been locked!', 'LOCKED!')->autoclose(3000);
+            return back();
+        
+    }
+
+    public function unlockProperty(Property $property)
+    {
+        
+            $property = Property::find($property->id);
+            $property->availability = 'YES';
+            $property->save();
+
+            Alert::success('Pproperty has been unlocked!', 'UNLOCKED!')->autoclose(3000);
+            return back();
+        
+    }
     
 }

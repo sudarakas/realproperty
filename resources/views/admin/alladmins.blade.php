@@ -45,7 +45,7 @@
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      th>Admin Id</th>
+                      <th>Admin Id</th>
                       <th>Admin Name</th>
                       <th>Admin Email</th>
                       <th></th>

@@ -19,6 +19,8 @@ use App\Mail\ContactMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Admin;
+use function GuzzleHttp\json_encode;
+
 
 class AdminController extends Controller
 {
@@ -31,8 +33,15 @@ class AdminController extends Controller
         
         $properties = Property::limit(5)->orderBy('id', 'desc')->get();
         $users = User::limit(5)->orderBy('id', 'desc')->get();
+        $graphData = Property::select('type', DB::raw('count(type) number'))->groupBy('type')->get();
 
-        return view('admin.master', compact('properties','users'));
+        $array[] = ['Type', 'Number'];
+        foreach ($graphData as $key => $value) {
+            
+            $array[++$key] = [$value->type,$value->number];
+        }
+        $data = json_encode($array);
+        return view('admin.master', compact('properties','users'))->with('data',$data);
     }
 
 

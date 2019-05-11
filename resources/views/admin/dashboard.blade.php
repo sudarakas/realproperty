@@ -1,86 +1,95 @@
+<script type="text/javascript" src="/js/googlecharts.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable({!! $data !!},false);
+      var options = {'title':'Percentage of Property Types', 'width':600,'height':400};
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+
+    }
+    </script>
 <div class="column displaybox profileback">
-    @include('admin.navprofile')
-    <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/admin">Admin</a></li>
-            <li class="is-active"><a href="/admin">Dashboard</a></li>
-        </ul>
-    </nav>
-    <div class="subtitle has-text-black-bis">Graph View</div>
-    <div class="columns">
-        <div class="column">
-            <div class="card">
-                <div class="card-content">
-                    <p class="title">
-                        “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
-                    </p>
-                    <p class="subtitle">
-                        Jeff Atwood
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="card">
-                <div class="card-content">
-                    <p class="title">
-                        “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
-                    </p>
-                    <p class="subtitle">
-                        Jeff Atwood
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="subtitle has-text-black-bis">Latest Properties</div>
-    <div class="column tableshow" style="overflow-x: auto">   
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Pro. ID</th>
-                  <th>Pro. Name</th>
-                  <th>Pro. Location</th>
-                  <th>Pro. type</th>
-                  <th>Pro. Amount</th>
-                  <th>Added By</th>
-                  <th>View</th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>No</th>
-                  <th>Pro. ID</th>
-                  <th>Pro. Name</th>
-                  <th>Pro. Location</th>
-                  <th>Pro. type</th>
-                  <th>Pro. Amount</th>
-                  <th>Added By</th>
-                  <th>View</th>
-                </tr>
-              </tfoot>
-              <tbody>
-                @foreach ($properties as $key=>$property)
-                <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$property->id}}</td>
-                    <td>{{$property->name}}</td>
-                    <td>{{$property->city}}</td>
-                    <td>{{$property->type}}</td>
-                    <td>{{number_format($property->amount,2)}}</td>
-                    <td>{{$property->user->name}}</td>
-                    <td><a href="/{{checkPropertyTypeById($property->id)}}/{{getPropertyTypeIdById($property->id)}}" class="button is-success nounnounderlinebtn" target="_blank">View</a></td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
+  @include('admin.navprofile')
+  <nav class="breadcrumb has-arrow-separator profileback breadcrumbcss" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="/admin">Admin</a></li>
+      <li class="is-active"><a href="/admin">Dashboard</a></li>
+    </ul>
+  </nav>
+  <div class="subtitle has-text-black-bis">Graph View</div>
+  <div class="columns">
+    <div class="column">
+        <div id="chart_div">
+          {{-- {{$data}} --}}
           </div>
-          <hr>
-          <div class="subtitle has-text-black-bis">Latest User Registations</div>
-          <div class="column tableshow style="overflow-x: auto">   
-            <table class="table">
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <p class="title">
+            “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+          </p>
+          <p class="subtitle">
+            Jeff Atwood
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="subtitle has-text-black-bis">Latest Properties</div>
+  <div class="column tableshow" style="overflow-x: auto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Pro. ID</th>
+          <th>Pro. Name</th>
+          <th>Pro. Location</th>
+          <th>Pro. type</th>
+          <th>Pro. Amount</th>
+          <th>Added By</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>No</th>
+          <th>Pro. ID</th>
+          <th>Pro. Name</th>
+          <th>Pro. Location</th>
+          <th>Pro. type</th>
+          <th>Pro. Amount</th>
+          <th>Added By</th>
+          <th>View</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        @foreach ($properties as $key=>$property)
+        <tr>
+          <td>{{$key+1}}</td>
+          <td>{{$property->id}}</td>
+          <td>{{$property->name}}</td>
+          <td>{{$property->city}}</td>
+          <td>{{$property->type}}</td>
+          <td>{{number_format($property->amount,2)}}</td>
+          <td>{{$property->user->name}}</td>
+          <td><a href="/{{checkPropertyTypeById($property->id)}}/{{getPropertyTypeIdById($property->id)}}" class="button is-success nounnounderlinebtn"
+              target="_blank">View</a></td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="subtitle has-text-black-bis">Latest User Registations</div>
+  <div class="column tableshow style=" overflow-x: auto ">   
+            <table class="table ">
               <thead>
                 <tr>
                   <th>No</th>
@@ -124,10 +133,11 @@
                         Verified
                       @endif
                     </td>
-                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-info nounnounderlinebtn" target="_blank">View User</a></td>
-                  </tr>
-                @endforeach
-            </tbody>
-            </table>
-          </div>
+                  <td><a href="/admin/user/{{$user->id}}/view" class="button is-info nounnounderlinebtn" target="_blank">View User</a>
+    </td>
+    </tr>
+    @endforeach
+    </tbody>
+    </table>
+  </div>
 </div>

@@ -18,7 +18,6 @@ use Alert;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Charts\SampleChart;
 use App\Admin;
 use function GuzzleHttp\json_encode;
 
@@ -44,9 +43,8 @@ class AdminController extends Controller
 
         $data = json_encode($array);
 
-        $graphUserData = User::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))->get();
-    
-
+        $graphUserData = User::select('created_at', DB::raw('count(created_at) number'))->groupBy('created_at')->get();
+        
         return view('admin.master', compact('properties','users','data','graphUserData'));
     }
 

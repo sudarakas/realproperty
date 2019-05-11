@@ -30,7 +30,7 @@
     <div class="column">
       <div class="card">
         <div class="card-content">
-            {!! $userRegistrations !!}
+            {!! $graphUserData !!}
         </div>
       </div>
     </div>

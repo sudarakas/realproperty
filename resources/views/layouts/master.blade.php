@@ -254,9 +254,9 @@
     <div class="column">
         <h3 class="title is-3 has-text-grey-darker has-text-centered">Recent Blog Articles</h3>
       <div class="container">
-        @include('layouts.article')
-        @include('layouts.article')
-        @include('layouts.article')
+        @foreach ($articles as $article)
+          @include('layouts.article')
+        @endforeach
       </div>
     </div>
 

@@ -35,28 +35,33 @@ class PageController extends Controller
         ]);
     }
     public function index()
-    {
-        return view('layouts.master');
+    {   
+        $articles = Article::limit(3)->orderBy('id','desc')->get();
+        return view('layouts.master',compact('articles'));
     }
 
     public function land()
     {
-        return view('layouts.land');
+        $articles = Article::limit(3)->orderBy('id','desc')->get();
+        return view('layouts.land',compact('articles'));
     }
 
     public function apartment()
     {
-        return view('layouts.apartment');
+        $articles = Article::limit(3)->orderBy('id','desc')->get();
+        return view('layouts.apartment',compact('articles'));
     }
 
     public function building()
     {
-        return view('layouts.building');
+        $articles = Article::limit(3)->orderBy('id','desc')->get();
+        return view('layouts.building',compact('articles'));
     }
 
     public function warehouse()
     {
-        return view('layouts.warehouses');
+        $articles = Article::limit(3)->orderBy('id','desc')->get();
+        return view('layouts.warehouses',compact('articles'));
     }
 
     public function about()

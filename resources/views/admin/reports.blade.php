@@ -37,8 +37,8 @@
                             <th>No</th>
                             <th>Name</th>
                             <th>Location</th>
-                            <th>Type</th>
-                            <th>Type</th>
+                            <th>Reporter</th>
+                            <th>Message</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -49,8 +49,8 @@
                             <th>No</th>
                             <th>Name</th>
                             <th>Location</th>
-                            <th>Type</th>
-                            <th>Type</th>
+                            <th>Reporter</th>
+                            <th>Message</th>
                             <th></th>
                             <th></th>
                             <th></th>

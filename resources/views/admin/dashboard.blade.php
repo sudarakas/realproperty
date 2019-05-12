@@ -6,7 +6,7 @@
       function drawChart() {
 
       var data = google.visualization.arrayToDataTable({!! $data !!},false);
-      var options = {'title':'Percentage of Property Types', 'width':550,'height':400};
+      var options = {'title':'Percentage of Property Types', 'width':450,'height':400};
       var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
       chart.draw(data, options);
 

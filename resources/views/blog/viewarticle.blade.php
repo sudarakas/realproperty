@@ -16,7 +16,7 @@
                     <div class="card-content">
                         <div class="media">
                                 <div class="media-center">
-                                        <img src="/img/1556832219.jpg" class="author-image" alt="Placeholder image">
+                                        <img src="/uploads/avatars/{{$article->admin->avatar}}" class="author-image" alt="Placeholder image">
                                     </div>
                             <div class="media-content has-text-centered">
                                 <p class="title article-title">{{$article->title}}}<p/>

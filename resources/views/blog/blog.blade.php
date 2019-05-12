@@ -25,6 +25,9 @@
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/fontawesome.js"></script>
     <script src="/js/bootstrap.js"></script>
+    {{-- Sweet Alert JS--}}
+    <script src="/js/sweetalert.min.js"></script>
+    @include('sweet::alert')
 </body>
 
 </html>

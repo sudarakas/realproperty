@@ -81,6 +81,9 @@
     tinymce.init({ selector:'textarea' });
 
 </script>
+{{-- Sweet Alert JS--}}
+<script src="/js/sweetalert.min.js"></script>
+@include('sweet::alert')
 </body>
 
 </html>

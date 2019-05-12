@@ -57,8 +57,8 @@
           <i class="fab fa-blogger-b"></i> Blog Management
         </p>
         <ul class="menu-list adminlistitem">
-          <li><a href="/profile/mybuilding">New Post</a></li>
-          <li><a href="/admin"> View Posts</a></li>
+          <li><a href="/blog/new">New Article</a></li>
+          <li><a href="/admin"> View Articles</a></li>
         </ul>
         <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
           <i class="fas fa-users"></i> User Management

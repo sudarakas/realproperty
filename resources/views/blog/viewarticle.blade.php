@@ -3,7 +3,7 @@
         <div class="hero-body"style='background-image: url("/img/home2.jpg");   filter: blur(8px);'>
         </div>
         <span class="container has-text-centered textbox">
-            <h1 class="title is-1">{{$article->title}}}</h1>
+            <h1 class="title is-1">{{$article->title}}</h1>
         </span>
     </section>
 

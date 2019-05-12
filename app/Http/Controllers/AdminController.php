@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Admin;
 use function GuzzleHttp\json_encode;
 use App\ReportProperty;
+use App\Article;
 
 class AdminController extends Controller
 {
@@ -468,6 +469,21 @@ class AdminController extends Controller
             Alert::success('Pproperty has been unlocked!', 'UNLOCKED!')->autoclose(3000);
             return back();
         
+    }
+
+    public function allArticles(){
+
+        $articles = Article::orderBy('id', 'desc')
+                           ->paginate(20);
+
+        return view('admin.master',compact('articles'));
+    }
+
+    public function deleteArticle(Article $article){
+
+        DB::table('articles')->where('id', '=', $article->id)->delete();
+        Alert::success('Article has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
+        return back();
     }
     
 }

@@ -58,7 +58,7 @@
         </p>
         <ul class="menu-list adminlistitem">
           <li><a href="/blog/new">New Article</a></li>
-          <li><a href="/admin"> View Articles</a></li>
+          <li><a href="/admin/articles"> View Articles</a></li>
         </ul>
         <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
           <i class="fas fa-users"></i> User Management
@@ -124,6 +124,8 @@
       @include('admin.editadmin')
     @elseif(Request::is('admin/report'))
       @include('admin.reports')
+    @elseif(Request::is('admin/articles'))
+      @include('admin.allarticles')
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

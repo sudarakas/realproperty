@@ -232,6 +232,7 @@ class PageController extends Controller
 
         return view('blog.blog',compact('articles'));
     }
+    
     public function showBlogPost(Article $article){
 
         return view('blog.viewarticle',compact('article'));

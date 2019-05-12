@@ -184,12 +184,16 @@ Route::post('/admin/admin/{admin}/delete','AdminController@adminDeleterAdmin')->
 Route::get('/admin/report','AdminController@viewReports')->middleware('auth:admin');
 Route::post('/admin/report/{property}/lock','AdminController@lockProperty')->middleware('auth:admin');
 Route::post('/admin/report/{property}/unlock','AdminController@unlockProperty')->middleware('auth:admin');
+Route::get('/admin/articles','AdminController@allArticles')->middleware('auth:admin');
+Route::post('/admin/blog/{article}/delete','AdminController@deleteArticle')->middleware('auth:admin');
 
 //Blog
 Route::get('/blog','PageController@showBlog');
 Route::get('/blog/{article}/view','PageController@showBlogPost');
 Route::get('/blog/new','ArticleController@newBlogPost')->middleware('auth:admin');
 Route::post('/blog/new','ArticleController@addBlogPost')->middleware('auth:admin');
+Route::get('/blog/{article}/edit','ArticleController@showEditBlogPost')->middleware('auth:admin');
+Route::post('/blog/{article}/edit','ArticleController@editBlogPost')->middleware('auth:admin');
 
 // Auth::routes();
 Auth::routes(['verify' => true]);

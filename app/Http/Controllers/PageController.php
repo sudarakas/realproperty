@@ -17,6 +17,7 @@ use App\Building;
 use App\Apartment;
 use App\Warehouse;
 use App\UserEmail;
+use App\Article;
 
 class PageController extends Controller
 {
@@ -226,11 +227,14 @@ class PageController extends Controller
     //Blog
     public function showBlog(){
 
-        return view('blog.blog');
-    }
-    public function showBlogPost(){
+        $articles = Article::orderBy('id', 'desc')
+                           ->paginate(3);
 
-        return view('blog.viewpost');
+        return view('blog.blog',compact('articles'));
+    }
+    public function showBlogPost(Article $article){
+
+        return view('blog.viewarticle',compact('article'));
     }
 
 

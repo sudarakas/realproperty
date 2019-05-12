@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/blogcustom.css">
 
+    {{-- Sweet Alert JS--}}
+    <script src="/js/sweetalert.min.js"></script>
+    @include('sweet::alert')
+
 </head>
 
 <body>

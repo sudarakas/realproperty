@@ -187,7 +187,9 @@ Route::post('/admin/report/{property}/unlock','AdminController@unlockProperty')-
 
 //Blog
 Route::get('/blog','PageController@showBlog');
-Route::get('/blog/view','PageController@showBlogPost');
+Route::get('/blog/{article}/view','PageController@showBlogPost');
+Route::get('/blog/new','ArticleController@newBlogPost')->middleware('auth:admin');
+Route::post('/blog/new','ArticleController@addBlogPost')->middleware('auth:admin');
 
 // Auth::routes();
 Auth::routes(['verify' => true]);

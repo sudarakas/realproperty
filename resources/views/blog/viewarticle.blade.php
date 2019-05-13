@@ -19,7 +19,7 @@
               <img src="/uploads/avatars/{{$article->admin->avatar}}" class="author-image" alt="Placeholder image">
             </div>
             <div class="media-content has-text-centered">
-              <p class="title article-title">{{$article->title}}}
+              <p class="title article-title">{{$article->title}}
                 <p/>
                 <div class="tags has-addons level-item">
                   <span class="tag is-rounded is-info">@<span>{{$article->admin->name}}</span></span>
@@ -34,41 +34,52 @@
       </div>
     </div>
     <div class="column is-8 is-offset-2">
-      <article class="media">
-        <figure class="column is-pulled-left">
-          <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
-          </p>
-        </figure>
-        <div class="is-pulled-right">
-          <div class="content">
-            <p>
-              <strong>Barbara Middleton</strong>
-              <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit
-              non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
-              <br>
-              <small class="is-pulled-right has-text-link"> 3 hrs</small>
-            </p>
-          </div>
-
-      </article>
-      <article class="media">
+      @foreach ($article->comments as $comment)
+      <article class="media">      
         <figure class="media-left">
           <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+            <img class="is-rounded" src="/uploads/avatars/{{$comment->user->avatar}}">
           </p>
         </figure>
         <div class="media-content">
-          <div class="field">
-            <p class="control">
-              <textarea class="textarea" placeholder="Add a comment..."></textarea>
+          <div class="content">
+            <p>
+              <strong>{{$comment->user->name}}</strong>
+              <br> {{$comment->comment}}
+              <br>
+              <small class="media-right is-pulled-right has-text-link">{{$comment->created_at->diffForHumans()}}</small>
             </p>
+            
           </div>
-          <div class="field">
-            <p class="control">
-              <button class="button is-primary">Post comment</button>
+      </article>
+      @endforeach
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+              @auth
+                <img class="is-rounded"  src="/uploads/avatars/{{auth()->user()->avatar}}">    
+              @endauth     
+              @guest
+                <img class="is-rounded"  src="/uploads/avatars/user.jpg">    
+              @endguest
             </p>
-          </div>
+        </figure>
+        <div class="media-content">
+
+          <form action="/blog/comment" method="post">
+            @csrf
+            <div class="field">
+              <p class="control">
+                <input type="hidden" name="article_id" value="{{$article->id}}">
+                <textarea class="textarea" placeholder="Add a comment..." name="comment" required></textarea>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button class="button is-primary">Post comment</button>
+              </p>
+            </div>
+          </form>
         </div>
       </article>
       </div>

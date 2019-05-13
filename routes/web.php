@@ -194,6 +194,7 @@ Route::get('/blog/new','ArticleController@newBlogPost')->middleware('auth:admin'
 Route::post('/blog/new','ArticleController@addBlogPost')->middleware('auth:admin');
 Route::get('/blog/{article}/edit','ArticleController@showEditBlogPost')->middleware('auth:admin');
 Route::post('/blog/{article}/edit','ArticleController@editBlogPost')->middleware('auth:admin');
+Route::post('/blog/comment','CommentController@addComment')->middleware('auth');
 
 // Auth::routes();
 Auth::routes(['verify' => true]);

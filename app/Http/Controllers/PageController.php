@@ -18,6 +18,7 @@ use App\Apartment;
 use App\Warehouse;
 use App\UserEmail;
 use App\Article;
+use App\Comment;
 
 class PageController extends Controller
 {

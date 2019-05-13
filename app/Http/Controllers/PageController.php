@@ -19,6 +19,7 @@ use App\Warehouse;
 use App\UserEmail;
 use App\Article;
 use App\Comment;
+use Carbon\Carbon;
 
 class PageController extends Controller
 {
@@ -233,15 +234,37 @@ class PageController extends Controller
     //Blog
     public function showBlog(){
 
-        $articles = Article::orderBy('id', 'desc')
-                           ->paginate(3);
+        $articles = Article::orderBy('id', 'desc');
+                           
 
-        return view('blog.blog',compact('articles'));
+        if($month = request('month')){
+
+            $articles->whereMonth('created_at', Carbon::parse($month)->month);
+
+        }
+
+        if($year = request('year')){
+
+            $articles->whereYear('created_at', $year);
+            
+        }
+
+        if($category = request('category')){
+
+            $articles->where('category', $category);            
+        }
+
+        $articles = $articles->paginate(3);
+
+        $archives = Article::archive();
+
+        return view('blog.blog',compact('articles','archives'));
     }
     
     public function showBlogPost(Article $article){
 
-        return view('blog.viewarticle',compact('article'));
+        $archives = Article::archive();
+        return view('blog.viewarticle',compact('article','archives'));
     }
 
 

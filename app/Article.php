@@ -16,4 +16,8 @@ class Article extends Model
 
         return $this->hasMany(Comment::class);
     }
+
+    public static function archive(){
+        return static::selectRaw('year(created_at) year,monthname(created_at) month,COUNT(*) published')->groupBy('year','month')->get()->toArray();
+    }
 }

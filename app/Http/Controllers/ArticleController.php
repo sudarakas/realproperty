@@ -10,7 +10,8 @@ class ArticleController extends Controller
 {
     public function newBlogPost(){
 
-        return view('blog.addpost');
+        $archives = Article::archive();
+        return view('blog.addpost',compact('archives'));
 
     }
     
@@ -34,8 +35,9 @@ class ArticleController extends Controller
     }
 
     public function showEditBlogPost(Article $article){
-        
-        return view('blog.editarticle',compact('article'));
+
+        $archives = Article::archive();
+        return view('blog.editarticle',compact('article','archives'));
     }
 
     public function editBlogPost(Request $request){

@@ -39,26 +39,33 @@
                                     Categories
                                 </a>
                             <div class="navbar-dropdown">
-                                <a class="navbar-item">
+                                <a class="navbar-item" href="/blog/?category=Life Style">
                                         Life Style
                                     </a>
-                                <a class="navbar-item">
+                                <a class="navbar-item" href="/blog/?category=Tips"> 
                                         Tips
                                     </a>
-                                <a class="navbar-item">
+                                <a class="navbar-item" href="/blog/?category=Loan">
                                         Loan
                                     </a>
-                                <a class="navbar-item">
+                                <a class="navbar-item" href="/blog/?category=News">
                                     News
                                 </a>
-                                <a class="navbar-item">
+                                <a class="navbar-item" href="/blog/?category=Notice">
                                     Notice
                                 </a>
                             </div>
                         </div>
-                        <a class="navbar-item">
-                            Archives
-                    </a>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                        Archives
+                                    </a>
+                                <div class="navbar-dropdown">
+                                    @foreach ($archives as $archive)
+                                        <a class="navbar-item" href="/blog/?month={{ $archive['month']}}&year={{$archive['year']}}">{{ $archive['month'] .' '. $archive['year'] .' ('.$archive['published'] . ')' }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
                     <a class="navbar-item" href="/about">
                             About Us
                         </a>

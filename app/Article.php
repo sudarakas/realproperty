@@ -20,11 +20,11 @@ class Article extends Model
     }
 
     public static function archive(){
-        return DB::table('articles')
-        ->select(DB::raw('YEAR(created_at) year, MONTHNAME(created_at) month, COUNT(*) article_count'))
-        ->groupBy('year','month')
-        ->orderBy('year', 'desc')
-        ->orderBy('month', 'desc')
+        return DB::table("articles")
+        ->select(DB::raw("YEAR(created_at) year, MONTHNAME(created_at) month, COUNT(*) article_count"))
+        ->groupBy("year","month")
+        ->orderBy("year", "desc")
+        ->orderBy("month", "desc")
         ->get();
     }
 }

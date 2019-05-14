@@ -63,7 +63,7 @@
                                 <div class="navbar-dropdown">
                                 @if ($archives->count() > 0)
                                 @foreach ($archives as $archive)
-                                    <a class="navbar-item" href="/blog/?month={{ $archive['month']}}&year={{$archive['year']}}">{{ $archive['month'] .' '. $archive['year'] .' ('.$archive['published'] . ')' }}</a>
+                                    <a class="navbar-item" href="/blog/?month={{ $archive->month}}&year={{$archive->year}}">{{ $archive->month .' '. $archive->year .' ('.$archive->article_count. ')' }}</a>
                                 @endforeach
                                 @endif    
                                 </div>

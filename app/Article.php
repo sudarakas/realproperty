@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -18,6 +20,11 @@ class Article extends Model
     }
 
     public static function archive(){
-        return static::selectRaw('year(created_at) year,monthname(created_at) month,COUNT(*) published')->groupBy('year','month')->get();
+        return DB::table('articles')
+        ->select(DB::raw('YEAR(created_at) year, MONTHNAME(created_at) month, COUNT(*) article_count'))
+        ->groupBy('year','month')
+        ->orderBy('year', 'desc')
+        ->orderBy('month', 'desc')
+        ->get();
     }
 }

@@ -18,6 +18,6 @@ class Article extends Model
     }
 
     public static function archive(){
-        return static::selectRaw('year(created_at) year,monthname(created_at) month,COUNT(*) published')->groupBy('year','month')->get()->toArray();
+        return static::selectRaw('year(created_at) year,monthname(created_at) month,COUNT(*) published')->groupBy('year','month')->get();
     }
 }

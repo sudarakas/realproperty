@@ -38,15 +38,27 @@
       <article class="media">      
         <figure class="media-left">
           <p class="image is-64x64">
-            <img class="is-rounded" src="/uploads/avatars/{{$comment->user->avatar}}">
+            @if ($comment->user_id == 0)
+              <img class="is-rounded" src="/img/admin.png">
+            @else
+              <img class="is-rounded" src="/uploads/avatars/{{$comment->user->avatar}}">
+            @endif
+            
           </p>
         </figure>
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{$comment->user->name}}</strong>
+              @if ($comment->user_id == 0)
+                <strong>Administrator</strong>
+              @else
+                <strong>{{$comment->user->name}}</strong>
+              @endif
               <br> {{$comment->comment}}
               <br>
+              @if (Auth::guard('admin')->check())
+                <a href="/blog/comment/{{$comment->id}}/delete"><small class="media-right is-pulled-right has-text-link">Delete</small></a>
+              @endif
               <small class="media-right is-pulled-right has-text-link">{{$comment->created_at->diffForHumans()}}</small>
             </p>
             
@@ -56,12 +68,20 @@
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
-              @auth
-                <img class="is-rounded"  src="/uploads/avatars/{{auth()->user()->avatar}}">    
-              @endauth     
+              
+              @if (Auth::check() || Auth::guard('admin')->check())
+                @auth
+                 <img class="is-rounded"  src="/uploads/avatars/{{auth()->user()->avatar}}">    
+                @endauth
+                @auth('admin')
+                  <img class="is-rounded"  src="/img/admin.png">  
+                @endauth
+              @else 
               @guest
-                <img class="is-rounded"  src="/uploads/avatars/user.jpg">    
+              <img class="is-rounded"  src="/uploads/avatars/user.jpg"> 
               @endguest
+
+              @endif         
             </p>
         </figure>
         <div class="media-content">
@@ -91,6 +111,9 @@
   <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="/js/fontawesome.js"></script>
   <script src="/js/bootstrap.js"></script>
+  {{-- Sweet Alert JS--}}
+  <script src="/js/sweetalert.min.js"></script>
+  @include('sweet::alert')
   </body>
 
   </html>

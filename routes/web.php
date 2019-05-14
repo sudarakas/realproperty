@@ -186,6 +186,10 @@ Route::post('/admin/report/{property}/lock','AdminController@lockProperty')->mid
 Route::post('/admin/report/{property}/unlock','AdminController@unlockProperty')->middleware('auth:admin');
 Route::get('/admin/articles','AdminController@allArticles')->middleware('auth:admin');
 Route::post('/admin/blog/{article}/delete','AdminController@deleteArticle')->middleware('auth:admin');
+Route::get('/admin/inquery/view','AdminController@allInquery')->middleware('auth:admin');
+Route::get('/admin/inquery/{message}/reply','AdminController@viewReplyInquery')->middleware('auth:admin');
+Route::post('/admin/inquery/reply','AdminController@replyInquery')->middleware('auth:admin');
+Route::post('/admin/inquery/{message}/delete','AdminController@deleteInquey')->middleware('auth:admin');
 
 //Blog
 Route::get('/blog','PageController@showBlog');

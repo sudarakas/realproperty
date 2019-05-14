@@ -61,6 +61,12 @@
           <li><a href="/admin/articles"> View Articles</a></li>
         </ul>
         <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
+          <i class="fab fa-blogger-b"></i> Inquery Management
+        </p>
+        <ul class="menu-list adminlistitem">
+          <li><a href="/admin/inquery/view">View Inquiries</a></li>
+        </ul>
+        <p class="menu-label has-text-dark is-4 is-size-7 has-text-weight-bold is-uppercase">
           <i class="fas fa-users"></i> User Management
         </p>
         <ul class="menu-list adminlistitem">
@@ -126,6 +132,10 @@
       @include('admin.reports')
     @elseif(Request::is('admin/articles'))
       @include('admin.allarticles')
+    @elseif(Request::is('admin/inquery/view'))
+      @include('admin.allinquery')
+    @elseif(Request::is('admin/inquery/*/reply'))
+      @include('admin.replyinquery')
     @else
       @include('admin.dashboard') @endif
     <div id="myModal" class="modal column is-half is-offset-one-quarter">

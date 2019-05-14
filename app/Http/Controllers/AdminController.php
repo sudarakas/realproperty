@@ -22,6 +22,7 @@ use App\Admin;
 use function GuzzleHttp\json_encode;
 use App\ReportProperty;
 use App\Article;
+use App\Message;
 
 class AdminController extends Controller
 {
@@ -483,6 +484,53 @@ class AdminController extends Controller
 
         DB::table('articles')->where('id', '=', $article->id)->delete();
         Alert::success('Article has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
+        return back();
+    }
+
+    public function allInquery(){
+
+        $inquiries = Message::latest()->paginate(20);
+        return view('admin.master',compact('inquiries'));
+    }
+
+    public function viewReplyInquery(Message $message){
+
+        return view('admin.master',compact('message'));
+    }
+
+    public function replyInquery(Request $request){
+
+        $request->validate([
+            'message' => 'required|string|max:2500|min:10'
+        ]);
+        
+        $message = new UserEmail;
+        $message->receiver_id = request('receiverid');
+        $message->sender_id = auth()->user()->id;
+        $message->senderMail = auth()->user()->email;
+        $message->senderName = 'Administrator';
+        $message->phoneNo = auth()->user()->phoneNo;
+        $message->subject = request('subject');
+        $message->message = request('message');
+        $message->property_url = '/';
+        $message->save();
+
+        $request->name = 'Administrator';
+        $request->email = auth()->user()->email;
+        $request->pno = '0112563123';
+        $request->property_url = '/';
+
+        \Mail::to(request('receiver'))->send(new ContactMail($request));
+        
+        Alert::success('Message has been sent successfully!', 'Message Sent')->autoclose(3000);
+
+        return back();
+    }
+
+    public function deleteInquey(Message $message){
+
+        DB::table('messages')->where('id', '=', $message->id)->delete();
+        Alert::success('Inquery has been deleted successfully!', 'Inquery Deleted!')->autoclose(3000);
         return back();
     }
     

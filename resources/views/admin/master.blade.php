@@ -84,7 +84,7 @@
           <i class="fas fa-cogs"></i> Other
         </p>
         <ul class="menu-list adminlistitem">
-          <li><a href="/profile/mybuilding">Sign out</a></li>
+          <li><a href="{{ route('admin.logout') }}">Sign out</a></li>
         </ul>
       </aside>
     </div>

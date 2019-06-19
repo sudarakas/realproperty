@@ -28,7 +28,8 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return view('profile.home', array('user'=> Auth::user()));
+        //return view('profile.dashboard', array('user'=> Auth::user()));
+        return back();
     }
 
     public function loadUserDashboard(){

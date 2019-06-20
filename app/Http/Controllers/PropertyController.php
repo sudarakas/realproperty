@@ -47,7 +47,7 @@ class PropertyController extends Controller
 
             foreach($request->file('filename') as $image)
             {
-                $name= time() . '.' . $image->getClientOriginalExtension();
+                $name= uniqid('real_') . '.' . $image->getClientOriginalExtension();
                 //$image->move(public_path().'/uploads/property/house', $name);
                 Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/house/' . $name));  
                 $data[] = $name;  
@@ -118,7 +118,7 @@ class PropertyController extends Controller
 
             foreach($request->file('filename') as $image)
             {
-                $name= time() . '.' . $image->getClientOriginalExtension();
+                $name= uniqid('real_') . '.' . $image->getClientOriginalExtension();
                 //$image->move(public_path().'/uploads/property/house', $name);
                 Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/land/' . $name));  
                 $data[] = $name;  
@@ -188,7 +188,7 @@ class PropertyController extends Controller
 
             foreach($request->file('filename') as $image)
             {
-                $name= time() . '.' . $image->getClientOriginalExtension();
+                $name= uniqid('real_') . '.' . $image->getClientOriginalExtension();
                 //$image->move(public_path().'/uploads/property/house', $name);
                 Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/building/' . $name));  
                 $data[] = $name;  
@@ -258,7 +258,7 @@ class PropertyController extends Controller
 
             foreach($request->file('filename') as $image)
             {
-                $name= time() . '.' . $image->getClientOriginalExtension();
+                $name= uniqid('real_') . '.' . $image->getClientOriginalExtension();
                 //$image->move(public_path().'/uploads/property/house', $name);
                 Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/apartment/' . $name));  
                 $data[] = $name;  
@@ -324,7 +324,7 @@ class PropertyController extends Controller
 
             foreach($request->file('filename') as $image)
             {
-                $name= time() . '.' . $image->getClientOriginalExtension();
+                $name= uniqid('real_') . '.' . $image->getClientOriginalExtension();
                 //$image->move(public_path().'/uploads/property/house', $name);
                 Image::make($image)->resize(1280,876)->save(\public_path('/uploads/property/warehouse/' . $name));  
                 $data[] = $name;  

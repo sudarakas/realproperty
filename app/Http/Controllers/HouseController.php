@@ -127,7 +127,7 @@ class HouseController extends Controller
             if ($request->hasfile('filename')) {
 
                     foreach ($request->file('filename') as $image) {
-                            $name = time() . '.' . $image->getClientOriginalExtension();
+                            $name = uniqid('real_') . '.' . $image->getClientOriginalExtension();
                             Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/house/' . $name));
                             $data[] = $name;
                         }

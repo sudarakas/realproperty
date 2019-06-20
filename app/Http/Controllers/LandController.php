@@ -111,7 +111,7 @@ class LandController extends Controller
             if ($request->hasfile('filename')) {
 
                 foreach ($request->file('filename') as $image) {
-                    $name = time() . '.' . $image->getClientOriginalExtension();
+                    $name = uniqid('real_') . '.' . $image->getClientOriginalExtension();
                     Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/land/' . $name));
                     $data[] = $name;
                 }
@@ -148,6 +148,8 @@ class LandController extends Controller
 
             Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
             return back()->with('message', 'Your property has been successfully updated!');
+
+           // return dd($data);
         } else {
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);

@@ -34,9 +34,9 @@
             </div>
             <div class="columns is-mobile is-centered">
                 <div class="column is-half">
-                    @if (session('resent'))
+                    @if (session('status'))
                     <div class="notification is-success is-size-7">
-                        <button class="delete"></button> {{ __('A fresh verification link has been sent to your email address.')
+                        <button class="delete"></button> {{ __('Password reset link has been sent to your email address.')
                         }} </div>
                     @endif
                 </div>

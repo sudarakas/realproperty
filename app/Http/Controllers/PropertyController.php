@@ -93,7 +93,7 @@ class PropertyController extends Controller
         $request->validate([
             'name' => 'required|max:30|min:3',
             'type' => 'required',
-            'amount' => 'required',
+            'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'city' => 'required',
             'postalcode' => 'required|integer',
             'province' => 'required',

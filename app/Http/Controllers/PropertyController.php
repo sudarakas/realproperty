@@ -18,7 +18,7 @@ class PropertyController extends Controller
         $request->validate([
             'name' => 'required|max:50|min:3',
             'type' => 'required',
-            'amount' => 'required',
+            'amount' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'city' => 'required',
             'postalcode' => 'required|integer',
             'province' => 'required',
@@ -28,7 +28,7 @@ class PropertyController extends Controller
             'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
             'lat' => 'required',
-            'lat' => 'required',
+            'lng' => 'required',
             'rooms' => 'required|integer',
             'kitchen' => 'required|integer',
             'floor' => 'required|integer',

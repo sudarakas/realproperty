@@ -1,7 +1,7 @@
 <footer class="footer has-background-primary">
     <div class="content has-text-centered has-text-white">
         <p class="has-text-white has-text-centered">
-        <strong class="has-text-white">RealProperty</strong> by <a href="https://jgthms.com" class="has-text-white">Real Investments (pvt) Ltd.</a>
+        <strong class="has-text-white">RealProperty</strong> by <a href="" class="has-text-white">Real Investments (pvt) Ltd.</a>
         </p>
         <small>4380, Clifford Street, Fremont, CA 94538</small>
     </div>

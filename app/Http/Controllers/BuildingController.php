@@ -183,6 +183,20 @@ class BuildingController extends Controller
             DB::table('buildings')->where('id', '=', $building->id)->delete();
             DB::table('properties')->where('id', '=', $building->property->id)->delete();
 
+            if (Auth::guard('admin')->check()) {
+
+                $message = new MailNotification;
+                $message->receiver_email = $property->user->email;
+                $message->receiver_name = $property->user->name;
+                $message->property_name = $property->name;
+                $message->property_location = $property->city;
+                $message->property_createdOn = $property->created_at;
+                $message->status = 'deleted';
+                $message->subject = "Your property has been deleted!";
+
+                \Mail::to($message->receiver_email)->send(new EmailNotification($message));
+            }
+
             Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
         } else {

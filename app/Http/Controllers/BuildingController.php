@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Building;
-use Illuminate\Support\Facades\Auth;
-use App\Property;
 use Alert;
+use App\Building;
+use App\Property;
+use App\MailNotification;
+use App\Mail\EmailNotification;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
@@ -41,7 +43,6 @@ class BuildingController extends Controller
             $carPark = "%%";
         }
 
-
         $buildings = Building::whereHas('property', function ($query) use ($noOfFloors) {
             $query->where('noOfFloors', '>=', $noOfFloors);
         })->whereHas('property', function ($query) use ($keyword) {
@@ -53,7 +54,7 @@ class BuildingController extends Controller
         })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
             $query->whereBetween('amount', array($minPrice, $maxPrice));
-        })->whereHas('property', function ($query){
+        })->whereHas('property', function ($query) {
 
             $query->where('availability', 'LIKE', "YES");
 
@@ -68,7 +69,6 @@ class BuildingController extends Controller
         //return "OK";
         return view('results.buildingresult', compact('buildings'));
     }
-
 
     public function showEditBuilding(Building $building)
     {
@@ -110,7 +110,7 @@ class BuildingController extends Controller
                 'agreement' => 'required',
                 'nschool' => 'required',
                 'nrailway' => 'required',
-                'nbus' => 'required'
+                'nbus' => 'required',
 
             ]);
 
@@ -122,7 +122,6 @@ class BuildingController extends Controller
                     $data[] = $name;
                 }
             }
-
 
             $property->name = request('name');
             $property->type = request('type');
@@ -143,7 +142,6 @@ class BuildingController extends Controller
             $property->longitude = request('lng');
             $property->save();
 
-
             $building->agreement = request('agreement');
             $building->noOfFloors = request('floor');
             $building->floorSize = request('floorsize');
@@ -153,6 +151,20 @@ class BuildingController extends Controller
             $building->nearestRailway = request('nrailway');
             $building->nearestBusStop = request('nbus');
             $building->save();
+
+            if (Auth::guard('admin')->check()) {
+
+                $message = new MailNotification;
+                $message->receiver_email = $property->user->email;
+                $message->receiver_name = $property->user->name;
+                $message->property_name = $property->name;
+                $message->property_location = $property->city;
+                $message->property_createdOn = $property->created_at;
+                $message->status = 'modified';
+                $message->subject = "Your property has been modified!";
+
+                \Mail::to($message->receiver_email)->send(new EmailNotification($message));
+            }
 
             Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
             return back()->with('message', 'Your property has been successfully updated!');
@@ -173,12 +185,11 @@ class BuildingController extends Controller
 
             Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
-        }
-        else {
+        } else {
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
-            
+
         }
     }
 }

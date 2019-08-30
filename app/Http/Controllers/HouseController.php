@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\House;
-use App\Offer;
-use Illuminate\Support\Facades\Auth;
-use App\Property;
 use Alert;
-use Intervention\Image\Facades\Image;
+use App\House;
+use App\Property;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class HouseController extends Controller
 {
@@ -60,7 +59,7 @@ class HouseController extends Controller
         })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
             $query->whereBetween('amount', array($minPrice, $maxPrice));
-        })->whereHas('property', function ($query){
+        })->whereHas('property', function ($query) {
 
             $query->where('availability', 'LIKE', "YES");
 
@@ -120,19 +119,18 @@ class HouseController extends Controller
                 'garden' => 'required',
                 'nschool' => 'required',
                 'nrailway' => 'required',
-                'nbus' => 'required'
+                'nbus' => 'required',
 
             ]);
 
             if ($request->hasfile('filename')) {
 
-                    foreach ($request->file('filename') as $image) {
-                            $name = uniqid('real_') . '.' . $image->getClientOriginalExtension();
-                            Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/house/' . $name));
-                            $data[] = $name;
-                        }
+                foreach ($request->file('filename') as $image) {
+                    $name = uniqid('real_') . '.' . $image->getClientOriginalExtension();
+                    Image::make($image)->resize(1280, 876)->save(\public_path('/uploads/property/house/' . $name));
+                    $data[] = $name;
                 }
-
+            }
 
             $property->name = request('name');
             $property->type = request('type');
@@ -152,7 +150,6 @@ class HouseController extends Controller
             $property->latitude = request('lat');
             $property->longitude = request('lng');
             $property->save();
-
 
             $house->noOfRooms = request('rooms');
             $house->noOfKitchen = request('kitchen');
@@ -183,7 +180,7 @@ class HouseController extends Controller
             Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
             return back()->with('message', 'Your property has been successfully updated!');
         } else {
-            
+
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
 
@@ -198,14 +195,27 @@ class HouseController extends Controller
             DB::table('houses')->where('id', '=', $house->id)->delete();
             DB::table('properties')->where('id', '=', $house->property->id)->delete();
 
+            if (Auth::guard('admin')->check()) {
+
+                $message = new MailNotification;
+                $message->receiver_email = $property->user->email;
+                $message->receiver_name = $property->user->name;
+                $message->property_name = $property->name;
+                $message->property_location = $property->city;
+                $message->property_createdOn = $property->created_at;
+                $message->status = 'deleted';
+                $message->subject = "Your property has been deleted!";
+
+                \Mail::to($message->receiver_email)->send(new EmailNotification($message));
+            }
+
             Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
-        }
-        else {
+        } else {
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
-            
+
         }
     }
 }

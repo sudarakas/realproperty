@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
-use Image;
-use App\Property;
-use App\User;
+use Alert;
+use App\Admin;
+use App\Apartment;
+use App\Article;
+use App\Building;
 use App\House;
 use App\Land;
-use App\Building;
-use App\Apartment;
-use App\Warehouse;
-use Illuminate\Support\Facades\Validator;
-use App\UserEmail;
-use Alert;
+use App\MailNotification;
 use App\Mail\ContactMail;
+use App\Mail\EmailNotification;
+use App\Message;
+use App\Property;
+use App\ReportProperty;
+use App\User;
+use App\UserEmail;
+use App\Warehouse;
+use Auth;
+use function GuzzleHttp\json_encode;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Admin;
-use function GuzzleHttp\json_encode;
-use App\ReportProperty;
-use App\Article;
-use App\Message;
+use Illuminate\Support\Facades\Validator;
+use Image;
 
 class AdminController extends Controller
 {
@@ -32,27 +34,25 @@ class AdminController extends Controller
     }
     public function index()
     {
-        
+
         $properties = Property::limit(5)->orderBy('id', 'desc')->get();
         $users = User::limit(5)->orderBy('id', 'desc')->get();
-
 
         //Type Graph
         $graphData = Property::select('type', DB::raw('count(type) number'))->groupBy('type')->get();
         $array[] = ['Type', 'Number'];
         foreach ($graphData as $key => $value) {
-            
-            $array[++$key] = [$value->type,$value->number];
+
+            $array[++$key] = [$value->type, $value->number];
         }
         $data = json_encode($array);
 
-        
         //User Registration
         $graphUser = User::select(DB::raw('monthname(created_at) as Month,count(date_format(created_at,"%m")) as Count'))->groupBy('Month')->get();
         $arrayUser[] = ['Month', 'Count'];
         foreach ($graphUser as $key => $value) {
-            
-            $arrayUser[++$key] = [$value->Month,$value->Count];
+
+            $arrayUser[++$key] = [$value->Month, $value->Count];
         }
         $graphUserData = json_encode($arrayUser);
 
@@ -60,8 +60,8 @@ class AdminController extends Controller
         $graphDataProvice = Property::select('province', DB::raw('count(province) number'))->groupBy('province')->get();
         $arrayProvice[] = ['Provice', 'Number'];
         foreach ($graphDataProvice as $key => $value) {
-            
-            $arrayProvice[++$key] = [$value->province,$value->number];
+
+            $arrayProvice[++$key] = [$value->province, $value->number];
         }
 
         $graphUserProvince = json_encode($arrayProvice);
@@ -70,32 +70,29 @@ class AdminController extends Controller
         $graphReport = ReportProperty::select(DB::raw('monthname(created_at) as Month,count(date_format(created_at,"%m")) as Count'))->groupBy('Month')->get();
         $arrayReport[] = ['Month', 'Count'];
         foreach ($graphReport as $key => $value) {
-            
-            $arrayReport[++$key] = [$value->Month,$value->Count];
+
+            $arrayReport[++$key] = [$value->Month, $value->Count];
         }
         $graphReportData = json_encode($arrayReport);
 
+        //Type Graph
+        $graphAvailability = Property::select('availability', DB::raw('count(availability) number'))->groupBy('availability')->get();
+        $arrayAvailability[] = ['Availability', 'Number'];
+        foreach ($graphAvailability as $key => $value) {
 
-         //Type Graph
-         $graphAvailability = Property::select('availability', DB::raw('count(availability) number'))->groupBy('availability')->get();
-         $arrayAvailability[] = ['Availability', 'Number'];
-         foreach ($graphAvailability as $key => $value) {
-             
-             $arrayAvailability[++$key] = [$value->availability,$value->number];
-         }
-         $graphAvailabilityData = json_encode($arrayAvailability);
+            $arrayAvailability[++$key] = [$value->availability, $value->number];
+        }
+        $graphAvailabilityData = json_encode($arrayAvailability);
 
-
-        return view('admin.master', compact('properties','users','data','graphUserData','graphUserProvince','graphReportData','graphAvailabilityData'));
+        return view('admin.master', compact('properties', 'users', 'data', 'graphUserData', 'graphUserProvince', 'graphReportData', 'graphAvailabilityData'));
     }
 
-
-
-    public function updateAvatar(Request $request){
-        if($request->hasFile('avatar')){
+    public function updateAvatar(Request $request)
+    {
+        if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300,300)->save(\public_path('/uploads/avatars/' . $filename));
+            Image::make($avatar)->resize(300, 300)->save(\public_path('/uploads/avatars/' . $filename));
             $user = Auth::user();
             $user->avatar = $filename;
             $user->save();
@@ -103,119 +100,125 @@ class AdminController extends Controller
         return back();
     }
 
-    public function viewUser(User $user){
+    public function viewUser(User $user)
+    {
 
         $id = $user->id;
-        $properties = Property::where(function($query) use ($id){
+        $properties = Property::where(function ($query) use ($id) {
 
-            $query->where('user_id','=',$id);
+            $query->where('user_id', '=', $id);
 
         })->get();
-        
 
-        return view('admin.master', compact('user','properties'));
-
+        return view('admin.master', compact('user', 'properties'));
 
     }
 
     public function showAdminEditHouse(House $house)
     {
-        
+
         return view('admin.master', compact('house'));
 
     }
 
     public function showAdminEditLand(Land $land)
     {
-        
+
         return view('admin.master', compact('land'));
 
     }
 
     public function showAdminEditBuilding(Building $building)
     {
-        
+
         return view('admin.master', compact('building'));
 
     }
 
     public function showAdminEditApartment(Apartment $apartment)
     {
-        
+
         return view('admin.master', compact('apartment'));
 
     }
 
     public function showAdminEditWarehouse(Warehouse $warehouse)
     {
-        
+
         return view('admin.master', compact('warehouse'));
 
     }
 
-    public function viewAllProperty(){
+    public function viewAllProperty()
+    {
 
         $properties = Property::paginate(25);
 
         return view('admin.master', compact('properties'));
     }
 
-    public function viewAllHouse(){
+    public function viewAllHouse()
+    {
 
-        $properties = Property::where(function($query){
+        $properties = Property::where(function ($query) {
 
-            $query->where('type','=','house');
-
-        })->paginate(25);
-
-        return view('admin.master', compact('properties'));
-    }
-
-    public function viewAllLand(){
-
-        $properties = Property::where(function($query){
-
-            $query->where('type','=','land');
+            $query->where('type', '=', 'house');
 
         })->paginate(25);
 
         return view('admin.master', compact('properties'));
     }
 
-    public function viewAllBuilding(){
+    public function viewAllLand()
+    {
 
-        $properties = Property::where(function($query){
+        $properties = Property::where(function ($query) {
 
-            $query->where('type','=','building');
-
-        })->paginate(25);
-
-        return view('admin.master', compact('properties'));
-    }
-
-    public function viewAllApartment(){
-
-        $properties = Property::where(function($query){
-
-            $query->where('type','=','apartment');
+            $query->where('type', '=', 'land');
 
         })->paginate(25);
 
         return view('admin.master', compact('properties'));
     }
 
-    public function viewAllWarehouse(){
+    public function viewAllBuilding()
+    {
 
-        $properties = Property::where(function($query){
+        $properties = Property::where(function ($query) {
 
-            $query->where('type','=','warehouse');
+            $query->where('type', '=', 'building');
 
         })->paginate(25);
 
         return view('admin.master', compact('properties'));
     }
 
-    public function viewAllUsers(){
+    public function viewAllApartment()
+    {
+
+        $properties = Property::where(function ($query) {
+
+            $query->where('type', '=', 'apartment');
+
+        })->paginate(25);
+
+        return view('admin.master', compact('properties'));
+    }
+
+    public function viewAllWarehouse()
+    {
+
+        $properties = Property::where(function ($query) {
+
+            $query->where('type', '=', 'warehouse');
+
+        })->paginate(25);
+
+        return view('admin.master', compact('properties'));
+    }
+
+    public function viewAllUsers()
+    {
 
         $users = User::paginate(20);
         return view('admin.master', compact('users'));
@@ -223,15 +226,16 @@ class AdminController extends Controller
 
     public function adminContactUser(User $user)
     {
-        
+
         return view('admin.master', compact('user'));
 
     }
 
-    public function adminContactUserSend(Request $request){
-        
+    public function adminContactUserSend(Request $request)
+    {
+
         $validator = Validator::make($request->all(), [
-            'message' => 'required|string|max:2500|min:10'
+            'message' => 'required|string|max:2500|min:10',
         ]);
 
         if ($validator->fails()) {
@@ -239,7 +243,7 @@ class AdminController extends Controller
             Alert::error('Please check your inputs and correct the following errors', 'Invalid Attempt')->autoclose(3000);
             return back()->withErrors($validator);
         }
-        
+
         $message = new UserEmail;
         $message->receiver_id = request('receiverid');
         $message->sender_id = auth()->user()->id;
@@ -257,24 +261,25 @@ class AdminController extends Controller
         $request->property_url = '/';
 
         \Mail::to(request('receiver'))->send(new ContactMail($request));
-        
+
         Alert::success('Message has been sent successfully!', 'Message Sent')->autoclose(3000);
 
         return back();
     }
-    
-    public function showAdminEditUser(User $user){
+
+    public function showAdminEditUser(User $user)
+    {
 
         return view('admin.master', compact('user'));
     }
 
     public function adminEditUser(Request $request)
     {
-        
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string', 'email|max:255|unique:users',
-            'descrption'=> 'required|string|max:100',
+            'descrption' => 'required|string|max:100',
             'nic' => 'required|string|regex:/^[0-9]{9}[Vv]$/',
             'address' => 'required|string',
             'city' => 'required|string',
@@ -283,8 +288,8 @@ class AdminController extends Controller
         ]);
 
         $user = User::find(request('id'));
-        if(strcmp($user->email,request('email')) != 0 ){
-            $user->email_verified_at = NULL;
+        if (strcmp($user->email, request('email')) != 0) {
+            $user->email_verified_at = null;
         }
         $user->name = request('name');
         $user->email = request('email');
@@ -300,64 +305,67 @@ class AdminController extends Controller
         return back()->with('message', 'User account has been successfully updated!');
     }
 
-    public function adminDeleteUser(User $user){
+    public function adminDeleteUser(User $user)
+    {
 
-            //delete all properties
-            $properties = $user->properties;
+        //delete all properties
+        $properties = $user->properties;
 
-            foreach($properties as $property){
+        foreach ($properties as $property) {
 
-                $propertyType = checkPropertyTypeById($property->id);
+            $propertyType = checkPropertyTypeById($property->id);
 
-                if(strcmp($propertyType,'house')){
+            if (strcmp($propertyType, 'house')) {
 
-                    DB::table('houses')->where('property_id', '=', $property->id)->delete();
+                DB::table('houses')->where('property_id', '=', $property->id)->delete();
 
-                }elseif(strcmp($propertyType,'land')){
-                    
-                    DB::table('lands')->where('property_id', '=', $property->id)->delete();
+            } elseif (strcmp($propertyType, 'land')) {
 
-                }elseif(strcmp($propertyType,'building')){
-                    
-                    DB::table('buildings')->where('property_id', '=', $property->id)->delete();
-                    
-                }elseif(strcmp($propertyType,'apartment')){
-                    
-                    DB::table('apartments')->where('property_id', '=', $property->id)->delete();
-                    
-                }elseif(strcmp($propertyType,'warehouse')){
-                    
-                    DB::table('warehouses')->where('property_id', '=', $property->id)->delete();
-                    
-                }else{
-                    Alert::error('Your request has been denied by the system', 'System Error')->autoclose(3000);
-                    return redirect('/profile');
-                }    
+                DB::table('lands')->where('property_id', '=', $property->id)->delete();
 
-                //delete main property
-                DB::table('properties')->where('id', '=', $property->id)->delete();
+            } elseif (strcmp($propertyType, 'building')) {
+
+                DB::table('buildings')->where('property_id', '=', $property->id)->delete();
+
+            } elseif (strcmp($propertyType, 'apartment')) {
+
+                DB::table('apartments')->where('property_id', '=', $property->id)->delete();
+
+            } elseif (strcmp($propertyType, 'warehouse')) {
+
+                DB::table('warehouses')->where('property_id', '=', $property->id)->delete();
+
+            } else {
+                Alert::error('Your request has been denied by the system', 'System Error')->autoclose(3000);
+                return redirect('/profile');
             }
-            
-            DB::table('users')->where('id', '=', $user->id)->delete();
 
-            Alert::success('User account has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
-            return back();
-        
+            //delete main property
+            DB::table('properties')->where('id', '=', $property->id)->delete();
+        }
+
+        DB::table('users')->where('id', '=', $user->id)->delete();
+
+        Alert::success('User account has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
+        return back();
+
     }
 
-    public function showAdminAddUser(){
+    public function showAdminAddUser()
+    {
 
         return view('admin.master');
     }
 
-    public function adminAddUser(Request $request){
+    public function adminAddUser(Request $request)
+    {
 
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string', 'email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
-        
+
         $user = new User();
         $user->name = request('name');
         $user->email = request('email');
@@ -368,26 +376,29 @@ class AdminController extends Controller
         return back();
     }
 
-    public function viewAllAdmin(){
+    public function viewAllAdmin()
+    {
 
         $admins = Admin::paginate(15);
 
         return view('admin.master', compact('admins'));
     }
 
-    public function showAdminAddAdmin(){
+    public function showAdminAddAdmin()
+    {
 
         return view('admin.master');
     }
 
-    public function adminAddAdmin(Request $request){
+    public function adminAddAdmin(Request $request)
+    {
 
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string', 'email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
-        
+
         $user = new Admin();
         $user->name = request('name');
         $user->email = request('email');
@@ -398,48 +409,52 @@ class AdminController extends Controller
         return back();
     }
 
-    public function showAdminEditAdmin(Admin $admin){
+    public function showAdminEditAdmin(Admin $admin)
+    {
 
         return view('admin.master', compact('admin'));
     }
 
-    public function AdminEditAdmin(Request $request){
+    public function AdminEditAdmin(Request $request)
+    {
 
-        if(request('password')){
+        if (request('password')) {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string', 'email|max:255|unique:users',
                 'password' => 'string|min:8',
             ]);
-        }else{
+        } else {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string', 'email|max:255|unique:users',
             ]);
         }
-        
+
         $admin = Admin::find(request('id'));
         $admin->name = request('name');
         $admin->email = request('email');
-        if(request('password')){
+        if (request('password')) {
             $admin->password = Hash::make(request('password'));
-        }else{
+        } else {
             $admin->password = $admin->password;
-        }    
+        }
         $admin->update();
 
         Alert::success('Admin account has been edit successfully!', 'Successfully Saved!')->autoclose(3000);
         return back();
     }
 
-    public function adminDeleterAdmin(Admin $admin){
+    public function adminDeleterAdmin(Admin $admin)
+    {
 
         DB::table('admins')->where('id', '=', $admin->id)->delete();
         Alert::success('Admin account has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
         return back();
     }
 
-    public function viewReports(){
+    public function viewReports()
+    {
 
         $reports = ReportProperty::paginate(20);
 
@@ -447,63 +462,89 @@ class AdminController extends Controller
 
     }
 
-    
     public function lockProperty(Property $property)
     {
-        
-            $property = Property::find($property->id);
-            $property->availability = 'LOCKED';
-            $property->save();
 
-            Alert::success('Pproperty has been locked!', 'LOCKED!')->autoclose(3000);
-            return back();
-        
+        $property = Property::find($property->id);
+        $property->availability = 'LOCKED';
+        $property->save();
+
+        $message = new MailNotification;
+        $message->receiver_email = $property->user->email;
+        $message->receiver_name = $property->user->name;
+        $message->property_name = $property->name;
+        $message->property_location = $property->city;
+        $message->property_createdOn = $property->created_at;
+        $message->status = 'locked';
+        $message->subject = "Your property has been locked!";
+
+        \Mail::to($message->receiver_email)->send(new EmailNotification($message));
+
+        Alert::success('Property has been locked!', 'LOCKED!')->autoclose(3000);
+        return back();
+
     }
 
     public function unlockProperty(Property $property)
     {
-        
-            $property = Property::find($property->id);
-            $property->availability = 'YES';
-            $property->save();
 
-            Alert::success('Pproperty has been unlocked!', 'UNLOCKED!')->autoclose(3000);
-            return back();
-        
+        $property = Property::find($property->id);
+        $property->availability = 'YES';
+        $property->save();
+
+        $message = new MailNotification;
+        $message->receiver_email = $property->user->email;
+        $message->receiver_name = $property->user->name;
+        $message->property_name = $property->name;
+        $message->property_location = $property->city;
+        $message->property_createdOn = $property->created_at;
+        $message->status = 'unlocked';
+        $message->subject = "Your property has been unlocked!";
+
+        \Mail::to($message->receiver_email)->send(new EmailNotification($message));
+
+        Alert::success('Property has been unlocked!', 'UNLOCKED!')->autoclose(3000);
+        return back();
+
     }
 
-    public function allArticles(){
+    public function allArticles()
+    {
 
         $articles = Article::orderBy('id', 'desc')
-                           ->paginate(20);
+            ->paginate(20);
 
-        return view('admin.master',compact('articles'));
+        return view('admin.master', compact('articles'));
     }
 
-    public function deleteArticle(Article $article){
+    public function deleteArticle(Article $article)
+    {
 
         DB::table('articles')->where('id', '=', $article->id)->delete();
         Alert::success('Article has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
         return back();
     }
 
-    public function allInquery(){
+    public function allInquery()
+    {
 
         $inquiries = Message::latest()->paginate(20);
-        return view('admin.master',compact('inquiries'));
+        return view('admin.master', compact('inquiries'));
     }
 
-    public function viewReplyInquery(Message $message){
+    public function viewReplyInquery(Message $message)
+    {
 
-        return view('admin.master',compact('message'));
+        return view('admin.master', compact('message'));
     }
 
-    public function replyInquery(Request $request){
+    public function replyInquery(Request $request)
+    {
 
         $request->validate([
-            'message' => 'required|string|max:2500|min:10'
+            'message' => 'required|string|max:2500|min:10',
         ]);
-        
+
         $message = new UserEmail;
         $message->receiver_id = request('receiverid');
         $message->sender_id = auth()->user()->id;
@@ -521,17 +562,18 @@ class AdminController extends Controller
         $request->property_url = '/';
 
         \Mail::to(request('receiver'))->send(new ContactMail($request));
-        
+
         Alert::success('Message has been sent successfully!', 'Message Sent')->autoclose(3000);
 
         return back();
     }
 
-    public function deleteInquey(Message $message){
+    public function deleteInquey(Message $message)
+    {
 
         DB::table('messages')->where('id', '=', $message->id)->delete();
         Alert::success('Inquery has been deleted successfully!', 'Inquery Deleted!')->autoclose(3000);
         return back();
     }
-    
+
 }

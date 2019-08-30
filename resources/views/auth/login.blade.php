@@ -71,7 +71,7 @@
                                 <input type="checkbox" name="remember" id="remember" {{ old( 'remember') ? 'checked' : '' }}> Remember me
                             </label>
                     </div> --}}
-                    <div class="field googlerecapture loginbutton">
+                    {{-- <div class="field googlerecapture loginbutton">
                         <p>
                             @if(env('GOOGLE_RECAPTCHA_KEY'))
                             <div class="g-recaptcha googlerecaptcha" id="googlerecaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
@@ -81,7 +81,7 @@
                                         <strong class="has-text-danger">{{ $errors->first('googlerecaptcha') }}</strong>
                                     </span> @endif
                         </p>
-                    </div>
+                    </div> --}}
                     <div class="field ">
                         <p class="control has-text-centered is-centered loginbutton">
                             <button class="button is-primary is full is-uppercase">
@@ -89,8 +89,18 @@
                                 </button>
                         </p>
                     </div>
-
+                    <input type="hidden" name="recaptcha" id="recaptcha">
                 </form>
+                <script src="https://www.google.com/recaptcha/api.js?render=6LfXZK4UAAAAAFEXFJDiBg45M3Qf4dwXihIUIWvV"></script>
+                <script>
+                    grecaptcha.ready(function(){
+                        grecaptcha.execute('6LfXZK4UAAAAAFEXFJDiBg45M3Qf4dwXihIUIWvV',{action: 'login'}).then(function(token){
+                            if(token){
+                                document.getElementById('recaptcha').value = token;
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
         <div class="column is-one-third rightsideeffect has-background-primary">

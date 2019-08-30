@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \Illuminate\Foundation\Auth\AuthenticatesUsers;
-use \Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Validation\ValidationException;
 
 class AdminLoginController extends Controller
 {
@@ -22,14 +21,35 @@ class AdminLoginController extends Controller
 
     public function login(Request $request)
     {
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = [
+            'secret' => '6LfXZK4UAAAAAMWq3iwulLu1EmayOyMHNmpExl1v',
+            'response' => request('recaptcha'),
+        ];
 
-        $this->validateLogin($request);
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data),
+            ],
+        ];
+        $context = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+        $responseKeys = json_decode($response, true);
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect()->intended((route('admin.dashboard')));
+        if ($responseKeys["success"]) {
+
+            $this->validateLogin($request);
+
+            if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+                return redirect()->intended((route('admin.dashboard')));
+            }
+
+            return $this->sendFailedLoginResponse($request);
+        } else {
+            return back()->with('message', 'Captcha Error! Please Refresh Page or Clear Your Cookies');
         }
-
-        return $this->sendFailedLoginResponse($request);
     }
     protected function validateLogin(Request $request)
     {
@@ -39,7 +59,7 @@ class AdminLoginController extends Controller
             // 'g-recaptcha-response' => 'recaptcha',
         ]);
     }
-    
+
     protected function sendFailedLoginResponse(Request $request)
     {
         throw ValidationException::withMessages([
@@ -58,6 +78,6 @@ class AdminLoginController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->guest(route( 'admin.login' ));
+        return redirect()->guest(route('admin.login'));
     }
 }

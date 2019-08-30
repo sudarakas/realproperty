@@ -146,6 +146,20 @@ class LandController extends Controller
             $land->nearestBusStop = request('nbus');
             $land->save();
 
+            if (Auth::guard('admin')->check()) {
+
+                $message = new MailNotification;
+                $message->receiver_email = $property->user->email;
+                $message->receiver_name = $property->user->name;
+                $message->property_name = $property->name;
+                $message->property_location = $property->city;
+                $message->property_createdOn = $property->created_at;
+                $message->status = 'modified';
+                $message->subject = "Your property has been modified!";
+
+                \Mail::to($message->receiver_email)->send(new EmailNotification($message));
+            }
+
             Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
             return back()->with('message', 'Your property has been successfully updated!');
 

@@ -387,70 +387,106 @@ class AdminController extends Controller
     public function showAdminAddAdmin()
     {
 
-        return view('admin.master');
+        $isSupper = Auth::guard('admin')->user()->issuper;
+        if ($isSupper) {
+            return view('admin.master');
+        } else {
+            Alert::warning('You do not have premission to add a new admin!', 'Access Denied!')->autoclose(3000);
+            return back();
+        }
+
     }
 
     public function adminAddAdmin(Request $request)
     {
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string', 'email|max:255|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
+        $isSupper = Auth::guard('admin')->user()->issuper;
+        if ($isSupper) {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string', 'email|max:255|unique:users',
+                'password' => 'required|string|min:8',
+            ]);
 
-        $user = new Admin();
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->password = Hash::make(request('password'));
-        $user->save();
+            $user = new Admin();
+            $user->name = request('name');
+            $user->email = request('email');
+            $user->password = Hash::make(request('password'));
+            $user->save();
 
-        Alert::success('Admin account has been added successfully!', 'Successfully Added!')->autoclose(3000);
-        return back();
+            Alert::success('Admin account has been added successfully!', 'Successfully Added!')->autoclose(3000);
+            return back();
+        } else {
+            Alert::warning('You do not have premission to add a new admin!', 'Access Denied!')->autoclose(3000);
+            return back();
+        }
+
     }
 
     public function showAdminEditAdmin(Admin $admin)
     {
 
-        return view('admin.master', compact('admin'));
+        $isSupper = Auth::guard('admin')->user()->issuper;
+        if ($isSupper) {
+            return view('admin.master', compact('admin'));
+        } else {
+            Alert::warning('You do not have premission to edit admin!', 'Access Denied!')->autoclose(3000);
+            return back();
+        }
+
     }
 
     public function AdminEditAdmin(Request $request)
     {
 
-        if (request('password')) {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string', 'email|max:255|unique:users',
-                'password' => 'string|min:8',
-            ]);
+        $isSupper = Auth::guard('admin')->user()->issuper;
+
+        if ($isSupper) {
+            if (request('password')) {
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string', 'email|max:255|unique:users',
+                    'password' => 'string|min:8',
+                ]);
+            } else {
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string', 'email|max:255|unique:users',
+                ]);
+            }
+
+            $admin = Admin::find(request('id'));
+            $admin->name = request('name');
+            $admin->email = request('email');
+            if (request('password')) {
+                $admin->password = Hash::make(request('password'));
+            } else {
+                $admin->password = $admin->password;
+            }
+            $admin->update();
+
+            Alert::success('Admin account has been edit successfully!', 'Successfully Saved!')->autoclose(3000);
+            return back();
         } else {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string', 'email|max:255|unique:users',
-            ]);
+            Alert::warning('You do not have premission to edit admin!', 'Access Denied!')->autoclose(3000);
+            return back();
         }
 
-        $admin = Admin::find(request('id'));
-        $admin->name = request('name');
-        $admin->email = request('email');
-        if (request('password')) {
-            $admin->password = Hash::make(request('password'));
-        } else {
-            $admin->password = $admin->password;
-        }
-        $admin->update();
-
-        Alert::success('Admin account has been edit successfully!', 'Successfully Saved!')->autoclose(3000);
-        return back();
     }
 
     public function adminDeleterAdmin(Admin $admin)
     {
 
-        DB::table('admins')->where('id', '=', $admin->id)->delete();
-        Alert::success('Admin account has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
-        return back();
+        $isSupper = Auth::guard('admin')->user()->issuper;
+        if ($isSupper) {
+            DB::table('admins')->where('id', '=', $admin->id)->delete();
+            Alert::success('Admin account has been deleted successfully!', 'Deleted Successfully!')->autoclose(3000);
+            return back();
+        } else {
+            Alert::warning('You do not have premission to delete admin!', 'Access Denied!')->autoclose(3000);
+            return back();
+        }
+
     }
 
     public function viewReports()

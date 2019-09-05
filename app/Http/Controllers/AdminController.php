@@ -407,11 +407,14 @@ class AdminController extends Controller
                 'email' => 'required|string', 'email|max:255|unique:users',
                 'password' => 'required|string|min:8',
             ]);
-
+            
             $user = new Admin();
             $user->name = request('name');
             $user->email = request('email');
             $user->password = Hash::make(request('password'));
+            if( $request->has('issuper')){
+                $user->issuper = 1;
+            }
             $user->save();
 
             Alert::success('Admin account has been added successfully!', 'Successfully Added!')->autoclose(3000);
@@ -427,7 +430,7 @@ class AdminController extends Controller
     {
 
         $isSupper = Auth::guard('admin')->user()->issuper;
-        if ($isSupper) {
+        if ($isSupper || Auth::guard('admin')->user()->id == $admin->id) {
             return view('admin.master', compact('admin'));
         } else {
             Alert::warning('You do not have premission to edit admin!', 'Access Denied!')->autoclose(3000);
@@ -441,7 +444,7 @@ class AdminController extends Controller
 
         $isSupper = Auth::guard('admin')->user()->issuper;
 
-        if ($isSupper) {
+        if ($isSupper || Auth::guard('admin')->user()->id == request('id')) {
             if (request('password')) {
                 $request->validate([
                     'name' => 'required|string|max:255',

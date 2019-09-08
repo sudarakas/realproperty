@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Warehouse;
-use Illuminate\Support\Facades\Auth;
 use Alert;
-use Intervention\Image\Facades\Image;
+use App\MailNotification;
+use App\Mail\EmailNotification;
 use App\Property;
+use App\Warehouse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class WarehouseController extends Controller
 {
@@ -39,7 +41,6 @@ class WarehouseController extends Controller
             $parkingArea = "%%";
         }
 
-
         $warehouses = Warehouse::whereHas('property', function ($query) use ($keyword) {
             $query->where(function ($query) use ($keyword) {
                 $query->orwhere('postalCode', 'LIKE', $keyword)
@@ -49,7 +50,7 @@ class WarehouseController extends Controller
         })->whereHas('property', function ($query) use ($minPrice, $maxPrice) {
 
             $query->whereBetween('amount', array($minPrice, $maxPrice));
-        })->whereHas('property', function ($query){
+        })->whereHas('property', function ($query) {
 
             $query->where('availability', 'LIKE', "YES");
 
@@ -100,7 +101,7 @@ class WarehouseController extends Controller
                 'agreement' => 'required',
                 'electricity' => 'required',
                 'size' => 'required|integer',
-                'carpark' => 'required'
+                'carpark' => 'required',
 
             ]);
 
@@ -112,7 +113,6 @@ class WarehouseController extends Controller
                     $data[] = $name;
                 }
             }
-
 
             $property->name = request('name');
             $property->type = request('type');
@@ -133,13 +133,12 @@ class WarehouseController extends Controller
             $property->longitude = request('lng');
             $property->save();
 
-
             $warehouse->agreement = request('agreement');
             $warehouse->electricity = request('electricity');
             $warehouse->parkingArea = request('carpark');
             $warehouse->size = request('size');
             $warehouse->save();
-            
+
             if (Auth::guard('admin')->check()) {
 
                 $message = new MailNotification;
@@ -174,27 +173,25 @@ class WarehouseController extends Controller
             if (Auth::guard('admin')->check()) {
 
                 $message = new MailNotification;
-                $message->receiver_email = $property->user->email;
-                $message->receiver_name = $property->user->name;
-                $message->property_name = $property->name;
-                $message->property_location = $property->city;
-                $message->property_createdOn = $property->created_at;
+                $message->receiver_email = $warehouse->property->user->email;
+                $message->receiver_name = $warehouse->property->user->name;
+                $message->property_name = $warehouse->property->name;
+                $message->property_location = $warehouse->property->city;
+                $message->property_createdOn = $warehouse->property->created_at;
                 $message->status = 'deleted';
                 $message->subject = "Your property has been deleted!";
 
                 \Mail::to($message->receiver_email)->send(new EmailNotification($message));
             }
 
-            
             Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
-            
-        }
-        else {
+
+        } else {
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
-            
+
         }
     }
 }

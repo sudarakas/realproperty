@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Alert;
 use App\House;
 use App\Property;
+use App\MailNotification;
+use App\Mail\EmailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -198,11 +200,11 @@ class HouseController extends Controller
             if (Auth::guard('admin')->check()) {
 
                 $message = new MailNotification;
-                $message->receiver_email = $property->user->email;
-                $message->receiver_name = $property->user->name;
-                $message->property_name = $property->name;
-                $message->property_location = $property->city;
-                $message->property_createdOn = $property->created_at;
+                $message->receiver_email = $house->property->user->email;
+                $message->receiver_name = $house->property->user->name;
+                $message->property_name = $house->property->name;
+                $message->property_location = $house->property->city;
+                $message->property_createdOn = $house->property->created_at;
                 $message->status = 'deleted';
                 $message->subject = "Your property has been deleted!";
 

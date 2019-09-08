@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Apartment;
 use Alert;
-use Illuminate\Support\Facades\Auth;
+use App\Apartment;
+use App\MailNotification;
+use App\Mail\EmailNotification;
 use App\Property;
-use Intervention\Image\Facades\Image;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class ApartmentController extends Controller
 {
@@ -33,7 +35,7 @@ class ApartmentController extends Controller
                     ->orWhere('province', 'LIKE', $keyword)
                     ->orWhere('city', 'LIKE', $keyword);
             });
-        })->whereHas('property', function ($query){
+        })->whereHas('property', function ($query) {
 
             $query->where('availability', 'LIKE', "YES");
 
@@ -63,7 +65,7 @@ class ApartmentController extends Controller
         $property = Property::find(request('propertyid'));
         $apartment = Apartment::find(request('apartmentid'));
 
-        if ($property->user_id == auth()->id() || Auth::guard('admin')->check() ) {
+        if ($property->user_id == auth()->id() || Auth::guard('admin')->check()) {
 
             $request->validate([
                 'name' => 'required|max:30|min:3',
@@ -84,7 +86,7 @@ class ApartmentController extends Controller
                 'washroom' => 'required',
                 'nschool' => 'required',
                 'nrailway' => 'required',
-                'nbus' => 'required'
+                'nbus' => 'required',
 
             ]);
 
@@ -96,7 +98,6 @@ class ApartmentController extends Controller
                     $data[] = $name;
                 }
             }
-
 
             $property->name = request('name');
             $property->type = request('type');
@@ -116,7 +117,6 @@ class ApartmentController extends Controller
             $property->latitude = request('lat');
             $property->longitude = request('lng');
             $property->save();
-
 
             $apartment->noOfRooms = request('rooms');
             $apartment->noOfKitchen = request('kitchen');
@@ -157,29 +157,28 @@ class ApartmentController extends Controller
 
             DB::table('apartments')->where('id', '=', $apartment->id)->delete();
             DB::table('properties')->where('id', '=', $apartment->property->id)->delete();
-            
+
             if (Auth::guard('admin')->check()) {
 
                 $message = new MailNotification;
-                $message->receiver_email = $property->user->email;
-                $message->receiver_name = $property->user->name;
-                $message->property_name = $property->name;
-                $message->property_location = $property->city;
-                $message->property_createdOn = $property->created_at;
+                $message->receiver_email = $apartment->property->user->email;
+                $message->receiver_name = $apartment->property->user->name;
+                $message->property_name = $apartment->property->name;
+                $message->property_location = $apartment->property->city;
+                $message->property_createdOn = $apartment->property->created_at;
                 $message->status = 'deleted';
                 $message->subject = "Your property has been deleted!";
 
                 \Mail::to($message->receiver_email)->send(new EmailNotification($message));
             }
-            
+
             Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
-        }
-        else {
+        } else {
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
-            
+
         }
     }
 }

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Land;
-use Illuminate\Support\Facades\Auth;
-use App\Property;
 use Alert;
+use App\Land;
+use App\MailNotification;
+use App\Mail\EmailNotification;
+use App\Property;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
@@ -39,14 +41,13 @@ class LandController extends Controller
             $tapWater = "%%";
         }
 
-
         $lands = Land::whereHas('property', function ($query) use ($keyword) {
             $query->where(function ($query) use ($keyword) {
                 $query->orwhere('postalCode', 'LIKE', $keyword)
                     ->orWhere('province', 'LIKE', $keyword)
                     ->orWhere('city', 'LIKE', $keyword);
             });
-        })->whereHas('property', function ($query){
+        })->whereHas('property', function ($query) {
 
             $query->where('availability', 'LIKE', "YES");
 
@@ -104,7 +105,7 @@ class LandController extends Controller
                 'tapwater' => 'required',
                 'nschool' => 'required',
                 'nrailway' => 'required',
-                'nbus' => 'required'
+                'nbus' => 'required',
 
             ]);
 
@@ -116,7 +117,6 @@ class LandController extends Controller
                     $data[] = $name;
                 }
             }
-
 
             $property->name = request('name');
             $property->type = request('type');
@@ -136,7 +136,6 @@ class LandController extends Controller
             $property->latitude = request('lat');
             $property->longitude = request('lng');
             $property->save();
-
 
             $land->size = request('size');
             $land->electricity = request('electricity');
@@ -163,7 +162,7 @@ class LandController extends Controller
             Alert::success('Your property has been edited successfully!', 'Successfully Updated')->autoclose(3000);
             return back()->with('message', 'Your property has been successfully updated!');
 
-           // return dd($data);
+            // return dd($data);
         } else {
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
@@ -182,25 +181,24 @@ class LandController extends Controller
             if (Auth::guard('admin')->check()) {
 
                 $message = new MailNotification;
-                $message->receiver_email = $property->user->email;
-                $message->receiver_name = $property->user->name;
-                $message->property_name = $property->name;
-                $message->property_location = $property->city;
-                $message->property_createdOn = $property->created_at;
+                $message->receiver_email = $land->property->user->email;
+                $message->receiver_name = $land->property->user->name;
+                $message->property_name = $land->property->name;
+                $message->property_location = $land->property->city;
+                $message->property_createdOn = $land->property->created_at;
                 $message->status = 'deleted';
                 $message->subject = "Your property has been deleted!";
 
                 \Mail::to($message->receiver_email)->send(new EmailNotification($message));
             }
-            
+
             Alert::success('Your property has been deleted successfully!', 'Successfully Deleted!')->autoclose(3000);
             return back();
-        }
-        else {
+        } else {
 
             Alert::error('Your request has been denied by the system', 'Unauthorized Attempt')->autoclose(3000);
             return redirect('/profile');
-            
+
         }
     }
 }

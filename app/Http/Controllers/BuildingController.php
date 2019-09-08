@@ -186,11 +186,11 @@ class BuildingController extends Controller
             if (Auth::guard('admin')->check()) {
 
                 $message = new MailNotification;
-                $message->receiver_email = $property->user->email;
-                $message->receiver_name = $property->user->name;
-                $message->property_name = $property->name;
-                $message->property_location = $property->city;
-                $message->property_createdOn = $property->created_at;
+                $message->receiver_email = $building->property->user->email;
+                $message->receiver_name = $building->property->user->name;
+                $message->property_name = $building->property->name;
+                $message->property_location = $building->property->city;
+                $message->property_createdOn = $building->property->created_at;
                 $message->status = 'deleted';
                 $message->subject = "Your property has been deleted!";
 

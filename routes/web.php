@@ -92,7 +92,7 @@ Route::get('/admin/building/{building}/edit','AdminController@showAdminEditBuild
 Route::post('/admin/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/edit','BuildingController@editBuilding');
 Route::post('/profile/building/{building}/delete','BuildingController@deleteBuilding');
-Route::post('/admin/building/{building}/delete','BuildingController@deleteLand')->middleware('auth:admin');
+Route::post('/admin/building/{building}/delete','BuildingController@deleteBuilding')->middleware('auth:admin');
 
 Route::get('/apartment/serach','PageController@apartmentsearch');
 Route::get('/apartment/{apartment}','ApartmentController@viewApartment');

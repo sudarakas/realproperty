@@ -92,7 +92,7 @@
         showCancelButton: true,
         confirmButtonColor: "hsl(141, 71%, 48%)",
         cancelButtonColor: "hsl(348, 100%, 61%)",
-        confirmButtonText: 'Yes, unlock it!',
+        confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, cancel!',
         reverseButtons: true
     }).then((result) => {

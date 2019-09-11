@@ -78,6 +78,6 @@ class AdminLoginController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->guest(route('admin.login'));
+        return redirect('/admin');
     }
 }

@@ -116,34 +116,39 @@
                 @if(env('GOOGLE_RECAPTCHA_KEY'))
                 <div class="g-recaptcha googlerecaptcha" id="googlerecaptcha"
                     data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
-                </div>
-                @endif
-                @if ($errors->has('googlerecaptcha'))
-                <span class="invalid-feedback" role="alert">
-                    <strong class="has-text-danger">{{ $errors->first('googlerecaptcha') }}</strong>
-                </span>
-                @endif
-            </p>
-        </div> --}}
-        <div class="field ">
-            <p class="control has-text-centered is-centered loginbutton">
-                <button type="submit" class="button is-primary is full is-uppercase">
-                    &nbsp; &nbsp; &nbsp; &nbsp; Sign Up &nbsp; &nbsp; &nbsp; &nbsp;
-                </button>
-            </p>
-        </div>
-        <input type="hidden" name="recaptcha" id="recaptcha">
-        </form>
-        <script src="https://www.google.com/recaptcha/api.js?render=6LfXZK4UAAAAAFEXFJDiBg45M3Qf4dwXihIUIWvV"></script>
-        <script>
-            grecaptcha.ready(function(){
+    </div>
+    @endif
+    @if ($errors->has('googlerecaptcha'))
+    <span class="invalid-feedback" role="alert">
+        <strong class="has-text-danger">{{ $errors->first('googlerecaptcha') }}</strong>
+    </span>
+    @endif
+    </p>
+    </div> --}}
+    <div class="field ">
+        <p class="control has-text-centered is-centered loginbutton">
+            <button type="submit" class="button is-primary is full is-uppercase">
+                &nbsp; &nbsp; &nbsp; &nbsp; Sign Up &nbsp; &nbsp; &nbsp; &nbsp;
+            </button>
+        </p>
+    </div>
+    <input type="hidden" name="recaptcha" id="recaptcha">
+    </form>
+    @if(session()->has('message'))
+    <div class="">
+        <h1 class="is-size-7 has-text-weight-bold has-text-danger"><b> {{ session()->get('message') }}</b></h1>
+    </div>
+    @endif
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfXZK4UAAAAAFEXFJDiBg45M3Qf4dwXihIUIWvV"></script>
+    <script>
+        grecaptcha.ready(function(){
                         grecaptcha.execute('6LfXZK4UAAAAAFEXFJDiBg45M3Qf4dwXihIUIWvV',{action: 'login'}).then(function(token){
                             if(token){
                                 document.getElementById('recaptcha').value = token;
                             }
                         });
                     });
-        </script>
+    </script>
     </div>
     </div>
     <div class="column is-one-third rightsideeffect has-background-primary">
